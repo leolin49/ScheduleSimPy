@@ -5,7 +5,7 @@
 # Time    : 2024/3/28 15:21
 # Author  : linyf49@qq.com
 # File    : cluster.py
-from typing import List
+from typing import List, Tuple
 from Infrastructure.edge_node import EdgeNode
 
 
@@ -16,11 +16,9 @@ class Cluster:
         self.node_list = []
 
     # 添加边缘节点
-    def add_node(self, node: EdgeNode):
-        # 节点不能被重复添加
-        node_id = node.get_id()
-        for n in self.node_list:
-            if node_id == n.get_id():
-                return
+    def add_node(self, node: EdgeNode, edges: List[Tuple] = None):
         self.node_list.append(node)
-        pass
+
+    # 获取集群中节点的数量
+    def get_node_num(self):
+        return len(self.node_list)

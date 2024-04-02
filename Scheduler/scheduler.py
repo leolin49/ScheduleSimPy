@@ -7,17 +7,14 @@
 # File    : scheduler.py.py
 
 from Infrastructure.cluster import Cluster
-from task import Task
+from Task.task import Task
 
 
 # 调度器基类
-class Scheduler:
-    _name: str
-    _cluster: Cluster  # 调度器所管理的边缘集群
-
+class Scheduler(object):
     def __init__(self, name: str, cluster: Cluster):
         self._name = name
         self._cluster = cluster
 
-    def get_best_node(self, task: Task):
+    def make_decision(self, task: Task):
         pass

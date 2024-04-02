@@ -9,16 +9,19 @@ import random
 from typing import List
 import random as rd
 
-from Infrastructure.edge_node import EdgeNode
+from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
 import util
 
 
 def random_edge_node(node_id: int, level: int) -> EdgeNode:
     memory = rd.choice(util.MEMORY_CAPACITY[level * 3 - 3 : level * 3])
-    node = EdgeNode(node_id, 100, memory, memory * 10, 100)
-    node.set_load_info(
-        random.randint(1, 100), random.randint(1, 100), 50, random.randint(1, 20)
-    )
+    node = EdgeNode(node_id, EdgeNodeConfig(64, memory, memory * 10, 100))
+
+    node.cpu = 64 * random.random()
+    node.mem = memory * random.random()
+    node.disk = 10 * memory * random.random()
+    node.container_num = random.randint(1, 20)
+
     return node
 
 

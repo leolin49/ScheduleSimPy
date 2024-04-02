@@ -6,19 +6,14 @@
 # Author  : linyf49@qq.com
 # File    : dics.py
 
-from typing import List
 from math import sqrt
 
 from Scheduler.scheduler import Scheduler
 from Infrastructure.cluster import Cluster, EdgeNode
-from task import Task
+from Task.task import Task
 
 
 class DataIntensiveContainerScheduling(Scheduler):
-    _ids = List[int]
-    _info = List[List[float]]
-    _cluster: Cluster
-
     def __init__(self, name: str, cluster: Cluster):
         super(DataIntensiveContainerScheduling, self).__init__(name, cluster)
         self._info = []
@@ -31,11 +26,18 @@ class DataIntensiveContainerScheduling(Scheduler):
     def __prepare(self):
         # 获取调度所需要的集群信息
         for node in self._cluster.node_list:
-            info = node.get_load_info()
-            self._ids.append(node.get_id())
-            self._info.append([info[2], info[4], info[6], info[7], info[8]])
+            self._ids.append(node.id)
+            self._info.append(
+                [
+                    node.cpu_utilization,
+                    node.mem_utilization,
+                    node.disk_utilization,
+                    node.container_num,
+                    node.bandwidth,
+                ]
+            )
 
-    def get_best_node(self, task=None) -> EdgeNode:
+    def make_decision(self, task: Task = None) -> EdgeNode:
         self.__prepare()
         k = len(self._info)
         c = self.criteria_num
