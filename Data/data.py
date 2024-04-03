@@ -6,6 +6,7 @@
 # Author  : linyf49@qq.com
 # File    : data.py
 
+
 class Data(object):
     def __init__(self, size: float, location: int):
         """

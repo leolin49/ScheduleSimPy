@@ -11,7 +11,7 @@ from math import inf
 from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
 from Infrastructure.cloud_node import CloudNode
 
-INF = 10 ** 18
+INF = 10**18
 
 
 class Cluster:
@@ -36,4 +36,3 @@ class Cluster:
     @property
     def all_tasks_finished(self) -> bool:
         return len(self.unfinished_task_queue) == 0
-

@@ -7,7 +7,6 @@
 # File    : dics.py
 
 from math import sqrt
-from simpy import Event
 
 from Scheduler.scheduler import Scheduler
 from Infrastructure.cluster import Cluster, EdgeNode
@@ -30,7 +29,11 @@ class DataIntensiveContainerScheduling(Scheduler):
 
     def schedule(self, task: Task, clock):
         node = self.make_decision(task, clock)
-        print("now:{} task-{} is scheduled to Node-{} {}".format(self.env.now, task.id, node.id, node.__str__()))
+        print(
+            "now:{} task-{} is scheduled to Node-{} {}".format(
+                self.env.now, task.id, node.id, node.__str__()
+            )
+        )
         task.schedule(node)
 
     def make_decision(self, task: Task, clock) -> EdgeNode:
@@ -108,8 +111,7 @@ class DataIntensiveContainerScheduling(Scheduler):
         The node with the highest value of RC is the target node to execute container. 
         If there are more than one node with the same RC, we randomly choose one.
         """
-        ids.sort(key=lambda i: -RC[i-1])
+        ids.sort(key=lambda i: -RC[i - 1])
         for i in ids:
             if self.cluster.node_list[i].can_run_task(task):
                 return self.cluster.node_list[i]
-

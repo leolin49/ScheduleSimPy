@@ -83,5 +83,7 @@ class Task:
     @property
     def state(self) -> str:
         if self.finished:
-            return "now:{} Task-{} is finished. begin:{}, end:{}".format(self.env.now, self.id, self.started_timestamp, self.finished_timestamp)
+            return "now:{} Task-{} is finished. begin:{}, end:{}".format(
+                self.env.now, self.id, self.started_timestamp, self.finished_timestamp
+            )
         return "now{} Task-{} is not begin".format(self.env.now, self.id)

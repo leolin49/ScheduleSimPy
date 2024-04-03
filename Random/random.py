@@ -28,7 +28,7 @@ def random_edge_node(node_id: int, level: int) -> EdgeNode:
 
 def random_edge_node_list(n: int) -> List[EdgeNode]:
     node_list = []
-    for i in range(1, n+1):
+    for i in range(1, n + 1):
         node = None
         if i < int(n * 0.6):
             node = random_edge_node(i, 1)
@@ -51,9 +51,8 @@ def random_task(env, task_id: int, task_type: int = 1) -> TaskConfig:
 
 def random_task_list(env, n: int) -> List[TaskConfig]:
     task_configs = []
-    for i in range(1, n+1):
+    for i in range(1, n + 1):
         task_config = random_task(env, i)
         task_configs.append(task_config)
     task_configs.sort(key=lambda t: t.submit_time)
     return task_configs
-

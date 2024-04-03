@@ -25,6 +25,10 @@ class Broker(object):
             assert job_config.submit_time >= self.env.now
             yield self.env.timeout(job_config.submit_time - self.env.now)
             task = Task(self.env, job_config)
-            print('now:{}, task-{} is added to cluster, {}'.format(self.env.now, task.id, task.state))
+            print(
+                "now:{}, task-{} is added to cluster, {}".format(
+                    self.env.now, task.id, task.state
+                )
+            )
             self.cluster.add_task(task)
         self.destroyed = True
