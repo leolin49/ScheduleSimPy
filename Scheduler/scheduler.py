@@ -12,9 +12,18 @@ from Task.task import Task
 
 # 调度器基类
 class Scheduler(object):
-    def __init__(self, name: str, cluster: Cluster):
-        self._name = name
-        self._cluster = cluster
+    def __init__(self, name: str, env):
+        self.name = name
+        self.env = env
+        self.simulator = None
+        self.cluster = None
 
-    def make_decision(self, task: Task):
+    def attach(self, simulator):
+        self.simulator = simulator
+        self.cluster = simulator.cluster
+
+    def run(self):
+        pass
+
+    def make_decision(self, task: Task, clock):
         pass

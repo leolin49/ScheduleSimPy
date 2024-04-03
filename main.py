@@ -10,22 +10,26 @@ from simpy import Environment
 
 from Scheduler import dics
 from Infrastructure.cluster import Cluster
-from Random import random_infrastructure as rdi
-from Task.task import Task, TaskConfig
-import util
+from Random import random as rd
+from simulator import Simulator
+from Task.broker import Broker
 
 
 def main():
-    task = Task(simpy.Environment(), TaskConfig(1, 1, 2, 100, 100, 2))
+    # Baseline1
+    env1 = Environment()
+    # 新建任务
+    task_configs = rd.random_task_list(env1, 10)
+    task_broker = Broker(env1, task_configs)
+    # 新建集群及其节点
     cluster = Cluster()
-
-    node_list = rdi.random_edge_node_list(10000)
+    node_list = rd.random_edge_node_list(100)
     for node in node_list:
         cluster.add_node(node)
-        print(node.__str__())
-
-    scheduler = dics.DataIntensiveContainerScheduling("dics", cluster)
-    util.run_with_time(scheduler.make_decision)
+    scheduler = dics.DataIntensiveContainerScheduling("dics", env1)
+    sim1 = Simulator(env1, cluster, scheduler, task_broker)
+    sim1.run()
+    env1.run()
 
 
 if __name__ == "__main__":

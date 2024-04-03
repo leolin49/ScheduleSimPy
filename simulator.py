@@ -5,8 +5,23 @@
 # Time    : 2024/4/1 17:01
 # Author  : linyf49@qq.com
 # File    : simulator.py.py
+from simpy import Environment
 
 
 class Simulator(object):
-    def __init__(self):
-        pass
+    def __init__(self, env: Environment, cluster, scheduler, task_broker):
+        self.env = env
+        self.cluster = cluster
+        self.scheduler = scheduler
+        self.task_broker = task_broker
+
+        self.task_broker.attach(self)
+        self.scheduler.attach(self)
+
+    def run(self):
+        self.env.process(self.task_broker.run())
+        self.env.process(self.scheduler.run())
+
+    @property
+    def finished(self):
+        return self.task_broker.destroyed and self.cluster.all_tasks_finished

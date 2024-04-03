@@ -7,6 +7,7 @@
 # File    : dics.py
 
 from math import sqrt
+from simpy import Event
 
 from Scheduler.scheduler import Scheduler
 from Infrastructure.cluster import Cluster, EdgeNode
@@ -14,20 +15,31 @@ from Task.task import Task
 
 
 class DataIntensiveContainerScheduling(Scheduler):
-    def __init__(self, name: str, cluster: Cluster):
-        super(DataIntensiveContainerScheduling, self).__init__(name, cluster)
-        self._info = []
-        self._ids = []
+    def __init__(self, name: str, env):
+        super(DataIntensiveContainerScheduling, self).__init__(name, env)
         self.F1 = [1, 1, 1, -1, 1]
         self.W = [0.2, 0.2, 0.2, 0.2, 0.2]
         self.criteria_num = len(self.F1)
-        self._cluster = cluster
 
-    def __prepare(self):
-        # 获取调度所需要的集群信息
-        for node in self._cluster.node_list:
-            self._ids.append(node.id)
-            self._info.append(
+    def run(self):
+        while not self.simulator.finished:
+            if len(self.cluster.unfinished_task_queue) > 0:
+                task = self.cluster.unfinished_task_queue.popleft()
+                self.schedule(task, self.env.now)
+            yield self.env.timeout(1)
+
+    def schedule(self, task: Task, clock):
+        node = self.make_decision(task, clock)
+        print("now:{} task-{} is scheduled to Node-{} {}".format(self.env.now, task.id, node.id, node.__str__()))
+        task.schedule(node)
+
+    def make_decision(self, task: Task, clock) -> EdgeNode:
+        # prepare
+        ids = []
+        info = []
+        for node in self.cluster.node_list[1:]:
+            ids.append(node.id)
+            info.append(
                 [
                     node.cpu_utilization,
                     node.mem_utilization,
@@ -37,9 +49,7 @@ class DataIntensiveContainerScheduling(Scheduler):
                 ]
             )
 
-    def make_decision(self, task: Task = None) -> EdgeNode:
-        self.__prepare()
-        k = len(self._info)
+        k = len(info)
         c = self.criteria_num
         """
         Step 1.
@@ -55,8 +65,8 @@ class DataIntensiveContainerScheduling(Scheduler):
         Step 2.
         Construct the normalized decision matrix E.
         """
-        tmp = [sqrt(sum(self._info[i][j] ** 2 for i in range(k))) for j in range(c)]
-        E = [[self._info[i][j] / tmp[j] for j in range(c)] for i in range(k)]
+        tmp = [sqrt(sum(info[i][j] ** 2 for i in range(k))) for j in range(c)]
+        E = [[info[i][j] / tmp[j] for j in range(c)] for i in range(k)]
         """
         Step 3.
         Construct the weighted normalized decision matrix S, using the weighting factors W
@@ -98,5 +108,8 @@ class DataIntensiveContainerScheduling(Scheduler):
         The node with the highest value of RC is the target node to execute container. 
         If there are more than one node with the same RC, we randomly choose one.
         """
-        idx = self._ids[RC.index(max(RC))]
-        return self._cluster.node_list[idx]
+        ids.sort(key=lambda i: -RC[i-1])
+        for i in ids:
+            if self.cluster.node_list[i].can_run_task(task):
+                return self.cluster.node_list[i]
+
