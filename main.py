@@ -20,10 +20,11 @@ def main():
     env1 = Environment()
     # 新建任务
     task_configs = rd.random_task_list(env1, 10)
+    # task_configs = rd.test_task(env1)
     task_broker = Broker(env1, task_configs)
     # 新建集群及其节点
     cluster = Cluster()
-    node_list = rd.random_edge_node_list(100)
+    node_list = rd.random_edge_node_list(10)
     for node in node_list:
         cluster.add_node(node)
     scheduler = dics.DataIntensiveContainerScheduling("dics", env1)

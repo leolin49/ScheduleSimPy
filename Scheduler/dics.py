@@ -5,12 +5,13 @@
 # Time    : 2024/3/28 15:28
 # Author  : linyf49@qq.com
 # File    : dics.py
-
+import time
 from math import sqrt
 
 from Scheduler.scheduler import Scheduler
-from Infrastructure.cluster import Cluster, EdgeNode
+from Infrastructure.cluster import EdgeNode
 from Task.task import Task
+import util
 
 
 class DataIntensiveContainerScheduling(Scheduler):
@@ -21,20 +22,23 @@ class DataIntensiveContainerScheduling(Scheduler):
         self.criteria_num = len(self.F1)
 
     def run(self):
+        task_queue = self.cluster.unfinished_task_queue
         while not self.simulator.finished:
-            if len(self.cluster.unfinished_task_queue) > 0:
-                task = self.cluster.unfinished_task_queue.popleft()
+            if len(task_queue) > 0:
+                task = task_queue.popleft()
                 self.schedule(task, self.env.now)
-            yield self.env.timeout(1)
+            yield self.env.timeout(0.1)
 
     def schedule(self, task: Task, clock):
+        start_time = time.time()
         node = self.make_decision(task, clock)
-        print(
+        end_time = time.time()
+        util.print_y(
             "now:{} task-{} is scheduled to Node-{} {}".format(
                 self.env.now, task.id, node.id, node.__str__()
             )
         )
-        task.schedule(node)
+        task.schedule(node, end_time - start_time)
 
     def make_decision(self, task: Task, clock) -> EdgeNode:
         # prepare

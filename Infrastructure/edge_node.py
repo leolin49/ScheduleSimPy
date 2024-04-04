@@ -51,9 +51,9 @@ class EdgeNode:
     def __str__(self):
         return (
             "id: {}, "
-            "cpu_capacity: {}({:.2f}% used), "
-            "mem_capacity: {}GB({:.2f}% used), "
-            "disk_capacity: {}GB({:.2f}% used), "
+            "cpu: {}({:.2f}% used), "
+            "mem: {}GB({:.2f}% used), "
+            "disk: {}GB({:.2f}% used), "
             "bandwidth: {}Mbps, "
             "running_task: {}".format(
                 self.id,

@@ -41,8 +41,8 @@ def random_edge_node_list(n: int) -> List[EdgeNode]:
 
 
 def random_task(env, task_id: int, task_type: int = 1) -> TaskConfig:
-    submit_time = random.randint(1, 50)
-    duration = random.randint(1, 5)
+    submit_time = random.uniform(1, 10)
+    duration = random.uniform(0.0001, 1.1432) * random.uniform(1, 1.7520 / 0.4883)
     mem = random.randint(50, 250)
     cpu = random.randint(1, 4)
     disk = random.randint(100, 500)
@@ -55,4 +55,13 @@ def random_task_list(env, n: int) -> List[TaskConfig]:
         task_config = random_task(env, i)
         task_configs.append(task_config)
     task_configs.sort(key=lambda t: t.submit_time)
+    return task_configs
+
+
+def test_task(env) -> List[TaskConfig]:
+    task_configs = [
+        TaskConfig(1, 10, 3, 1, 2, 100, 100, None),
+        TaskConfig(2, 10.5, 0.8421, 1, 2, 100, 100, None),
+        TaskConfig(3, 10.5, 0.1168, 1, 2, 100, 100, None),
+    ]
     return task_configs

@@ -8,6 +8,19 @@
 
 GB = 1024
 
+
+class Color:
+    PURPLE = "\033[95m"
+    CYAN = "\033[96m"
+    BLUE = "\033[94m"
+    GREEN = "\033[92m"
+    YELLOW = "\033[93m"
+    RED = "\033[91m"
+    BOLD = "\033[1m"
+    UNDERLINE = "\033[4m"
+    END = "\033[0m"
+
+
 MEMORY_CAPACITY = [
     512,
     1 * GB,
@@ -19,3 +32,15 @@ MEMORY_CAPACITY = [
     64 * GB,
     128 * GB,
 ]
+
+
+def print_g(args, sep=" ", end="\n", file=None):
+    print(Color.GREEN + args + Color.END)
+
+
+def print_y(args, sep=" ", end="\n", file=None):
+    print(Color.YELLOW + args + Color.END)
+
+
+def print_r(args, sep=" ", end="\n", file=None):
+    print(Color.RED + args + Color.END)

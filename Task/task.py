@@ -8,6 +8,7 @@
 from typing import List
 from simpy import Environment
 from Data.data import Data
+import util
 
 
 class TaskConfig(object):
@@ -61,20 +62,25 @@ class Task:
 
         self.rely_datas = []
 
-    def run(self):
-        yield self.env.timeout(self.duration)
-
+    def run(self, decision_time):
+        util.print_g(
+            "now:{} task:{} makespan:{}".format(
+                self.env.now, self.id, self.duration + decision_time
+            )
+        )
+        yield self.env.timeout(self.duration + decision_time)
+        self.work_node.stop_task(self)
         self._finished = True
         self.finished_timestamp = self.env.now
-        print(self.state)
+        util.print_r(self.state)
 
-    def schedule(self, node):
+    def schedule(self, node, decision_time):
         self.started = True
         self.started_timestamp = self.env.now
 
         self.work_node = node
         self.work_node.run_task(self)
-        self.process = self.env.process(self.run())
+        self.process = self.env.process(self.run(decision_time))
 
     @property
     def finished(self) -> bool:
@@ -86,4 +92,6 @@ class Task:
             return "now:{} Task-{} is finished. begin:{}, end:{}".format(
                 self.env.now, self.id, self.started_timestamp, self.finished_timestamp
             )
-        return "now{} Task-{} is not begin".format(self.env.now, self.id)
+        return "now:{} Task-{} duration:{} is not begin".format(
+            self.env.now, self.id, self.duration
+        )

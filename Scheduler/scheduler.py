@@ -5,8 +5,7 @@
 # Time    : 2024/3/28 15:19
 # Author  : linyf49@qq.com
 # File    : scheduler.py.py
-
-from Infrastructure.cluster import Cluster
+from Infrastructure.edge_node import EdgeNode
 from Task.task import Task
 
 
@@ -25,5 +24,8 @@ class Scheduler(object):
     def run(self):
         pass
 
-    def make_decision(self, task: Task, clock):
+    def schedule(self, task: Task, clock):
+        pass
+
+    def make_decision(self, task: Task, clock) -> EdgeNode:
         pass

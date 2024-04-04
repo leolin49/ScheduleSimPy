@@ -5,7 +5,9 @@
 # Time    : 2024/4/1 17:01
 # Author  : linyf49@qq.com
 # File    : simulator.py.py
-from simpy import Environment
+import time
+
+from simpy import Environment, Event
 
 
 class Simulator(object):
@@ -17,6 +19,8 @@ class Simulator(object):
 
         self.task_broker.attach(self)
         self.scheduler.attach(self)
+
+        # self.first_task_arrive = self.env.event()
 
     def run(self):
         self.env.process(self.task_broker.run())
