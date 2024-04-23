@@ -64,27 +64,22 @@ from Task.task import Task
 
 
 class OnlineContainerScheduling(Scheduler):
-    def __init__(self, name: str, cluster: Cluster):
-        super(OnlineContainerScheduling, self).__init__(name, cluster)
-        self._cluster = cluster
-        self._cloud_cost_p = 1  # 容器在云节点执行成本的固定系数
-        self.n = self._cluster.get_node_num()
-        self._serverless_z = [] * (self.n + 1)  # 边缘节点是否启动无服务器
-        self._serverless_cost = [] * (self.n + 1)  # 边缘节点运营无服务器的成本
-        self._mem_capacity = [] * (self.n + 1)  # 集群中每个节点的内存容量
-        self._mem_used = [] * (self.n + 1)
+    def __init__(self, name: str, env):
+        super(OnlineContainerScheduling, self).__init__(name, env)
+        self.cloud_cost_p = 1  # 容器在云节点执行成本的固定系数
+        self.n = self.env.cluster.node_num
+        self.serverless_z = [] * (self.n + 1)  # 边缘节点是否启动无服务器
+        self.serverless_cost = [] * (self.n + 1)  # 边缘节点运营无服务器的成本
+        self.mem_capacity = [] * (self.n + 1)  # 集群中每个节点的内存容量
+        self.mem_used = [] * (self.n + 1)
 
-    def __prepare(self):
-        # 获取调度所需要的集群信息
-        for node in self._cluster.node_list:
-            self._mem_capacity[node.id] = node.mem_capacity
-
-    def make_decision(self, task: Task) -> EdgeNode:
+    def make_decision(self, task: Task, clock) -> EdgeNode:
+        # prepare
         n = self.n  # 节点数量
         g = [[inf] * n for _ in range(n)]  # 邻接矩阵建图
         for i in range(n):
             g[i][i] = 0
-        for node in self._cluster.node_list:
+        for node in self.cluster.node_list:
             for edge in node.edges:
                 g[node.id][edge[0]] = edge[1]
 

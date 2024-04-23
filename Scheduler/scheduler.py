@@ -5,8 +5,11 @@
 # Time    : 2024/3/28 15:19
 # Author  : linyf49@qq.com
 # File    : scheduler.py.py
+import time
+from Infrastructure.cluster import Cluster
 from Infrastructure.edge_node import EdgeNode
 from Task.task import Task
+import util
 
 
 # 调度器基类
@@ -22,10 +25,22 @@ class Scheduler(object):
         self.cluster = simulator.cluster
 
     def run(self):
-        pass
+        while not self.simulator.finished:
+            if len(self.cluster.unfinished_task_queue) > 0:
+                task = self.cluster.unfinished_task_queue.popleft()
+                self.schedule(task, self.env.now)
+            yield self.env.timeout(1)
 
     def schedule(self, task: Task, clock):
-        pass
+        s = time.time()
+        node = self.make_decision(task, clock)
+        e = time.time()
+        util.print_y(
+            "now:{} task-{} is scheduled to Node-{} {}".format(
+                self.env.now, task.id, node.id, node.__str__()
+            )
+        )
+        task.schedule(node, e - s)
 
     def make_decision(self, task: Task, clock) -> EdgeNode:
         pass

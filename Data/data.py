@@ -8,10 +8,12 @@
 
 
 class Data(object):
-    def __init__(self, size: float, location: int):
+    def __init__(self, data_id: int, size: float, location: int):
         """
+        :param data_id: 数据编号
         :param size: 数据大小
         :param location: 数据位置
         """
+        self.id = data_id
         self.size = size
         self.location = location

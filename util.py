@@ -33,6 +33,15 @@ MEMORY_CAPACITY = [
     128 * GB,
 ]
 
+LABEL = [
+    "CPU",
+    "GPU",
+    "RAM",
+    "HDD",
+    "SSD",
+    "GBE",
+]
+
 
 def print_g(args, sep=" ", end="\n", file=None):
     print(Color.GREEN + args + Color.END)

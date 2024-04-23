@@ -18,6 +18,7 @@ def random_edge_node(node_id: int, level: int) -> EdgeNode:
     memory = random.choice(util.MEMORY_CAPACITY[level * 3 - 3 : level * 3])
     node = EdgeNode(node_id, EdgeNodeConfig(64, memory, memory * 10, 100))
 
+    node.label = random.sample(util.LABEL, 2)
     node.cpu = 64 * random.random()
     node.mem = memory * random.random()
     node.disk = 10 * memory * random.random()

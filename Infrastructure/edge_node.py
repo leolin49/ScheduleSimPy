@@ -4,8 +4,10 @@
 #
 # Time    : 2024/3/28 15:02
 # Author  : linyf49@qq.com
-# File    : edge_node.py.py
+# File    : edge_node.py
 from typing import List, Tuple
+
+from Data.label import Label
 import util
 
 
@@ -21,6 +23,16 @@ class EdgeNodeConfig:
         memory=None,
         disk=None,
     ):
+        """
+        :param cpu_capacity: CPU
+        :param mem_capacity: 节点内存容量（MB）
+        :param disk_capacity: 节点磁盘容量（MB）
+        :param bandwidth: 节点带宽（Mbps）
+        :param labels: 节点标签
+        :param cpu: 剩余CPU
+        :param memory: 剩余内存容量
+        :param disk: 剩余磁盘容量
+        """
         self.cpu_capacity = cpu_capacity
         self.mem_capacity = mem_capacity
         self.disk_capacity = disk_capacity
@@ -35,18 +47,21 @@ class EdgeNodeConfig:
 # 边缘节点基类
 class EdgeNode:
     def __init__(self, node_id: int, cfg: EdgeNodeConfig):
-        self.id = node_id  # 节点ID
-        self.cpu_capacity = cfg.cpu_capacity  # CPU
-        self.cpu = cfg.cpu_capacity  # 剩余CPU
-        self.mem_capacity = cfg.mem_capacity  # 内存容量
-        self.mem = cfg.mem_capacity  # 剩余内存容量
-        self.disk_capacity = cfg.disk_capacity  # 磁盘容量
-        self.disk = cfg.disk_capacity  # 剩余磁盘容量
+        self.id = node_id
+        self.cpu_capacity = cfg.cpu_capacity
+        self.cpu = cfg.cpu_capacity
+        self.mem_capacity = cfg.mem_capacity
+        self.mem = cfg.mem_capacity
+        self.disk_capacity = cfg.disk_capacity
+        self.disk = cfg.disk_capacity
 
-        self.bandwidth = cfg.bandwidth  # 网络带宽
+        self.bandwidth = cfg.bandwidth
         self.container_num = 0  # 节点上运行的容器数量
-        self.labels = cfg.labels  # 节点的标签列表
+        if cfg.labels is not None:
+            self.label = Label(set(cfg.labels))
         self.edges = []  # 节点的出边
+
+        self.cluster = None
 
     def __str__(self):
         return (
@@ -55,7 +70,8 @@ class EdgeNode:
             "mem: {}GB({:.2f}% used), "
             "disk: {}GB({:.2f}% used), "
             "bandwidth: {}Mbps, "
-            "running_task: {}".format(
+            "running_task: {}, "
+            "labels: {}".format(
                 self.id,
                 self.cpu_capacity,
                 self.cpu_utilization,
@@ -65,11 +81,15 @@ class EdgeNode:
                 self.disk_utilization,
                 self.bandwidth,
                 self.container_num,
+                self.label
             )
         )
 
     def __eq__(self, other):
         return isinstance(other, EdgeNode) and other.id == self.id
+
+    def attach(self, cluster):
+        self.cluster = cluster
 
     @property
     def cpu_utilization(self) -> float:
@@ -82,12 +102,6 @@ class EdgeNode:
     @property
     def disk_utilization(self) -> float:
         return (self.disk_capacity - self.disk) / self.disk_capacity * 100
-
-    def set_load_info(self, cpu: float, mem: float, disk: float, container_num: int):
-        self.cpu = cpu
-        self.mem = mem
-        self.disk = disk
-        self.container_num = container_num
 
     def add_edge(self, edges: List[Tuple]):
         for e in edges:
@@ -109,8 +123,9 @@ class EdgeNode:
         self.cpu -= task.cpu_consume
         self.mem -= task.mem_consume
         self.disk -= task.disk_consume
-
         self.container_num += 1
+        # TODO
+        self.cluster
 
     def stop_task(self, task):
         """
@@ -121,5 +136,5 @@ class EdgeNode:
         self.cpu += task.cpu_consume
         self.mem += task.mem_consume
         self.disk += task.disk_consume
-
         self.container_num -= 1
+        self.cluster.finished_task_list.append(task)
