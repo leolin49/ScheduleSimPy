@@ -15,7 +15,7 @@ import util
 
 
 def random_edge_node(node_id: int, level: int) -> EdgeNode:
-    memory = random.choice(util.MEMORY_CAPACITY[level * 3 - 3 : level * 3])
+    memory = random.choice(util.MEMORY_CAPACITY[level * 3 - 3: level * 3])
     node = EdgeNode(node_id, EdgeNodeConfig(64, memory, memory * 10, 100))
 
     node.label = random.sample(util.LABEL, 2)
@@ -47,7 +47,8 @@ def random_task(env, task_id: int, task_type: int = 1) -> TaskConfig:
     mem = random.randint(50, 250)
     cpu = random.randint(1, 4)
     disk = random.randint(100, 500)
-    return TaskConfig(task_id, submit_time, duration, 1, cpu, mem, disk)
+    ai_accelerator = random.choice(util.AI_LABEL)
+    return TaskConfig(task_id, submit_time, duration, 1, cpu, mem, disk, ai_accelerator)
 
 
 def random_task_list(env, n: int) -> List[TaskConfig]:
@@ -61,8 +62,8 @@ def random_task_list(env, n: int) -> List[TaskConfig]:
 
 def test_task(env) -> List[TaskConfig]:
     task_configs = [
-        TaskConfig(1, 10, 3, 1, 2, 100, 100, None),
-        TaskConfig(2, 10.5, 0.8421, 1, 2, 100, 100, None),
-        TaskConfig(3, 10.5, 0.1168, 1, 2, 100, 100, None),
+        TaskConfig(1, 10, 3, 1, 2, 100, 100, "GPU", None),
+        TaskConfig(2, 10.5, 0.8421, 1, 2, 100, 100, "TPU", None),
+        TaskConfig(3, 10.5, 0.1168, 1, 2, 100, 100, "NPU", None)
     ]
     return task_configs

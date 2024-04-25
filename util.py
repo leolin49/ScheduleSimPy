@@ -33,9 +33,17 @@ MEMORY_CAPACITY = [
     128 * GB,
 ]
 
+# AI相关硬件标签
+AI_LABEL = [
+    "GPU",
+    "TPU",
+    "NPU",
+    "FPGA",
+]
+
+# 普通标签
 LABEL = [
     "CPU",
-    "GPU",
     "RAM",
     "HDD",
     "SSD",

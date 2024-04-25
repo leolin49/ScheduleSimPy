@@ -21,6 +21,7 @@ class TaskConfig(object):
         cpu,
         memory,
         disk,
+        ai_accelerator: str,
         rely_data: List[Data] = None,
     ):
         """
@@ -31,6 +32,7 @@ class TaskConfig(object):
         :param cpu: 执行任务需要的cpu
         :param memory: 执行任务需要的内存
         :param disk: 执行任务需要的磁盘
+        :param ai_accelerator: 任务依赖的AI加速器
         :param rely_data: 任务执行依赖的数据
         """
         self.id = task_index
@@ -40,6 +42,7 @@ class TaskConfig(object):
         self.cpu_consume = cpu
         self.mem_consume = memory
         self.disk_consume = disk
+        self.ai_accelerator = ai_accelerator
         self.rely_data = rely_data
 
 
@@ -60,6 +63,7 @@ class Task:
         self.started_timestamp = None
         self.finished_timestamp = None
 
+        self.ai_accelerator = config.ai_accelerator
         self.rely_datas = []
 
     def run(self, decision_time):
@@ -68,6 +72,7 @@ class Task:
                 self.env.now, self.id, self.duration + decision_time
             )
         )
+        # 任务运行时间+调度算法决策时间
         yield self.env.timeout(self.duration + decision_time)
         self.work_node.stop_task(self)
         self._finished = True

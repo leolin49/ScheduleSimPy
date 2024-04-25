@@ -124,8 +124,6 @@ class EdgeNode:
         self.mem -= task.mem_consume
         self.disk -= task.disk_consume
         self.container_num += 1
-        # TODO
-        self.cluster
 
     def stop_task(self, task):
         """
