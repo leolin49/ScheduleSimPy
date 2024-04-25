@@ -58,7 +58,9 @@ class EdgeNode:
         self.bandwidth = cfg.bandwidth
         self.container_num = 0  # 节点上运行的容器数量
         if cfg.labels is not None:
-            self.label = Label(set(cfg.labels))
+            self.labels = Label(set(cfg.labels))
+        else:
+            self.labels = []
         self.edges = []  # 节点的出边
 
         self.cluster = None
@@ -81,7 +83,7 @@ class EdgeNode:
                 self.disk_utilization,
                 self.bandwidth,
                 self.container_num,
-                self.label
+                self.labels
             )
         )
 
