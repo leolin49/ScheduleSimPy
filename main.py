@@ -76,7 +76,7 @@ def main():
 
     scheduler = PGCS4EI.GroupBaseContainerScheduling("pgcs4ei", env2)
     sim2 = Simulator(env2, cluster, scheduler, task_broker)
-    scheduler.group()
+    scheduler.make_group()
     # sim2.run()
     # env2.run()
     # print(cluster.average_completion())
