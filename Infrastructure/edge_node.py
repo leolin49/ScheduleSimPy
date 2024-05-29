@@ -49,14 +49,14 @@ class EdgeNode:
     def __init__(self, node_id: int, cfg: EdgeNodeConfig):
         self.id = node_id
         self.cpu_capacity = cfg.cpu_capacity
-        self.cpu = cfg.cpu_capacity
+        self.cpu = cfg.cpu
         self.mem_capacity = cfg.mem_capacity
-        self.mem = cfg.mem_capacity
+        self.mem = cfg.memory
         self.disk_capacity = cfg.disk_capacity
-        self.disk = cfg.disk_capacity
+        self.disk = cfg.disk
 
         self.bandwidth = cfg.bandwidth
-        self.container_num = 0  # 节点上运行的容器数量
+        self.container_num = 5  # 节点上运行的容器数量
         if cfg.labels is not None:
             self.labels = Label(set(cfg.labels))
         else:
@@ -83,7 +83,7 @@ class EdgeNode:
                 self.disk_utilization,
                 self.bandwidth,
                 self.container_num,
-                self.labels
+                self.labels,
             )
         )
 

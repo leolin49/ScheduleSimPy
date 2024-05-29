@@ -6,6 +6,8 @@
 # Author  : linyf49@qq.com
 # File    : util.py.py
 
+import numpy as np
+
 GB = 1024
 
 
@@ -28,10 +30,14 @@ MEMORY_CAPACITY = [
     4 * GB,
     8 * GB,
     16 * GB,
-    32 * GB,
-    64 * GB,
-    128 * GB,
+    # 32 * GB,
+    # 64 * GB,
+    # 128 * GB,
 ]
+MEMORY_CAPACITY_SIZE = len(MEMORY_CAPACITY)
+
+CPU_NUMBER = [2, 4, 8, 16, 32, 64]
+CPU_NUMBER_SIZE = len(CPU_NUMBER)
 
 # AI相关硬件标签
 AI_LABEL = [
@@ -61,3 +67,7 @@ def print_y(args, sep=" ", end="\n", file=None):
 
 def print_r(args, sep=" ", end="\n", file=None):
     print(Color.RED + args + Color.END)
+
+
+def is_dominates(x: np.ndarray, y: np.ndarray):
+    return all(x >= y) and any(x > y)

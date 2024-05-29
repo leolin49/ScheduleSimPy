@@ -15,12 +15,13 @@ import util
 
 
 def random_edge_node(node_id: int, level: int) -> EdgeNode:
-    memory = random.choice(util.MEMORY_CAPACITY[level * 3 - 3: level * 3])
-    node = EdgeNode(node_id, EdgeNodeConfig(64, memory, memory * 10, 100))
+    cpu = random.choice(util.CPU_NUMBER[(level - 1) * util.CPU_NUMBER_SIZE // 3: level * util.CPU_NUMBER_SIZE // 3])
+    memory = random.choice(util.MEMORY_CAPACITY[(level - 1) * util.MEMORY_CAPACITY_SIZE // 3: level * util.MEMORY_CAPACITY_SIZE // 3])
+    node = EdgeNode(node_id, EdgeNodeConfig(cpu, memory, memory * 10, 100))
     node.labels = random.sample(util.LABEL, 2)
     if level >= 2:  # level大于2的才有AI加速器
         node.labels.append(random.choice(util.AI_LABEL))
-    node.cpu = 64 * random.random()
+    node.cpu = cpu * random.random()
     node.mem = memory * random.random()
     node.disk = 10 * memory * random.random()
     node.container_num = random.randint(1, 20)
@@ -65,6 +66,6 @@ def test_task(env) -> List[TaskConfig]:
     task_configs = [
         TaskConfig(1, 10, 3, 1, 2, 100, 100, "GPU", None),
         TaskConfig(2, 10.5, 0.8421, 1, 2, 100, 100, "TPU", None),
-        TaskConfig(3, 10.5, 0.1168, 1, 2, 100, 100, "NPU", None)
+        TaskConfig(3, 10.5, 0.1168, 1, 2, 100, 100, "NPU", None),
     ]
     return task_configs

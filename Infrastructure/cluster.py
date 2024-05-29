@@ -18,7 +18,8 @@ class Cluster:
     node_list: List[EdgeNode]
 
     def __init__(self):
-        self.node_list = [CloudNode(0, EdgeNodeConfig(INF, INF, INF, INF))]
+        # self.node_list = [CloudNode(0, EdgeNodeConfig(INF, INF, INF, INF))]
+        self.node_list = []
         self.unfinished_task_queue = deque()
         self.finished_task_list = []
         self.total_cpu = 0

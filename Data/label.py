@@ -18,19 +18,19 @@ class Label(object):
     def __len__(self) -> int:
         return len(self.tags)
 
-    def __eq__(self, other: 'Label') -> bool:
+    def __eq__(self, other: "Label") -> bool:
         return self.tags == other.tags
 
-    def __and__(self, other: 'Label') -> 'Label':
+    def __and__(self, other: "Label") -> "Label":
         return Label(self.tags & other.tags)
 
-    def __or__(self, other: 'Label') -> 'Label':
+    def __or__(self, other: "Label") -> "Label":
         return Label(self.tags | other.tags)
 
-    def issubset(self, other: 'Label') -> bool:
+    def issubset(self, other: "Label") -> bool:
         return self.tags.issubset(other.tags)
 
-    def match_num(self, other: 'Label') -> int:
+    def match_num(self, other: "Label") -> int:
         return len(self.tags & other.tags)
 
     @property

@@ -6,6 +6,7 @@
 # Author  : linyf49@qq.com
 # File    : topology.py
 
+
 class Topology(object):
     def __init__(self, cluster):
         self.cluster = cluster
@@ -14,4 +15,3 @@ class Topology(object):
         for node in cluster.node_list:
             for neighbor_id, weight in node.edges:
                 self.g[node.id].append((neighbor_id, weight))
-
