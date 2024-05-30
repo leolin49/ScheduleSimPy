@@ -64,15 +64,19 @@ class DataIntensiveContainerScheduling(Scheduler):
         for each indicator from each column in the matrix S
         """
         A1 = [
-            max(S[i][j] for i in range(k))
-            if self.F1[j] == 1
-            else min(S[i][j] for i in range(k))
+            (
+                max(S[i][j] for i in range(k))
+                if self.F1[j] == 1
+                else min(S[i][j] for i in range(k))
+            )
             for j in range(c)
         ]
         A2 = [
-            min(S[i][j] for i in range(k))
-            if self.F1[j] == 1
-            else max(S[i][j] for i in range(k))
+            (
+                min(S[i][j] for i in range(k))
+                if self.F1[j] == 1
+                else max(S[i][j] for i in range(k))
+            )
             for j in range(c)
         ]
         """

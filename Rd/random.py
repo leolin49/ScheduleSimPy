@@ -15,8 +15,20 @@ import util
 
 
 def random_edge_node(node_id: int, level: int) -> EdgeNode:
-    cpu = random.choice(util.CPU_NUMBER[(level - 1) * util.CPU_NUMBER_SIZE // 3: level * util.CPU_NUMBER_SIZE // 3])
-    memory = random.choice(util.MEMORY_CAPACITY[(level - 1) * util.MEMORY_CAPACITY_SIZE // 3: level * util.MEMORY_CAPACITY_SIZE // 3])
+    cpu = random.choice(
+        util.CPU_NUMBER[
+            (level - 1) * util.CPU_NUMBER_SIZE // 3 : level * util.CPU_NUMBER_SIZE // 3
+        ]
+    )
+    memory = random.choice(
+        util.MEMORY_CAPACITY[
+            (level - 1)
+            * util.MEMORY_CAPACITY_SIZE
+            // 3 : level
+            * util.MEMORY_CAPACITY_SIZE
+            // 3
+        ]
+    )
     node = EdgeNode(node_id, EdgeNodeConfig(cpu, memory, memory * 10, 100))
     node.labels = random.sample(util.LABEL, 2)
     if level >= 2:  # level大于2的才有AI加速器

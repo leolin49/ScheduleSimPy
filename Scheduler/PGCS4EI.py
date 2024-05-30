@@ -6,7 +6,8 @@
 # Author  : linyf49@qq.com
 # File    : PGCS4EI.py.py
 """
-step1. K-means
+step1. Use K-means to decide each node in which group.
+step2. Maintain the hash_map for group_id and node_ids.
 
 CPU(Central Processing Unit)
 GPU(Graphics Processing Unit)
@@ -24,7 +25,7 @@ class GroupBaseContainerScheduling(Scheduler):
     def __init__(self, name: str, env):
         super(GroupBaseContainerScheduling, self).__init__(name, env)
         self.groups = dict()
-
+        self.groups_min = dict()  # min(CPU,MEM) in one group
 
     def make_group(self):
         data = []
@@ -47,7 +48,7 @@ class GroupBaseContainerScheduling(Scheduler):
         df[features] = scaler.fit_transform(df[features])
 
         k_optimal = 3
-        # 自定的K-means的初始质心
+        # Custom K-means initial centroids.
         # custom_centroids = df_original.loc[[59, 89, 99], features].values
         # kmeans = KMeans(n_clusters=k_optimal, init=custom_centroids, n_init=1, random_state=42)
         kmeans = KMeans(n_clusters=k_optimal, random_state=42)
@@ -62,10 +63,20 @@ class GroupBaseContainerScheduling(Scheduler):
             #     f"Bandwidth: {row['band']}Mbps, "
             #     f"Group: {row['group']}"
             # )
-            group_id = row['group']
-            node_id = row['id']
+            group_id = row["group"]
+            node_id = row["id"]
             if group_id not in self.groups:
                 self.groups[group_id] = []
             self.groups[group_id].append(node_id)
-        print(self.groups)
-        # todo: 分组效果不好...
+        # print(self.groups)
+
+        for group_id, node_ids in self.groups.items():
+            min_id = min(
+                node_ids,
+                key=lambda idx: (
+                    self.cluster.node_list[idx - 1].cpu_capacity,
+                    self.cluster.node_list[idx - 1].mem_capacity,
+                ),
+            )
+            self.groups_min[group_id] = min_id
+            # print(group_id, self.cluster.node_list[min_id - 1])
