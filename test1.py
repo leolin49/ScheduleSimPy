@@ -144,40 +144,123 @@ import numpy as np
 # print(f"轮廓系数: {sil_score}")
 
 # ##################### best weight vector ##################
-import numpy as np
-from scipy.optimize import minimize
+# import numpy as np
+# from scipy.optimize import minimize
+# np.set_printoptions(precision=2, suppress=True)
+#
+# def normalize(matrix):
+#     # 标准化
+#     return (matrix - matrix.min(axis=0)) / (matrix.max(axis=0) - matrix.min(axis=0))
+#
+# def entropy_weight(matrix):
+#     # 计算熵权
+#     m, n = matrix.shape
+#     epsilon = 1e-10  # 防止log(0)
+#     proportion = matrix / matrix.sum(axis=0)
+#     entropy = -np.sum(proportion * np.log(proportion + epsilon), axis=0) / np.log(m)
+#     diversity = 1 - entropy
+#     weights = diversity / diversity.sum()
+#     return weights
+#
+# def objective(weights, matrix, ideal, alpha=0.1):
+#     # 计算目标函数
+#     distances = np.sqrt(((matrix - ideal) ** 2 * weights).sum(axis=1))
+#     reg_term = alpha * np.sum((weights - initial_weights) ** 2)  # 正则化项，基于初始熵权
+#     return distances.sum() + reg_term
+#
+# def constraint(weights):
+#     # 约束条件：权重之和为1
+#     return np.sum(weights) - 1
+#
+# # 示例数据
+# matrix = np.array(
+#     [
+#         [1, 9, 8, 3],
+#         [5, 4, 2, 8],
+#         [9, 8, 7, 9],
+#         [4, 3, 5, 2],
+#         [6, 5, 9, 1],
+#         [7, 6, 3, 4],
+#         [2, 1, 6, 5],
+#         [3, 2, 1, 7],
+#         [8, 7, 4, 6],
+#     ]
+# )
+#
+# # 1. 标准化
+# norm_matrix = normalize(matrix)
+#
+# # 2. 计算熵权
+# initial_weights = entropy_weight(norm_matrix)
+# print("初始权重（熵权）:", initial_weights)
+#
+# # 3. 理想解
+# ideal = norm_matrix.max(axis=0)
+#
+# # 4. 优化求解
+# constraints = {'type': 'eq', 'fun': constraint}
+# bounds = [(0, 1) for _ in range(matrix.shape[1])]
+# result = minimize(objective, initial_weights, args=(norm_matrix, ideal), method='SLSQP', constraints=constraints, bounds=bounds)
+#
+# # 5. 最优权重
+# optimal_weights = result.x
+# print("最优权重:", optimal_weights)
 
-def objective(weights, matrix, ideal):
-    distances = np.sqrt(((matrix - ideal) ** 2 * weights).sum(axis=1))
-    return distances.sum()
 
-def constraint(weights):
-    return np.sum(weights) - 1
-
-matrix = np.array(
-    [
-        [1, 9, 8, 3],
-        [5, 4, 2, 8],
-        [9, 8, 7, 9],
-        [4, 3, 5, 2],
-        [6, 5, 9, 1],
-        [7, 6, 3, 4],
-        [2, 1, 6, 5],
-        [3, 2, 1, 7],
-        [8, 7, 4, 6],
-    ]
-)
-
-norm_matrix = (matrix - matrix.min(axis=0)) / (matrix.max(axis=0) - matrix.min(axis=0))
-ideal = norm_matrix.max(axis=0)
-initial_weights = np.ones(matrix.shape[1]) / matrix.shape[1]
-
-constraints = ({'type': 'eq', 'fun': constraint})
-result = minimize(objective, initial_weights, args=(norm_matrix, ideal),
-                  method='SLSQP', constraints=constraints, bounds=[(0, 1) for _ in range(matrix.shape[1])])
-
-optimal_weights = result.x
-print("最优权重:", optimal_weights)
 
 
 # ##########################################################
+
+
+import numpy as np
+from scipy.optimize import minimize
+np.set_printoptions(precision=2, suppress=True)
+# 示例数据
+data = np.array([
+    [1.2, 0.8, 0.6],  # 节点1: 传输时间, CPU利用率, 内存利用率
+    [0.5, 0.9, 0.5],  # 节点2
+    [3, 0.85, 0.7]  # 节点3
+])
+
+# 分别提取三个指标
+T = data[:, 0]  # 传输时间
+U_CPU = data[:, 1]  # CPU利用率
+U_Memory = data[:, 2]  # 内存利用率
+
+# 数据标准化
+T_norm = (T - T.min()) / (T.max() - T.min())
+U_CPU_norm = (U_CPU - U_CPU.min()) / (U_CPU.max() - U_CPU.min())
+U_Memory_norm = (U_Memory - U_Memory.min()) / (U_Memory.max() - U_Memory.min())
+
+# 构建拉格朗日目标函数
+def objective(weights):
+    obj_value = np.sum(weights[0] * T_norm + weights[1] * (1 - U_CPU_norm) + weights[2] * (1 - U_Memory_norm))
+    return obj_value
+
+# 约束条件：权重之和为1
+constraints = {'type': 'eq', 'fun': lambda weights: np.sum(weights) - 1}
+
+# 边界条件：每个权重在0和1之间
+bounds = [(0, 1) for _ in range(3)]
+
+# 初始权重
+initial_weights = np.ones(3) / 3
+
+# 优化求解
+result = minimize(objective, initial_weights, method='SLSQP', constraints=constraints, bounds=bounds)
+
+# 最优权重
+optimal_weights = result.x
+print("最优权重:", optimal_weights)
+
+# 打分函数（使用最优权重对每个节点进行打分）
+def score(weights, T, U_CPU, U_Memory):
+    return weights[0] * T + weights[1] * (1 - U_CPU) + weights[2] * (1 - U_Memory)
+
+# 计算每个节点的得分
+scores = score(optimal_weights, T_norm, U_CPU_norm, U_Memory_norm)
+print("每个节点的得分:", scores)
+
+# 找出得分最高的节点
+best_node = np.argmin(scores)  # 最小得分对应最佳节点
+print("最佳节点索引:", best_node)

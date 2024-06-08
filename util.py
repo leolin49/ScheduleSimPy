@@ -44,7 +44,6 @@ AI_LABEL = [
     "GPU",
     "TPU",
     "NPU",
-    "FPGA",
 ]
 
 # 普通标签

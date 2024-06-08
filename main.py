@@ -8,6 +8,7 @@
 import random
 
 import simpy
+import ast
 from simpy import Environment
 import pandas as pd
 from Scheduler import dics
@@ -28,14 +29,14 @@ def read_node_list_csv():
             node = EdgeNode(
                 row["id"],
                 EdgeNodeConfig(
-                    row["cpu_capacity"],
-                    row["mem_capacity"],
-                    row["disk_capacity"],
-                    row["bandwidth"],
-                    row["labels"],
-                    row["cpu"],
-                    row["mem"],
-                    row["disk"],
+                    int(row["cpu_capacity"]),
+                    int(row["mem_capacity"]),
+                    int(row["disk_capacity"]),
+                    int(row["bandwidth"]),
+                    ast.literal_eval(row["labels"]),
+                    int(row["cpu"]),
+                    float(row["mem"]),
+                    float(row["disk"]),
                 ),
             )
             node_list.append(node)
@@ -77,8 +78,9 @@ def main():
     scheduler = PGCS4EI.GroupBaseContainerScheduling("pgcs4ei", env2)
     sim2 = Simulator(env2, cluster, scheduler, task_broker)
     scheduler.make_group()
-    # sim2.run()
-    # env2.run()
+    scheduler.make_group_2()
+    sim2.run()
+    env2.run()
     # print(cluster.average_completion())
     # ***************************** Baseline2 End ******************************* #
 

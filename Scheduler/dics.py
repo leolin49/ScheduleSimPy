@@ -19,11 +19,11 @@ class DataIntensiveContainerScheduling(Scheduler):
         self.W = [0.2, 0.2, 0.2, 0.2, 0.2]
         self.criteria_num = len(self.F1)
 
-    def make_decision(self, task: Task, clock) -> EdgeNode:
+    def make_decision(self, task: Task, clock) -> int:
         # prepare
         ids = []
         info = []
-        for node in self.cluster.node_list[1:]:
+        for node in self.cluster.node_list:
             ids.append(node.id)
             info.append(
                 [
@@ -99,6 +99,6 @@ class DataIntensiveContainerScheduling(Scheduler):
         If there are more than one node with the same RC, we randomly choose one.
         """
         ids.sort(key=lambda i: -RC[i - 1])
-        for i in ids:
-            if self.cluster.node_list[i].can_run_task(task):
-                return self.cluster.node_list[i]
+        for id in ids:
+            if self.cluster.node_list[id - 1].can_run_task(task):
+                return id

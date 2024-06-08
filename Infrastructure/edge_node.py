@@ -7,7 +7,6 @@
 # File    : edge_node.py
 from typing import List, Tuple
 
-from Data.label import Label
 import util
 
 
@@ -38,7 +37,6 @@ class EdgeNodeConfig:
         self.disk_capacity = disk_capacity
         self.bandwidth = bandwidth
         self.labels = labels
-
         self.cpu = cpu_capacity if cpu is None else cpu
         self.memory = mem_capacity if memory is None else memory
         self.disk = disk_capacity if disk is None else disk
@@ -58,7 +56,7 @@ class EdgeNode:
         self.bandwidth = cfg.bandwidth
         self.container_num = 5  # 节点上运行的容器数量
         if cfg.labels is not None:
-            self.labels = Label(set(cfg.labels))
+            self.labels = cfg.labels
         else:
             self.labels = []
         self.edges = []  # 节点的出边

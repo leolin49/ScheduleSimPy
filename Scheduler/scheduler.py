@@ -33,7 +33,10 @@ class Scheduler(object):
 
     def schedule(self, task: Task, clock):
         s = time.time()
-        node = self.make_decision(task, clock)
+        node_id = self.make_decision(task, clock)
+        if node_id == -1:
+            return
+        node = self.cluster.node_list[node_id - 1]
         e = time.time()
         util.print_y(
             "now:{} task-{} is scheduled to Node-{} {}".format(
@@ -42,5 +45,5 @@ class Scheduler(object):
         )
         task.schedule(node, e - s)
 
-    def make_decision(self, task: Task, clock) -> EdgeNode:
+    def make_decision(self, task: Task, clock) -> int:
         pass

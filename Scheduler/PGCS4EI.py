@@ -16,15 +16,23 @@ NPU(Neural network Processing Unit)
 """
 
 import pandas as pd
+import numpy as np
+from scipy.optimize import minimize
+from Infrastructure.edge_node import EdgeNode
 from Scheduler.scheduler import Scheduler
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
+import util
+from Task.task import Task
+
+np.set_printoptions(precision=2, suppress=True)
 
 
 class GroupBaseContainerScheduling(Scheduler):
     def __init__(self, name: str, env):
         super(GroupBaseContainerScheduling, self).__init__(name, env)
         self.groups = dict()
+        self.groups2 = dict()   # {'group_id': {'ai_label': [node_id1, node_id2]}}
         self.groups_min = dict()  # min(CPU,MEM) in one group
 
     def make_group(self):
@@ -80,3 +88,101 @@ class GroupBaseContainerScheduling(Scheduler):
             )
             self.groups_min[group_id] = min_id
             # print(group_id, self.cluster.node_list[min_id - 1])
+        util.print_g("一级分组完成...")
+
+    def make_group_2(self):
+        for group_id, node_ids in self.groups.items():
+            self.groups2[group_id] = dict()
+            for node_id in node_ids:
+                node = self.cluster.node_list[node_id - 1]
+                for label in node.labels:
+                    if label in util.AI_LABEL:
+                        if label not in self.groups2[group_id]:
+                            self.groups2[group_id][label] = []
+                        self.groups2[group_id][label].append(node_id)
+        util.print_g("二级分组完成...")
+
+
+    @staticmethod
+    def can_run(task: Task, node: EdgeNode) -> bool:
+        return task.cpu_consume <= node.cpu_capacity and task.mem_consume <= node.mem_capacity
+
+    @staticmethod
+    def objective(weights, matrix, ideal, alpha=0.1):
+        distances = np.sqrt(((matrix - ideal) ** 2 * weights).sum(axis=1))
+        reg_term = alpha * np.sum(weights ** 2)
+        return distances.sum() + reg_term
+
+    @staticmethod
+    def constraint(weights):
+        return np.sum(weights) - 1
+
+    def make_decision(self, task: Task, clock) -> int:
+        # 1. find the first-level groups
+        gid = -1
+        for k, v in self.groups_min.items():
+            if self.can_run(task, self.cluster.node_list[v]):
+                gid = k
+        if gid == -1:
+            util.print_r("first-level, not any node can run the task:", task)
+            return -1
+        # 2. find the second-level groups
+        node_ids = []
+        for k, v in self.groups2[gid].items():
+            if k == task.ai_accelerator:
+                node_ids = v
+        if len(node_ids) == 0:
+            util.print_r("second-level, not any node can run the task:", task)
+            return -1
+        # 3. find the optimal_weights
+        info = []
+        for node_id in node_ids:
+            node = self.cluster.node_list[node_id - 1]
+            t = [node.cpu, node.mem]
+            info.append(t)
+        matrix = np.array(info)
+        norm_matrix = (matrix - matrix.min(axis=0)) / (matrix.max(axis=0) - matrix.min(axis=0))
+        ideal = norm_matrix.max(axis=0)
+        initial_weights = np.ones(matrix.shape[1]) / matrix.shape[1]
+        constraints = ({'type': 'eq', 'fun': self.constraint})
+        result = minimize(self.objective, initial_weights, args=(norm_matrix, ideal),
+                          method='SLSQP', constraints=constraints, bounds=[(0, 1) for _ in range(matrix.shape[1])])
+
+        optimal_weights = result.x
+        optimal_weights = [0.3, 0.7]
+        # print("optimal_weights:", optimal_weights)
+
+        # 4. VIKOR
+        # Weighted Normalization
+        # print(norm_matrix)
+        weight_norm_matrix = norm_matrix * optimal_weights
+        # Ideal solution and negative-ideal solution
+        f_star = weight_norm_matrix.max(axis=0)
+        f_minus = weight_norm_matrix.min(axis=0)
+        # Calculate 'S' value and 'R' value
+        S = np.zeros(matrix.shape[0])
+        R = np.zeros(matrix.shape[0])
+        for i in range(matrix.shape[0]):
+            S[i] = np.sum(optimal_weights * (f_star - weight_norm_matrix[i]) / (f_star - f_minus))
+            R[i] = np.max(optimal_weights * (f_star - weight_norm_matrix[i]) / (f_star - f_minus))
+        # S = np.sum(optimal_weights * (f_star - weight_norm_matrix) / (f_star - f_minus), axis=1)
+        # R = np.max(optimal_weights * (f_star - weight_norm_matrix) / (f_star - f_minus), axis=1)
+        # Calculate 'Q' value
+        v = 0.5
+        S_star = np.min(S)
+        S_minus = np.max(S)
+        R_star = np.min(R)
+        R_minus = np.max(R)
+
+        Q = np.zeros(matrix.shape[0])
+        for i in range(matrix.shape[0]):
+            Q[i] = v * (S[i] - S_star) / (S_minus - S_star) + (1 - v) * (R[i] - R_star) / (R_minus - R_star)
+
+        # print("S:", S)
+        # print("R:", R)
+
+        ranking_indices = np.argsort(Q)
+        ranked_ids = [node_ids[i] for i in ranking_indices]
+        return ranked_ids[0]
+
+# TODO group_id 需要按照性能大小排序
