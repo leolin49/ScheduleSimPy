@@ -67,11 +67,11 @@ class Task:
         self.rely_datas = []
 
     def run(self, decision_time):
-        util.print_g(
-            "now:{} task:{} makespan:{}".format(
-                self.env.now, self.id, self.duration + decision_time
-            )
-        )
+        # util.print_g(
+        #     "now:{} task:{} makespan:{}".format(
+        #         self.env.now, self.id, self.duration + decision_time
+        #     )
+        # )
         # 任务运行时间+调度算法决策时间
         yield self.env.timeout(self.duration + decision_time)
         self.work_node.stop_task(self)
@@ -94,8 +94,12 @@ class Task:
     @property
     def state(self) -> str:
         if self.finished:
-            return "now:{} Task-{} is finished. begin:{}, end:{}".format(
-                self.env.now, self.id, self.started_timestamp, self.finished_timestamp
+            return "now:{} Task-{} is finished. begin:{}, end:{}, makespan:{}".format(
+                self.env.now,
+                self.id,
+                self.started_timestamp,
+                self.finished_timestamp,
+                self.finished_timestamp - self.started_timestamp,
             )
         return "now:{} Task-{} duration:{} is not begin".format(
             self.env.now, self.id, self.duration

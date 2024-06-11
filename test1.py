@@ -207,20 +207,21 @@ import numpy as np
 # print("最优权重:", optimal_weights)
 
 
-
-
 # ##########################################################
 
 
 import numpy as np
 from scipy.optimize import minimize
+
 np.set_printoptions(precision=2, suppress=True)
 # 示例数据
-data = np.array([
-    [1.2, 0.8, 0.6],  # 节点1: 传输时间, CPU利用率, 内存利用率
-    [0.5, 0.9, 0.5],  # 节点2
-    [3, 0.85, 0.7]  # 节点3
-])
+data = np.array(
+    [
+        [1.2, 0.8, 0.6],  # 节点1: 传输时间, CPU利用率, 内存利用率
+        [0.5, 0.9, 0.5],  # 节点2
+        [3, 0.85, 0.7],  # 节点3
+    ]
+)
 
 # 分别提取三个指标
 T = data[:, 0]  # 传输时间
@@ -232,13 +233,19 @@ T_norm = (T - T.min()) / (T.max() - T.min())
 U_CPU_norm = (U_CPU - U_CPU.min()) / (U_CPU.max() - U_CPU.min())
 U_Memory_norm = (U_Memory - U_Memory.min()) / (U_Memory.max() - U_Memory.min())
 
+
 # 构建拉格朗日目标函数
 def objective(weights):
-    obj_value = np.sum(weights[0] * T_norm + weights[1] * (1 - U_CPU_norm) + weights[2] * (1 - U_Memory_norm))
+    obj_value = np.sum(
+        weights[0] * T_norm
+        + weights[1] * (1 - U_CPU_norm)
+        + weights[2] * (1 - U_Memory_norm)
+    )
     return obj_value
 
+
 # 约束条件：权重之和为1
-constraints = {'type': 'eq', 'fun': lambda weights: np.sum(weights) - 1}
+constraints = {"type": "eq", "fun": lambda weights: np.sum(weights) - 1}
 
 # 边界条件：每个权重在0和1之间
 bounds = [(0, 1) for _ in range(3)]
@@ -247,15 +254,19 @@ bounds = [(0, 1) for _ in range(3)]
 initial_weights = np.ones(3) / 3
 
 # 优化求解
-result = minimize(objective, initial_weights, method='SLSQP', constraints=constraints, bounds=bounds)
+result = minimize(
+    objective, initial_weights, method="SLSQP", constraints=constraints, bounds=bounds
+)
 
 # 最优权重
 optimal_weights = result.x
 print("最优权重:", optimal_weights)
 
+
 # 打分函数（使用最优权重对每个节点进行打分）
 def score(weights, T, U_CPU, U_Memory):
     return weights[0] * T + weights[1] * (1 - U_CPU) + weights[2] * (1 - U_Memory)
+
 
 # 计算每个节点的得分
 scores = score(optimal_weights, T_norm, U_CPU_norm, U_Memory_norm)

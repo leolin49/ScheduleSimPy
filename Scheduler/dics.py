@@ -52,7 +52,9 @@ class DataIntensiveContainerScheduling(Scheduler):
         Construct the normalized decision matrix E.
         """
         tmp = [sqrt(sum(info[i][j] ** 2 for i in range(k))) for j in range(c)]
-        E = [[info[i][j] / tmp[j] for j in range(c)] for i in range(k)]
+        E = [
+            [(info[i][j] / tmp[j] if tmp[j] else 0) for j in range(c)] for i in range(k)
+        ]
         """
         Step 3.
         Construct the weighted normalized decision matrix S, using the weighting factors W
