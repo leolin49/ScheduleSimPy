@@ -8,7 +8,6 @@
 from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
 
 
-# 边缘云
 class CloudNode(EdgeNode):
     def __init__(self, node_id: int, cfg: EdgeNodeConfig):
         super().__init__(node_id, cfg)

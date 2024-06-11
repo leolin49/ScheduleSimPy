@@ -8,17 +8,13 @@
 from typing import List, Tuple
 from collections import deque
 from Infrastructure.topology import Topology
-from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
-from Infrastructure.cloud_node import CloudNode
-
-INF = 10**18
+from Infrastructure.edge_node import EdgeNode
 
 
 class Cluster:
     node_list: List[EdgeNode]
 
     def __init__(self):
-        # self.node_list = [CloudNode(0, EdgeNodeConfig(INF, INF, INF, INF))]
         self.node_list = []
         self.unfinished_task_queue = deque()
         self.finished_task_list = []
@@ -48,7 +44,6 @@ class Cluster:
         self.unfinished_task_queue.append(task)
 
     @property
-    # 获取集群中节点的数量
     def node_num(self) -> int:
         return len(self.node_list)
 

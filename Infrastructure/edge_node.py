@@ -23,14 +23,14 @@ class EdgeNodeConfig:
         disk=None,
     ):
         """
-        :param cpu_capacity: CPU
-        :param mem_capacity: 节点内存容量（MB）
-        :param disk_capacity: 节点磁盘容量（MB）
-        :param bandwidth: 节点带宽（Mbps）
-        :param labels: 节点标签
-        :param cpu: 剩余CPU
-        :param memory: 剩余内存容量
-        :param disk: 剩余磁盘容量
+        :param cpu_capacity: Cpu cores number
+        :param mem_capacity: Memory capacity(MB)
+        :param disk_capacity: Disk capacity(MB)
+        :param bandwidth: Network bandwidth(MB)
+        :param labels: Hardware labels list
+        :param cpu: Available cpu cores number
+        :param memory: Available memory size
+        :param disk: Available disk size
         """
         self.cpu_capacity = cpu_capacity
         self.mem_capacity = mem_capacity
@@ -42,7 +42,6 @@ class EdgeNodeConfig:
         self.disk = disk_capacity if disk is None else disk
 
 
-# 边缘节点基类
 class EdgeNode:
     def __init__(self, node_id: int, cfg: EdgeNodeConfig):
         self.id = node_id
@@ -54,12 +53,12 @@ class EdgeNode:
         self.disk = cfg.disk
 
         self.bandwidth = cfg.bandwidth
-        self.container_num = 5  # 节点上运行的容器数量
+        self.container_num = 5
         if cfg.labels is not None:
             self.labels = cfg.labels
         else:
             self.labels = []
-        self.edges = []  # 节点的出边
+        self.edges = []
 
         self.cluster = None
 
@@ -116,8 +115,8 @@ class EdgeNode:
 
     def run_task(self, task):
         """
-        执行任务，消耗系统资源
-        :param task: 待执行任务
+        Run a task in edge node, consume resources.
+        :param task: the task object to be run
         :return:
         """
         self.cpu -= task.cpu_consume
@@ -127,8 +126,8 @@ class EdgeNode:
 
     def stop_task(self, task):
         """
-        任务执行完成，释放系统资源
-        :param task: 正在的执行任务
+        Task end, recycle resources.
+        :param task: the running task object
         :return:
         """
         self.cpu += task.cpu_consume
