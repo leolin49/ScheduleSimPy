@@ -39,14 +39,14 @@ MEMORY_CAPACITY_SIZE = len(MEMORY_CAPACITY)
 CPU_NUMBER = [1, 2, 4, 8, 16, 32, 64]
 CPU_NUMBER_SIZE = len(CPU_NUMBER)
 
-# AI相关硬件标签
+# AI Accelerators Labels
 AI_LABEL = [
     "GPU",
     "TPU",
     "NPU",
 ]
 
-# 普通标签
+# Other Hardware Labels
 LABEL = [
     "CPU",
     "RAM",

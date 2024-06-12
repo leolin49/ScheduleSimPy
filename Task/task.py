@@ -25,15 +25,15 @@ class TaskConfig(object):
         rely_data: List[Data] = None,
     ):
         """
-        :param task_index: 任务唯一编号
-        :param submit_time: 任务提交时间
-        :param duration: 任务执行持续时间
-        :param instances_number: 任务实例数量
-        :param cpu: 执行任务需要的cpu
-        :param memory: 执行任务需要的内存
-        :param disk: 执行任务需要的磁盘
-        :param ai_accelerator: 任务依赖的AI加速器
-        :param rely_data: 任务执行依赖的数据
+        :param task_index: Task id
+        :param submit_time: The submit time of task
+        :param duration: The running time of task
+        :param instances_number: The subtask number of task (not used)
+        :param cpu: Task request cpu cores number
+        :param memory: Task request memory size
+        :param disk: Task request disk size
+        :param ai_accelerator: Task request AI accelerator(GPU, TPU, NPU)
+        :param rely_data: The data the task run needed (not used)
         """
         self.id = task_index
         self.submit_time = submit_time
@@ -56,7 +56,7 @@ class Task:
         self.disk_consume = config.disk_consume
         self.duration = config.duration
 
-        self.work_node = None  # 任务被调度到哪个边缘节点
+        self.work_node = None  # The edge node run the task
         self.process = None
         self.started = False
         self._finished = False
@@ -67,12 +67,7 @@ class Task:
         self.rely_datas = []
 
     def run(self, decision_time):
-        # util.print_g(
-        #     "now:{} task:{} makespan:{}".format(
-        #         self.env.now, self.id, self.duration + decision_time
-        #     )
-        # )
-        # 任务运行时间+调度算法决策时间
+        # MakeSpan = Task duration time + Schedule decision time
         yield self.env.timeout(self.duration + decision_time)
         self.work_node.stop_task(self)
         self._finished = True
@@ -94,7 +89,7 @@ class Task:
     @property
     def state(self) -> str:
         if self.finished:
-            return "now:{} Task-{} is finished. begin:{}, end:{}, makespan:{}".format(
+            return "now:{} Task-{} is finished. begin:{}, end:{}, make-span:{}".format(
                 self.env.now,
                 self.id,
                 self.started_timestamp,

@@ -136,6 +136,7 @@ class GroupBaseContainerScheduling(Scheduler):
         for k, v in self.groups_min.items():
             if self.can_run(task, self.cluster.node_list[v]):
                 gid = k
+                break
         if gid == -1:
             util.print_r("first-level, not any node can run the task:", task)
             return -1
@@ -170,8 +171,8 @@ class GroupBaseContainerScheduling(Scheduler):
         )
 
         optimal_weights = result.x
-        optimal_weights = [0.3, 0.7]
-        # print("optimal_weights:", optimal_weights)
+        # optimal_weights = [0.3, 0.7]
+        print("optimal_weights:", optimal_weights)
 
         # 4. VIKOR
         # Weighted Normalization

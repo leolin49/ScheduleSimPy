@@ -6,13 +6,11 @@
 # Author  : linyf49@qq.com
 # File    : scheduler.py.py
 import time
-from Infrastructure.cluster import Cluster
-from Infrastructure.edge_node import EdgeNode
 from Task.task import Task
 import util
 
 
-# 调度器基类
+# Base Scheduler class
 class Scheduler(object):
     def __init__(self, name: str, env):
         self.name = name

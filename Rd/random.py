@@ -10,7 +10,7 @@ import random
 from typing import List
 
 from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
-from Task.task import Task, TaskConfig
+from Task.task import TaskConfig
 import util
 
 

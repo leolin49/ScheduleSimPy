@@ -10,7 +10,7 @@ import csv
 import ast
 import pandas as pd
 from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
-from Task.task import Task, TaskConfig
+from Task.task import TaskConfig
 from Rd import random as rd
 
 NEW_NODE_DATA = True
