@@ -18,12 +18,13 @@ NPU(Neural network Processing Unit)
 import pandas as pd
 import numpy as np
 from scipy.optimize import minimize
-from Infrastructure.edge_node import EdgeNode
-from Scheduler.scheduler import Scheduler
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
+
 import util
 from Task.task import Task
+from Scheduler.scheduler import Scheduler
+from Infrastructure.edge_node import EdgeNode
 
 np.set_printoptions(precision=2, suppress=True)
 
@@ -51,7 +52,7 @@ class GroupBaseContainerScheduling(Scheduler):
         df_original = df.copy()
         features = ["cpu", "mem"]
 
-        # 归一化处理
+        # Normalize.
         scaler = preprocessing.MinMaxScaler()
         df[features] = scaler.fit_transform(df[features])
 
@@ -60,8 +61,18 @@ class GroupBaseContainerScheduling(Scheduler):
         # custom_centroids = df_original.loc[[59, 89, 99], features].values
         # kmeans = KMeans(n_clusters=k_optimal, init=custom_centroids, n_init=1, random_state=42)
         kmeans = KMeans(n_clusters=k_optimal, random_state=42)
-        df["group"] = kmeans.fit_predict(df[features])
-        df_original["group"] = df["group"]
+        df['cluster'] = kmeans.fit_predict(df[features])
+
+        cluster_groups = df.groupby('cluster')
+        worst_machines = []
+        for cluster_id, group in cluster_groups:
+            worst_machine = group.sort_values(by=['cpu', 'mem']).iloc[0]
+            worst_machines.append((cluster_id, worst_machine['cpu'], worst_machine['mem']))
+        worst_machines.sort(key=lambda x: (x[1], x[2]))
+        group_ids = {cluster_id: idx + 1 for idx, (cluster_id, _, _) in enumerate(worst_machines)}
+
+        df['group_id'] = df['cluster'].map(group_ids)
+        df_original["group_id"] = df["group_id"]
         for index, row in df_original.iterrows():
             # print(
             #     f"ID: {row['id']}, "
@@ -69,9 +80,9 @@ class GroupBaseContainerScheduling(Scheduler):
             #     f"Mem: {row['mem']}GB, "
             #     f"Disk: {row['disk']}GB, "
             #     f"Bandwidth: {row['band']}Mbps, "
-            #     f"Group: {row['group']}"
+            #     f"Group: {row['group_id']}"
             # )
-            group_id = row["group"]
+            group_id = row["group_id"]
             node_id = row["id"]
             if group_id not in self.groups:
                 self.groups[group_id] = []
@@ -88,7 +99,7 @@ class GroupBaseContainerScheduling(Scheduler):
             )
             self.groups_min[group_id] = min_id
             # print(group_id, self.cluster.node_list[min_id - 1])
-        util.print_g("一级分组完成...")
+        util.print_g("First level group finish...")
 
     def make_group_2(self):
         for group_id, node_ids in self.groups.items():
@@ -100,7 +111,7 @@ class GroupBaseContainerScheduling(Scheduler):
                         if label not in self.groups2[group_id]:
                             self.groups2[group_id][label] = []
                         self.groups2[group_id][label].append(node_id)
-        util.print_g("二级分组完成...")
+        util.print_g("Second level group finish...")
 
     @staticmethod
     def can_run(task: Task, node: EdgeNode) -> bool:
@@ -200,6 +211,3 @@ class GroupBaseContainerScheduling(Scheduler):
         ranking_indices = np.argsort(Q)
         ranked_ids = [node_ids[i] for i in ranking_indices]
         return ranked_ids[0]
-
-
-# TODO group_id 需要按照性能大小排序

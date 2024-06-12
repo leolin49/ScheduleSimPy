@@ -8,7 +8,6 @@
 from math import sqrt
 
 from Scheduler.scheduler import Scheduler
-from Infrastructure.cluster import EdgeNode
 from Task.task import Task
 
 

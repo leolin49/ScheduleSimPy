@@ -18,7 +18,7 @@ NEW_TASK_DATA = True
 
 if NEW_NODE_DATA:
     # Node
-    node_data = rd.random_edge_node_list(3000)
+    node_data = rd.random_edge_node_list(100)
     node_header = [
         "id",
         "cpu_capacity",
