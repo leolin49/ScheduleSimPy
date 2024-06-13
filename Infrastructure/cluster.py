@@ -26,7 +26,6 @@ class Cluster:
         self.current_disk = 0
         self.topology = Topology(self)
 
-    # 添加边缘节点
     def add_node(self, node: EdgeNode):
         node.attach(self)
         self.node_list.append(node)
@@ -42,6 +41,9 @@ class Cluster:
 
     def add_task(self, task):
         self.unfinished_task_queue.append(task)
+
+    def insert_task(self, task):
+        self.unfinished_task_queue.insert(0, task)
 
     @property
     def node_num(self) -> int:

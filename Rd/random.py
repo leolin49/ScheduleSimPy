@@ -17,14 +17,14 @@ import util
 def random_edge_node(node_id: int, level: int) -> EdgeNode:
     cpu = random.choice(
         util.CPU_NUMBER[
-            (level - 1) * util.CPU_NUMBER_SIZE // 3: level * util.CPU_NUMBER_SIZE // 3
+            (level - 1) * util.CPU_NUMBER_SIZE // 3 : level * util.CPU_NUMBER_SIZE // 3
         ]
     )
     memory = random.choice(
         util.MEMORY_CAPACITY[
             (level - 1)
             * util.MEMORY_CAPACITY_SIZE
-            // 3: level
+            // 3 : level
             * util.MEMORY_CAPACITY_SIZE
             // 3
         ]

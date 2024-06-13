@@ -18,7 +18,7 @@ NEW_TASK_DATA = True
 
 if NEW_NODE_DATA:
     # Node
-    node_data = rd.random_edge_node_list(100)
+    node_data = rd.random_edge_node_list(10)
     node_header = [
         "id",
         "cpu_capacity",
@@ -51,7 +51,7 @@ if NEW_NODE_DATA:
 
 if NEW_TASK_DATA:
     # Task
-    task_list = rd.random_task_list(10)
+    task_list = rd.random_task_list(30)
     task_header = [
         "id",
         "submit_time",
@@ -104,7 +104,7 @@ def read_node_list_csv():
 
 
 def read_task_list_csv():
-    task_list = []
+    task_data_list = []
     for chunk in pd.read_csv("task_list.csv", chunksize=1):
         for index, row in chunk.iterrows():
             # print(row)
@@ -118,5 +118,5 @@ def read_task_list_csv():
                 float(row["disk"]),
                 str(row["ai_accelerator"]),
             )
-            task_list.append(task)
-    return task_list
+            task_data_list.append(task)
+    return task_data_list

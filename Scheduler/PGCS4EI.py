@@ -134,6 +134,15 @@ class GroupBaseContainerScheduling(Scheduler):
     def constraint(weights):
         return np.sum(weights) - 1
 
+    @staticmethod
+    def normalize_matrix(m):
+        min_vals = m.min(axis=0)
+        max_vals = m.max(axis=0)
+        ranges = max_vals - min_vals
+        ranges[ranges == 0] = 1     # ranges = 1 if ranges == 0
+        norm = (m - min_vals) / ranges
+        return norm
+
     def make_decision(self, task: Task, clock) -> int:
         # 1. find the first-level groups
         gid = -1
@@ -150,7 +159,11 @@ class GroupBaseContainerScheduling(Scheduler):
             if k == task.ai_accelerator:
                 node_ids = v
         if len(node_ids) == 0:
-            util.print_r("second-level, not any node can run the task:", task)
+            util.print_r(
+                "second-level, not any node can run the task-{}, need {}:".format(
+                    task.id, task.ai_accelerator
+                )
+            )
             return -1
         # 3. find the optimal_weights
         info = []
@@ -158,10 +171,9 @@ class GroupBaseContainerScheduling(Scheduler):
             node = self.cluster.node_list[node_id - 1]
             t = [node.cpu, node.mem]
             info.append(t)
+
         matrix = np.array(info)
-        norm_matrix = (matrix - matrix.min(axis=0)) / (
-            matrix.max(axis=0) - matrix.min(axis=0)
-        )
+        norm_matrix = self.normalize_matrix(matrix)
         ideal = norm_matrix.max(axis=0)
         initial_weights = np.ones(matrix.shape[1]) / matrix.shape[1]
         constraints = {"type": "eq", "fun": self.constraint}
@@ -176,7 +188,7 @@ class GroupBaseContainerScheduling(Scheduler):
 
         optimal_weights = result.x
         # optimal_weights = [0.3, 0.7]
-        print("optimal_weights:", optimal_weights)
+        # print("optimal_weights:", optimal_weights)
 
         # 4. VIKOR
         # Weighted Normalization
@@ -216,3 +228,9 @@ class GroupBaseContainerScheduling(Scheduler):
         ranking_indices = np.argsort(Q)
         ranked_ids = [node_ids[i] for i in ranking_indices]
         return ranked_ids[0]
+
+"""
+"""
+# TODO list
+# 1. 除数为0
+# 2. 调度失败

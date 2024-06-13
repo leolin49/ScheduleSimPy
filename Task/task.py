@@ -54,6 +54,7 @@ class Task:
         self.cpu_consume = config.cpu_consume
         self.mem_consume = config.mem_consume
         self.disk_consume = config.disk_consume
+        self.submit_time = config.submit_time
         self.duration = config.duration
 
         self.work_node = None  # The edge node run the task
@@ -72,7 +73,7 @@ class Task:
         self.work_node.stop_task(self)
         self._finished = True
         self.finished_timestamp = self.env.now
-        util.print_r(self.state)
+        util.print_g(self.state)
 
     def schedule(self, node, decision_time):
         self.started = True

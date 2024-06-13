@@ -103,3 +103,4 @@ class DataIntensiveContainerScheduling(Scheduler):
         for id in ids:
             if self.cluster.node_list[id - 1].can_run_task(task):
                 return id
+        return -1

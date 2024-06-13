@@ -32,16 +32,28 @@ class Scheduler(object):
     def schedule(self, task: Task, clock):
         s = time.time()
         node_id = self.make_decision(task, clock)
-        if node_id == -1:
+        if node_id == -1 or not self.cluster.node_list[node_id - 1].can_run_task(task):
+            util.print_r(
+                "now:{} task-{} schedule failed!!!".format(self.env.now, task.id)
+            )
+            if node_id != -1:
+                util.print_r(
+                    "Node-{} has not enough resource to run the task-{}".format(
+                        node_id, task.id
+                    )
+                )
+            # TODO schedule failed
+            # task.submit_time += 2
+            # self.cluster.insert_task(task)
             return
         node = self.cluster.node_list[node_id - 1]
         e = time.time()
+        task.schedule(node, e - s)
         util.print_y(
             "now:{} task-{} is scheduled to Node-{} {}".format(
                 self.env.now, task.id, node.id, node.__str__()
             )
         )
-        task.schedule(node, e - s)
 
     def make_decision(self, task: Task, clock) -> int:
         pass
