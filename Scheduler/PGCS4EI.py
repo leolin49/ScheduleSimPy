@@ -61,17 +61,21 @@ class GroupBaseContainerScheduling(Scheduler):
         # custom_centroids = df_original.loc[[59, 89, 99], features].values
         # kmeans = KMeans(n_clusters=k_optimal, init=custom_centroids, n_init=1, random_state=42)
         kmeans = KMeans(n_clusters=k_optimal, random_state=42)
-        df['cluster'] = kmeans.fit_predict(df[features])
+        df["cluster"] = kmeans.fit_predict(df[features])
 
-        cluster_groups = df.groupby('cluster')
+        cluster_groups = df.groupby("cluster")
         worst_machines = []
         for cluster_id, group in cluster_groups:
-            worst_machine = group.sort_values(by=['cpu', 'mem']).iloc[0]
-            worst_machines.append((cluster_id, worst_machine['cpu'], worst_machine['mem']))
+            worst_machine = group.sort_values(by=["cpu", "mem"]).iloc[0]
+            worst_machines.append(
+                (cluster_id, worst_machine["cpu"], worst_machine["mem"])
+            )
         worst_machines.sort(key=lambda x: (x[1], x[2]))
-        group_ids = {cluster_id: idx + 1 for idx, (cluster_id, _, _) in enumerate(worst_machines)}
+        group_ids = {
+            cluster_id: idx + 1 for idx, (cluster_id, _, _) in enumerate(worst_machines)
+        }
 
-        df['group_id'] = df['cluster'].map(group_ids)
+        df["group_id"] = df["cluster"].map(group_ids)
         df_original["group_id"] = df["group_id"]
         for index, row in df_original.iterrows():
             # print(

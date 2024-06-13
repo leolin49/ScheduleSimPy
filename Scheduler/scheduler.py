@@ -27,7 +27,7 @@ class Scheduler(object):
             if len(self.cluster.unfinished_task_queue) > 0:
                 task = self.cluster.unfinished_task_queue.popleft()
                 self.schedule(task, self.env.now)
-            yield self.env.timeout(0.1)
+            yield self.env.timeout(1)
 
     def schedule(self, task: Task, clock):
         s = time.time()

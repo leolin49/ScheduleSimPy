@@ -5,7 +5,7 @@
 # Time    : 2024/3/28 15:21
 # Author  : linyf49@qq.com
 # File    : cluster.py
-from typing import List, Tuple
+from typing import List
 from collections import deque
 from Infrastructure.topology import Topology
 from Infrastructure.edge_node import EdgeNode
@@ -27,7 +27,7 @@ class Cluster:
         self.topology = Topology(self)
 
     # 添加边缘节点
-    def add_node(self, node: EdgeNode, edges: List[Tuple] = None):
+    def add_node(self, node: EdgeNode):
         node.attach(self)
         self.node_list.append(node)
         self.total_cpu += node.cpu_capacity
@@ -59,6 +59,18 @@ class Cluster:
         return len(self.unfinished_task_queue) == 0
 
     @property
+    def cpu_capacity(self):
+        return sum([node.cpu_capacity for node in self.node_list])
+
+    @property
+    def cpu(self):
+        return sum([node.cpu for node in self.node_list])
+
+    @property
+    def cpu_utilization(self) -> float:
+        return (self.cpu_capacity - self.cpu) / self.cpu_capacity * 100
+
+    @property
     def mem_capacity(self):
         return sum([node.mem_capacity for node in self.node_list])
 
@@ -69,3 +81,9 @@ class Cluster:
     @property
     def mem_utilization(self) -> float:
         return (self.mem_capacity - self.mem) / self.mem_capacity * 100
+
+    @property
+    def state(self) -> str:
+        return "Cpu Utilization:{:.2f}% Memory Utilization:{:.2f}%".format(
+            self.cpu_utilization, self.mem_utilization
+        )

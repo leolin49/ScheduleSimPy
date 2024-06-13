@@ -4,13 +4,14 @@
 #
 # Time    : 2024/3/28 16:11
 # Author  : linyf49@qq.com
-# File    : main.py.py
+# File    : main.py
 from simpy import Environment
 from Scheduler import PGCS4EI
 from Infrastructure.cluster import Cluster
 from simulator import Simulator
 from Task.broker import Broker
 import data_product as dp
+from monitor import Monitor
 
 
 def main():
@@ -44,12 +45,13 @@ def main():
         cluster.add_node(node)
 
     scheduler = PGCS4EI.GroupBaseContainerScheduling("pgcs4ei", env2)
-    sim2 = Simulator(env2, cluster, scheduler, task_broker)
+    monitor2 = Monitor(env2)
+    sim2 = Simulator(env2, cluster, scheduler, task_broker, monitor2)
     scheduler.make_group()
     scheduler.make_group_2()
     sim2.run()
     env2.run()
-    print(cluster.average_completion())
+    print("average completion time:", cluster.average_completion())
     # ***************************** Baseline2 End ******************************* #
 
 
