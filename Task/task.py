@@ -17,7 +17,7 @@ class TaskConfig(object):
         task_index,
         submit_time,
         duration,
-        instances_number,
+        transmit_time,
         cpu,
         memory,
         disk,
@@ -28,7 +28,7 @@ class TaskConfig(object):
         :param task_index: Task id
         :param submit_time: The submit time of task
         :param duration: The running time of task
-        :param instances_number: The subtask number of task (not used)
+        :param transmit_time: The dependent data transmit delay time
         :param cpu: Task request cpu cores number
         :param memory: Task request memory size
         :param disk: Task request disk size
@@ -38,7 +38,7 @@ class TaskConfig(object):
         self.id = task_index
         self.submit_time = submit_time
         self.duration = duration
-        self.instances_number = instances_number
+        self.transmit_time = transmit_time
         self.cpu_consume = cpu
         self.mem_consume = memory
         self.disk_consume = disk
@@ -50,7 +50,7 @@ class Task:
     def __init__(self, env: Environment, config: TaskConfig):
         self.env = env
         self.id = config.id
-        self.instances_number = config.instances_number
+        self.transmit_time = config.transmit_time
         self.cpu_consume = config.cpu_consume
         self.mem_consume = config.mem_consume
         self.disk_consume = config.disk_consume
@@ -69,7 +69,7 @@ class Task:
 
     def run(self, decision_time):
         # MakeSpan = Task duration time + Schedule decision time
-        yield self.env.timeout(self.duration + decision_time)
+        yield self.env.timeout(self.duration + decision_time + self.transmit_time)
         self.work_node.stop_task(self)
         self._finished = True
         self.finished_timestamp = self.env.now
@@ -97,6 +97,6 @@ class Task:
                 self.finished_timestamp,
                 self.finished_timestamp - self.started_timestamp,
             )
-        return "now:{} Task-{} duration:{} is not begin".format(
-            self.env.now, self.id, self.duration
+        return "now:{} Task-{} duration:{} transmit:{} is not begin".format(
+            self.env.now, self.id, self.duration, self.transmit_time
         )
