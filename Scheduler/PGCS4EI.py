@@ -172,7 +172,7 @@ class GroupBaseContainerScheduling(Scheduler):
         info = []
         for node_id in node_ids:
             node = self.cluster.node_list[node_id - 1]
-            t = [node.cpu, node.mem]
+            t = [1 / task.transmit_time, node.cpu, node.mem]
             info.append(t)
 
         matrix = np.array(info)
@@ -189,8 +189,8 @@ class GroupBaseContainerScheduling(Scheduler):
             bounds=[(0, 1) for _ in range(matrix.shape[1])],
         )
 
-        # optimal_weights = result.x
-        optimal_weights = [0.5, 0.5]
+        optimal_weights = result.x
+        optimal_weights = [0.33, 0.33, 0.33]
         # print("optimal_weights:", optimal_weights)
 
         # 4. VIKOR

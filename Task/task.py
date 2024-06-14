@@ -81,7 +81,7 @@ class Task:
 
         self.work_node = node
         self.work_node.run_task(self)
-        self.process = self.env.process(self.run(decision_time))
+        self.env.process(self.run(decision_time))
 
     @property
     def finished(self) -> bool:
