@@ -13,12 +13,12 @@ from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
 from Task.task import TaskConfig
 from Rd import random as rd
 
-NEW_NODE_DATA = True
-NEW_TASK_DATA = True
+NEW_NODE_DATA = False
+NEW_TASK_DATA = False
 
 if NEW_NODE_DATA:
     # Node
-    node_data = rd.random_edge_node_list(10)
+    node_data = rd.random_edge_node_list(50)
     node_header = [
         "id",
         "cpu_capacity",
@@ -51,7 +51,7 @@ if NEW_NODE_DATA:
 
 if NEW_TASK_DATA:
     # Task
-    task_list = rd.random_task_list(30)
+    task_list = rd.random_task_list(2000)
     task_header = [
         "id",
         "submit_time",

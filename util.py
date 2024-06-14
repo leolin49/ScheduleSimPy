@@ -26,17 +26,17 @@ class Color:
 MEMORY_CAPACITY = [
     512,
     1 * GB,
-    2 * GB,
+    # 2 * GB,
     4 * GB,
     8 * GB,
     16 * GB,
-    # 32 * GB,
+    32 * GB,
     # 64 * GB,
     # 128 * GB,
 ]
 MEMORY_CAPACITY_SIZE = len(MEMORY_CAPACITY)
 
-CPU_NUMBER = [1, 2, 4, 8, 16, 32, 64]
+CPU_NUMBER = [1, 4, 12, 16, 32, 40]
 CPU_NUMBER_SIZE = len(CPU_NUMBER)
 
 # AI Accelerators Labels

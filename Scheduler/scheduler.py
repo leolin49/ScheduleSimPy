@@ -27,7 +27,7 @@ class Scheduler(object):
             if len(self.cluster.unfinished_task_queue) > 0:
                 task = self.cluster.unfinished_task_queue.popleft()
                 self.schedule(task, self.env.now)
-            yield self.env.timeout(1)
+            yield self.env.timeout(0.01)
 
     def schedule(self, task: Task, clock):
         s = time.time()
@@ -48,7 +48,7 @@ class Scheduler(object):
             return
         node = self.cluster.node_list[node_id - 1]
         e = time.time()
-        task.schedule(node, e - s)
+        task.schedule(node, (e - s) * 100)
         util.print_y(
             "now:{} task-{} is scheduled to Node-{} {}".format(
                 self.env.now, task.id, node.id, node.__str__()

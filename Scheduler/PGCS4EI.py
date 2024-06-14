@@ -81,8 +81,8 @@ class GroupBaseContainerScheduling(Scheduler):
             # print(
             #     f"ID: {row['id']}, "
             #     f"CPU: {row['cpu']}, "
-            #     f"Mem: {row['mem']}GB, "
-            #     f"Disk: {row['disk']}GB, "
+            #     f"Mem: {row['mem']}MB, "
+            #     f"Disk: {row['disk']}MB, "
             #     f"Bandwidth: {row['band']}Mbps, "
             #     f"Group: {row['group_id']}"
             # )
@@ -139,7 +139,7 @@ class GroupBaseContainerScheduling(Scheduler):
         min_vals = m.min(axis=0)
         max_vals = m.max(axis=0)
         ranges = max_vals - min_vals
-        ranges[ranges == 0] = 1     # ranges = 1 if ranges == 0
+        ranges[ranges == 0] = 1  # ranges = 1 if ranges == 0
         norm = (m - min_vals) / ranges
         return norm
 
@@ -147,6 +147,9 @@ class GroupBaseContainerScheduling(Scheduler):
         # 1. find the first-level groups
         gid = -1
         for k, v in self.groups_min.items():
+            # TODO FIXED ME
+            if k == 1:
+                continue
             if self.can_run(task, self.cluster.node_list[v]):
                 gid = k
                 break
@@ -160,8 +163,8 @@ class GroupBaseContainerScheduling(Scheduler):
                 node_ids = v
         if len(node_ids) == 0:
             util.print_r(
-                "second-level, not any node can run the task-{}, need {}:".format(
-                    task.id, task.ai_accelerator
+                "second-level, not any node in group-{} run the task-{}, need {}:".format(
+                    gid, task.id, task.ai_accelerator
                 )
             )
             return -1
@@ -186,8 +189,8 @@ class GroupBaseContainerScheduling(Scheduler):
             bounds=[(0, 1) for _ in range(matrix.shape[1])],
         )
 
-        optimal_weights = result.x
-        # optimal_weights = [0.3, 0.7]
+        # optimal_weights = result.x
+        optimal_weights = [0.5, 0.5]
         # print("optimal_weights:", optimal_weights)
 
         # 4. VIKOR
@@ -202,10 +205,14 @@ class GroupBaseContainerScheduling(Scheduler):
         R = np.zeros(matrix.shape[0])
         for i in range(matrix.shape[0]):
             S[i] = np.sum(
-                optimal_weights * (f_star - weight_norm_matrix[i]) / (f_star - f_minus)
+                optimal_weights
+                * (f_star - weight_norm_matrix[i])
+                / (f_star - f_minus + 1e-6)
             )
             R[i] = np.max(
-                optimal_weights * (f_star - weight_norm_matrix[i]) / (f_star - f_minus)
+                optimal_weights
+                * (f_star - weight_norm_matrix[i])
+                / (f_star - f_minus + 1e-6)
             )
         # S = np.sum(optimal_weights * (f_star - weight_norm_matrix) / (f_star - f_minus), axis=1)
         # R = np.max(optimal_weights * (f_star - weight_norm_matrix) / (f_star - f_minus), axis=1)
@@ -218,9 +225,9 @@ class GroupBaseContainerScheduling(Scheduler):
 
         Q = np.zeros(matrix.shape[0])
         for i in range(matrix.shape[0]):
-            Q[i] = v * (S[i] - S_star) / (S_minus - S_star) + (1 - v) * (
+            Q[i] = v * (S[i] - S_star) / (S_minus - S_star + 1e-6) + (1 - v) * (
                 R[i] - R_star
-            ) / (R_minus - R_star)
+            ) / (R_minus - R_star + 1e-6)
 
         # print("S:", S)
         # print("R:", R)
@@ -228,6 +235,7 @@ class GroupBaseContainerScheduling(Scheduler):
         ranking_indices = np.argsort(Q)
         ranked_ids = [node_ids[i] for i in ranking_indices]
         return ranked_ids[0]
+
 
 """
 """

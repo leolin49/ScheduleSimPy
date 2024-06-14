@@ -110,7 +110,7 @@ class EdgeNode:
         return (
             self.cpu >= task.cpu_consume
             and self.mem >= task.mem_consume
-            and self.disk >= task.disk_consume
+            # and self.disk >= task.disk_consume
         )
 
     def run_task(self, task):
