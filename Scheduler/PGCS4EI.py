@@ -190,8 +190,8 @@ class GroupBaseContainerScheduling(Scheduler):
             bounds=[(0.1, 0.9) for _ in range(matrix.shape[1])],
         )
 
-        optimal_weights = result.x
-        # optimal_weights = [0.33, 0.33, 0.33]
+        # optimal_weights = result.x
+        optimal_weights = [0, 0.5, 0.5]
         # print("optimal_weights:", optimal_weights)
 
         # 4. VIKOR
@@ -241,5 +241,5 @@ class GroupBaseContainerScheduling(Scheduler):
 """
 """
 # TODO list
-# 1. 除数为0
-# 2. 调度失败
+# 1. 既然考虑了数据源到节点的传输延迟，不妨也考虑节点到用户（请求源）的传输延迟？
+# 调度失败
