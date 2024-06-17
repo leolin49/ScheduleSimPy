@@ -57,7 +57,7 @@ class Task:
         self.submit_time = config.submit_time
         self.duration = config.duration
 
-        self.work_node = None  # The edge node run the task
+        self.work_node_id = -1  # The edge node run the task
         self.process = None
         self.started = False
         self._finished = False
@@ -67,21 +67,22 @@ class Task:
         self.ai_accelerator = config.ai_accelerator
         self.rely_datas = []
 
-    def run(self, decision_time):
+    def run(self, node, decision_time):
         # MakeSpan = Task duration time + Schedule decision time
         yield self.env.timeout(self.duration + decision_time + self.transmit_time)
-        self.work_node.stop_task(self)
+        node.stop_task(self)
         self._finished = True
         self.finished_timestamp = self.env.now
         util.print_g(self.state)
+        node.cluster.running_task_num -= 1
 
     def schedule(self, node, decision_time):
         self.started = True
         self.started_timestamp = self.env.now
 
-        self.work_node = node
-        self.work_node.run_task(self)
-        self.env.process(self.run(decision_time))
+        self.work_node_id = node.id
+        node.run_task(self)
+        self.env.process(self.run(node, decision_time))
 
     @property
     def finished(self) -> bool:

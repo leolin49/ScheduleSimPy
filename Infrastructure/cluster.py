@@ -25,6 +25,7 @@ class Cluster:
         self.total_disk = 0
         self.current_disk = 0
         self.topology = Topology(self)
+        self.running_task_num = 0
 
     def add_node(self, node: EdgeNode):
         node.attach(self)
@@ -58,7 +59,7 @@ class Cluster:
 
     @property
     def all_tasks_finished(self) -> bool:
-        return len(self.unfinished_task_queue) == 0
+        return len(self.unfinished_task_queue) == 0 and self.running_task_num == 0
 
     @property
     def cpu_capacity(self):

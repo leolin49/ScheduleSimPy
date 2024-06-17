@@ -127,8 +127,9 @@ class GroupBaseContainerScheduling(Scheduler):
     @staticmethod
     def objective(weights, matrix, ideal, alpha=0.1):
         distances = np.sqrt(((matrix - ideal) ** 2 * weights).sum(axis=1))
-        reg_term = alpha * np.sum(weights**2)
-        return distances.sum() + reg_term
+        # reg_term = alpha * np.sum(weights**2)
+        # return distances.sum() + reg_term
+        return distances.sum()
 
     @staticmethod
     def constraint(weights):
@@ -186,11 +187,11 @@ class GroupBaseContainerScheduling(Scheduler):
             args=(norm_matrix, ideal),
             method="SLSQP",
             constraints=constraints,
-            bounds=[(0, 1) for _ in range(matrix.shape[1])],
+            bounds=[(0.1, 0.9) for _ in range(matrix.shape[1])],
         )
 
         optimal_weights = result.x
-        optimal_weights = [0.33, 0.33, 0.33]
+        # optimal_weights = [0.33, 0.33, 0.33]
         # print("optimal_weights:", optimal_weights)
 
         # 4. VIKOR

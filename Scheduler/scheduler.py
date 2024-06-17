@@ -46,14 +46,15 @@ class Scheduler(object):
             # task.submit_time += 2
             # self.cluster.insert_task(task)
             return
-        node = self.cluster.node_list[node_id - 1]
         e = time.time()
+        node = self.cluster.node_list[node_id - 1]
         task.schedule(node, (e - s) * 100)
         util.print_y(
-            "now:{} task-{} is scheduled to Node-{} {}".format(
-                self.env.now, task.id, node.id, node.__str__()
+            "now:{} task-{} is scheduled to Node-{}".format(
+                self.env.now, task.id, node.id
             )
         )
+        self.cluster.running_task_num += 1
 
     def make_decision(self, task: Task, clock) -> int:
         pass
