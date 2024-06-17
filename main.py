@@ -6,7 +6,7 @@
 # Author  : linyf49@qq.com
 # File    : main.py
 from simpy import Environment
-from Scheduler import PGCS4EI
+from Scheduler import PGCS4EI, lrr, bra
 from Infrastructure.cluster import Cluster
 from simulator import Simulator
 from Task.broker import Broker
@@ -34,25 +34,55 @@ def main():
     # ***************************** Baseline1 End ******************************* #
 
     # ***************************** Baseline2 Start ***************************** #
-    env2 = Environment()
-    # 新建任务
+    # env2 = Environment()
+    # task_configs = dp.read_task_list_csv()
+    # task_broker = Broker(env2, task_configs)
+    # cluster = Cluster()
+    # node_list = dp.read_node_list_csv()
+    # for node in node_list:
+    #     cluster.add_node(node)
+    # scheduler2 = lrr.LeastRequestedPriority('lrr', env2)
+    # monitor2 = Monitor(env2)
+    # sim2 = Simulator(env2, cluster, scheduler2, task_broker, monitor2)
+    # sim2.run()
+    # env2.run()
+    # print("average completion time of lrr:", cluster.average_completion())
+    # ***************************** Baseline2 End ******************************* #
+
+    # ***************************** Baseline2 Start ***************************** #
+    # env3 = Environment()
+    # task_configs = dp.read_task_list_csv()
+    # task_broker = Broker(env3, task_configs)
+    # cluster = Cluster()
+    # node_list = dp.read_node_list_csv()
+    # for node in node_list:
+    #     cluster.add_node(node)
+    # scheduler3 = bra.BalancedResourceAllocation('bra', env3)
+    # monitor3 = Monitor(env3)
+    # sim3 = Simulator(env3, cluster, scheduler3, task_broker, monitor3)
+    # sim3.run()
+    # env3.run()
+    # print("average completion time of brr:", cluster.average_completion())
+    # ***************************** Baseline3 End ******************************* #
+
+    # ***************************** pgcs4ei Start ***************************** #
+    env5 = Environment()
     task_configs = dp.read_task_list_csv()
-    task_broker = Broker(env2, task_configs)
-    # 新建集群及其节点
+    task_broker = Broker(env5, task_configs)
     cluster = Cluster()
     node_list = dp.read_node_list_csv()
     for node in node_list:
         cluster.add_node(node)
 
-    scheduler = PGCS4EI.GroupBaseContainerScheduling("pgcs4ei", env2)
-    monitor2 = Monitor(env2)
-    sim2 = Simulator(env2, cluster, scheduler, task_broker, monitor2)
-    scheduler.make_group()
-    scheduler.make_group_2()
-    sim2.run()
-    env2.run()
+    scheduler = PGCS4EI.GroupBaseContainerScheduling("pgcs4ei", env5)
+    monitor5 = Monitor(env5)
+    sim5 = Simulator(env5, cluster, scheduler, task_broker, monitor5)
+    scheduler.make_first_level_group()
+    scheduler.make_second_level_group()
+    sim5.run()
+    env5.run()
     print("average completion time:", cluster.average_completion())
-    # ***************************** Baseline2 End ******************************* #
+    # ***************************** pgcs4ei End ******************************* #
 
 
 if __name__ == "__main__":

@@ -88,5 +88,8 @@ class Cluster:
     @property
     def state(self) -> str:
         return "cpu:{:.2f}% mem:{:.2f}% todo_num:{} finish_num:{}".format(
-            self.cpu_utilization, self.mem_utilization, len(self.unfinished_task_queue), len(self.finished_task_list)
+            self.cpu_utilization,
+            self.mem_utilization,
+            len(self.unfinished_task_queue),
+            len(self.finished_task_list),
         )

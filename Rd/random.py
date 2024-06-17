@@ -63,7 +63,9 @@ def random_task(task_id: int) -> TaskConfig:
     cpu = random.randint(1, 2)
     disk = random.randint(100, 500)
     ai_accelerator = random.choice(util.AI_LABEL)
-    return TaskConfig(task_id, submit_time, duration, transmit_time, cpu, mem, disk, ai_accelerator)
+    return TaskConfig(
+        task_id, submit_time, duration, transmit_time, cpu, mem, disk, ai_accelerator
+    )
 
 
 def random_task_list(n: int) -> List[TaskConfig]:

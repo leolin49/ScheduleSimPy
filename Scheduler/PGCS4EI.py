@@ -36,7 +36,7 @@ class GroupBaseContainerScheduling(Scheduler):
         self.groups2 = dict()  # {'group_id': {'ai_label': [node_id1, node_id2]}}
         self.groups_min = dict()  # min(CPU,MEM) in one group
 
-    def make_group(self):
+    def make_first_level_group(self):
         data = []
         for node in self.cluster.node_list:
             data.append(
@@ -105,7 +105,7 @@ class GroupBaseContainerScheduling(Scheduler):
             # print(group_id, self.cluster.node_list[min_id - 1])
         util.print_g("First level group finish...")
 
-    def make_group_2(self):
+    def make_second_level_group(self):
         for group_id, node_ids in self.groups.items():
             self.groups2[group_id] = dict()
             for node_id in node_ids:
