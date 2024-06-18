@@ -17,6 +17,7 @@ class Scheduler(object):
         self.env = env
         self.simulator = None
         self.cluster = None
+        self.log = util.new_logger('./log/' + name + ".log", name)
 
     def attach(self, simulator):
         self.simulator = simulator
@@ -33,11 +34,11 @@ class Scheduler(object):
         s = time.time()
         node_id = self.make_decision(task, clock)
         if node_id == -1 or not self.cluster.node_list[node_id - 1].can_run_task(task):
-            util.print_r(
+            self.log.warning(
                 "now:{} task-{} schedule failed!!!".format(self.env.now, task.id)
             )
             if node_id != -1:
-                util.print_r(
+                self.log.warn(
                     "Node-{} has not enough resource to run the task-{}".format(
                         node_id, task.id
                     )
@@ -49,7 +50,7 @@ class Scheduler(object):
         e = time.time()
         node = self.cluster.node_list[node_id - 1]
         task.schedule(node, (e - s) * 100)
-        util.print_y(
+        self.log.info(
             "now:{} task-{} is scheduled to Node-{}".format(
                 self.env.now, task.id, node.id
             )

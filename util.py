@@ -6,6 +6,7 @@
 # Author  : linyf49@qq.com
 # File    : util.py.py
 
+import logging
 import numpy as np
 
 GB = 1024
@@ -57,16 +58,34 @@ LABEL = [
 
 
 def print_g(args, sep=" ", end="\n", file=None):
-    print(Color.GREEN + args + Color.END)
+    print(Color.GREEN + args + Color.END, sep, end, file)
 
 
 def print_y(args, sep=" ", end="\n", file=None):
-    print(Color.YELLOW + args + Color.END)
+    print(Color.YELLOW + args + Color.END, sep, end, file)
 
 
 def print_r(args, sep=" ", end="\n", file=None):
-    print(Color.RED + args + Color.END)
+    print(Color.RED + args + Color.END, sep, end, file)
 
 
 def is_dominates(x: np.ndarray, y: np.ndarray):
     return all(x >= y) and any(x > y)
+
+
+def new_logger(log_file_path: str, name="Unknown log name"):
+    """
+    Get logger
+    :param log_file_path: log file path
+    :param name: log name
+    :return: logging object by default config
+    """
+    logger = logging.getLogger(name)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s-%(name)s-%(lineno)s-%(levelname)s - %(message)s",
+        filename=log_file_path,
+        # filemode="a",  # append at the end of log file
+        filemode="w",  # rewrite the log file
+    )
+    return logger

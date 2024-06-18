@@ -51,7 +51,7 @@ if NEW_NODE_DATA:
 
 if NEW_TASK_DATA:
     # Task
-    task_list = rd.random_task_list(2000)
+    task_list = rd.random_task_list(10000)
     task_header = [
         "id",
         "submit_time",

@@ -191,7 +191,7 @@ class GroupBaseContainerScheduling(Scheduler):
         )
 
         # optimal_weights = result.x
-        optimal_weights = [0, 0.5, 0.5]
+        optimal_weights = np.ones(matrix.shape[1]) / matrix.shape[1]
         # print("optimal_weights:", optimal_weights)
 
         # 4. VIKOR

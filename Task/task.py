@@ -73,7 +73,7 @@ class Task:
         node.stop_task(self)
         self._finished = True
         self.finished_timestamp = self.env.now
-        util.print_g(self.state)
+        # util.print_g(self.state)
         node.cluster.running_task_num -= 1
 
     def schedule(self, node, decision_time):
