@@ -11,11 +11,11 @@ import matplotlib.pyplot as plt
 
 
 class Monitor(object):
-    def __init__(self, env):
+    def __init__(self, env, scheduler_name: str):
         self.env = env
         self.simulator = None
         self.cluster = None
-        self.event_file = "events.txt"
+        self.event_file = scheduler_name + "_event.txt"
         self.events = []
 
     def attach(self, simulator):
@@ -55,13 +55,13 @@ class Monitor(object):
     @staticmethod
     def draw(cpus, mems):
         final_time = len(cpus) - 1
-        tm = [i for i in range(final_time+1)]
+        tm = [i for i in range(final_time + 1)]
         x = np.arange(20, 350)
-        l = plt.plot(tm, cpus, 'g--', label='cpu')
-        plt.plot(tm, cpus, 'g-')
-        plt.title('CPU Utilization')
-        plt.xlabel('timestamp')
-        plt.ylabel('cluster_cpu_utilization')
+        l = plt.plot(tm, cpus, "g--", label="cpu")
+        plt.plot(tm, cpus, "g-")
+        plt.title("CPU Utilization")
+        plt.xlabel("timestamp")
+        plt.ylabel("cluster_cpu_utilization")
         plt.ylim((0, 100))
         plt.legend()
         plt.show()

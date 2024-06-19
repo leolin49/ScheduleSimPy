@@ -4,7 +4,7 @@
 #
 # Time    : 2024/3/28 20:31
 # Author  : linyf49@qq.com
-# File    : random.py.py
+# File    : random.py
 
 import random
 from typing import List
@@ -36,7 +36,7 @@ def random_edge_node(node_id: int, level: int) -> EdgeNode:
     # node.cpu = random.randint(0, cpu)
     node.cpu = cpu
     # node.mem = memory * random.random()
-    node.mem = memory
+    node.mem = memory - (memory * (1 / 8))
     node.disk = 10 * memory * random.random()
     node.container_num = random.randint(1, 20)
 
@@ -60,7 +60,7 @@ def random_task(task_id: int) -> TaskConfig:
     submit_time = random.uniform(1, 100)
     duration = random.uniform(0.0001, 1.1432) * random.uniform(1, 1.7520 / 0.4883)
     transmit_time = random.uniform(0.2985, 1.5926)
-    mem = random.randint(50, 250)
+    mem = random.randint(200, 1.5 * util.GB)
     cpu = random.randint(1, 2)
     disk = random.randint(100, 500)
     ai_accelerator = random.choice(util.AI_LABEL)
@@ -76,12 +76,3 @@ def random_task_list(n: int) -> List[TaskConfig]:
         task_configs.append(task_config)
     task_configs.sort(key=lambda t: t.submit_time)
     return task_configs
-
-
-# def test_task(env) -> List[TaskConfig]:
-#     task_configs = [
-#         TaskConfig(1, 10, 3, 1, 2, 100, 100, "GPU", None),
-#         TaskConfig(2, 10.5, 0.8421, 1, 2, 100, 100, "TPU", None),
-#         TaskConfig(3, 10.5, 0.1168, 1, 2, 100, 100, "NPU", None),
-#     ]
-#     return task_configs

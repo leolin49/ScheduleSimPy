@@ -10,7 +10,7 @@ from Scheduler import PGCS4EI, lrr, bra, dics
 from Infrastructure.cluster import Cluster
 from simulator import Simulator
 from Task.broker import Broker
-import data_product as dp
+from Rd import data_product as dp
 from monitor import Monitor
 
 
@@ -22,7 +22,7 @@ def baseline_dics(task_configs, node_list):
         cluster.add_node(node)
 
     scheduler = dics.DataIntensiveContainerScheduling("dics", env)
-    monitor = Monitor(env)
+    monitor = Monitor(env, "dics")
     sim = Simulator(env, cluster, scheduler, task_broker, monitor)
     sim.run()
     env.run()
@@ -35,8 +35,8 @@ def baseline_lrr(task_configs, node_list):
     cluster = Cluster()
     for node in node_list:
         cluster.add_node(node)
-    scheduler = lrr.LeastRequestedPriority('lrr', env)
-    monitor = Monitor(env)
+    scheduler = lrr.LeastRequestedPriority("lrr", env)
+    monitor = Monitor(env, 'lrr')
     sim = Simulator(env, cluster, scheduler, task_broker, monitor)
     sim.run()
     env.run()
@@ -49,15 +49,15 @@ def baseline_bra(task_configs, node_list):
     cluster = Cluster()
     for node in node_list:
         cluster.add_node(node)
-    scheduler = bra.BalancedResourceAllocation('bra', env)
-    monitor = Monitor(env)
+    scheduler = bra.BalancedResourceAllocation("bra", env)
+    monitor = Monitor(env, 'bra')
     sim = Simulator(env, cluster, scheduler, task_broker, monitor)
     sim.run()
     env.run()
     print("average completion time of brr:", cluster.average_completion())
 
 
-def pgsc4ei(task_configs, node_list):
+def pgcs4ei(task_configs, node_list):
     env = Environment()
     task_broker = Broker(env, task_configs)
     cluster = Cluster()
@@ -65,7 +65,7 @@ def pgsc4ei(task_configs, node_list):
         cluster.add_node(node)
 
     scheduler = PGCS4EI.GroupBaseContainerScheduling("pgcs4ei", env)
-    monitor = Monitor(env)
+    monitor = Monitor(env, 'pgcs4ei')
     sim = Simulator(env, cluster, scheduler, task_broker, monitor)
     scheduler.make_first_level_group()
     scheduler.make_second_level_group()
@@ -77,10 +77,10 @@ def pgsc4ei(task_configs, node_list):
 def main():
     task_configs = dp.read_task_list_csv()
     node_list = dp.read_node_list_csv()
-    baseline_dics(task_configs, node_list)
+    # baseline_dics(task_configs, node_list)
     # baseline_lrr(task_configs, node_list)
     # baseline_bra(task_configs, node_list)
-    # pgsc4ei(task_configs, node_list)
+    pgcs4ei(task_configs, node_list)
 
 
 if __name__ == "__main__":

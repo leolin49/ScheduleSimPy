@@ -17,7 +17,7 @@ class Scheduler(object):
         self.env = env
         self.simulator = None
         self.cluster = None
-        self.log = util.new_logger('./log/' + name + ".log", name)
+        self.log = util.new_logger("./Log/" + name + ".Log", name)
 
     def attach(self, simulator):
         self.simulator = simulator

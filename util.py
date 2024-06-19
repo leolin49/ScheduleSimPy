@@ -73,11 +73,11 @@ def is_dominates(x: np.ndarray, y: np.ndarray):
     return all(x >= y) and any(x > y)
 
 
-def new_logger(log_file_path: str, name="Unknown log name"):
+def new_logger(log_file_path: str, name="Unknown Log name"):
     """
     Get logger
-    :param log_file_path: log file path
-    :param name: log name
+    :param log_file_path: Log file path
+    :param name: Log name
     :return: logging object by default config
     """
     logger = logging.getLogger(name)
@@ -85,7 +85,7 @@ def new_logger(log_file_path: str, name="Unknown log name"):
         level=logging.INFO,
         format="%(asctime)s-%(name)s-%(lineno)s-%(levelname)s - %(message)s",
         filename=log_file_path,
-        # filemode="a",  # append at the end of log file
-        filemode="w",  # rewrite the log file
+        # filemode="a",  # append at the end of Log file
+        filemode="w",  # rewrite the Log file
     )
     return logger

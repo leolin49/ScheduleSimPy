@@ -117,46 +117,7 @@ class GroupBaseContainerScheduling(Scheduler):
                         self.groups2[group_id][label].append(node_id)
         util.print_g("Second level group finish...")
 
-    @staticmethod
-    def can_run(task: Task, node: EdgeNode) -> bool:
-        return (
-            task.cpu_consume <= node.cpu_capacity
-            and task.mem_consume <= node.mem_capacity
-        )
-
-    @staticmethod
-    def objective(weights, matrix, ideal, alpha=0.1):
-        distances = np.sqrt(((matrix - ideal) ** 2 * weights).sum(axis=1))
-        # reg_term = alpha * np.sum(weights**2)
-        # return distances.sum() + reg_term
-        return distances.sum()
-
-    @staticmethod
-    def constraint(weights):
-        return np.sum(weights) - 1
-
-    @staticmethod
-    def normalize_matrix(m):
-        min_vals = m.min(axis=0)
-        max_vals = m.max(axis=0)
-        ranges = max_vals - min_vals
-        ranges[ranges == 0] = 1  # ranges = 1 if ranges == 0
-        norm = (m - min_vals) / ranges
-        return norm
-
-    def make_decision(self, task: Task, clock) -> int:
-        # 1. find the first-level groups
-        gid = -1
-        for k, v in self.groups_min.items():
-            # TODO FIXED ME
-            if k == 1:
-                continue
-            if self.can_run(task, self.cluster.node_list[v]):
-                gid = k
-                break
-        if gid == -1:
-            util.print_r("first-level, not any node can run the task:", task)
-            return -1
+    def find_in_group(self, gid: int, task: Task) -> int:
         # 2. find the second-level groups
         node_ids = []
         for k, v in self.groups2[gid].items():
@@ -235,11 +196,57 @@ class GroupBaseContainerScheduling(Scheduler):
 
         ranking_indices = np.argsort(Q)
         ranked_ids = [node_ids[i] for i in ranking_indices]
-        return ranked_ids[0]
+        for node_id in ranked_ids:
+            if self.cluster.node_list[node_id - 1].can_run_task(task):
+                return node_id
+        return -1
+
+    @staticmethod
+    def can_run(task: Task, node: EdgeNode) -> bool:
+        return (
+            task.cpu_consume <= node.cpu_capacity
+            and task.mem_consume <= node.mem_capacity
+        )
+
+    @staticmethod
+    def objective(weights, matrix, ideal, alpha=0.1):
+        distances = np.sqrt(((matrix - ideal) ** 2 * weights).sum(axis=1))
+        # reg_term = alpha * np.sum(weights**2)
+        # return distances.sum() + reg_term
+        return distances.sum()
+
+    @staticmethod
+    def constraint(weights):
+        return np.sum(weights) - 1
+
+    @staticmethod
+    def normalize_matrix(m):
+        min_vals = m.min(axis=0)
+        max_vals = m.max(axis=0)
+        ranges = max_vals - min_vals
+        ranges[ranges == 0] = 1  # ranges = 1 if ranges == 0
+        norm = (m - min_vals) / ranges
+        return norm
+
+    def make_decision(self, task: Task, clock) -> int:
+        # 1. find the first-level groups
+        gid = node_id = -1
+        for k, v in self.groups_min.items():
+            # TODO FIXED ME
+            if k == 1:
+                continue
+            if self.can_run(task, self.cluster.node_list[v]):
+                gid = k
+                node_id = self.find_in_group(gid, task)
+                break
+        if gid == -1:
+            util.print_r("first-level, not any node can run the task:", task)
+            return -1
+        return node_id
 
 
 """
 """
 # TODO list
 # 1. 既然考虑了数据源到节点的传输延迟，不妨也考虑节点到用户（请求源）的传输延迟？
-# 调度失败
+# 2. 调度失败导致资源利用率低

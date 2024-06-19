@@ -83,7 +83,7 @@ if NEW_TASK_DATA:
 
 def read_node_list_csv():
     node_list = []
-    for chunk in pd.read_csv("node_list.csv", chunksize=1):
+    for chunk in pd.read_csv("Rd/node_list.csv", chunksize=1):
         for index, row in chunk.iterrows():
             # print(row)
             node = EdgeNode(
@@ -105,7 +105,7 @@ def read_node_list_csv():
 
 def read_task_list_csv():
     task_data_list = []
-    for chunk in pd.read_csv("task_list.csv", chunksize=1):
+    for chunk in pd.read_csv("Rd/task_list.csv", chunksize=1):
         for index, row in chunk.iterrows():
             # print(row)
             task = TaskConfig(

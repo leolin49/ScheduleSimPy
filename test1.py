@@ -36,8 +36,8 @@ import numpy as np
 #     # 标准化决策矩阵
 #     norm_matrix = matrix / matrix.sum(axis=0)
 #     # 计算熵值
-#     k = 1.0 / np.log(matrix.shape[0])
-#     entropy = -k * (norm_matrix * np.log(norm_matrix + 1e-9)).sum(axis=0)
+#     k = 1.0 / np.Log(matrix.shape[0])
+#     entropy = -k * (norm_matrix * np.Log(norm_matrix + 1e-9)).sum(axis=0)
 #     # 计算权重
 #     weights = (1 - entropy) / (1 - entropy).sum()
 #     return weights
@@ -157,7 +157,7 @@ import numpy as np
 #     m, n = matrix.shape
 #     epsilon = 1e-10  # 防止log(0)
 #     proportion = matrix / matrix.sum(axis=0)
-#     entropy = -np.sum(proportion * np.log(proportion + epsilon), axis=0) / np.log(m)
+#     entropy = -np.sum(proportion * np.Log(proportion + epsilon), axis=0) / np.Log(m)
 #     diversity = 1 - entropy
 #     weights = diversity / diversity.sum()
 #     return weights
