@@ -4,7 +4,7 @@
 #
 # Time    : 2024/3/28 20:31
 # Author  : linyf49@qq.com
-# File    : random.py
+# File    : data_random.py
 
 import random
 from typing import List

@@ -7,18 +7,14 @@
 # File    : data_product.py
 
 import csv
-import ast
-import pandas as pd
-from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
-from Task.task import TaskConfig
-from Rd import random as rd
+from Rd import data_random as rd
 
-NEW_NODE_DATA = False
-NEW_TASK_DATA = False
+NEW_NODE_DATA = True
+NEW_TASK_DATA = True
 
 if NEW_NODE_DATA:
     # Node
-    node_data = rd.random_edge_node_list(50)
+    node_data = rd.random_edge_node_list(100)
     node_header = [
         "id",
         "cpu_capacity",
@@ -81,42 +77,4 @@ if NEW_TASK_DATA:
             writer.writerow(data)
 
 
-def read_node_list_csv():
-    node_list = []
-    for chunk in pd.read_csv("Rd/node_list.csv", chunksize=1):
-        for index, row in chunk.iterrows():
-            # print(row)
-            node = EdgeNode(
-                row["id"],
-                EdgeNodeConfig(
-                    int(row["cpu_capacity"]),
-                    int(row["mem_capacity"]),
-                    int(row["disk_capacity"]),
-                    int(row["bandwidth"]),
-                    ast.literal_eval(row["labels"]),
-                    int(row["cpu"]),
-                    float(row["mem"]),
-                    float(row["disk"]),
-                ),
-            )
-            node_list.append(node)
-    return node_list
 
-
-def read_task_list_csv():
-    task_data_list = []
-    for chunk in pd.read_csv("Rd/task_list.csv", chunksize=1):
-        for index, row in chunk.iterrows():
-            # print(row)
-            task = TaskConfig(
-                int(row["id"]),
-                float(row["submit_time"]),
-                float(row["duration"]),
-                float(row["transmit_time"]),
-                int(row["cpu"]),
-                float(row["memory"]),
-                float(row["disk"]),
-                str(row["ai_accelerator"]),
-            )
-            task_data_list.append(task)
-    return task_data_list
