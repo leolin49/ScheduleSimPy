@@ -117,12 +117,16 @@ class GroupBaseContainerScheduling(Scheduler):
                         self.groups2[group_id][label].append(node_id)
         util.print_g("Second level group finish...")
 
-    def find_in_group(self, gid: int, task: Task) -> int:
+    def find_in_group(self, gid: int, task: Task, ai_match: bool) -> int:
         # 2. find the second-level groups
         node_ids = []
         for k, v in self.groups2[gid].items():
-            if k == task.ai_accelerator:
-                node_ids = v
+            if ai_match:
+                if k == task.ai_accelerator:
+                    node_ids = v
+            else:
+                if k != task.ai_accelerator:
+                    node_ids += v
         if len(node_ids) == 0:
             util.print_r(
                 "second-level, not any node in group-{} run the task-{}, need {}:".format(
@@ -237,8 +241,10 @@ class GroupBaseContainerScheduling(Scheduler):
                 continue
             if self.can_run(task, self.cluster.node_list[v]):
                 gid = k
-                node_id = self.find_in_group(gid, task)
-                break
+                node_id = self.find_in_group(gid, task, True)
+                if node_id == -1:
+                    node_id = self.find_in_group(gid, task, False)
+                return node_id
         if gid == -1:
             util.print_r("first-level, not any node can run the task:", task)
             return -1

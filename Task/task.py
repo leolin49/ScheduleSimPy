@@ -22,6 +22,7 @@ class TaskConfig(object):
         memory,
         disk,
         ai_accelerator: str,
+        ai_accelerator_num: int,
         rely_data: List[Data] = None,
     ):
         """
@@ -43,6 +44,7 @@ class TaskConfig(object):
         self.mem_consume = memory
         self.disk_consume = disk
         self.ai_accelerator = ai_accelerator
+        self.ai_accelerator_num = ai_accelerator_num
         self.rely_data = rely_data
 
 
@@ -65,6 +67,7 @@ class Task:
         self.finished_timestamp = None
 
         self.ai_accelerator = config.ai_accelerator
+        self.ai_accelerator_num = config.ai_accelerator_num
         self.rely_datas = []
 
     def run(self, node, decision_time):
