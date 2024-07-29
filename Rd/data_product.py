@@ -71,7 +71,7 @@ if NEW_TASK_DATA:
                 task.cpu_consume,
                 task.mem_consume,
                 task.disk_consume,
-                task.ai_accelerator,
+                task.ai_accelerators,
                 task.rely_data,
             ]
             writer.writerow(data)

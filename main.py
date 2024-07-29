@@ -79,9 +79,12 @@ def main():
     print("task data read finish.")
     node_list = rd.read_alibaba_node_list_csv()
     print("node data read finish.")
-    # baseline_dics(task_configs, node_list)
+    
+    print("baseline DICS is running...")
+    baseline_dics(task_configs, node_list)
     # baseline_lrr(task_configs, node_list)
     # baseline_bra(task_configs, node_list)
+    print("PGCS is running...")
     pgcs4ei(task_configs, node_list)
 
 

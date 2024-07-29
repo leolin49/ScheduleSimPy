@@ -20,6 +20,7 @@ class DataIntensiveContainerScheduling(Scheduler):
 
     def make_decision(self, task: Task, clock) -> int:
         # prepare
+        esp = 1e-6
         ids = []
         info = []
         for node in self.cluster.node_list:
@@ -52,7 +53,7 @@ class DataIntensiveContainerScheduling(Scheduler):
         """
         tmp = [sqrt(sum(info[i][j] ** 2 for i in range(k))) for j in range(c)]
         E = [
-            [(info[i][j] / tmp[j] if tmp[j] else 0) for j in range(c)] for i in range(k)
+            [(info[i][j] / (tmp[j] + esp) if tmp[j] else 0) for j in range(c)] for i in range(k)
         ]
         """
         Step 3.
@@ -93,7 +94,7 @@ class DataIntensiveContainerScheduling(Scheduler):
         Step 6.
         Calculate the relative closeness to the ideal solution, which is denoted as RCi.
         """
-        RC = [B2[i] / (B1[i] + B2[i]) for i in range(k)]
+        RC = [B2[i] / (B1[i] + B2[i] + esp) for i in range(k)]
         """
         All alternative nodes are ranked according to the value of RC.
         The node with the highest value of RC is the target node to execute container. 

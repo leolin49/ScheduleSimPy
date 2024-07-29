@@ -25,8 +25,8 @@ def read_node_list_csv():
                     int(row["cpu_capacity"]),
                     int(row["mem_capacity"]),
                     int(row["disk_capacity"]),
-                    int(row["bandwidth"]),
                     1,
+                    int(row["bandwidth"]),
                     lbs,
                     cnt,
                     cpu=int(row["cpu"]),
@@ -60,7 +60,7 @@ def read_task_list_csv():
 
 def read_alibaba_task_list_csv():
     task_list = []
-    mul = 4
+    mul = 1 
     for chunk in pd.read_csv('Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv', chunksize=1):
         for index, row in chunk.iterrows():
             task_id = int(row['name'][-4:]) + 1

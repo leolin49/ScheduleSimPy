@@ -32,7 +32,7 @@ def random_edge_node(node_id: int, level: int) -> EdgeNode:
     labels = random.sample(util.LABEL, 2)
     if level >= 2:  # level大于2的才有AI加速器
         labels.append(random.choice(util.AI_LABEL))
-    node = EdgeNode(node_id, EdgeNodeConfig(cpu, memory, memory * 10, 100, labels))
+    node = EdgeNode(node_id, EdgeNodeConfig(cpu, memory, memory * 10, 1, 100, labels, [1] * len(labels))
     # node.cpu = random.randint(0, cpu)
     node.cpu = cpu
     # node.mem = memory * random.random()
@@ -65,7 +65,7 @@ def random_task(task_id: int) -> TaskConfig:
     disk = random.randint(100, 500)
     ai_accelerator = random.choice(util.AI_LABEL)
     return TaskConfig(
-        task_id, submit_time, duration, transmit_time, cpu, mem, disk, ai_accelerator
+        task_id, submit_time, duration, transmit_time, cpu, mem, disk, ai_accelerator, 1,
     )
 
 
