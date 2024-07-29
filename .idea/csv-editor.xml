@@ -10,6 +10,111 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_node_list_gpu_node.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_cpu0.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_cpu037.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_cpu050.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_cpu072.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_cpu100.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_cpu200.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_cpu235.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_cpu250.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_cpu300.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_default.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpuspec05.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpuspec10.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpuspec20.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpuspec25.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpuspec33.csv">
           <value>
             <Attribute>
@@ -18,6 +123,13 @@
           </value>
         </entry>
         <entry key="\Rd\node_list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Rd\task_list.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

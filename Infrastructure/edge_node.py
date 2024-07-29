@@ -6,6 +6,7 @@
 # Author  : linyf49@qq.com
 # File    : edge_node.py
 from typing import List, Tuple
+from collections import Counter
 
 import util
 
@@ -18,6 +19,7 @@ class EdgeNodeConfig:
         disk_capacity: int,
         bandwidth: int,
         labels: List[str] = None,
+        counts: List[int] = None,
         cpu=None,
         memory=None,
         disk=None,
@@ -28,15 +30,18 @@ class EdgeNodeConfig:
         :param disk_capacity: Disk capacity(MB)
         :param bandwidth: Network bandwidth(MB)
         :param labels: Hardware labels list
+        :param counts: The count of Hardware in labels
         :param cpu: Available cpu cores number
         :param memory: Available memory size
         :param disk: Available disk size
         """
+        assert len(labels) == len(counts)
         self.cpu_capacity = cpu_capacity
         self.mem_capacity = mem_capacity
         self.disk_capacity = disk_capacity
         self.bandwidth = bandwidth
         self.labels = labels
+        self.counts = counts
         self.cpu = cpu_capacity if cpu is None else cpu
         self.memory = mem_capacity if memory is None else memory
         self.disk = disk_capacity if disk is None else disk
@@ -54,10 +59,12 @@ class EdgeNode:
 
         self.bandwidth = cfg.bandwidth
         self.container_num = 5
+        self.labels = []
+        self.labels_count = Counter()
         if cfg.labels is not None:
-            self.labels = cfg.labels
-        else:
-            self.labels = []
+            for i, label in enumerate(cfg.labels):
+                self.labels.append(label)
+                self.labels_count[label] = cfg.counts[i]
         self.edges = []
 
         self.cluster = None
@@ -80,7 +87,7 @@ class EdgeNode:
                 self.disk_utilization,
                 self.bandwidth,
                 self.container_num,
-                self.labels,
+                self.labels_count,
             )
         )
 

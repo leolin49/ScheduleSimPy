@@ -75,9 +75,9 @@ def pgcs4ei(task_configs, node_list):
 
 
 def main():
-    task_configs = rd.read_task_list_csv()
+    task_configs = rd.read_alibaba_task_list_csv()
     print("task data read finish.")
-    node_list = rd.read_node_list_csv()
+    node_list = rd.read_alibaba_node_list_csv()
     print("node data read finish.")
     # baseline_dics(task_configs, node_list)
     # baseline_lrr(task_configs, node_list)

@@ -21,7 +21,7 @@ class TaskConfig(object):
         cpu,
         memory,
         disk,
-        ai_accelerator: str,
+        ai_accelerators: List[str],
         ai_accelerator_num: int,
         rely_data: List[Data] = None,
     ):
@@ -33,7 +33,8 @@ class TaskConfig(object):
         :param cpu: Task request cpu cores number
         :param memory: Task request memory size
         :param disk: Task request disk size
-        :param ai_accelerator: Task request AI accelerator(GPU, TPU, NPU)
+        :param ai_accelerators: Task request AI accelerators list(GPU, TPU, NPU).
+        :param ai_accelerator_num: Task request AI accelerator number.
         :param rely_data: The data the task run needed (not used)
         """
         self.id = task_index
@@ -43,9 +44,29 @@ class TaskConfig(object):
         self.cpu_consume = cpu
         self.mem_consume = memory
         self.disk_consume = disk
-        self.ai_accelerator = ai_accelerator
+        self.ai_accelerators = ai_accelerators
         self.ai_accelerator_num = ai_accelerator_num
         self.rely_data = rely_data
+
+    def __str__(self):
+        return (
+            "id: {}, "
+            "cpu_consume: {}, "
+            "mem_consume: {}MB, "
+            "submit_time: {:.2f}, "
+            "duration: {:.2f}, "
+            "ai_accelerators: {}".format(
+                self.id,
+                self.cpu_consume,
+                self.mem_consume,
+                self.submit_time,
+                self.duration,
+                self.ai_accelerators,
+            )
+        )
+
+    def __eq__(self, other):
+        return isinstance(other, Task) and other.id == self.id
 
 
 class Task:
@@ -66,9 +87,26 @@ class Task:
         self.started_timestamp = None
         self.finished_timestamp = None
 
-        self.ai_accelerator = config.ai_accelerator
+        self.ai_accelerators = config.ai_accelerators
         self.ai_accelerator_num = config.ai_accelerator_num
         self.rely_datas = []
+
+    def __str__(self):
+        return (
+            "id: {}, "
+            "cpu_consume: {}, "
+            "mem_consume: {}MB, "
+            "submit_time: {:.2f}, "
+            "duration: {:.2f}, "
+            "ai_accelerators: {}".format(
+                self.id,
+                self.cpu_consume,
+                self.mem_consume,
+                self.submit_time,
+                self.duration,
+                self.ai_accelerators,
+            )
+        )
 
     def run(self, node, decision_time):
         # MakeSpan = Task duration time + Schedule decision time

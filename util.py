@@ -44,6 +44,13 @@ CPU_NUMBER_SIZE = len(CPU_NUMBER)
 # AI Accelerators Labels
 AI_LABEL = [
     "GPU",
+    "G2",
+    "G3",
+    "T4",
+    "A10",
+    "P100",
+    "V100M16",
+    "V100M32",
     "TPU",
     "NPU",
 ]

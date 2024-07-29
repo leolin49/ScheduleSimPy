@@ -20,6 +20,7 @@ import numpy as np
 from scipy.optimize import minimize
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
+from collections import defaultdict
 
 import util
 from Task.task import Task
@@ -103,37 +104,41 @@ class GroupBaseContainerScheduling(Scheduler):
             )
             self.groups_min[group_id] = min_id
             # print(group_id, self.cluster.node_list[min_id - 1])
-        util.print_g("First level group finish...")
+        print("First level group finish...")
 
     def make_second_level_group(self):
         for group_id, node_ids in self.groups.items():
-            self.groups2[group_id] = dict()
+            self.groups2[group_id] = defaultdict(list)
             for node_id in node_ids:
                 node = self.cluster.node_list[node_id - 1]
                 for label in node.labels:
                     if label in util.AI_LABEL:
-                        if label not in self.groups2[group_id]:
-                            self.groups2[group_id][label] = []
                         self.groups2[group_id][label].append(node_id)
-        util.print_g("Second level group finish...")
+            print("group_id: {}, second group keys: {}".format(group_id, self.groups2[group_id].keys()))
+        print("Second level group finish...")
 
-    def find_in_group(self, gid: int, task: Task, ai_match: bool) -> int:
+    def __find_in_first_group(self, task: Task) -> int:
+        # 1. find the first-level groups
+        for gid, node_id in self.groups_min.items():
+            if self.can_run(task, self.cluster.node_list[node_id]):
+                return gid
+        return -1
+
+    def __find_in_second_group(self, gid: int, task: Task, ai_match: bool) -> int:
+        if gid > 3:
+            return -1
         # 2. find the second-level groups
         node_ids = []
-        for k, v in self.groups2[gid].items():
-            if ai_match:
-                if k == task.ai_accelerator:
-                    node_ids = v
-            else:
-                if k != task.ai_accelerator:
-                    node_ids += v
+        if not ai_match:
+            for v in self.groups2[gid].values():
+                node_ids.extend(v)
+        else:
+            for k, v in self.groups2[gid].items():
+                if k in task.ai_accelerators:
+                    node_ids.extend(v)
         if len(node_ids) == 0:
-            util.print_r(
-                "second-level, not any node in group-{} run the task-{}, need {}:".format(
-                    gid, task.id, task.ai_accelerator
-                )
-            )
             return -1
+        # print(node_ids)
         # 3. find the optimal_weights
         info = []
         for node_id in node_ids:
@@ -157,7 +162,7 @@ class GroupBaseContainerScheduling(Scheduler):
 
         # optimal_weights = result.x
         optimal_weights = np.ones(matrix.shape[1]) / matrix.shape[1]
-        # print("optimal_weights:", optimal_weights)
+        print("optimal_weights:", optimal_weights)
 
         # 4. VIKOR
         # Weighted Normalization
@@ -233,26 +238,21 @@ class GroupBaseContainerScheduling(Scheduler):
         return norm
 
     def make_decision(self, task: Task, clock) -> int:
-        # 1. find the first-level groups
-        gid = node_id = -1
-        for k, v in self.groups_min.items():
-            # TODO FIXED ME
-            if k == 1:
-                continue
-            if self.can_run(task, self.cluster.node_list[v]):
-                gid = k
-                node_id = self.find_in_group(gid, task, True)
-                if node_id == -1:
-                    node_id = self.find_in_group(gid, task, False)
-                return node_id
+        gid = self.__find_in_first_group(task)
         if gid == -1:
-            util.print_r("first-level, not any node can run the task:", task)
+            print("first-level, can not find any node can run the task:", task)
             return -1
+        node_id = self.__find_in_second_group(gid, task, task.ai_accelerators is not None)
+        if node_id == -1:
+            node_id = self.__find_in_second_group(gid + 1, task, task.ai_accelerators is not None)
+            # print(
+            #     "second-level, can not find any node in group-{} run the task: {}".format(
+            #         gid, task
+            #     )
+            # )
+            # return -1
         return node_id
 
-
-"""
-"""
 # TODO list
 # 1. 既然考虑了数据源到节点的传输延迟，不妨也考虑节点到用户（请求源）的传输延迟？
 # 2. 调度失败导致资源利用率低
