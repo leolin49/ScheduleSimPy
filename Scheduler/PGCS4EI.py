@@ -160,9 +160,9 @@ class GroupBaseContainerScheduling(Scheduler):
             bounds=[(0.1, 0.9) for _ in range(matrix.shape[1])],
         )
 
-        # optimal_weights = result.x
-        optimal_weights = np.ones(matrix.shape[1]) / matrix.shape[1]
-        print("optimal_weights:", optimal_weights)
+        optimal_weights = result.x
+        # optimal_weights = np.ones(matrix.shape[1]) / matrix.shape[1]
+        # print("optimal_weights:", optimal_weights)
 
         # 4. VIKOR
         # Weighted Normalization

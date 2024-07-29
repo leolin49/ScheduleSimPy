@@ -66,18 +66,20 @@ def read_alibaba_task_list_csv():
             gpu_spec_str = str(row['gpu_spec'])
             if gpu_spec_str != "nan":
                 ais = gpu_spec_str.split('|')
-            task = TaskConfig(
-                task_index=task_id,
-                submit_time=random.uniform(1, 100),
-                duration=random.uniform(0.0001, 1.1432) * random.uniform(1, 1.7520 / 0.4883),
-                transmit_time=random.uniform(0.2985, 1.5926),
-                cpu=int(row['cpu_milli']) // 1000,
-                memory=int(row['memory_mib']),
-                disk=0,
-                ai_accelerators=ais,
-                ai_accelerator_num=int(row['num_gpu']),
-            )
-            task_list.append(task)
+            for i in range((task_id - 1) * 4, task_id * 4):
+                tid = i + 1
+                task = TaskConfig(
+                    task_index=tid,
+                    submit_time=random.uniform(1, 100),
+                    duration=random.uniform(0.0001, 1.1432) * random.uniform(1, 1.7520 / 0.4883),
+                    transmit_time=random.uniform(0.2985, 1.5926),
+                    cpu=int(row['cpu_milli']) // 1000,
+                    memory=int(row['memory_mib']),
+                    disk=0,
+                    ai_accelerators=ais,
+                    ai_accelerator_num=int(row['num_gpu']),
+                )
+                task_list.append(task)
     task_list.sort(key=lambda x: x.submit_time)
     return task_list
 
