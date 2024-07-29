@@ -101,7 +101,9 @@ class DataIntensiveContainerScheduling(Scheduler):
         If there are more than one node with the same RC, we randomly choose one.
         """
         ids.sort(key=lambda i: -RC[i - 1])
-        for id in ids:
-            if self.cluster.node_list[id - 1].can_run_task(task):
-                return id
+        for nid in ids:
+            ok, err = self.cluster.node_list[nid - 1].can_run_task(task)
+            if ok:
+                return nid
         return -1
+

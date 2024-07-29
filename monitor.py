@@ -25,6 +25,7 @@ class Monitor(object):
     def run(self):
         cpus = []
         mems = []
+        gpus = []
         while not self.simulator.finished:
             state = {
                 "timestamp": self.env.now,
@@ -32,6 +33,7 @@ class Monitor(object):
             }
             cpus.append(self.cluster.cpu_utilization)
             mems.append(self.cluster.mem_utilization)
+            gpus.append(self.cluster.gpu_utilization)
             self.events.append(state)
             yield self.env.timeout(1)
         # final state
@@ -43,6 +45,7 @@ class Monitor(object):
         avg_utilization = {
             "avg_cpu_utilization": sum(cpus) / len(cpus),
             "avg_mem_utilization": sum(mems) / len(mems),
+            "avg_gpu_utilization": sum(gpus) / len(gpus),
         }
         self.events.append(avg_utilization)
         self.write_to_file()

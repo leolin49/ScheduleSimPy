@@ -105,6 +105,9 @@ def read_alibaba_node_list_csv():
                     100,
                     lbs,
                     cnt,
+                    cpu_capacity // 4 * 3,
+                    mem_capacity // 4 * 3,
+                    1048576 // 2,
                 ),
             )
             node_list.append(node)

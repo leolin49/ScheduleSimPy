@@ -103,7 +103,7 @@ class GroupBaseContainerScheduling(Scheduler):
                 ),
             )
             self.groups_min[group_id] = min_id
-            # print(group_id, self.cluster.node_list[min_id - 1])
+            print(group_id, self.cluster.node_list[min_id - 1])
         print("First level group finish...")
 
     def make_second_level_group(self):
@@ -146,7 +146,7 @@ class GroupBaseContainerScheduling(Scheduler):
             # t = [1 / task.transmit_time, node.cpu, node.mem]
             t = [1 / task.transmit_time, node.gpu, node.cpu, node.mem]
             info.append(t)
-
+            
         matrix = np.array(info)
         norm_matrix = self.normalize_matrix(matrix)
         ideal = norm_matrix.max(axis=0)
@@ -160,7 +160,6 @@ class GroupBaseContainerScheduling(Scheduler):
             constraints=constraints,
             bounds=[(0.1, 0.9) for _ in range(matrix.shape[1])],
         )
-
         optimal_weights = result.x
         # optimal_weights = np.ones(matrix.shape[1]) / matrix.shape[1]
         # print("optimal_weights:", optimal_weights)
@@ -204,12 +203,17 @@ class GroupBaseContainerScheduling(Scheduler):
         # print("S:", S)
         # print("R:", R)
 
+        node_id = -1
         ranking_indices = np.argsort(Q)
         ranked_ids = [node_ids[i] for i in ranking_indices]
-        for node_id in ranked_ids:
-            if self.cluster.node_list[node_id - 1].can_run_task(task):
-                return node_id
-        return -1
+        for nid in ranked_ids:
+            ok, err = self.cluster.node_list[nid - 1].can_run_task(task)
+            if ok: 
+                node_id = nid
+                break
+        if node_id == -1:
+            node_id = self.__find_in_second_group(gid+1, task, ai_match)
+        return node_id
 
     @staticmethod
     def can_run(task: Task, node: EdgeNode) -> bool:

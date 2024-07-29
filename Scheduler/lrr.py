@@ -23,14 +23,16 @@ class LeastRequestedPriority(Scheduler):
         super(LeastRequestedPriority, self).__init__(name, env)
 
     def make_decision(self, task: Task, clock) -> int:
-        max_score = 0
-        node_id = -1
-        for node in self.cluster.node_list:
-            score = (
+        scores = [0] * self.cluster.node_num
+        ids = [i for i in range(self.cluster.node_num)]
+        for i, node in enumerate(self.cluster.node_list):
+            scores[i] = (
                 ((node.cpu / node.cpu_capacity) * 10)
                 + ((node.mem / node.mem_capacity) * 10)
             ) / 2
-            if score > max_score:
-                max_score = score
-                node_id = node.id
-        return node_id
+        ids.sort(key=lambda i: -scores[i])
+        for idx in ids:
+            ok, err = self.cluster.node_list[idx].can_run_task(task)
+            if ok:
+                return idx + 1
+        return -1

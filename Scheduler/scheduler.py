@@ -33,19 +33,10 @@ class Scheduler(object):
     def schedule(self, task: Task, clock):
         s = time.time()
         node_id = self.make_decision(task, clock)
-        if node_id == -1 or not self.cluster.node_list[node_id - 1].can_run_task(task):
+        if node_id == -1: 
             self.log.warning(
-                "now:{} task-{} schedule failed!!!".format(self.env.now, task.id)
+                "now:{:.2f} task-{} schedule failed!!!".format(self.env.now, task)
             )
-            if node_id != -1:
-                self.log.warn(
-                    "Node-{} has not enough resource to run the task-{}".format(
-                        node_id, task.id
-                    )
-                )
-            # TODO schedule failed
-            # task.submit_time += 2
-            # self.cluster.insert_task(task)
             return
         e = time.time()
         node = self.cluster.node_list[node_id - 1]
@@ -59,3 +50,4 @@ class Scheduler(object):
 
     def make_decision(self, task: Task, clock) -> int:
         pass
+

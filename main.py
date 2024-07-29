@@ -73,7 +73,6 @@ def pgcs4ei(task_configs, node_list):
     env.run()
     print("average completion time:", cluster.average_completion())
 
-
 def main():
     task_configs = rd.read_alibaba_task_list_csv()
     print("task data read finish.")
@@ -82,11 +81,14 @@ def main():
     
     print("baseline DICS is running...")
     baseline_dics(task_configs, node_list)
-    # baseline_lrr(task_configs, node_list)
-    # baseline_bra(task_configs, node_list)
+    print("baseline LRR is running...")
+    baseline_lrr(task_configs, node_list)
+    print("baseline BRA is running...")
+    baseline_bra(task_configs, node_list)
     print("PGCS is running...")
     pgcs4ei(task_configs, node_list)
 
 
 if __name__ == "__main__":
     main()
+

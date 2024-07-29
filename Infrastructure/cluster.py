@@ -26,6 +26,7 @@ class Cluster:
         self.current_disk = 0
         self.topology = Topology(self)
         self.running_task_num = 0
+        self.total_task_num = 0
 
     def add_node(self, node: EdgeNode):
         node.attach(self)
@@ -41,6 +42,7 @@ class Cluster:
         self.topology.g[node_id1].append((node_id2, weight))
 
     def add_task(self, task):
+        self.total_task_num += 1
         self.unfinished_task_queue.append(task)
 
     def insert_task(self, task):
@@ -99,10 +101,11 @@ class Cluster:
 
     @property
     def state(self) -> str:
-        return "cpu:{:.2f}% mem:{:.2f}% gpu:{:.2f}% todo_num:{} finish_num:{}".format(
+        return "cpu:{:.2f}% mem:{:.2f}% gpu:{:.2f}% todo_num:{} finish_num:{} total_num:{}".format(
             self.cpu_utilization,
             self.mem_utilization,
             self.gpu_utilization,
             len(self.unfinished_task_queue),
             len(self.finished_task_list),
+            self.total_task_num,
         )

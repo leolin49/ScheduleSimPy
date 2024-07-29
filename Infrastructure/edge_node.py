@@ -10,7 +10,6 @@ from collections import Counter
 
 import util
 
-
 class EdgeNodeConfig:
     def __init__(
         self,
@@ -125,12 +124,29 @@ class EdgeNode:
         for e in edges:
             self.edges.append((e[0], e[1]))
 
-    def can_run_task(self, task) -> bool:
+    def can_run_task(self, task) -> (bool, int):
+        gpu_ok = False
+        if task.ai_accelerators is not None:
+            for gpu in task.ai_accelerators:
+                if gpu in self.labels:
+                    gpu_ok = True
+            if not gpu_ok:
+                return False, util.ERROR_CODE_INSUFFICIENT_GPU
+
+        if self.cpu < task.cpu_consume:
+            return False, util.ERROR_CODE_INSUFFICIENT_CPU
+        if self.mem < task.mem_consume:
+            return False, util.ERROR_CODE_INSUFFICIENT_MEM
+        if self.gpu < task.ai_accelerator_num:
+            return False, util.ERROR_CODE_INSUFFICIENT_GPU
+        return True, util.ERROR_CODE_OK
+        """
         return (
             self.cpu >= task.cpu_consume
             and self.mem >= task.mem_consume
             and self.gpu >= task.ai_accelerator_num
         )
+        """
 
     def run_task(self, task):
         """
@@ -156,3 +172,4 @@ class EdgeNode:
         self.gpu += task.ai_accelerator_num
         self.container_num -= 1
         self.cluster.finished_task_list.append(task)
+
