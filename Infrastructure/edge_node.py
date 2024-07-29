@@ -17,34 +17,40 @@ class EdgeNodeConfig:
         cpu_capacity: int,
         mem_capacity: int,
         disk_capacity: int,
+        gpu_capacity: int,
         bandwidth: int,
         labels: List[str] = None,
         counts: List[int] = None,
         cpu=None,
         memory=None,
         disk=None,
+        gpu=None,
     ):
         """
         :param cpu_capacity: Cpu cores number
         :param mem_capacity: Memory capacity(MB)
         :param disk_capacity: Disk capacity(MB)
+        :param gpu_capacity: GPU cores number
         :param bandwidth: Network bandwidth(MB)
         :param labels: Hardware labels list
         :param counts: The count of Hardware in labels
         :param cpu: Available cpu cores number
         :param memory: Available memory size
         :param disk: Available disk size
+        :param gpu: Available gpu cores number
         """
         assert len(labels) == len(counts)
         self.cpu_capacity = cpu_capacity
         self.mem_capacity = mem_capacity
         self.disk_capacity = disk_capacity
         self.bandwidth = bandwidth
+        self.gpu_capacity = gpu_capacity
         self.labels = labels
         self.counts = counts
         self.cpu = cpu_capacity if cpu is None else cpu
         self.memory = mem_capacity if memory is None else memory
         self.disk = disk_capacity if disk is None else disk
+        self.gpu = gpu_capacity if gpu is None else gpu
 
 
 class EdgeNode:
@@ -57,6 +63,9 @@ class EdgeNode:
         self.disk_capacity = cfg.disk_capacity
         self.disk = cfg.disk
 
+        self.gpu_capacity = cfg.gpu_capacity
+        self.gpu = cfg.gpu
+
         self.bandwidth = cfg.bandwidth
         self.container_num = 5
         self.labels = []
@@ -66,7 +75,6 @@ class EdgeNode:
                 self.labels.append(label)
                 self.labels_count[label] = cfg.counts[i]
         self.edges = []
-
         self.cluster = None
 
     def __str__(self):
@@ -108,6 +116,10 @@ class EdgeNode:
     @property
     def disk_utilization(self) -> float:
         return (self.disk_capacity - self.disk) / self.disk_capacity * 100
+    
+    @property
+    def gpu_utilization(self) -> float:
+        return (self.gpu_capacity - self.gpu) / self.gpu_capacity * 100
 
     def add_edge(self, edges: List[Tuple]):
         for e in edges:
@@ -117,7 +129,7 @@ class EdgeNode:
         return (
             self.cpu >= task.cpu_consume
             and self.mem >= task.mem_consume
-            # and self.disk >= task.disk_consume
+            and self.gpu >= task.ai_accelerator_num
         )
 
     def run_task(self, task):
@@ -129,6 +141,7 @@ class EdgeNode:
         self.cpu -= task.cpu_consume
         self.mem -= task.mem_consume
         self.disk -= task.disk_consume
+        self.gpu -= task.ai_accelerator_num
         self.container_num += 1
 
     def stop_task(self, task):
@@ -140,5 +153,6 @@ class EdgeNode:
         self.cpu += task.cpu_consume
         self.mem += task.mem_consume
         self.disk += task.disk_consume
+        self.gpu += task.ai_accelerator_num
         self.container_num -= 1
         self.cluster.finished_task_list.append(task)

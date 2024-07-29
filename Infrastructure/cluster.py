@@ -86,10 +86,23 @@ class Cluster:
         return (self.mem_capacity - self.mem) / self.mem_capacity * 100
 
     @property
+    def gpu_capacity(self):
+        return sum([node.gpu_capacity for node in self.node_list])
+
+    @property
+    def gpu(self):
+        return sum([node.gpu for node in self.node_list])
+    
+    @property
+    def gpu_utilization(self) -> int:
+        return (self.gpu_capacity - self.gpu) / self.gpu_capacity * 100
+
+    @property
     def state(self) -> str:
-        return "cpu:{:.2f}% mem:{:.2f}% todo_num:{} finish_num:{}".format(
+        return "cpu:{:.2f}% mem:{:.2f}% gpu:{:.2f}% todo_num:{} finish_num:{}".format(
             self.cpu_utilization,
             self.mem_utilization,
+            self.gpu_utilization,
             len(self.unfinished_task_queue),
             len(self.finished_task_list),
         )

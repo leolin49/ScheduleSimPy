@@ -143,7 +143,8 @@ class GroupBaseContainerScheduling(Scheduler):
         info = []
         for node_id in node_ids:
             node = self.cluster.node_list[node_id - 1]
-            t = [1 / task.transmit_time, node.cpu, node.mem]
+            # t = [1 / task.transmit_time, node.cpu, node.mem]
+            t = [1 / task.transmit_time, node.gpu]
             info.append(t)
 
         matrix = np.array(info)
