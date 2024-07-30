@@ -43,9 +43,9 @@ class Monitor(object):
         }
         self.events.append(state)
         avg_utilization = {
-            "avg_cpu_utilization": sum(cpus) / len(cpus),
-            "avg_mem_utilization": sum(mems) / len(mems),
-            "avg_gpu_utilization": sum(gpus) / len(gpus),
+            "avg_cpu_utilization:": "{:.2f}%".format(sum(cpus) / len(cpus)),
+            "avg_mem_utilization:": "{:.2f}%".format(sum(mems) / len(mems)),
+            "avg_gpu_utilization:": "{:.2f}%".format(sum(gpus) / len(gpus)),
         }
         self.events.append(avg_utilization)
         self.write_to_file()

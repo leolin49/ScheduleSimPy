@@ -111,6 +111,6 @@ def read_alibaba_node_list_csv():
                 ),
             )
             node_list.append(node)
-        if len(node_list) == 100:
+        if len(node_list) == 200:
             break
     return node_list

@@ -109,3 +109,4 @@ class Cluster:
             len(self.finished_task_list),
             self.total_task_num,
         )
+

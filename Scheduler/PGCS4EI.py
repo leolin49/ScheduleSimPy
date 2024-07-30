@@ -137,7 +137,8 @@ class GroupBaseContainerScheduling(Scheduler):
                 if k in task.ai_accelerators:
                     node_ids.extend(v)
         if len(node_ids) == 0:
-            return -1
+            return self.__find_in_second_group(gid + 1, task, ai_match)
+            # return -1
         # print(node_ids)
         # 3. find the optimal_weights
         info = []
@@ -203,16 +204,17 @@ class GroupBaseContainerScheduling(Scheduler):
         # print("S:", S)
         # print("R:", R)
 
-        node_id = -1
         ranking_indices = np.argsort(Q)
         ranked_ids = [node_ids[i] for i in ranking_indices]
+        node_id = -1
         for nid in ranked_ids:
             ok, err = self.cluster.node_list[nid - 1].can_run_task(task)
             if ok: 
                 node_id = nid
                 break
+
         if node_id == -1:
-            node_id = self.__find_in_second_group(gid+1, task, ai_match)
+            node_id = self.__find_in_second_group(gid + 1, task, ai_match)
         return node_id
 
     @staticmethod
@@ -243,19 +245,13 @@ class GroupBaseContainerScheduling(Scheduler):
         return norm
 
     def make_decision(self, task: Task, clock) -> int:
+        """
         gid = self.__find_in_first_group(task)
         if gid == -1:
             print("first-level, can not find any node can run the task:", task)
             return -1
-        node_id = self.__find_in_second_group(gid, task, task.ai_accelerators is not None)
-        if node_id == -1:
-            node_id = self.__find_in_second_group(gid + 1, task, task.ai_accelerators is not None)
-            # print(
-            #     "second-level, can not find any node in group-{} run the task: {}".format(
-            #         gid, task
-            #     )
-            # )
-            # return -1
+        """
+        node_id = self.__find_in_second_group(1, task, task.ai_accelerators is not None)
         return node_id
 
 # TODO list

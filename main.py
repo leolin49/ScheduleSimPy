@@ -54,7 +54,7 @@ def baseline_bra(task_configs, node_list):
     sim = Simulator(env, cluster, scheduler, task_broker, monitor)
     sim.run()
     env.run()
-    print("average completion time of brr:", cluster.average_completion())
+    print("average completion time of bra:", cluster.average_completion())
 
 
 def pgcs4ei(task_configs, node_list):
@@ -81,10 +81,10 @@ def main():
     
     print("baseline DICS is running...")
     baseline_dics(task_configs, node_list)
-    print("baseline LRR is running...")
-    baseline_lrr(task_configs, node_list)
-    print("baseline BRA is running...")
-    baseline_bra(task_configs, node_list)
+    # print("baseline LRR is running...")
+    # baseline_lrr(task_configs, node_list)
+    # print("baseline BRA is running...")
+    # baseline_bra(task_configs, node_list)
     print("PGCS is running...")
     pgcs4ei(task_configs, node_list)
 

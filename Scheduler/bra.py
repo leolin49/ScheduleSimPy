@@ -26,6 +26,7 @@ class BalancedResourceAllocation(Scheduler):
         super(BalancedResourceAllocation, self).__init__(name, env)
 
     def make_decision(self, task: Task, clock) -> int:
+        print(task)
         scores = [0] * self.cluster.node_num
         ids = [i for i in range(self.cluster.node_num)]
         for i, node in enumerate(self.cluster.node_list):
