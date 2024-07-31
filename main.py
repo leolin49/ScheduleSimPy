@@ -81,8 +81,8 @@ def main():
     
     print("baseline DICS is running...")
     baseline_dics(task_configs, node_list)
-    # print("baseline LRR is running...")
-    # baseline_lrr(task_configs, node_list)
+    print("baseline LRR is running...")
+    baseline_lrr(task_configs, node_list)
     # print("baseline BRA is running...")
     # baseline_bra(task_configs, node_list)
     print("PGCS is running...")

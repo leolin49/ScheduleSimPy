@@ -60,7 +60,7 @@ def read_task_list_csv():
 
 def read_alibaba_task_list_csv():
     task_list = []
-    mul = 1 
+    mul = 2
     for chunk in pd.read_csv('Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv', chunksize=1):
         for index, row in chunk.iterrows():
             task_id = int(row['name'][-4:]) + 1
@@ -111,6 +111,6 @@ def read_alibaba_node_list_csv():
                 ),
             )
             node_list.append(node)
-        if len(node_list) == 200:
+        if len(node_list) == 100:
             break
     return node_list

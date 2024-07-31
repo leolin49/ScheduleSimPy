@@ -125,7 +125,6 @@ class EdgeNode:
             self.edges.append((e[0], e[1]))
 
     def can_run_task(self, task) -> (bool, int):
-        """
         gpu_ok = False
         if task.ai_accelerators is not None:
             for gpu in task.ai_accelerators:
@@ -133,7 +132,6 @@ class EdgeNode:
                     gpu_ok = True
             if not gpu_ok:
                 return False, util.ERROR_CODE_INSUFFICIENT_GPU
-        """
 
         if self.cpu < task.cpu_consume:
             return False, util.ERROR_CODE_INSUFFICIENT_CPU

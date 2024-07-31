@@ -26,7 +26,6 @@ class BalancedResourceAllocation(Scheduler):
         super(BalancedResourceAllocation, self).__init__(name, env)
 
     def make_decision(self, task: Task, clock) -> int:
-        print(task)
         scores = [0] * self.cluster.node_num
         ids = [i for i in range(self.cluster.node_num)]
         for i, node in enumerate(self.cluster.node_list):
@@ -38,7 +37,7 @@ class BalancedResourceAllocation(Scheduler):
             ) / self.cluster.mem_capacity
             scores[i] = (1 - abs(a - b)) * 10
         ids.sort(key=lambda i: -scores[i])
-        for idx in ids:
+        for idx in ids[:1]:
             ok, err = self.cluster.node_list[idx].can_run_task(task)
             if ok:
                 return idx + 1

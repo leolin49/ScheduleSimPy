@@ -21,6 +21,7 @@ from scipy.optimize import minimize
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
 from collections import defaultdict
+from pulp import LpMaximize, LpMinimize, LpProblem, LpVariable
 
 import util
 from Task.task import Task
@@ -36,6 +37,8 @@ class GroupBaseContainerScheduling(Scheduler):
         self.groups = dict()
         self.groups2 = dict()  # {'group_id': {'ai_label': [node_id1, node_id2]}}
         self.groups_min = dict()  # min(CPU,MEM) in one group
+        self.BWM_WEIGHT = self.__best_worst_method_get_weights()
+        print("Best-Worst Method Weights = ", self.BWM_WEIGHT)
 
     def make_first_level_group(self):
         data = []
@@ -124,9 +127,7 @@ class GroupBaseContainerScheduling(Scheduler):
                 return gid
         return -1
 
-    def __find_in_second_group(self, gid: int, task: Task, ai_match: bool) -> int:
-        if gid > 3:
-            return -1
+    def __find_in_second_group(self, gid: int, task: Task, ai_match: bool):
         # 2. find the second-level groups
         node_ids = []
         if not ai_match:
@@ -136,10 +137,9 @@ class GroupBaseContainerScheduling(Scheduler):
             for k, v in self.groups2[gid].items():
                 if k in task.ai_accelerators:
                     node_ids.extend(v)
-        if len(node_ids) == 0:
-            return self.__find_in_second_group(gid + 1, task, ai_match)
-            # return -1
-        # print(node_ids)
+        return node_ids
+
+    def __vikor(self, node_ids, task) -> int:
         # 3. find the optimal_weights
         info = []
         for node_id in node_ids:
@@ -212,9 +212,6 @@ class GroupBaseContainerScheduling(Scheduler):
             if ok: 
                 node_id = nid
                 break
-
-        if node_id == -1:
-            node_id = self.__find_in_second_group(gid + 1, task, ai_match)
         return node_id
 
     @staticmethod
@@ -244,16 +241,83 @@ class GroupBaseContainerScheduling(Scheduler):
         norm = (m - min_vals) / ranges
         return norm
 
+    @staticmethod
+    def __best_worst_method_get_weights():
+        a = [
+            [0, 0, 0, 0, 0],
+            [0, 1, 2, 4, 5],
+            [0, 0, 1, 0, 3],
+            [0, 0, 0, 1, 2],
+            [0, 0, 0, 0, 1],
+        ]
+
+        problem = LpProblem("BWM Objective", LpMinimize)
+
+        ks = LpVariable("ks", lowBound=0)
+        w1 = LpVariable("w1", lowBound=0)
+        w2 = LpVariable("w2", lowBound=0)
+        w3 = LpVariable("w3", lowBound=0)
+        w4 = LpVariable("w4", lowBound=0)
+        # min ks
+        problem += ks, "Objective"
+        # |wB/wj - aBj| <= ks, for all j
+        # |wj/wW - ajW| <= ks, for all j
+        # problem += abs(w1/w2-a[1][2]) <= ks, "Constraint 1"
+        # problem += abs(w1/w3-a[1][3]) <= ks, "Constraint 2"
+        # problem += abs(w1/w4-a[1][4]) <= ks, "Constraint 3"
+        # problem += abs(w2/w4-a[2][4]) <= ks, "Constraint 4"
+        # problem += abs(w3/w4-a[3][4]) <= ks, "Constraint 5"
+        for j, (wA, wB, aVal) in enumerate([(w1, w2, a[1][2]), (w1, w3, a[1][3]), (w1, w4, a[1][4]), (w2, w4, a[2][4]), (w3, w4, a[3][4])], 1):
+            u = LpVariable(f"u{j}", lowBound=0)
+            problem += wA - aVal * wB <= ks, f"Constraint {2*j-1}"
+            problem += -wA + aVal * wB <= ks, f"Constraint {2*j}"
+        # w1 + ... + wj == 1 
+        problem += w1 + w2 + w3 + w4 == 1, "Constraint sum 1"
+
+        problem.solve()
+        return np.array([w1.value(), w2.value(), w3.value(), w4.value()])
+
+    def __best_worst_method(self, node_ids, task) -> int:
+        info = []
+        ids = []
+        for node_id in node_ids:
+            node = self.cluster.node_list[node_id - 1]
+            t = [1 / task.transmit_time, node.gpu, node.cpu, node.mem]
+            info.append(t)
+            ids.append(node.id)
+        matrix = np.array(info)
+        norm_matrix = self.normalize_matrix(matrix)
+        weights = self.BWM_WEIGHT 
+        weights_matrix = matrix * weights
+        row_sums = np.sum(weights_matrix, axis=1)
+        ids = np.array(ids) 
+        sorted_indices = np.argsort(row_sums)[::-1]
+        sorted_ids = ids[sorted_indices]
+        for node_id in ids:
+            node = self.cluster.node_list[node_id - 1]
+            ok, err = node.can_run_task(task)
+            if ok:
+                return node_id
+        return -1
+
     def make_decision(self, task: Task, clock) -> int:
-        """
         gid = self.__find_in_first_group(task)
         if gid == -1:
-            print("first-level, can not find any node can run the task:", task)
+            # print("first-level, can not find any node can run the task:", task)
             return -1
-        """
-        node_id = self.__find_in_second_group(1, task, task.ai_accelerators is not None)
+        node_id = -1
+        while gid <= 3:
+            node_ids = self.__find_in_second_group(gid, task, task.ai_accelerators is not None)
+            if len(node_ids) == 0:
+                # print("second-level group_id:{} can not find any node can run the task: {}".format(gid, task))
+                gid += 1
+                continue
+            # node_id = self.__vikor(node_ids, task)
+            node_id = self.__best_worst_method(node_ids, task)
+            if node_id == -1:
+                # print("second-level group_id:{} have not enough resource to run the task: {}".format(gid, task))
+                gid += 1
+            else:
+                break
         return node_id
 
-# TODO list
-# 1. 既然考虑了数据源到节点的传输延迟，不妨也考虑节点到用户（请求源）的传输延迟？
-# 2. 调度失败导致资源利用率低

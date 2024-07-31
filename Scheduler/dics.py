@@ -18,12 +18,21 @@ class DataIntensiveContainerScheduling(Scheduler):
         self.W = [0.2, 0.2, 0.2, 0.2, 0.2]
         self.criteria_num = len(self.F1)
 
+    @staticmethod
+    def can_run(task: Task, node) -> bool:
+        return (
+            task.cpu_consume <= node.cpu_capacity
+            and task.mem_consume <= node.mem_capacity
+        )
+    
     def make_decision(self, task: Task, clock) -> int:
         # prepare
         esp = 1e-6
         ids = []
         info = []
         for node in self.cluster.node_list:
+            if not self.can_run(task, node):
+                continue
             ids.append(node.id)
             info.append(
                 [
@@ -100,8 +109,10 @@ class DataIntensiveContainerScheduling(Scheduler):
         The node with the highest value of RC is the target node to execute container. 
         If there are more than one node with the same RC, we randomly choose one.
         """
-        ids.sort(key=lambda i: -RC[i - 1])
-        for nid in ids:
+        combined = list(zip(ids, RC))
+        sorted_combined = sorted(combined, key=lambda x: x[1], reverse=True)
+        sorted_ids = [id for id, _ in sorted_combined]
+        for nid in sorted_ids[:1]:
             ok, err = self.cluster.node_list[nid - 1].can_run_task(task)
             if ok:
                 return nid

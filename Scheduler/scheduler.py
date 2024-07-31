@@ -17,6 +17,7 @@ class Scheduler(object):
         self.env = env
         self.simulator = None
         self.cluster = None
+        self.scheduled_task_num = 0
         self.log = util.new_logger("./Log/" + name + ".Log", name)
 
     def attach(self, simulator):
@@ -28,7 +29,7 @@ class Scheduler(object):
             if len(self.cluster.unfinished_task_queue) > 0:
                 task = self.cluster.unfinished_task_queue.popleft()
                 self.schedule(task, self.env.now)
-            yield self.env.timeout(0.00001)
+            yield self.env.timeout(1e-3)
 
     def schedule(self, task: Task, clock):
         s = time.time()
@@ -47,6 +48,9 @@ class Scheduler(object):
             )
         )
         self.cluster.running_task_num += 1
+        self.scheduled_task_num += 1
+        if self.scheduled_task_num % 1000 == 0:
+            print(f"now:{self.env.now} {self.scheduled_task_num} task is scheduled successfully.")
 
     def make_decision(self, task: Task, clock) -> int:
         pass

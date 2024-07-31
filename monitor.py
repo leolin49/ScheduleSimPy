@@ -35,7 +35,7 @@ class Monitor(object):
             mems.append(self.cluster.mem_utilization)
             gpus.append(self.cluster.gpu_utilization)
             self.events.append(state)
-            yield self.env.timeout(1)
+            yield self.env.timeout(0.2)
         # final state
         state = {
             "timestamp": self.env.now,
