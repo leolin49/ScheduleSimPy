@@ -51,7 +51,7 @@ def read_task_list_csv():
                 int(row["cpu"]),
                 float(row["memory"]),
                 float(row["disk"]),
-                str(row["ai_accelerator"]).split('|'),
+                str(row["ai_accelerator"]).split("|"),
                 1,
             )
             task_list.append(task)
@@ -61,25 +61,28 @@ def read_task_list_csv():
 def read_alibaba_task_list_csv():
     task_list = []
     mul = 2
-    for chunk in pd.read_csv('Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv', chunksize=1):
+    for chunk in pd.read_csv(
+        "Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv", chunksize=1
+    ):
         for index, row in chunk.iterrows():
-            task_id = int(row['name'][-4:]) + 1
+            task_id = int(row["name"][-4:]) + 1
             ais = None
-            gpu_spec_str = str(row['gpu_spec'])
+            gpu_spec_str = str(row["gpu_spec"])
             if gpu_spec_str != "nan":
-                ais = gpu_spec_str.split('|')
+                ais = gpu_spec_str.split("|")
             for i in range((task_id - 1) * mul, task_id * mul):
                 tid = i + 1
                 task = TaskConfig(
                     task_index=tid,
                     submit_time=random.uniform(1, 100),
-                    duration=random.uniform(0.0001, 1.1432) * random.uniform(1, 1.7520 / 0.4883),
+                    duration=random.uniform(0.0001, 1.1432)
+                    * random.uniform(1, 1.7520 / 0.4883),
                     transmit_time=random.uniform(0.2985, 1.5926),
-                    cpu=int(row['cpu_milli']) // 1000,
-                    memory=int(row['memory_mib']),
+                    cpu=int(row["cpu_milli"]) // 1000,
+                    memory=int(row["memory_mib"]),
                     disk=0,
                     ai_accelerators=ais,
-                    ai_accelerator_num=int(row['num_gpu']),
+                    ai_accelerator_num=int(row["num_gpu"]),
                 )
                 task_list.append(task)
     task_list.sort(key=lambda x: x.submit_time)
@@ -88,20 +91,22 @@ def read_alibaba_task_list_csv():
 
 def read_alibaba_node_list_csv():
     node_list = []
-    for chunk in pd.read_csv("Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_gpu_node.csv", chunksize=1):
+    for chunk in pd.read_csv(
+        "Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_gpu_node.csv", chunksize=1
+    ):
         for index, row in chunk.iterrows():
-            node_id = int(row['sn'][-4:]) + 1
-            cpu_capacity = int(row['cpu_milli']) // 1000
-            mem_capacity = int(row['memory_mib'])
-            lbs = row['model'].split(',')
-            cnt = [int(c) for c in str(row['gpu']).split(',')]
+            node_id = int(row["sn"][-4:]) + 1
+            cpu_capacity = int(row["cpu_milli"]) // 1000
+            mem_capacity = int(row["memory_mib"])
+            lbs = row["model"].split(",")
+            cnt = [int(c) for c in str(row["gpu"]).split(",")]
             node = EdgeNode(
                 node_id,
                 EdgeNodeConfig(
                     cpu_capacity,
                     mem_capacity,
-                    1048576,    # 1TB
-                    int(row['gpu']),
+                    1048576,  # 1TB
+                    int(row["gpu"]),
                     100,
                     lbs,
                     cnt,

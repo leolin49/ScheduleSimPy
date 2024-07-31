@@ -75,6 +75,3 @@ if NEW_TASK_DATA:
                 task.rely_data,
             ]
             writer.writerow(data)
-
-
-

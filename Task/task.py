@@ -120,7 +120,9 @@ class Task:
         if not ok:
             addition_time = 3 
         """
-        yield self.env.timeout(self.duration * addition_time + decision_time + self.transmit_time)
+        yield self.env.timeout(
+            self.duration * addition_time + decision_time + self.transmit_time
+        )
         node.stop_task(self)
         self._finished = True
         self.finished_timestamp = self.env.now

@@ -10,6 +10,7 @@ from collections import Counter
 
 import util
 
+
 class EdgeNodeConfig:
     def __init__(
         self,
@@ -115,7 +116,7 @@ class EdgeNode:
     @property
     def disk_utilization(self) -> float:
         return (self.disk_capacity - self.disk) / self.disk_capacity * 100
-    
+
     @property
     def gpu_utilization(self) -> float:
         return (self.gpu_capacity - self.gpu) / self.gpu_capacity * 100
@@ -172,4 +173,3 @@ class EdgeNode:
         self.gpu += task.ai_accelerator_num
         self.container_num -= 1
         self.cluster.finished_task_list.append(task)
-

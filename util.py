@@ -69,6 +69,7 @@ ERROR_CODE_INSUFFICIENT_CPU = 300
 ERROR_CODE_INSUFFICIENT_MEM = 301
 ERROR_CODE_INSUFFICIENT_GPU = 302
 
+
 def print_g(args, sep=" ", end="\n", file=None):
     print(Color.GREEN + args + Color.END, sep, end, file)
 
@@ -101,4 +102,3 @@ def new_logger(log_file_path: str, name="Unknown Log name"):
         filemode="w",  # rewrite the Log file
     )
     return logger
-

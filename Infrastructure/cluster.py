@@ -94,7 +94,7 @@ class Cluster:
     @property
     def gpu(self):
         return sum([node.gpu for node in self.node_list])
-    
+
     @property
     def gpu_utilization(self) -> int:
         return (self.gpu_capacity - self.gpu) / self.gpu_capacity * 100
@@ -109,4 +109,3 @@ class Cluster:
             len(self.finished_task_list),
             self.total_task_num,
         )
-

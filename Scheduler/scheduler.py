@@ -34,7 +34,7 @@ class Scheduler(object):
     def schedule(self, task: Task, clock):
         s = time.time()
         node_id = self.make_decision(task, clock)
-        if node_id == -1: 
+        if node_id == -1:
             self.log.warning(
                 "now:{:.2f} task-{} schedule failed!!!".format(self.env.now, task)
             )
@@ -50,8 +50,9 @@ class Scheduler(object):
         self.cluster.running_task_num += 1
         self.scheduled_task_num += 1
         if self.scheduled_task_num % 1000 == 0:
-            print(f"now:{self.env.now} {self.scheduled_task_num} task is scheduled successfully.")
+            print(
+                f"now:{self.env.now} {self.scheduled_task_num} task is scheduled successfully."
+            )
 
     def make_decision(self, task: Task, clock) -> int:
         pass
-

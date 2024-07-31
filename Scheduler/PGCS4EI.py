@@ -4,7 +4,7 @@
 #
 # Time    : 2024/5/28 15:49
 # Author  : linyf49@qq.com
-# File    : PGCS4EI.py.py
+# File    : PGCS4EI.py
 """
 step1. Use K-means to decide each node in which group.
 step2. Maintain the hash_map for group_id and node_ids.
@@ -36,7 +36,8 @@ class GroupBaseContainerScheduling(Scheduler):
         super(GroupBaseContainerScheduling, self).__init__(name, env)
         self.groups = dict()
         self.groups2 = dict()  # {'group_id': {'ai_label': [node_id1, node_id2]}}
-        self.groups_min = dict()  # min(CPU,MEM) in one group
+        self.groups_min = dict()  # min(CPU,MEM) in one group {'group_id': 'min_node_id'}
+
         self.BWM_WEIGHT = self.__best_worst_method_get_weights()
         print("Best-Worst Method Weights = ", self.BWM_WEIGHT)
 
@@ -117,7 +118,11 @@ class GroupBaseContainerScheduling(Scheduler):
                 for label in node.labels:
                     if label in util.AI_LABEL:
                         self.groups2[group_id][label].append(node_id)
-            print("group_id: {}, second group keys: {}".format(group_id, self.groups2[group_id].keys()))
+            print(
+                "group_id: {}, second group keys: {}".format(
+                    group_id, self.groups2[group_id].keys()
+                )
+            )
         print("Second level group finish...")
 
     def __find_in_first_group(self, task: Task) -> int:
@@ -147,7 +152,7 @@ class GroupBaseContainerScheduling(Scheduler):
             # t = [1 / task.transmit_time, node.cpu, node.mem]
             t = [1 / task.transmit_time, node.gpu, node.cpu, node.mem]
             info.append(t)
-            
+
         matrix = np.array(info)
         norm_matrix = self.normalize_matrix(matrix)
         ideal = norm_matrix.max(axis=0)
@@ -209,7 +214,7 @@ class GroupBaseContainerScheduling(Scheduler):
         node_id = -1
         for nid in ranked_ids:
             ok, err = self.cluster.node_list[nid - 1].can_run_task(task)
-            if ok: 
+            if ok:
                 node_id = nid
                 break
         return node_id
@@ -242,6 +247,53 @@ class GroupBaseContainerScheduling(Scheduler):
         return norm
 
     @staticmethod
+    def __fuzzy_best_worst_method_get_weights():
+        lv = []
+        lv.append((0,0,0))
+        lv.append((1,1,1))     # Equally importance
+        lv.append((2/3,1,3/2)) # Weakly important
+        lv.append((3/2,2,5/2)) # Fairly Important
+        lv.append((5/2,3,7/2)) # Very important
+        lv.append((7/2,4,9/2)) # Absolutely important
+        # GPU > Delay > MEM > CPU
+        a = [
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 3, 0],
+            [0, 2, 1, 4, 3],
+            [0, 0, 0, 1, 0],
+            [0, 0, 0, 2, 0],
+        ]
+        def GMIR(tp) -> float:
+            return (tp[0] + tp[1]*4 + tp[2]) / 6 
+        for i, row in enumerate(a):
+            for j, x in enumerate(row):
+                if x != 0:
+                    a[i][j] = GMIR(a[i][j]);    
+        problem = LpProblem("BWM Objective", LpMinimize)
+        ks = LpVariable("ks", lowBound=0)
+        w1 = LpVariable("w1", lowBound=0)
+        w2 = LpVariable("w2", lowBound=0)
+        w3 = LpVariable("w3", lowBound=0)
+        w4 = LpVariable("w4", lowBound=0)
+        problem += ks, "Objective"
+        for j, (wA, wB, aVal) in enumerate(
+            [
+                (w2, w1, a[2][1]),
+                (w2, w4, a[2][4]),
+                (w2, w3, a[2][3]),
+                (w1, w3, a[1][3]),
+                (w4, w3, a[4][3]),
+            ],
+            1,
+        ):
+            u = LpVariable(f"u{j}", lowBound=0)
+            problem += wA - aVal * wB <= ks, f"Constraint {2*j-1}"
+            problem += -wA + aVal * wB <= ks, f"Constraint {2*j}"
+        problem += w1 + w2 + w3 + w4 == 1, "Constraint sum 1"
+        problem.solve()
+        return np.array([w1.value(), w2.value(), w3.value(), w4.value()])
+
+    @staticmethod
     def __best_worst_method_get_weights():
         a = [
             [0, 0, 0, 0, 0],
@@ -267,11 +319,20 @@ class GroupBaseContainerScheduling(Scheduler):
         # problem += abs(w1/w4-a[1][4]) <= ks, "Constraint 3"
         # problem += abs(w2/w4-a[2][4]) <= ks, "Constraint 4"
         # problem += abs(w3/w4-a[3][4]) <= ks, "Constraint 5"
-        for j, (wA, wB, aVal) in enumerate([(w1, w2, a[1][2]), (w1, w3, a[1][3]), (w1, w4, a[1][4]), (w2, w4, a[2][4]), (w3, w4, a[3][4])], 1):
+        for j, (wA, wB, aVal) in enumerate(
+            [
+                (w1, w2, a[1][2]),
+                (w1, w3, a[1][3]),
+                (w1, w4, a[1][4]),
+                (w2, w4, a[2][4]),
+                (w3, w4, a[3][4]),
+            ],
+            1,
+        ):
             u = LpVariable(f"u{j}", lowBound=0)
             problem += wA - aVal * wB <= ks, f"Constraint {2*j-1}"
             problem += -wA + aVal * wB <= ks, f"Constraint {2*j}"
-        # w1 + ... + wj == 1 
+        # w1 + ... + wj == 1
         problem += w1 + w2 + w3 + w4 == 1, "Constraint sum 1"
 
         problem.solve()
@@ -282,15 +343,15 @@ class GroupBaseContainerScheduling(Scheduler):
         ids = []
         for node_id in node_ids:
             node = self.cluster.node_list[node_id - 1]
-            t = [1 / task.transmit_time, node.gpu, node.cpu, node.mem]
+            t = [1 / task.transmit_time, node.gpu_utilization, node.cpu_utilization, node.mem_utilization]
             info.append(t)
             ids.append(node.id)
         matrix = np.array(info)
         norm_matrix = self.normalize_matrix(matrix)
-        weights = self.BWM_WEIGHT 
+        weights = self.BWM_WEIGHT
         weights_matrix = matrix * weights
         row_sums = np.sum(weights_matrix, axis=1)
-        ids = np.array(ids) 
+        ids = np.array(ids)
         sorted_indices = np.argsort(row_sums)[::-1]
         sorted_ids = ids[sorted_indices]
         for node_id in ids:
@@ -307,7 +368,9 @@ class GroupBaseContainerScheduling(Scheduler):
             return -1
         node_id = -1
         while gid <= 3:
-            node_ids = self.__find_in_second_group(gid, task, task.ai_accelerators is not None)
+            node_ids = self.__find_in_second_group(
+                gid, task, task.ai_accelerators is not None
+            )
             if len(node_ids) == 0:
                 # print("second-level group_id:{} can not find any node can run the task: {}".format(gid, task))
                 gid += 1
@@ -320,4 +383,3 @@ class GroupBaseContainerScheduling(Scheduler):
             else:
                 break
         return node_id
-

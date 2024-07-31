@@ -36,7 +36,7 @@ def baseline_lrr(task_configs, node_list):
     for node in node_list:
         cluster.add_node(node)
     scheduler = lrr.LeastRequestedPriority("lrr", env)
-    monitor = Monitor(env, 'lrr')
+    monitor = Monitor(env, "lrr")
     sim = Simulator(env, cluster, scheduler, task_broker, monitor)
     sim.run()
     env.run()
@@ -50,7 +50,7 @@ def baseline_bra(task_configs, node_list):
     for node in node_list:
         cluster.add_node(node)
     scheduler = bra.BalancedResourceAllocation("bra", env)
-    monitor = Monitor(env, 'bra')
+    monitor = Monitor(env, "bra")
     sim = Simulator(env, cluster, scheduler, task_broker, monitor)
     sim.run()
     env.run()
@@ -65,7 +65,7 @@ def pgcs4ei(task_configs, node_list):
         cluster.add_node(node)
 
     scheduler = PGCS4EI.GroupBaseContainerScheduling("pgcs4ei", env)
-    monitor = Monitor(env, 'pgcs4ei')
+    monitor = Monitor(env, "pgcs4ei")
     sim = Simulator(env, cluster, scheduler, task_broker, monitor)
     scheduler.make_first_level_group()
     scheduler.make_second_level_group()
@@ -73,12 +73,13 @@ def pgcs4ei(task_configs, node_list):
     env.run()
     print("average completion time:", cluster.average_completion())
 
+
 def main():
     task_configs = rd.read_alibaba_task_list_csv()
     print("task data read finish.")
     node_list = rd.read_alibaba_node_list_csv()
     print("node data read finish.")
-    
+
     print("baseline DICS is running...")
     baseline_dics(task_configs, node_list)
     print("baseline LRR is running...")
@@ -91,4 +92,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

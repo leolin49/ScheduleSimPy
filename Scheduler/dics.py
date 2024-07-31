@@ -24,7 +24,7 @@ class DataIntensiveContainerScheduling(Scheduler):
             task.cpu_consume <= node.cpu_capacity
             and task.mem_consume <= node.mem_capacity
         )
-    
+
     def make_decision(self, task: Task, clock) -> int:
         # prepare
         esp = 1e-6
@@ -62,7 +62,8 @@ class DataIntensiveContainerScheduling(Scheduler):
         """
         tmp = [sqrt(sum(info[i][j] ** 2 for i in range(k))) for j in range(c)]
         E = [
-            [(info[i][j] / (tmp[j] + esp) if tmp[j] else 0) for j in range(c)] for i in range(k)
+            [(info[i][j] / (tmp[j] + esp) if tmp[j] else 0) for j in range(c)]
+            for i in range(k)
         ]
         """
         Step 3.
@@ -117,4 +118,3 @@ class DataIntensiveContainerScheduling(Scheduler):
             if ok:
                 return nid
         return -1
-
