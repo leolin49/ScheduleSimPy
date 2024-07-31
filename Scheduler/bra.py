@@ -20,6 +20,7 @@ Score = [1 - abs(R_cpu / C_cpu - R_mem / C_mem)] * 10
 from Scheduler.scheduler import Scheduler
 from Task.task import Task
 
+import util
 
 class BalancedResourceAllocation(Scheduler):
     def __init__(self, name: str, env):

@@ -94,11 +94,8 @@ def new_logger(log_file_path: str, name="Unknown Log name"):
     :return: logging object by default config
     """
     logger = logging.getLogger(name)
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s-%(name)s-%(lineno)s-%(levelname)s - %(message)s",
-        filename=log_file_path,
-        # filemode="a",  # append at the end of Log file
-        filemode="w",  # rewrite the Log file
-    )
+    logger.propagate = False
+    handler = logging.FileHandler(log_file_path)
+    logger.addHandler(handler)
     return logger
+

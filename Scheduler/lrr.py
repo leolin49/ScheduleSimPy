@@ -17,6 +17,7 @@ Score = [(C_cpu-U_cpu)/C_cpu*10 + (C_mem-U_mem)/C_mem*10] / 2
 from Scheduler.scheduler import Scheduler
 from Task.task import Task
 
+import util
 
 class LeastRequestedPriority(Scheduler):
     def __init__(self, name: str, env):

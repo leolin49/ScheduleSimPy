@@ -12,7 +12,14 @@ from simulator import Simulator
 from Task.broker import Broker
 from Rd import csv_reader as rd
 from monitor import Monitor
+import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s-%(name)s-%(lineno)s-%(levelname)s - %(message)s",
+    # filemode="a",  # append at the end of Log file
+    filemode="w",  # rewrite the Log file
+)
 
 def baseline_dics(task_configs, node_list):
     env = Environment()
@@ -80,10 +87,10 @@ def main():
     node_list = rd.read_alibaba_node_list_csv()
     print("node data read finish.")
 
-    print("baseline DICS is running...")
-    baseline_dics(task_configs, node_list)
     print("baseline LRR is running...")
     baseline_lrr(task_configs, node_list)
+    print("baseline DICS is running...")
+    baseline_dics(task_configs, node_list)
     # print("baseline BRA is running...")
     # baseline_bra(task_configs, node_list)
     print("PGCS is running...")

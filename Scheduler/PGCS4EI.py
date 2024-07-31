@@ -307,7 +307,7 @@ class GroupBaseContainerScheduling(Scheduler):
             [0, 0, 0, 0, 1],
         ]
 
-        problem = LpProblem("BWM Objective", LpMinimize)
+        problem = LpProblem("BWM_Objective", LpMinimize)
 
         ks = LpVariable("ks", lowBound=0)
         w1 = LpVariable("w1", lowBound=0)
@@ -337,7 +337,7 @@ class GroupBaseContainerScheduling(Scheduler):
             problem += wA - aVal * wB <= ks, f"Constraint {2*j-1}"
             problem += -wA + aVal * wB <= ks, f"Constraint {2*j}"
         # w1 + ... + wj == 1
-        problem += w1 + w2 + w3 + w4 == 1, "Constraint sum 1"
+        problem += w1 + w2 + w3 + w4 == 1, "Constraint sum1"
 
         problem.solve()
         return np.array([w1.value(), w2.value(), w3.value(), w4.value()])

@@ -10,6 +10,7 @@ from math import sqrt
 from Scheduler.scheduler import Scheduler
 from Task.task import Task
 
+import util
 
 class DataIntensiveContainerScheduling(Scheduler):
     def __init__(self, name: str, env):

@@ -18,7 +18,8 @@ class Scheduler(object):
         self.simulator = None
         self.cluster = None
         self.scheduled_task_num = 0
-        self.log = util.new_logger("./Log/" + name + ".Log", name)
+        log_path = "./Log/{}.Log".format(name)
+        self.log = util.new_logger(log_path, name)
 
     def attach(self, simulator):
         self.simulator = simulator
