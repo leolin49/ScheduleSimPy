@@ -111,15 +111,8 @@ class Task:
     def run(self, node, decision_time):
         # MakeSpan = Task duration time + Schedule decision time
         addition_time = 1
-        """
-        ok = False
-        if self.ai_accelerators is not None:
-            for x in self.ai_accelerators:
-                if x in node.labels:
-                    ok = True
-        if not ok:
-            addition_time = 3 
-        """
+        if not node.gpu_match(self):
+            addition_time = 3
         yield self.env.timeout(
             self.duration * addition_time + decision_time + self.transmit_time
         )

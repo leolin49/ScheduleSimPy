@@ -60,7 +60,7 @@ def read_task_list_csv():
 
 def read_alibaba_task_list_csv():
     task_list = []
-    mul = 2
+    mul = 3
     for chunk in pd.read_csv(
         "Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv", chunksize=1
     ):

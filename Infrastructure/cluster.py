@@ -55,6 +55,8 @@ class Cluster:
     def average_completion(self) -> float:
         total_time = 0
         task_num = len(self.finished_task_list)
+        if task_num == 0:
+            return 0
         for task in self.finished_task_list:
             total_time += task.finished_timestamp - task.started_timestamp
         return total_time / task_num

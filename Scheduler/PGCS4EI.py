@@ -36,7 +36,9 @@ class GroupBaseContainerScheduling(Scheduler):
         super(GroupBaseContainerScheduling, self).__init__(name, env)
         self.groups = dict()
         self.groups2 = dict()  # {'group_id': {'ai_label': [node_id1, node_id2]}}
-        self.groups_min = dict()  # min(CPU,MEM) in one group {'group_id': 'min_node_id'}
+        self.groups_min = (
+            dict()
+        )  # min(CPU,MEM) in one group {'group_id': 'min_node_id'}
 
         self.BWM_WEIGHT = self.__best_worst_method_get_weights()
         print("Best-Worst Method Weights = ", self.BWM_WEIGHT)
@@ -249,12 +251,12 @@ class GroupBaseContainerScheduling(Scheduler):
     @staticmethod
     def __fuzzy_best_worst_method_get_weights():
         lv = []
-        lv.append((0,0,0))
-        lv.append((1,1,1))     # Equally importance
-        lv.append((2/3,1,3/2)) # Weakly important
-        lv.append((3/2,2,5/2)) # Fairly Important
-        lv.append((5/2,3,7/2)) # Very important
-        lv.append((7/2,4,9/2)) # Absolutely important
+        lv.append((0, 0, 0))
+        lv.append((1, 1, 1))  # Equally importance
+        lv.append((2 / 3, 1, 3 / 2))  # Weakly important
+        lv.append((3 / 2, 2, 5 / 2))  # Fairly Important
+        lv.append((5 / 2, 3, 7 / 2))  # Very important
+        lv.append((7 / 2, 4, 9 / 2))  # Absolutely important
         # GPU > Delay > MEM > CPU
         a = [
             [0, 0, 0, 0, 0],
@@ -263,12 +265,14 @@ class GroupBaseContainerScheduling(Scheduler):
             [0, 0, 0, 1, 0],
             [0, 0, 0, 2, 0],
         ]
+
         def GMIR(tp) -> float:
-            return (tp[0] + tp[1]*4 + tp[2]) / 6 
+            return (tp[0] + tp[1] * 4 + tp[2]) / 6
+
         for i, row in enumerate(a):
             for j, x in enumerate(row):
                 if x != 0:
-                    a[i][j] = GMIR(a[i][j]);    
+                    a[i][j] = GMIR(a[i][j])
         problem = LpProblem("BWM Objective", LpMinimize)
         ks = LpVariable("ks", lowBound=0)
         w1 = LpVariable("w1", lowBound=0)
@@ -343,7 +347,12 @@ class GroupBaseContainerScheduling(Scheduler):
         ids = []
         for node_id in node_ids:
             node = self.cluster.node_list[node_id - 1]
-            t = [1 / task.transmit_time, node.gpu_utilization, node.cpu_utilization, node.mem_utilization]
+            t = [
+                1 / task.transmit_time,
+                node.gpu_utilization,
+                node.cpu_utilization,
+                node.mem_utilization,
+            ]
             info.append(t)
             ids.append(node.id)
         matrix = np.array(info)

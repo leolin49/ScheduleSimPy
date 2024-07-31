@@ -113,7 +113,7 @@ class DataIntensiveContainerScheduling(Scheduler):
         combined = list(zip(ids, RC))
         sorted_combined = sorted(combined, key=lambda x: x[1], reverse=True)
         sorted_ids = [id for id, _ in sorted_combined]
-        for nid in sorted_ids[:1]:
+        for nid in sorted_ids:
             ok, err = self.cluster.node_list[nid - 1].can_run_task(task)
             if ok:
                 return nid
