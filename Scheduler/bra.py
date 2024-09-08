@@ -38,7 +38,7 @@ class BalancedResourceAllocation(Scheduler):
             ) / self.cluster.mem_capacity
             scores[i] = (1 - abs(a - b)) * 10
         ids.sort(key=lambda i: -scores[i])
-        for idx in ids[:1]:
+        for idx in ids:
             ok, err = self.cluster.node_list[idx].can_run_task(task)
             if ok:
                 return idx + 1

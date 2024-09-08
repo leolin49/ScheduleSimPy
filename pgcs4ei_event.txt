@@ -1,1182 +1,2099 @@
 [
     {
         "timestamp": 0,
-        "cluster_state": "cpu:0.00% mem:0.00% todo_num:0 finish_num:0"
+        "cluster_state": "cpu:25.00% mem:25.00% gpu:0.00% todo_num:0 finish_num:0 total_num:0"
     },
     {
-        "timestamp": 1,
-        "cluster_state": "cpu:0.00% mem:0.00% todo_num:0 finish_num:0"
+        "timestamp": 0.2,
+        "cluster_state": "cpu:25.00% mem:25.00% gpu:0.00% todo_num:0 finish_num:0 total_num:0"
     },
     {
-        "timestamp": 2,
-        "cluster_state": "cpu:0.67% mem:0.52% todo_num:0 finish_num:0"
+        "timestamp": 0.4,
+        "cluster_state": "cpu:25.00% mem:25.00% gpu:0.00% todo_num:0 finish_num:0 total_num:0"
     },
     {
-        "timestamp": 3,
-        "cluster_state": "cpu:1.49% mem:1.15% todo_num:5 finish_num:0"
+        "timestamp": 0.6000000000000001,
+        "cluster_state": "cpu:25.00% mem:25.00% gpu:0.00% todo_num:0 finish_num:0 total_num:0"
     },
     {
-        "timestamp": 4,
-        "cluster_state": "cpu:2.26% mem:1.75% todo_num:0 finish_num:0"
+        "timestamp": 0.8,
+        "cluster_state": "cpu:25.00% mem:25.00% gpu:0.00% todo_num:0 finish_num:0 total_num:0"
     },
     {
-        "timestamp": 5,
-        "cluster_state": "cpu:2.98% mem:2.30% todo_num:0 finish_num:1"
+        "timestamp": 1.0,
+        "cluster_state": "cpu:25.00% mem:25.00% gpu:0.00% todo_num:0 finish_num:0 total_num:0"
     },
     {
-        "timestamp": 6,
-        "cluster_state": "cpu:3.85% mem:2.94% todo_num:0 finish_num:1"
+        "timestamp": 1.2,
+        "cluster_state": "cpu:37.09% mem:35.51% gpu:22.18% todo_num:1 finish_num:0 total_num:62"
     },
     {
-        "timestamp": 7,
-        "cluster_state": "cpu:4.47% mem:3.44% todo_num:0 finish_num:9"
+        "timestamp": 1.4,
+        "cluster_state": "cpu:50.56% mem:46.67% gpu:41.53% todo_num:0 finish_num:0 total_num:123"
     },
     {
-        "timestamp": 8,
-        "cluster_state": "cpu:4.99% mem:3.92% todo_num:0 finish_num:9"
+        "timestamp": 1.5999999999999999,
+        "cluster_state": "cpu:63.06% mem:56.36% gpu:57.26% todo_num:0 finish_num:1 total_num:188"
     },
     {
-        "timestamp": 9,
-        "cluster_state": "cpu:5.79% mem:4.51% todo_num:2 finish_num:15"
+        "timestamp": 1.7999999999999998,
+        "cluster_state": "cpu:78.26% mem:68.29% gpu:75.81% todo_num:0 finish_num:5 total_num:258"
     },
     {
-        "timestamp": 10,
-        "cluster_state": "cpu:6.64% mem:5.24% todo_num:4 finish_num:20"
+        "timestamp": 1.9999999999999998,
+        "cluster_state": "cpu:90.90% mem:79.65% gpu:94.35% todo_num:0 finish_num:9 total_num:334"
     },
     {
-        "timestamp": 11,
-        "cluster_state": "cpu:7.49% mem:5.91% todo_num:4 finish_num:22"
+        "timestamp": 2.1999999999999997,
+        "cluster_state": "cpu:93.85% mem:81.25% gpu:96.77% todo_num:0 finish_num:17 total_num:400"
     },
     {
-        "timestamp": 12,
-        "cluster_state": "cpu:8.12% mem:6.34% todo_num:1 finish_num:31"
+        "timestamp": 2.4,
+        "cluster_state": "cpu:94.86% mem:82.51% gpu:95.97% todo_num:0 finish_num:28 total_num:476"
     },
     {
-        "timestamp": 13,
-        "cluster_state": "cpu:8.63% mem:6.75% todo_num:0 finish_num:40"
+        "timestamp": 2.6,
+        "cluster_state": "cpu:94.84% mem:81.84% gpu:95.97% todo_num:0 finish_num:44 total_num:562"
     },
     {
-        "timestamp": 14,
-        "cluster_state": "cpu:9.14% mem:7.18% todo_num:1 finish_num:45"
+        "timestamp": 2.8000000000000003,
+        "cluster_state": "cpu:94.26% mem:81.00% gpu:95.56% todo_num:0 finish_num:59 total_num:632"
     },
     {
-        "timestamp": 15,
-        "cluster_state": "cpu:9.88% mem:7.73% todo_num:3 finish_num:50"
+        "timestamp": 3.0000000000000004,
+        "cluster_state": "cpu:94.57% mem:81.28% gpu:95.97% todo_num:0 finish_num:76 total_num:703"
     },
     {
-        "timestamp": 16,
-        "cluster_state": "cpu:10.55% mem:8.25% todo_num:2 finish_num:65"
+        "timestamp": 3.2000000000000006,
+        "cluster_state": "cpu:93.34% mem:80.27% gpu:97.18% todo_num:0 finish_num:100 total_num:774"
     },
     {
-        "timestamp": 17,
-        "cluster_state": "cpu:11.12% mem:8.74% todo_num:0 finish_num:78"
+        "timestamp": 3.400000000000001,
+        "cluster_state": "cpu:92.69% mem:79.72% gpu:98.39% todo_num:0 finish_num:124 total_num:858"
     },
     {
-        "timestamp": 18,
-        "cluster_state": "cpu:11.58% mem:9.07% todo_num:4 finish_num:91"
+        "timestamp": 3.600000000000001,
+        "cluster_state": "cpu:93.12% mem:78.71% gpu:98.39% todo_num:0 finish_num:159 total_num:943"
     },
     {
-        "timestamp": 19,
-        "cluster_state": "cpu:12.39% mem:9.72% todo_num:3 finish_num:100"
+        "timestamp": 3.800000000000001,
+        "cluster_state": "cpu:92.50% mem:78.39% gpu:97.58% todo_num:0 finish_num:186 total_num:1003"
     },
     {
-        "timestamp": 20,
-        "cluster_state": "cpu:12.92% mem:10.13% todo_num:0 finish_num:105"
+        "timestamp": 4.000000000000001,
+        "cluster_state": "cpu:93.68% mem:80.29% gpu:97.58% todo_num:0 finish_num:214 total_num:1074"
     },
     {
-        "timestamp": 21,
-        "cluster_state": "cpu:13.72% mem:10.71% todo_num:4 finish_num:117"
+        "timestamp": 4.200000000000001,
+        "cluster_state": "cpu:93.77% mem:80.41% gpu:97.98% todo_num:0 finish_num:239 total_num:1138"
     },
     {
-        "timestamp": 22,
-        "cluster_state": "cpu:14.38% mem:11.26% todo_num:1 finish_num:135"
+        "timestamp": 4.400000000000001,
+        "cluster_state": "cpu:92.74% mem:79.18% gpu:96.77% todo_num:0 finish_num:265 total_num:1209"
     },
     {
-        "timestamp": 23,
-        "cluster_state": "cpu:14.87% mem:11.64% todo_num:1 finish_num:149"
+        "timestamp": 4.600000000000001,
+        "cluster_state": "cpu:92.62% mem:79.31% gpu:97.18% todo_num:0 finish_num:292 total_num:1271"
     },
     {
-        "timestamp": 24,
-        "cluster_state": "cpu:15.43% mem:12.06% todo_num:1 finish_num:157"
+        "timestamp": 4.800000000000002,
+        "cluster_state": "cpu:92.98% mem:79.01% gpu:98.39% todo_num:0 finish_num:325 total_num:1361"
     },
     {
-        "timestamp": 25,
-        "cluster_state": "cpu:16.20% mem:12.66% todo_num:2 finish_num:173"
+        "timestamp": 5.000000000000002,
+        "cluster_state": "cpu:93.41% mem:79.54% gpu:97.58% todo_num:0 finish_num:355 total_num:1421"
     },
     {
-        "timestamp": 26,
-        "cluster_state": "cpu:16.88% mem:13.19% todo_num:0 finish_num:183"
+        "timestamp": 5.200000000000002,
+        "cluster_state": "cpu:93.97% mem:80.59% gpu:98.39% todo_num:0 finish_num:393 total_num:1504"
     },
     {
-        "timestamp": 27,
-        "cluster_state": "cpu:17.39% mem:13.62% todo_num:1 finish_num:197"
+        "timestamp": 5.400000000000002,
+        "cluster_state": "cpu:94.67% mem:81.31% gpu:99.19% todo_num:1 finish_num:419 total_num:1585"
     },
     {
-        "timestamp": 28,
-        "cluster_state": "cpu:18.16% mem:14.18% todo_num:3 finish_num:215"
+        "timestamp": 5.600000000000002,
+        "cluster_state": "cpu:92.33% mem:80.68% gpu:99.19% todo_num:1 finish_num:453 total_num:1666"
     },
     {
-        "timestamp": 29,
-        "cluster_state": "cpu:18.70% mem:14.58% todo_num:1 finish_num:232"
+        "timestamp": 5.8000000000000025,
+        "cluster_state": "cpu:93.53% mem:81.25% gpu:97.98% todo_num:0 finish_num:476 total_num:1740"
     },
     {
-        "timestamp": 30,
-        "cluster_state": "cpu:19.20% mem:15.00% todo_num:5 finish_num:252"
+        "timestamp": 6.000000000000003,
+        "cluster_state": "cpu:92.76% mem:80.74% gpu:98.79% todo_num:0 finish_num:502 total_num:1819"
     },
     {
-        "timestamp": 31,
-        "cluster_state": "cpu:20.00% mem:15.60% todo_num:0 finish_num:265"
+        "timestamp": 6.200000000000003,
+        "cluster_state": "cpu:94.02% mem:81.86% gpu:97.98% todo_num:0 finish_num:527 total_num:1894"
     },
     {
-        "timestamp": 32,
-        "cluster_state": "cpu:20.57% mem:16.03% todo_num:0 finish_num:280"
+        "timestamp": 6.400000000000003,
+        "cluster_state": "cpu:94.47% mem:82.88% gpu:99.19% todo_num:0 finish_num:544 total_num:1980"
     },
     {
-        "timestamp": 33,
-        "cluster_state": "cpu:21.18% mem:16.49% todo_num:4 finish_num:303"
+        "timestamp": 6.600000000000003,
+        "cluster_state": "cpu:92.01% mem:81.26% gpu:99.19% todo_num:0 finish_num:578 total_num:2041"
     },
     {
-        "timestamp": 34,
-        "cluster_state": "cpu:21.60% mem:16.77% todo_num:1 finish_num:326"
+        "timestamp": 6.800000000000003,
+        "cluster_state": "cpu:93.70% mem:82.19% gpu:97.98% todo_num:0 finish_num:611 total_num:2092"
     },
     {
-        "timestamp": 35,
-        "cluster_state": "cpu:22.29% mem:17.36% todo_num:0 finish_num:346"
+        "timestamp": 7.0000000000000036,
+        "cluster_state": "cpu:93.05% mem:81.30% gpu:99.60% todo_num:0 finish_num:641 total_num:2172"
     },
     {
-        "timestamp": 36,
-        "cluster_state": "cpu:22.74% mem:17.70% todo_num:4 finish_num:378"
+        "timestamp": 7.200000000000004,
+        "cluster_state": "cpu:94.38% mem:82.01% gpu:98.79% todo_num:0 finish_num:671 total_num:2248"
     },
     {
-        "timestamp": 37,
-        "cluster_state": "cpu:23.23% mem:18.06% todo_num:0 finish_num:403"
+        "timestamp": 7.400000000000004,
+        "cluster_state": "cpu:94.09% mem:81.65% gpu:98.79% todo_num:0 finish_num:702 total_num:2318"
     },
     {
-        "timestamp": 38,
-        "cluster_state": "cpu:23.76% mem:18.46% todo_num:2 finish_num:429"
+        "timestamp": 7.600000000000004,
+        "cluster_state": "cpu:93.36% mem:81.42% gpu:98.39% todo_num:0 finish_num:730 total_num:2390"
     },
     {
-        "timestamp": 39,
-        "cluster_state": "cpu:24.28% mem:18.83% todo_num:4 finish_num:455"
+        "timestamp": 7.800000000000004,
+        "cluster_state": "cpu:91.39% mem:79.93% gpu:99.19% todo_num:1 finish_num:762 total_num:2461"
     },
     {
-        "timestamp": 40,
-        "cluster_state": "cpu:24.75% mem:19.20% todo_num:1 finish_num:480"
+        "timestamp": 8.000000000000004,
+        "cluster_state": "cpu:92.06% mem:79.86% gpu:99.60% todo_num:0 finish_num:783 total_num:2527"
     },
     {
-        "timestamp": 41,
-        "cluster_state": "cpu:25.26% mem:19.62% todo_num:5 finish_num:502"
+        "timestamp": 8.200000000000003,
+        "cluster_state": "cpu:93.63% mem:81.47% gpu:98.79% todo_num:2 finish_num:817 total_num:2595"
     },
     {
-        "timestamp": 42,
-        "cluster_state": "cpu:25.66% mem:19.96% todo_num:2 finish_num:530"
+        "timestamp": 8.400000000000002,
+        "cluster_state": "cpu:94.69% mem:82.03% gpu:99.19% todo_num:1 finish_num:841 total_num:2669"
     },
     {
-        "timestamp": 43,
-        "cluster_state": "cpu:26.33% mem:20.41% todo_num:2 finish_num:554"
+        "timestamp": 8.600000000000001,
+        "cluster_state": "cpu:93.51% mem:80.99% gpu:99.60% todo_num:0 finish_num:872 total_num:2732"
     },
     {
-        "timestamp": 44,
-        "cluster_state": "cpu:26.88% mem:20.80% todo_num:7 finish_num:577"
+        "timestamp": 8.8,
+        "cluster_state": "cpu:91.39% mem:79.39% gpu:99.60% todo_num:0 finish_num:906 total_num:2804"
     },
     {
-        "timestamp": 45,
-        "cluster_state": "cpu:27.43% mem:21.21% todo_num:1 finish_num:606"
+        "timestamp": 9.0,
+        "cluster_state": "cpu:90.88% mem:80.18% gpu:98.79% todo_num:0 finish_num:932 total_num:2874"
     },
     {
-        "timestamp": 46,
-        "cluster_state": "cpu:27.87% mem:21.55% todo_num:0 finish_num:636"
+        "timestamp": 9.2,
+        "cluster_state": "cpu:94.02% mem:82.96% gpu:97.58% todo_num:1 finish_num:958 total_num:2956"
     },
     {
-        "timestamp": 47,
-        "cluster_state": "cpu:28.27% mem:21.82% todo_num:0 finish_num:671"
+        "timestamp": 9.399999999999999,
+        "cluster_state": "cpu:94.96% mem:84.26% gpu:99.60% todo_num:0 finish_num:996 total_num:3031"
     },
     {
-        "timestamp": 48,
-        "cluster_state": "cpu:28.56% mem:22.09% todo_num:3 finish_num:707"
+        "timestamp": 9.599999999999998,
+        "cluster_state": "cpu:93.92% mem:83.05% gpu:99.60% todo_num:2 finish_num:1024 total_num:3109"
     },
     {
-        "timestamp": 49,
-        "cluster_state": "cpu:29.21% mem:22.55% todo_num:1 finish_num:728"
+        "timestamp": 9.799999999999997,
+        "cluster_state": "cpu:90.11% mem:80.29% gpu:97.98% todo_num:0 finish_num:1065 total_num:3172"
     },
     {
-        "timestamp": 50,
-        "cluster_state": "cpu:29.51% mem:22.73% todo_num:1 finish_num:766"
+        "timestamp": 9.999999999999996,
+        "cluster_state": "cpu:94.98% mem:83.78% gpu:98.39% todo_num:0 finish_num:1084 total_num:3254"
     },
     {
-        "timestamp": 51,
-        "cluster_state": "cpu:30.04% mem:23.14% todo_num:2 finish_num:795"
+        "timestamp": 10.199999999999996,
+        "cluster_state": "cpu:93.41% mem:81.85% gpu:98.39% todo_num:0 finish_num:1111 total_num:3312"
     },
     {
-        "timestamp": 52,
-        "cluster_state": "cpu:30.64% mem:23.56% todo_num:1 finish_num:820"
+        "timestamp": 10.399999999999995,
+        "cluster_state": "cpu:92.78% mem:81.78% gpu:97.98% todo_num:0 finish_num:1135 total_num:3383"
     },
     {
-        "timestamp": 53,
-        "cluster_state": "cpu:31.02% mem:23.85% todo_num:2 finish_num:856"
+        "timestamp": 10.599999999999994,
+        "cluster_state": "cpu:91.89% mem:80.64% gpu:98.39% todo_num:0 finish_num:1167 total_num:3463"
     },
     {
-        "timestamp": 54,
-        "cluster_state": "cpu:31.69% mem:24.26% todo_num:1 finish_num:890"
+        "timestamp": 10.799999999999994,
+        "cluster_state": "cpu:91.26% mem:79.96% gpu:98.79% todo_num:0 finish_num:1193 total_num:3538"
     },
     {
-        "timestamp": 55,
-        "cluster_state": "cpu:32.12% mem:24.60% todo_num:6 finish_num:918"
+        "timestamp": 10.999999999999993,
+        "cluster_state": "cpu:92.28% mem:81.77% gpu:98.79% todo_num:0 finish_num:1224 total_num:3628"
     },
     {
-        "timestamp": 56,
-        "cluster_state": "cpu:32.50% mem:24.91% todo_num:0 finish_num:949"
+        "timestamp": 11.199999999999992,
+        "cluster_state": "cpu:93.34% mem:82.54% gpu:100.00% todo_num:0 finish_num:1254 total_num:3690"
     },
     {
-        "timestamp": 57,
-        "cluster_state": "cpu:32.99% mem:25.37% todo_num:1 finish_num:986"
+        "timestamp": 11.399999999999991,
+        "cluster_state": "cpu:92.71% mem:82.34% gpu:100.00% todo_num:0 finish_num:1288 total_num:3757"
     },
     {
-        "timestamp": 58,
-        "cluster_state": "cpu:33.36% mem:25.61% todo_num:2 finish_num:1026"
+        "timestamp": 11.59999999999999,
+        "cluster_state": "cpu:91.72% mem:80.71% gpu:99.60% todo_num:2 finish_num:1315 total_num:3830"
     },
     {
-        "timestamp": 59,
-        "cluster_state": "cpu:33.65% mem:25.80% todo_num:0 finish_num:1060"
+        "timestamp": 11.79999999999999,
+        "cluster_state": "cpu:92.47% mem:81.85% gpu:98.39% todo_num:0 finish_num:1354 total_num:3909"
     },
     {
-        "timestamp": 60,
-        "cluster_state": "cpu:34.04% mem:26.10% todo_num:11 finish_num:1091"
+        "timestamp": 11.99999999999999,
+        "cluster_state": "cpu:92.66% mem:81.90% gpu:98.39% todo_num:0 finish_num:1384 total_num:3981"
     },
     {
-        "timestamp": 61,
-        "cluster_state": "cpu:34.34% mem:26.31% todo_num:1 finish_num:1136"
+        "timestamp": 12.199999999999989,
+        "cluster_state": "cpu:91.55% mem:80.85% gpu:99.19% todo_num:0 finish_num:1407 total_num:4046"
     },
     {
-        "timestamp": 62,
-        "cluster_state": "cpu:34.59% mem:26.54% todo_num:6 finish_num:1176"
+        "timestamp": 12.399999999999988,
+        "cluster_state": "cpu:93.22% mem:81.47% gpu:99.19% todo_num:0 finish_num:1431 total_num:4126"
     },
     {
-        "timestamp": 63,
-        "cluster_state": "cpu:34.88% mem:26.78% todo_num:0 finish_num:1220"
+        "timestamp": 12.599999999999987,
+        "cluster_state": "cpu:93.85% mem:82.18% gpu:99.19% todo_num:0 finish_num:1458 total_num:4209"
     },
     {
-        "timestamp": 64,
-        "cluster_state": "cpu:35.20% mem:26.97% todo_num:2 finish_num:1265"
+        "timestamp": 12.799999999999986,
+        "cluster_state": "cpu:95.51% mem:83.15% gpu:98.39% todo_num:0 finish_num:1489 total_num:4283"
     },
     {
-        "timestamp": 65,
-        "cluster_state": "cpu:35.50% mem:27.16% todo_num:8 finish_num:1318"
+        "timestamp": 12.999999999999986,
+        "cluster_state": "cpu:94.55% mem:82.14% gpu:98.39% todo_num:0 finish_num:1519 total_num:4369"
     },
     {
-        "timestamp": 66,
-        "cluster_state": "cpu:35.89% mem:27.46% todo_num:2 finish_num:1360"
+        "timestamp": 13.199999999999985,
+        "cluster_state": "cpu:93.32% mem:80.42% gpu:99.19% todo_num:0 finish_num:1552 total_num:4444"
     },
     {
-        "timestamp": 67,
-        "cluster_state": "cpu:36.12% mem:27.68% todo_num:6 finish_num:1410"
+        "timestamp": 13.399999999999984,
+        "cluster_state": "cpu:93.10% mem:79.80% gpu:98.79% todo_num:0 finish_num:1572 total_num:4527"
     },
     {
-        "timestamp": 68,
-        "cluster_state": "cpu:36.23% mem:27.79% todo_num:0 finish_num:1461"
+        "timestamp": 13.599999999999984,
+        "cluster_state": "cpu:93.00% mem:79.44% gpu:97.98% todo_num:0 finish_num:1598 total_num:4601"
     },
     {
-        "timestamp": 69,
-        "cluster_state": "cpu:36.69% mem:28.18% todo_num:3 finish_num:1509"
+        "timestamp": 13.799999999999983,
+        "cluster_state": "cpu:92.40% mem:78.47% gpu:98.79% todo_num:0 finish_num:1628 total_num:4673"
     },
     {
-        "timestamp": 70,
-        "cluster_state": "cpu:37.05% mem:28.44% todo_num:1 finish_num:1557"
+        "timestamp": 13.999999999999982,
+        "cluster_state": "cpu:92.62% mem:78.55% gpu:100.00% todo_num:0 finish_num:1658 total_num:4748"
     },
     {
-        "timestamp": 71,
-        "cluster_state": "cpu:37.37% mem:28.66% todo_num:0 finish_num:1604"
+        "timestamp": 14.199999999999982,
+        "cluster_state": "cpu:92.42% mem:78.37% gpu:100.00% todo_num:0 finish_num:1679 total_num:4808"
     },
     {
-        "timestamp": 72,
-        "cluster_state": "cpu:37.74% mem:29.02% todo_num:10 finish_num:1652"
+        "timestamp": 14.39999999999998,
+        "cluster_state": "cpu:92.21% mem:78.68% gpu:100.00% todo_num:0 finish_num:1708 total_num:4880"
     },
     {
-        "timestamp": 73,
-        "cluster_state": "cpu:38.11% mem:29.28% todo_num:4 finish_num:1701"
+        "timestamp": 14.59999999999998,
+        "cluster_state": "cpu:94.62% mem:81.16% gpu:99.19% todo_num:0 finish_num:1745 total_num:4955"
     },
     {
-        "timestamp": 74,
-        "cluster_state": "cpu:38.31% mem:29.41% todo_num:2 finish_num:1754"
+        "timestamp": 14.79999999999998,
+        "cluster_state": "cpu:93.46% mem:80.27% gpu:99.60% todo_num:0 finish_num:1773 total_num:5044"
     },
     {
-        "timestamp": 75,
-        "cluster_state": "cpu:38.58% mem:29.64% todo_num:0 finish_num:1791"
+        "timestamp": 14.999999999999979,
+        "cluster_state": "cpu:93.24% mem:80.12% gpu:97.58% todo_num:0 finish_num:1809 total_num:5121"
     },
     {
-        "timestamp": 76,
-        "cluster_state": "cpu:38.70% mem:29.74% todo_num:12 finish_num:1852"
+        "timestamp": 15.199999999999978,
+        "cluster_state": "cpu:94.74% mem:81.85% gpu:99.60% todo_num:0 finish_num:1840 total_num:5187"
     },
     {
-        "timestamp": 77,
-        "cluster_state": "cpu:39.13% mem:30.10% todo_num:3 finish_num:1899"
+        "timestamp": 15.399999999999977,
+        "cluster_state": "cpu:93.97% mem:81.97% gpu:98.39% todo_num:0 finish_num:1870 total_num:5260"
     },
     {
-        "timestamp": 78,
-        "cluster_state": "cpu:39.28% mem:30.20% todo_num:6 finish_num:1957"
+        "timestamp": 15.599999999999977,
+        "cluster_state": "cpu:93.17% mem:81.94% gpu:98.39% todo_num:0 finish_num:1904 total_num:5324"
     },
     {
-        "timestamp": 79,
-        "cluster_state": "cpu:39.55% mem:30.43% todo_num:3 finish_num:2003"
+        "timestamp": 15.799999999999976,
+        "cluster_state": "cpu:92.71% mem:81.35% gpu:97.58% todo_num:0 finish_num:1936 total_num:5384"
     },
     {
-        "timestamp": 80,
-        "cluster_state": "cpu:40.02% mem:30.82% todo_num:13 finish_num:2047"
+        "timestamp": 15.999999999999975,
+        "cluster_state": "cpu:91.60% mem:80.79% gpu:99.19% todo_num:0 finish_num:1966 total_num:5464"
     },
     {
-        "timestamp": 81,
-        "cluster_state": "cpu:40.24% mem:30.99% todo_num:5 finish_num:2104"
+        "timestamp": 16.199999999999974,
+        "cluster_state": "cpu:91.24% mem:79.81% gpu:100.00% todo_num:7 finish_num:1995 total_num:5534"
     },
     {
-        "timestamp": 82,
-        "cluster_state": "cpu:40.66% mem:31.23% todo_num:4 finish_num:2162"
+        "timestamp": 16.399999999999974,
+        "cluster_state": "cpu:90.20% mem:79.51% gpu:100.00% todo_num:0 finish_num:2026 total_num:5613"
     },
     {
-        "timestamp": 83,
-        "cluster_state": "cpu:40.80% mem:31.32% todo_num:0 finish_num:2206"
+        "timestamp": 16.599999999999973,
+        "cluster_state": "cpu:90.73% mem:78.92% gpu:97.98% todo_num:0 finish_num:2056 total_num:5683"
     },
     {
-        "timestamp": 84,
-        "cluster_state": "cpu:40.99% mem:31.42% todo_num:3 finish_num:2255"
+        "timestamp": 16.799999999999972,
+        "cluster_state": "cpu:92.01% mem:80.33% gpu:99.19% todo_num:0 finish_num:2084 total_num:5766"
     },
     {
-        "timestamp": 85,
-        "cluster_state": "cpu:41.29% mem:31.64% todo_num:2 finish_num:2302"
+        "timestamp": 16.99999999999997,
+        "cluster_state": "cpu:88.73% mem:77.23% gpu:95.97% todo_num:0 finish_num:2121 total_num:5815"
     },
     {
-        "timestamp": 86,
-        "cluster_state": "cpu:41.64% mem:31.98% todo_num:3 finish_num:2348"
+        "timestamp": 17.19999999999997,
+        "cluster_state": "cpu:90.78% mem:79.10% gpu:97.58% todo_num:0 finish_num:2146 total_num:5879"
     },
     {
-        "timestamp": 87,
-        "cluster_state": "cpu:42.04% mem:32.23% todo_num:0 finish_num:2392"
+        "timestamp": 17.39999999999997,
+        "cluster_state": "cpu:90.15% mem:78.98% gpu:99.60% todo_num:0 finish_num:2182 total_num:5955"
     },
     {
-        "timestamp": 88,
-        "cluster_state": "cpu:42.37% mem:32.49% todo_num:1 finish_num:2440"
+        "timestamp": 17.59999999999997,
+        "cluster_state": "cpu:90.01% mem:77.88% gpu:99.60% todo_num:0 finish_num:2215 total_num:6019"
     },
     {
-        "timestamp": 89,
-        "cluster_state": "cpu:42.43% mem:32.51% todo_num:6 finish_num:2494"
+        "timestamp": 17.79999999999997,
+        "cluster_state": "cpu:90.66% mem:77.85% gpu:98.39% todo_num:0 finish_num:2241 total_num:6077"
     },
     {
-        "timestamp": 90,
-        "cluster_state": "cpu:42.70% mem:32.73% todo_num:2 finish_num:2563"
+        "timestamp": 17.999999999999968,
+        "cluster_state": "cpu:90.66% mem:77.94% gpu:98.39% todo_num:0 finish_num:2266 total_num:6144"
     },
     {
-        "timestamp": 91,
-        "cluster_state": "cpu:43.05% mem:33.01% todo_num:0 finish_num:2623"
+        "timestamp": 18.199999999999967,
+        "cluster_state": "cpu:91.39% mem:79.03% gpu:98.39% todo_num:0 finish_num:2306 total_num:6211"
     },
     {
-        "timestamp": 92,
-        "cluster_state": "cpu:43.04% mem:32.98% todo_num:0 finish_num:2684"
+        "timestamp": 18.399999999999967,
+        "cluster_state": "cpu:93.77% mem:80.73% gpu:100.00% todo_num:0 finish_num:2329 total_num:6286"
     },
     {
-        "timestamp": 93,
-        "cluster_state": "cpu:43.29% mem:33.15% todo_num:11 finish_num:2739"
+        "timestamp": 18.599999999999966,
+        "cluster_state": "cpu:94.72% mem:81.46% gpu:100.00% todo_num:0 finish_num:2363 total_num:6370"
     },
     {
-        "timestamp": 94,
-        "cluster_state": "cpu:43.58% mem:33.39% todo_num:3 finish_num:2804"
+        "timestamp": 18.799999999999965,
+        "cluster_state": "cpu:92.47% mem:79.74% gpu:99.60% todo_num:1 finish_num:2399 total_num:6440"
     },
     {
-        "timestamp": 95,
-        "cluster_state": "cpu:43.86% mem:33.60% todo_num:1 finish_num:2862"
+        "timestamp": 18.999999999999964,
+        "cluster_state": "cpu:94.40% mem:81.25% gpu:100.00% todo_num:3 finish_num:2424 total_num:6520"
     },
     {
-        "timestamp": 96,
-        "cluster_state": "cpu:43.96% mem:33.67% todo_num:2 finish_num:2920"
+        "timestamp": 19.199999999999964,
+        "cluster_state": "cpu:93.75% mem:80.96% gpu:99.19% todo_num:0 finish_num:2452 total_num:6590"
     },
     {
-        "timestamp": 97,
-        "cluster_state": "cpu:44.21% mem:33.88% todo_num:1 finish_num:2968"
+        "timestamp": 19.399999999999963,
+        "cluster_state": "cpu:93.19% mem:79.99% gpu:99.19% todo_num:1 finish_num:2476 total_num:6662"
     },
     {
-        "timestamp": 98,
-        "cluster_state": "cpu:44.34% mem:33.97% todo_num:1 finish_num:3035"
+        "timestamp": 19.599999999999962,
+        "cluster_state": "cpu:94.26% mem:81.24% gpu:98.79% todo_num:0 finish_num:2504 total_num:6736"
     },
     {
-        "timestamp": 99,
-        "cluster_state": "cpu:44.64% mem:34.18% todo_num:5 finish_num:3090"
+        "timestamp": 19.79999999999996,
+        "cluster_state": "cpu:92.62% mem:80.21% gpu:99.19% todo_num:1 finish_num:2544 total_num:6808"
     },
     {
-        "timestamp": 100,
-        "cluster_state": "cpu:45.02% mem:34.51% todo_num:5 finish_num:3161"
+        "timestamp": 19.99999999999996,
+        "cluster_state": "cpu:89.58% mem:76.76% gpu:99.60% todo_num:0 finish_num:2578 total_num:6867"
     },
     {
-        "timestamp": 101,
-        "cluster_state": "cpu:44.42% mem:34.03% todo_num:0 finish_num:3223"
+        "timestamp": 20.19999999999996,
+        "cluster_state": "cpu:91.53% mem:77.05% gpu:98.39% todo_num:1 finish_num:2607 total_num:6934"
     },
     {
-        "timestamp": 102,
-        "cluster_state": "cpu:43.85% mem:33.57% todo_num:0 finish_num:3287"
+        "timestamp": 20.39999999999996,
+        "cluster_state": "cpu:92.93% mem:77.90% gpu:99.60% todo_num:0 finish_num:2633 total_num:7034"
     },
     {
-        "timestamp": 103,
-        "cluster_state": "cpu:43.40% mem:33.23% todo_num:0 finish_num:3334"
+        "timestamp": 20.59999999999996,
+        "cluster_state": "cpu:94.16% mem:78.68% gpu:98.39% todo_num:0 finish_num:2657 total_num:7117"
     },
     {
-        "timestamp": 104,
-        "cluster_state": "cpu:42.60% mem:32.66% todo_num:0 finish_num:3403"
+        "timestamp": 20.799999999999958,
+        "cluster_state": "cpu:94.47% mem:78.95% gpu:99.19% todo_num:0 finish_num:2691 total_num:7196"
     },
     {
-        "timestamp": 105,
-        "cluster_state": "cpu:42.09% mem:32.24% todo_num:0 finish_num:3463"
+        "timestamp": 20.999999999999957,
+        "cluster_state": "cpu:94.52% mem:78.89% gpu:99.60% todo_num:0 finish_num:2713 total_num:7271"
     },
     {
-        "timestamp": 106,
-        "cluster_state": "cpu:41.48% mem:31.82% todo_num:0 finish_num:3529"
+        "timestamp": 21.199999999999957,
+        "cluster_state": "cpu:95.17% mem:79.48% gpu:98.79% todo_num:2 finish_num:2744 total_num:7353"
     },
     {
-        "timestamp": 107,
-        "cluster_state": "cpu:40.87% mem:31.35% todo_num:0 finish_num:3586"
+        "timestamp": 21.399999999999956,
+        "cluster_state": "cpu:94.40% mem:79.05% gpu:98.39% todo_num:0 finish_num:2767 total_num:7420"
     },
     {
-        "timestamp": 108,
-        "cluster_state": "cpu:40.39% mem:31.02% todo_num:0 finish_num:3644"
+        "timestamp": 21.599999999999955,
+        "cluster_state": "cpu:92.42% mem:78.35% gpu:97.18% todo_num:1 finish_num:2798 total_num:7492"
     },
     {
-        "timestamp": 109,
-        "cluster_state": "cpu:39.83% mem:30.57% todo_num:0 finish_num:3710"
+        "timestamp": 21.799999999999955,
+        "cluster_state": "cpu:93.94% mem:78.85% gpu:98.79% todo_num:0 finish_num:2828 total_num:7575"
     },
     {
-        "timestamp": 110,
-        "cluster_state": "cpu:39.39% mem:30.24% todo_num:0 finish_num:3759"
+        "timestamp": 21.999999999999954,
+        "cluster_state": "cpu:93.70% mem:79.29% gpu:96.77% todo_num:1 finish_num:2862 total_num:7646"
     },
     {
-        "timestamp": 111,
-        "cluster_state": "cpu:38.91% mem:29.85% todo_num:0 finish_num:3816"
+        "timestamp": 22.199999999999953,
+        "cluster_state": "cpu:94.16% mem:79.83% gpu:99.19% todo_num:0 finish_num:2890 total_num:7714"
     },
     {
-        "timestamp": 112,
-        "cluster_state": "cpu:38.37% mem:29.45% todo_num:0 finish_num:3876"
+        "timestamp": 22.399999999999952,
+        "cluster_state": "cpu:94.86% mem:80.14% gpu:98.79% todo_num:0 finish_num:2919 total_num:7780"
     },
     {
-        "timestamp": 113,
-        "cluster_state": "cpu:37.82% mem:29.02% todo_num:0 finish_num:3932"
+        "timestamp": 22.59999999999995,
+        "cluster_state": "cpu:95.13% mem:80.44% gpu:99.19% todo_num:0 finish_num:2951 total_num:7857"
     },
     {
-        "timestamp": 114,
-        "cluster_state": "cpu:37.34% mem:28.64% todo_num:0 finish_num:3993"
+        "timestamp": 22.79999999999995,
+        "cluster_state": "cpu:95.15% mem:80.29% gpu:97.98% todo_num:2 finish_num:2985 total_num:7936"
     },
     {
-        "timestamp": 115,
-        "cluster_state": "cpu:36.93% mem:28.30% todo_num:0 finish_num:4042"
+        "timestamp": 22.99999999999995,
+        "cluster_state": "cpu:94.86% mem:79.54% gpu:99.19% todo_num:1 finish_num:3015 total_num:8004"
     },
     {
-        "timestamp": 116,
-        "cluster_state": "cpu:36.30% mem:27.81% todo_num:0 finish_num:4112"
+        "timestamp": 23.19999999999995,
+        "cluster_state": "cpu:93.22% mem:77.83% gpu:99.19% todo_num:0 finish_num:3036 total_num:8066"
     },
     {
-        "timestamp": 117,
-        "cluster_state": "cpu:35.77% mem:27.38% todo_num:0 finish_num:4171"
+        "timestamp": 23.39999999999995,
+        "cluster_state": "cpu:93.24% mem:77.99% gpu:97.98% todo_num:1 finish_num:3059 total_num:8136"
     },
     {
-        "timestamp": 118,
-        "cluster_state": "cpu:35.28% mem:26.98% todo_num:0 finish_num:4226"
+        "timestamp": 23.599999999999948,
+        "cluster_state": "cpu:93.29% mem:77.85% gpu:98.79% todo_num:2 finish_num:3085 total_num:8216"
     },
     {
-        "timestamp": 119,
-        "cluster_state": "cpu:34.80% mem:26.62% todo_num:0 finish_num:4274"
+        "timestamp": 23.799999999999947,
+        "cluster_state": "cpu:93.15% mem:78.46% gpu:97.98% todo_num:0 finish_num:3115 total_num:8278"
     },
     {
-        "timestamp": 120,
-        "cluster_state": "cpu:34.37% mem:26.28% todo_num:0 finish_num:4323"
+        "timestamp": 23.999999999999947,
+        "cluster_state": "cpu:92.93% mem:78.25% gpu:97.98% todo_num:0 finish_num:3143 total_num:8362"
     },
     {
-        "timestamp": 121,
-        "cluster_state": "cpu:34.01% mem:25.99% todo_num:0 finish_num:4369"
+        "timestamp": 24.199999999999946,
+        "cluster_state": "cpu:94.69% mem:79.70% gpu:99.60% todo_num:0 finish_num:3171 total_num:8444"
     },
     {
-        "timestamp": 122,
-        "cluster_state": "cpu:33.27% mem:25.39% todo_num:0 finish_num:4442"
+        "timestamp": 24.399999999999945,
+        "cluster_state": "cpu:93.41% mem:79.56% gpu:99.60% todo_num:0 finish_num:3208 total_num:8506"
     },
     {
-        "timestamp": 123,
-        "cluster_state": "cpu:32.84% mem:25.06% todo_num:0 finish_num:4497"
+        "timestamp": 24.599999999999945,
+        "cluster_state": "cpu:94.57% mem:80.62% gpu:99.60% todo_num:0 finish_num:3231 total_num:8592"
     },
     {
-        "timestamp": 124,
-        "cluster_state": "cpu:32.34% mem:24.73% todo_num:0 finish_num:4543"
+        "timestamp": 24.799999999999944,
+        "cluster_state": "cpu:94.93% mem:81.26% gpu:98.79% todo_num:0 finish_num:3256 total_num:8655"
     },
     {
-        "timestamp": 125,
-        "cluster_state": "cpu:32.04% mem:24.49% todo_num:0 finish_num:4579"
+        "timestamp": 24.999999999999943,
+        "cluster_state": "cpu:95.22% mem:81.88% gpu:97.18% todo_num:0 finish_num:3289 total_num:8730"
     },
     {
-        "timestamp": 126,
-        "cluster_state": "cpu:31.54% mem:24.09% todo_num:0 finish_num:4627"
+        "timestamp": 25.199999999999942,
+        "cluster_state": "cpu:92.40% mem:79.87% gpu:98.79% todo_num:0 finish_num:3317 total_num:8803"
     },
     {
-        "timestamp": 127,
-        "cluster_state": "cpu:30.86% mem:23.52% todo_num:0 finish_num:4689"
+        "timestamp": 25.39999999999994,
+        "cluster_state": "cpu:91.31% mem:78.83% gpu:97.98% todo_num:0 finish_num:3348 total_num:8873"
     },
     {
-        "timestamp": 128,
-        "cluster_state": "cpu:30.38% mem:23.13% todo_num:0 finish_num:4741"
+        "timestamp": 25.59999999999994,
+        "cluster_state": "cpu:91.72% mem:79.57% gpu:98.79% todo_num:1 finish_num:3380 total_num:8947"
     },
     {
-        "timestamp": 129,
-        "cluster_state": "cpu:29.99% mem:22.83% todo_num:0 finish_num:4790"
+        "timestamp": 25.79999999999994,
+        "cluster_state": "cpu:94.47% mem:81.09% gpu:100.00% todo_num:1 finish_num:3406 total_num:9014"
     },
     {
-        "timestamp": 130,
-        "cluster_state": "cpu:29.50% mem:22.48% todo_num:0 finish_num:4835"
+        "timestamp": 25.99999999999994,
+        "cluster_state": "cpu:94.72% mem:81.69% gpu:98.39% todo_num:0 finish_num:3441 total_num:9074"
     },
     {
-        "timestamp": 131,
-        "cluster_state": "cpu:28.85% mem:21.97% todo_num:0 finish_num:4895"
+        "timestamp": 26.19999999999994,
+        "cluster_state": "cpu:91.96% mem:79.25% gpu:97.58% todo_num:1 finish_num:3473 total_num:9146"
     },
     {
-        "timestamp": 132,
-        "cluster_state": "cpu:28.36% mem:21.63% todo_num:0 finish_num:4952"
+        "timestamp": 26.399999999999938,
+        "cluster_state": "cpu:94.31% mem:81.27% gpu:99.19% todo_num:1 finish_num:3502 total_num:9224"
     },
     {
-        "timestamp": 133,
-        "cluster_state": "cpu:27.71% mem:21.11% todo_num:0 finish_num:5015"
+        "timestamp": 26.599999999999937,
+        "cluster_state": "cpu:93.85% mem:80.51% gpu:98.79% todo_num:1 finish_num:3534 total_num:9282"
     },
     {
-        "timestamp": 134,
-        "cluster_state": "cpu:27.21% mem:20.73% todo_num:0 finish_num:5063"
+        "timestamp": 26.799999999999937,
+        "cluster_state": "cpu:94.31% mem:80.68% gpu:99.60% todo_num:3 finish_num:3569 total_num:9369"
     },
     {
-        "timestamp": 135,
-        "cluster_state": "cpu:26.76% mem:20.42% todo_num:0 finish_num:5111"
+        "timestamp": 26.999999999999936,
+        "cluster_state": "cpu:93.51% mem:80.04% gpu:99.19% todo_num:1 finish_num:3600 total_num:9432"
     },
     {
-        "timestamp": 136,
-        "cluster_state": "cpu:26.28% mem:20.10% todo_num:0 finish_num:5161"
+        "timestamp": 27.199999999999935,
+        "cluster_state": "cpu:93.41% mem:79.44% gpu:98.39% todo_num:0 finish_num:3628 total_num:9500"
     },
     {
-        "timestamp": 137,
-        "cluster_state": "cpu:25.84% mem:19.77% todo_num:0 finish_num:5212"
+        "timestamp": 27.399999999999935,
+        "cluster_state": "cpu:92.78% mem:78.78% gpu:97.58% todo_num:1 finish_num:3654 total_num:9563"
     },
     {
-        "timestamp": 138,
-        "cluster_state": "cpu:25.38% mem:19.45% todo_num:0 finish_num:5259"
+        "timestamp": 27.599999999999934,
+        "cluster_state": "cpu:93.73% mem:80.00% gpu:98.79% todo_num:1 finish_num:3682 total_num:9628"
     },
     {
-        "timestamp": 139,
-        "cluster_state": "cpu:24.96% mem:19.15% todo_num:0 finish_num:5307"
+        "timestamp": 27.799999999999933,
+        "cluster_state": "cpu:92.06% mem:77.87% gpu:99.19% todo_num:0 finish_num:3716 total_num:9709"
     },
     {
-        "timestamp": 140,
-        "cluster_state": "cpu:24.53% mem:18.82% todo_num:0 finish_num:5354"
+        "timestamp": 27.999999999999932,
+        "cluster_state": "cpu:91.51% mem:78.00% gpu:98.39% todo_num:1 finish_num:3745 total_num:9781"
     },
     {
-        "timestamp": 141,
-        "cluster_state": "cpu:24.07% mem:18.44% todo_num:0 finish_num:5402"
+        "timestamp": 28.199999999999932,
+        "cluster_state": "cpu:91.24% mem:77.60% gpu:99.60% todo_num:1 finish_num:3783 total_num:9852"
     },
     {
-        "timestamp": 142,
-        "cluster_state": "cpu:23.66% mem:18.11% todo_num:0 finish_num:5450"
+        "timestamp": 28.39999999999993,
+        "cluster_state": "cpu:91.99% mem:78.32% gpu:99.19% todo_num:0 finish_num:3808 total_num:9918"
     },
     {
-        "timestamp": 143,
-        "cluster_state": "cpu:23.14% mem:17.76% todo_num:0 finish_num:5496"
+        "timestamp": 28.59999999999993,
+        "cluster_state": "cpu:92.04% mem:78.25% gpu:99.19% todo_num:0 finish_num:3833 total_num:9989"
     },
     {
-        "timestamp": 144,
-        "cluster_state": "cpu:22.74% mem:17.44% todo_num:0 finish_num:5541"
+        "timestamp": 28.79999999999993,
+        "cluster_state": "cpu:91.22% mem:76.97% gpu:99.19% todo_num:3 finish_num:3871 total_num:10075"
     },
     {
-        "timestamp": 145,
-        "cluster_state": "cpu:22.21% mem:17.00% todo_num:0 finish_num:5598"
+        "timestamp": 28.99999999999993,
+        "cluster_state": "cpu:91.75% mem:77.90% gpu:99.19% todo_num:0 finish_num:3903 total_num:10155"
     },
     {
-        "timestamp": 146,
-        "cluster_state": "cpu:21.86% mem:16.71% todo_num:0 finish_num:5635"
+        "timestamp": 29.19999999999993,
+        "cluster_state": "cpu:94.35% mem:80.36% gpu:99.60% todo_num:1 finish_num:3936 total_num:10233"
     },
     {
-        "timestamp": 147,
-        "cluster_state": "cpu:21.42% mem:16.34% todo_num:0 finish_num:5680"
+        "timestamp": 29.399999999999928,
+        "cluster_state": "cpu:92.98% mem:80.04% gpu:97.58% todo_num:0 finish_num:3968 total_num:10303"
     },
     {
-        "timestamp": 148,
-        "cluster_state": "cpu:21.03% mem:16.03% todo_num:0 finish_num:5724"
+        "timestamp": 29.599999999999927,
+        "cluster_state": "cpu:92.37% mem:78.54% gpu:98.79% todo_num:0 finish_num:3999 total_num:10369"
     },
     {
-        "timestamp": 149,
-        "cluster_state": "cpu:20.63% mem:15.70% todo_num:0 finish_num:5768"
+        "timestamp": 29.799999999999926,
+        "cluster_state": "cpu:93.34% mem:79.56% gpu:99.19% todo_num:0 finish_num:4017 total_num:10446"
     },
     {
-        "timestamp": 150,
-        "cluster_state": "cpu:20.17% mem:15.42% todo_num:0 finish_num:5811"
+        "timestamp": 29.999999999999925,
+        "cluster_state": "cpu:93.07% mem:78.77% gpu:99.19% todo_num:0 finish_num:4049 total_num:10526"
     },
     {
-        "timestamp": 151,
-        "cluster_state": "cpu:19.71% mem:15.07% todo_num:0 finish_num:5858"
+        "timestamp": 30.199999999999925,
+        "cluster_state": "cpu:91.99% mem:78.40% gpu:97.58% todo_num:1 finish_num:4080 total_num:10602"
     },
     {
-        "timestamp": 152,
-        "cluster_state": "cpu:19.31% mem:14.78% todo_num:0 finish_num:5898"
+        "timestamp": 30.399999999999924,
+        "cluster_state": "cpu:90.56% mem:76.95% gpu:97.98% todo_num:0 finish_num:4119 total_num:10672"
     },
     {
-        "timestamp": 153,
-        "cluster_state": "cpu:18.73% mem:14.32% todo_num:0 finish_num:5939"
+        "timestamp": 30.599999999999923,
+        "cluster_state": "cpu:91.22% mem:76.81% gpu:98.79% todo_num:0 finish_num:4150 total_num:10737"
     },
     {
-        "timestamp": 154,
-        "cluster_state": "cpu:18.35% mem:14.06% todo_num:0 finish_num:5967"
+        "timestamp": 30.799999999999923,
+        "cluster_state": "cpu:89.77% mem:75.37% gpu:97.98% todo_num:0 finish_num:4177 total_num:10792"
     },
     {
-        "timestamp": 155,
-        "cluster_state": "cpu:18.00% mem:13.78% todo_num:0 finish_num:6001"
+        "timestamp": 30.999999999999922,
+        "cluster_state": "cpu:89.72% mem:75.54% gpu:97.98% todo_num:0 finish_num:4202 total_num:10860"
     },
     {
-        "timestamp": 156,
-        "cluster_state": "cpu:17.55% mem:13.49% todo_num:0 finish_num:6044"
+        "timestamp": 31.19999999999992,
+        "cluster_state": "cpu:90.40% mem:75.55% gpu:99.19% todo_num:0 finish_num:4230 total_num:10931"
     },
     {
-        "timestamp": 157,
-        "cluster_state": "cpu:17.17% mem:13.22% todo_num:0 finish_num:6084"
+        "timestamp": 31.39999999999992,
+        "cluster_state": "cpu:92.40% mem:77.27% gpu:99.19% todo_num:0 finish_num:4255 total_num:11007"
     },
     {
-        "timestamp": 158,
-        "cluster_state": "cpu:16.78% mem:12.95% todo_num:0 finish_num:6120"
+        "timestamp": 31.59999999999992,
+        "cluster_state": "cpu:94.50% mem:78.75% gpu:97.58% todo_num:0 finish_num:4275 total_num:11079"
     },
     {
-        "timestamp": 159,
-        "cluster_state": "cpu:16.47% mem:12.68% todo_num:0 finish_num:6155"
+        "timestamp": 31.79999999999992,
+        "cluster_state": "cpu:94.88% mem:79.71% gpu:99.19% todo_num:1 finish_num:4301 total_num:11148"
     },
     {
-        "timestamp": 160,
-        "cluster_state": "cpu:16.26% mem:12.50% todo_num:0 finish_num:6182"
+        "timestamp": 31.99999999999992,
+        "cluster_state": "cpu:93.41% mem:79.06% gpu:98.79% todo_num:0 finish_num:4330 total_num:11225"
     },
     {
-        "timestamp": 161,
-        "cluster_state": "cpu:15.85% mem:12.17% todo_num:0 finish_num:6216"
+        "timestamp": 32.19999999999992,
+        "cluster_state": "cpu:93.07% mem:78.52% gpu:98.39% todo_num:0 finish_num:4363 total_num:11293"
     },
     {
-        "timestamp": 162,
-        "cluster_state": "cpu:15.46% mem:11.88% todo_num:0 finish_num:6262"
+        "timestamp": 32.39999999999992,
+        "cluster_state": "cpu:92.47% mem:78.17% gpu:97.98% todo_num:3 finish_num:4399 total_num:11369"
     },
     {
-        "timestamp": 163,
-        "cluster_state": "cpu:15.21% mem:11.67% todo_num:0 finish_num:6287"
+        "timestamp": 32.59999999999992,
+        "cluster_state": "cpu:92.47% mem:77.84% gpu:99.19% todo_num:0 finish_num:4429 total_num:11436"
     },
     {
-        "timestamp": 164,
-        "cluster_state": "cpu:14.94% mem:11.44% todo_num:0 finish_num:6320"
+        "timestamp": 32.799999999999926,
+        "cluster_state": "cpu:92.91% mem:78.09% gpu:98.39% todo_num:0 finish_num:4457 total_num:11512"
     },
     {
-        "timestamp": 165,
-        "cluster_state": "cpu:14.62% mem:11.22% todo_num:0 finish_num:6354"
+        "timestamp": 32.99999999999993,
+        "cluster_state": "cpu:91.34% mem:77.00% gpu:97.98% todo_num:1 finish_num:4487 total_num:11580"
     },
     {
-        "timestamp": 166,
-        "cluster_state": "cpu:14.12% mem:10.84% todo_num:0 finish_num:6402"
+        "timestamp": 33.19999999999993,
+        "cluster_state": "cpu:93.29% mem:79.10% gpu:99.19% todo_num:0 finish_num:4514 total_num:11646"
     },
     {
-        "timestamp": 167,
-        "cluster_state": "cpu:13.86% mem:10.64% todo_num:0 finish_num:6430"
+        "timestamp": 33.399999999999935,
+        "cluster_state": "cpu:93.56% mem:78.87% gpu:97.98% todo_num:0 finish_num:4544 total_num:11722"
     },
     {
-        "timestamp": 168,
-        "cluster_state": "cpu:13.53% mem:10.37% todo_num:0 finish_num:6460"
+        "timestamp": 33.59999999999994,
+        "cluster_state": "cpu:92.23% mem:78.70% gpu:97.58% todo_num:1 finish_num:4574 total_num:11807"
     },
     {
-        "timestamp": 169,
-        "cluster_state": "cpu:13.08% mem:10.05% todo_num:0 finish_num:6505"
+        "timestamp": 33.79999999999994,
+        "cluster_state": "cpu:93.46% mem:79.35% gpu:99.60% todo_num:1 finish_num:4599 total_num:11887"
     },
     {
-        "timestamp": 170,
-        "cluster_state": "cpu:12.85% mem:9.86% todo_num:0 finish_num:6530"
+        "timestamp": 33.99999999999994,
+        "cluster_state": "cpu:94.50% mem:80.85% gpu:98.39% todo_num:0 finish_num:4628 total_num:11965"
     },
     {
-        "timestamp": 171,
-        "cluster_state": "cpu:12.53% mem:9.62% todo_num:0 finish_num:6564"
+        "timestamp": 34.199999999999946,
+        "cluster_state": "cpu:93.19% mem:80.50% gpu:99.60% todo_num:0 finish_num:4662 total_num:12046"
     },
     {
-        "timestamp": 172,
-        "cluster_state": "cpu:12.28% mem:9.44% todo_num:0 finish_num:6589"
+        "timestamp": 34.39999999999995,
+        "cluster_state": "cpu:91.07% mem:79.11% gpu:97.58% todo_num:0 finish_num:4698 total_num:12112"
     },
     {
-        "timestamp": 173,
-        "cluster_state": "cpu:12.04% mem:9.24% todo_num:0 finish_num:6613"
+        "timestamp": 34.59999999999995,
+        "cluster_state": "cpu:91.77% mem:79.84% gpu:98.79% todo_num:0 finish_num:4731 total_num:12174"
     },
     {
-        "timestamp": 174,
-        "cluster_state": "cpu:11.76% mem:9.04% todo_num:0 finish_num:6643"
+        "timestamp": 34.799999999999955,
+        "cluster_state": "cpu:92.45% mem:80.00% gpu:99.19% todo_num:0 finish_num:4756 total_num:12251"
     },
     {
-        "timestamp": 175,
-        "cluster_state": "cpu:11.54% mem:8.87% todo_num:0 finish_num:6669"
+        "timestamp": 34.99999999999996,
+        "cluster_state": "cpu:91.00% mem:78.54% gpu:99.19% todo_num:0 finish_num:4794 total_num:12321"
     },
     {
-        "timestamp": 176,
-        "cluster_state": "cpu:11.30% mem:8.66% todo_num:0 finish_num:6696"
+        "timestamp": 35.19999999999996,
+        "cluster_state": "cpu:89.60% mem:77.79% gpu:98.79% todo_num:1 finish_num:4819 total_num:12385"
     },
     {
-        "timestamp": 177,
-        "cluster_state": "cpu:11.13% mem:8.54% todo_num:0 finish_num:6719"
+        "timestamp": 35.39999999999996,
+        "cluster_state": "cpu:90.78% mem:79.45% gpu:97.98% todo_num:0 finish_num:4852 total_num:12457"
     },
     {
-        "timestamp": 178,
-        "cluster_state": "cpu:10.91% mem:8.35% todo_num:0 finish_num:6741"
+        "timestamp": 35.599999999999966,
+        "cluster_state": "cpu:93.24% mem:81.11% gpu:100.00% todo_num:0 finish_num:4873 total_num:12527"
     },
     {
-        "timestamp": 179,
-        "cluster_state": "cpu:10.64% mem:8.17% todo_num:0 finish_num:6768"
+        "timestamp": 35.79999999999997,
+        "cluster_state": "cpu:92.59% mem:81.45% gpu:99.60% todo_num:0 finish_num:4908 total_num:12602"
     },
     {
-        "timestamp": 180,
-        "cluster_state": "cpu:10.38% mem:8.00% todo_num:0 finish_num:6797"
+        "timestamp": 35.99999999999997,
+        "cluster_state": "cpu:95.05% mem:83.32% gpu:99.19% todo_num:1 finish_num:4926 total_num:12663"
     },
     {
-        "timestamp": 181,
-        "cluster_state": "cpu:10.08% mem:7.75% todo_num:0 finish_num:6828"
+        "timestamp": 36.199999999999974,
+        "cluster_state": "cpu:93.53% mem:81.56% gpu:95.56% todo_num:0 finish_num:4957 total_num:12714"
     },
     {
-        "timestamp": 182,
-        "cluster_state": "cpu:9.77% mem:7.53% todo_num:0 finish_num:6861"
+        "timestamp": 36.39999999999998,
+        "cluster_state": "cpu:94.59% mem:82.60% gpu:96.37% todo_num:0 finish_num:4990 total_num:12785"
     },
     {
-        "timestamp": 183,
-        "cluster_state": "cpu:9.60% mem:7.41% todo_num:0 finish_num:6880"
+        "timestamp": 36.59999999999998,
+        "cluster_state": "cpu:93.07% mem:81.84% gpu:99.19% todo_num:1 finish_num:5029 total_num:12859"
     },
     {
-        "timestamp": 184,
-        "cluster_state": "cpu:9.39% mem:7.26% todo_num:0 finish_num:6902"
+        "timestamp": 36.79999999999998,
+        "cluster_state": "cpu:94.33% mem:82.61% gpu:98.39% todo_num:1 finish_num:5055 total_num:12935"
     },
     {
-        "timestamp": 185,
-        "cluster_state": "cpu:9.05% mem:6.99% todo_num:0 finish_num:6932"
+        "timestamp": 36.999999999999986,
+        "cluster_state": "cpu:93.58% mem:81.66% gpu:98.79% todo_num:1 finish_num:5081 total_num:13010"
     },
     {
-        "timestamp": 186,
-        "cluster_state": "cpu:8.81% mem:6.79% todo_num:0 finish_num:6956"
+        "timestamp": 37.19999999999999,
+        "cluster_state": "cpu:92.81% mem:81.85% gpu:99.19% todo_num:0 finish_num:5105 total_num:13070"
     },
     {
-        "timestamp": 187,
-        "cluster_state": "cpu:8.66% mem:6.66% todo_num:0 finish_num:6975"
+        "timestamp": 37.39999999999999,
+        "cluster_state": "cpu:94.02% mem:82.23% gpu:99.19% todo_num:1 finish_num:5136 total_num:13139"
     },
     {
-        "timestamp": 188,
-        "cluster_state": "cpu:8.34% mem:6.45% todo_num:0 finish_num:7001"
+        "timestamp": 37.599999999999994,
+        "cluster_state": "cpu:93.51% mem:81.80% gpu:100.00% todo_num:0 finish_num:5162 total_num:13207"
     },
     {
-        "timestamp": 189,
-        "cluster_state": "cpu:8.16% mem:6.30% todo_num:0 finish_num:7020"
+        "timestamp": 37.8,
+        "cluster_state": "cpu:91.94% mem:80.02% gpu:98.79% todo_num:0 finish_num:5200 total_num:13287"
     },
     {
-        "timestamp": 190,
-        "cluster_state": "cpu:7.86% mem:6.06% todo_num:0 finish_num:7056"
+        "timestamp": 38.0,
+        "cluster_state": "cpu:91.29% mem:78.61% gpu:100.00% todo_num:1 finish_num:5228 total_num:13364"
     },
     {
-        "timestamp": 191,
-        "cluster_state": "cpu:7.67% mem:5.92% todo_num:0 finish_num:7075"
+        "timestamp": 38.2,
+        "cluster_state": "cpu:91.72% mem:78.86% gpu:99.60% todo_num:0 finish_num:5259 total_num:13436"
     },
     {
-        "timestamp": 192,
-        "cluster_state": "cpu:7.51% mem:5.80% todo_num:0 finish_num:7093"
+        "timestamp": 38.400000000000006,
+        "cluster_state": "cpu:91.48% mem:79.01% gpu:98.39% todo_num:1 finish_num:5287 total_num:13505"
     },
     {
-        "timestamp": 193,
-        "cluster_state": "cpu:7.28% mem:5.62% todo_num:0 finish_num:7115"
+        "timestamp": 38.60000000000001,
+        "cluster_state": "cpu:90.85% mem:79.04% gpu:98.79% todo_num:0 finish_num:5325 total_num:13574"
     },
     {
-        "timestamp": 194,
-        "cluster_state": "cpu:7.01% mem:5.44% todo_num:0 finish_num:7148"
+        "timestamp": 38.80000000000001,
+        "cluster_state": "cpu:91.53% mem:79.87% gpu:99.19% todo_num:0 finish_num:5353 total_num:13655"
     },
     {
-        "timestamp": 195,
-        "cluster_state": "cpu:6.87% mem:5.35% todo_num:0 finish_num:7164"
+        "timestamp": 39.000000000000014,
+        "cluster_state": "cpu:94.11% mem:80.91% gpu:98.79% todo_num:0 finish_num:5380 total_num:13744"
     },
     {
-        "timestamp": 196,
-        "cluster_state": "cpu:6.74% mem:5.24% todo_num:0 finish_num:7181"
+        "timestamp": 39.20000000000002,
+        "cluster_state": "cpu:94.79% mem:81.16% gpu:99.19% todo_num:0 finish_num:5406 total_num:13826"
     },
     {
-        "timestamp": 197,
-        "cluster_state": "cpu:6.55% mem:5.09% todo_num:0 finish_num:7204"
+        "timestamp": 39.40000000000002,
+        "cluster_state": "cpu:95.42% mem:81.62% gpu:97.98% todo_num:1 finish_num:5439 total_num:13905"
     },
     {
-        "timestamp": 198,
-        "cluster_state": "cpu:6.37% mem:4.93% todo_num:0 finish_num:7226"
+        "timestamp": 39.60000000000002,
+        "cluster_state": "cpu:95.66% mem:81.65% gpu:97.58% todo_num:0 finish_num:5464 total_num:13964"
     },
     {
-        "timestamp": 199,
-        "cluster_state": "cpu:6.11% mem:4.76% todo_num:0 finish_num:7249"
+        "timestamp": 39.800000000000026,
+        "cluster_state": "cpu:94.43% mem:80.52% gpu:97.58% todo_num:0 finish_num:5504 total_num:14039"
     },
     {
-        "timestamp": 200,
-        "cluster_state": "cpu:5.97% mem:4.64% todo_num:0 finish_num:7262"
+        "timestamp": 40.00000000000003,
+        "cluster_state": "cpu:93.63% mem:79.98% gpu:98.39% todo_num:0 finish_num:5530 total_num:14111"
     },
     {
-        "timestamp": 201,
-        "cluster_state": "cpu:5.82% mem:4.54% todo_num:0 finish_num:7276"
+        "timestamp": 40.20000000000003,
+        "cluster_state": "cpu:92.50% mem:79.20% gpu:99.19% todo_num:0 finish_num:5556 total_num:14188"
     },
     {
-        "timestamp": 202,
-        "cluster_state": "cpu:5.58% mem:4.34% todo_num:0 finish_num:7299"
+        "timestamp": 40.400000000000034,
+        "cluster_state": "cpu:91.80% mem:78.50% gpu:97.98% todo_num:0 finish_num:5590 total_num:14249"
     },
     {
-        "timestamp": 203,
-        "cluster_state": "cpu:5.49% mem:4.27% todo_num:0 finish_num:7311"
+        "timestamp": 40.60000000000004,
+        "cluster_state": "cpu:91.82% mem:78.68% gpu:99.60% todo_num:0 finish_num:5617 total_num:14307"
     },
     {
-        "timestamp": 204,
-        "cluster_state": "cpu:5.35% mem:4.19% todo_num:0 finish_num:7323"
+        "timestamp": 40.80000000000004,
+        "cluster_state": "cpu:91.00% mem:78.39% gpu:100.00% todo_num:0 finish_num:5651 total_num:14376"
     },
     {
-        "timestamp": 205,
-        "cluster_state": "cpu:5.23% mem:4.08% todo_num:0 finish_num:7338"
+        "timestamp": 41.00000000000004,
+        "cluster_state": "cpu:90.78% mem:78.58% gpu:99.19% todo_num:1 finish_num:5680 total_num:14448"
     },
     {
-        "timestamp": 206,
-        "cluster_state": "cpu:5.10% mem:3.97% todo_num:0 finish_num:7351"
+        "timestamp": 41.200000000000045,
+        "cluster_state": "cpu:91.48% mem:79.21% gpu:99.60% todo_num:0 finish_num:5704 total_num:14517"
     },
     {
-        "timestamp": 207,
-        "cluster_state": "cpu:4.96% mem:3.84% todo_num:0 finish_num:7367"
+        "timestamp": 41.40000000000005,
+        "cluster_state": "cpu:94.72% mem:83.16% gpu:99.19% todo_num:0 finish_num:5736 total_num:14606"
     },
     {
-        "timestamp": 208,
-        "cluster_state": "cpu:4.77% mem:3.69% todo_num:0 finish_num:7387"
+        "timestamp": 41.60000000000005,
+        "cluster_state": "cpu:93.65% mem:81.79% gpu:99.19% todo_num:0 finish_num:5764 total_num:14687"
     },
     {
-        "timestamp": 209,
-        "cluster_state": "cpu:4.50% mem:3.50% todo_num:0 finish_num:7415"
+        "timestamp": 41.800000000000054,
+        "cluster_state": "cpu:94.14% mem:82.40% gpu:98.39% todo_num:0 finish_num:5794 total_num:14756"
     },
     {
-        "timestamp": 210,
-        "cluster_state": "cpu:4.40% mem:3.42% todo_num:0 finish_num:7427"
+        "timestamp": 42.00000000000006,
+        "cluster_state": "cpu:94.59% mem:82.35% gpu:99.60% todo_num:0 finish_num:5822 total_num:14845"
     },
     {
-        "timestamp": 211,
-        "cluster_state": "cpu:4.26% mem:3.29% todo_num:0 finish_num:7441"
+        "timestamp": 42.20000000000006,
+        "cluster_state": "cpu:95.03% mem:82.27% gpu:98.79% todo_num:0 finish_num:5841 total_num:14926"
     },
     {
-        "timestamp": 212,
-        "cluster_state": "cpu:4.09% mem:3.16% todo_num:0 finish_num:7457"
+        "timestamp": 42.40000000000006,
+        "cluster_state": "cpu:95.42% mem:82.39% gpu:97.98% todo_num:0 finish_num:5869 total_num:14995"
     },
     {
-        "timestamp": 213,
-        "cluster_state": "cpu:3.93% mem:3.06% todo_num:0 finish_num:7471"
+        "timestamp": 42.600000000000065,
+        "cluster_state": "cpu:93.07% mem:80.77% gpu:99.60% todo_num:0 finish_num:5903 total_num:15081"
     },
     {
-        "timestamp": 214,
-        "cluster_state": "cpu:3.76% mem:2.92% todo_num:0 finish_num:7490"
+        "timestamp": 42.80000000000007,
+        "cluster_state": "cpu:90.52% mem:78.84% gpu:99.19% todo_num:0 finish_num:5931 total_num:15162"
     },
     {
-        "timestamp": 215,
-        "cluster_state": "cpu:3.67% mem:2.85% todo_num:0 finish_num:7503"
+        "timestamp": 43.00000000000007,
+        "cluster_state": "cpu:92.28% mem:79.44% gpu:98.39% todo_num:0 finish_num:5962 total_num:15225"
     },
     {
-        "timestamp": 216,
-        "cluster_state": "cpu:3.53% mem:2.74% todo_num:0 finish_num:7517"
+        "timestamp": 43.200000000000074,
+        "cluster_state": "cpu:93.77% mem:80.42% gpu:99.19% todo_num:0 finish_num:5985 total_num:15313"
     },
     {
-        "timestamp": 217,
-        "cluster_state": "cpu:3.48% mem:2.70% todo_num:0 finish_num:7522"
+        "timestamp": 43.40000000000008,
+        "cluster_state": "cpu:92.47% mem:79.50% gpu:97.98% todo_num:0 finish_num:6024 total_num:15381"
     },
     {
-        "timestamp": 218,
-        "cluster_state": "cpu:3.28% mem:2.54% todo_num:0 finish_num:7543"
+        "timestamp": 43.60000000000008,
+        "cluster_state": "cpu:91.22% mem:78.97% gpu:98.79% todo_num:0 finish_num:6054 total_num:15455"
     },
     {
-        "timestamp": 219,
-        "cluster_state": "cpu:3.17% mem:2.46% todo_num:0 finish_num:7554"
+        "timestamp": 43.80000000000008,
+        "cluster_state": "cpu:91.24% mem:78.22% gpu:98.79% todo_num:0 finish_num:6082 total_num:15534"
     },
     {
-        "timestamp": 220,
-        "cluster_state": "cpu:3.03% mem:2.34% todo_num:0 finish_num:7566"
+        "timestamp": 44.000000000000085,
+        "cluster_state": "cpu:92.76% mem:79.62% gpu:97.58% todo_num:0 finish_num:6112 total_num:15613"
     },
     {
-        "timestamp": 221,
-        "cluster_state": "cpu:2.96% mem:2.28% todo_num:0 finish_num:7575"
+        "timestamp": 44.20000000000009,
+        "cluster_state": "cpu:95.15% mem:80.78% gpu:98.79% todo_num:0 finish_num:6138 total_num:15693"
     },
     {
-        "timestamp": 222,
-        "cluster_state": "cpu:2.85% mem:2.20% todo_num:0 finish_num:7586"
+        "timestamp": 44.40000000000009,
+        "cluster_state": "cpu:92.71% mem:79.03% gpu:99.19% todo_num:0 finish_num:6169 total_num:15761"
     },
     {
-        "timestamp": 223,
-        "cluster_state": "cpu:2.76% mem:2.13% todo_num:0 finish_num:7595"
+        "timestamp": 44.600000000000094,
+        "cluster_state": "cpu:92.33% mem:78.99% gpu:99.60% todo_num:0 finish_num:6203 total_num:15854"
     },
     {
-        "timestamp": 224,
-        "cluster_state": "cpu:2.61% mem:2.01% todo_num:0 finish_num:7607"
+        "timestamp": 44.8000000000001,
+        "cluster_state": "cpu:93.75% mem:79.49% gpu:98.79% todo_num:0 finish_num:6233 total_num:15923"
     },
     {
-        "timestamp": 225,
-        "cluster_state": "cpu:2.54% mem:1.96% todo_num:0 finish_num:7616"
+        "timestamp": 45.0000000000001,
+        "cluster_state": "cpu:92.76% mem:78.66% gpu:97.98% todo_num:0 finish_num:6270 total_num:15986"
     },
     {
-        "timestamp": 226,
-        "cluster_state": "cpu:2.45% mem:1.90% todo_num:0 finish_num:7625"
+        "timestamp": 45.2000000000001,
+        "cluster_state": "cpu:92.62% mem:79.09% gpu:99.60% todo_num:0 finish_num:6304 total_num:16063"
     },
     {
-        "timestamp": 227,
-        "cluster_state": "cpu:2.36% mem:1.83% todo_num:0 finish_num:7638"
+        "timestamp": 45.400000000000105,
+        "cluster_state": "cpu:93.39% mem:79.67% gpu:96.77% todo_num:0 finish_num:6340 total_num:16141"
     },
     {
-        "timestamp": 228,
-        "cluster_state": "cpu:2.25% mem:1.74% todo_num:0 finish_num:7650"
+        "timestamp": 45.60000000000011,
+        "cluster_state": "cpu:94.14% mem:80.44% gpu:98.39% todo_num:1 finish_num:6372 total_num:16200"
     },
     {
-        "timestamp": 229,
-        "cluster_state": "cpu:2.17% mem:1.67% todo_num:0 finish_num:7661"
+        "timestamp": 45.80000000000011,
+        "cluster_state": "cpu:93.70% mem:80.14% gpu:99.19% todo_num:0 finish_num:6394 total_num:16278"
     },
     {
-        "timestamp": 230,
-        "cluster_state": "cpu:2.10% mem:1.62% todo_num:0 finish_num:7669"
+        "timestamp": 46.000000000000114,
+        "cluster_state": "cpu:95.34% mem:81.02% gpu:98.79% todo_num:0 finish_num:6419 total_num:16354"
     },
     {
-        "timestamp": 231,
-        "cluster_state": "cpu:2.04% mem:1.57% todo_num:0 finish_num:7679"
+        "timestamp": 46.20000000000012,
+        "cluster_state": "cpu:96.43% mem:81.89% gpu:99.60% todo_num:1 finish_num:6444 total_num:16440"
     },
     {
-        "timestamp": 232,
-        "cluster_state": "cpu:1.93% mem:1.51% todo_num:0 finish_num:7691"
+        "timestamp": 46.40000000000012,
+        "cluster_state": "cpu:95.13% mem:80.59% gpu:99.19% todo_num:0 finish_num:6474 total_num:16519"
     },
     {
-        "timestamp": 233,
-        "cluster_state": "cpu:1.90% mem:1.48% todo_num:0 finish_num:7695"
+        "timestamp": 46.60000000000012,
+        "cluster_state": "cpu:94.02% mem:79.78% gpu:98.79% todo_num:0 finish_num:6499 total_num:16595"
     },
     {
-        "timestamp": 234,
-        "cluster_state": "cpu:1.85% mem:1.42% todo_num:0 finish_num:7702"
+        "timestamp": 46.800000000000125,
+        "cluster_state": "cpu:91.58% mem:77.64% gpu:100.00% todo_num:0 finish_num:6529 total_num:16646"
     },
     {
-        "timestamp": 235,
-        "cluster_state": "cpu:1.70% mem:1.32% todo_num:0 finish_num:7714"
+        "timestamp": 47.00000000000013,
+        "cluster_state": "cpu:93.97% mem:80.11% gpu:100.00% todo_num:0 finish_num:6563 total_num:16733"
     },
     {
-        "timestamp": 236,
-        "cluster_state": "cpu:1.66% mem:1.29% todo_num:0 finish_num:7720"
+        "timestamp": 47.20000000000013,
+        "cluster_state": "cpu:90.56% mem:77.62% gpu:99.60% todo_num:0 finish_num:6604 total_num:16805"
     },
     {
-        "timestamp": 237,
-        "cluster_state": "cpu:1.60% mem:1.25% todo_num:0 finish_num:7727"
+        "timestamp": 47.400000000000134,
+        "cluster_state": "cpu:91.43% mem:78.82% gpu:100.00% todo_num:0 finish_num:6627 total_num:16883"
     },
     {
-        "timestamp": 238,
-        "cluster_state": "cpu:1.50% mem:1.18% todo_num:0 finish_num:7735"
+        "timestamp": 47.600000000000136,
+        "cluster_state": "cpu:91.48% mem:78.31% gpu:98.79% todo_num:0 finish_num:6656 total_num:16966"
     },
     {
-        "timestamp": 239,
-        "cluster_state": "cpu:1.44% mem:1.11% todo_num:0 finish_num:7743"
+        "timestamp": 47.80000000000014,
+        "cluster_state": "cpu:91.17% mem:77.99% gpu:97.98% todo_num:0 finish_num:6678 total_num:17032"
     },
     {
-        "timestamp": 240,
-        "cluster_state": "cpu:1.31% mem:1.02% todo_num:0 finish_num:7753"
+        "timestamp": 48.00000000000014,
+        "cluster_state": "cpu:93.58% mem:80.17% gpu:99.60% todo_num:1 finish_num:6701 total_num:17112"
     },
     {
-        "timestamp": 241,
-        "cluster_state": "cpu:1.28% mem:0.98% todo_num:0 finish_num:7758"
+        "timestamp": 48.200000000000145,
+        "cluster_state": "cpu:93.61% mem:80.88% gpu:98.39% todo_num:0 finish_num:6728 total_num:17187"
     },
     {
-        "timestamp": 242,
-        "cluster_state": "cpu:1.20% mem:0.93% todo_num:0 finish_num:7766"
+        "timestamp": 48.40000000000015,
+        "cluster_state": "cpu:92.52% mem:79.95% gpu:99.60% todo_num:0 finish_num:6758 total_num:17278"
     },
     {
-        "timestamp": 243,
-        "cluster_state": "cpu:1.16% mem:0.89% todo_num:0 finish_num:7770"
+        "timestamp": 48.60000000000015,
+        "cluster_state": "cpu:93.24% mem:80.39% gpu:99.60% todo_num:0 finish_num:6788 total_num:17359"
     },
     {
-        "timestamp": 244,
-        "cluster_state": "cpu:1.08% mem:0.82% todo_num:0 finish_num:7777"
+        "timestamp": 48.80000000000015,
+        "cluster_state": "cpu:95.00% mem:82.17% gpu:99.60% todo_num:0 finish_num:6812 total_num:17440"
     },
     {
-        "timestamp": 245,
-        "cluster_state": "cpu:0.97% mem:0.74% todo_num:0 finish_num:7787"
+        "timestamp": 49.000000000000156,
+        "cluster_state": "cpu:93.39% mem:81.00% gpu:98.39% todo_num:0 finish_num:6848 total_num:17496"
     },
     {
-        "timestamp": 246,
-        "cluster_state": "cpu:0.92% mem:0.72% todo_num:0 finish_num:7791"
+        "timestamp": 49.20000000000016,
+        "cluster_state": "cpu:94.45% mem:82.23% gpu:99.60% todo_num:0 finish_num:6883 total_num:17582"
     },
     {
-        "timestamp": 247,
-        "cluster_state": "cpu:0.87% mem:0.68% todo_num:0 finish_num:7796"
+        "timestamp": 49.40000000000016,
+        "cluster_state": "cpu:93.44% mem:81.51% gpu:99.19% todo_num:0 finish_num:6910 total_num:17658"
     },
     {
-        "timestamp": 248,
-        "cluster_state": "cpu:0.82% mem:0.63% todo_num:0 finish_num:7801"
+        "timestamp": 49.600000000000165,
+        "cluster_state": "cpu:93.63% mem:81.11% gpu:99.60% todo_num:0 finish_num:6933 total_num:17741"
     },
     {
-        "timestamp": 249,
-        "cluster_state": "cpu:0.75% mem:0.58% todo_num:0 finish_num:7808"
+        "timestamp": 49.80000000000017,
+        "cluster_state": "cpu:94.35% mem:82.16% gpu:99.19% todo_num:0 finish_num:6962 total_num:17802"
     },
     {
-        "timestamp": 250,
-        "cluster_state": "cpu:0.68% mem:0.53% todo_num:0 finish_num:7814"
+        "timestamp": 50.00000000000017,
+        "cluster_state": "cpu:92.30% mem:80.32% gpu:99.19% todo_num:0 finish_num:6992 total_num:17883"
     },
     {
-        "timestamp": 251,
-        "cluster_state": "cpu:0.64% mem:0.50% todo_num:0 finish_num:7819"
+        "timestamp": 50.20000000000017,
+        "cluster_state": "cpu:92.93% mem:81.08% gpu:98.79% todo_num:0 finish_num:7018 total_num:17958"
     },
     {
-        "timestamp": 252,
-        "cluster_state": "cpu:0.63% mem:0.49% todo_num:0 finish_num:7822"
+        "timestamp": 50.400000000000176,
+        "cluster_state": "cpu:91.77% mem:79.15% gpu:96.77% todo_num:0 finish_num:7056 total_num:18044"
     },
     {
-        "timestamp": 253,
-        "cluster_state": "cpu:0.59% mem:0.46% todo_num:0 finish_num:7826"
+        "timestamp": 50.60000000000018,
+        "cluster_state": "cpu:93.48% mem:80.34% gpu:97.98% todo_num:0 finish_num:7087 total_num:18117"
     },
     {
-        "timestamp": 254,
-        "cluster_state": "cpu:0.57% mem:0.43% todo_num:0 finish_num:7828"
+        "timestamp": 50.80000000000018,
+        "cluster_state": "cpu:94.06% mem:81.15% gpu:99.19% todo_num:0 finish_num:7120 total_num:18181"
     },
     {
-        "timestamp": 255,
-        "cluster_state": "cpu:0.54% mem:0.41% todo_num:0 finish_num:7833"
+        "timestamp": 51.000000000000185,
+        "cluster_state": "cpu:93.27% mem:80.17% gpu:98.39% todo_num:0 finish_num:7157 total_num:18247"
     },
     {
-        "timestamp": 256,
-        "cluster_state": "cpu:0.50% mem:0.38% todo_num:0 finish_num:7836"
+        "timestamp": 51.20000000000019,
+        "cluster_state": "cpu:93.24% mem:79.58% gpu:98.39% todo_num:0 finish_num:7186 total_num:18337"
     },
     {
-        "timestamp": 257,
-        "cluster_state": "cpu:0.47% mem:0.36% todo_num:0 finish_num:7841"
+        "timestamp": 51.40000000000019,
+        "cluster_state": "cpu:92.95% mem:79.73% gpu:99.19% todo_num:0 finish_num:7215 total_num:18407"
     },
     {
-        "timestamp": 258,
-        "cluster_state": "cpu:0.45% mem:0.34% todo_num:0 finish_num:7843"
+        "timestamp": 51.60000000000019,
+        "cluster_state": "cpu:93.87% mem:80.05% gpu:99.60% todo_num:0 finish_num:7243 total_num:18477"
     },
     {
-        "timestamp": 259,
-        "cluster_state": "cpu:0.45% mem:0.34% todo_num:0 finish_num:7844"
+        "timestamp": 51.800000000000196,
+        "cluster_state": "cpu:93.53% mem:80.09% gpu:99.60% todo_num:0 finish_num:7271 total_num:18537"
     },
     {
-        "timestamp": 260,
-        "cluster_state": "cpu:0.43% mem:0.33% todo_num:0 finish_num:7845"
+        "timestamp": 52.0000000000002,
+        "cluster_state": "cpu:94.98% mem:81.16% gpu:100.00% todo_num:1 finish_num:7303 total_num:18618"
     },
     {
-        "timestamp": 261,
-        "cluster_state": "cpu:0.41% mem:0.30% todo_num:0 finish_num:7847"
+        "timestamp": 52.2000000000002,
+        "cluster_state": "cpu:94.14% mem:80.43% gpu:99.60% todo_num:0 finish_num:7334 total_num:18690"
     },
     {
-        "timestamp": 262,
-        "cluster_state": "cpu:0.39% mem:0.28% todo_num:0 finish_num:7849"
+        "timestamp": 52.400000000000205,
+        "cluster_state": "cpu:94.45% mem:81.56% gpu:97.98% todo_num:0 finish_num:7371 total_num:18757"
     },
     {
-        "timestamp": 263,
-        "cluster_state": "cpu:0.34% mem:0.25% todo_num:0 finish_num:7854"
+        "timestamp": 52.60000000000021,
+        "cluster_state": "cpu:93.03% mem:80.52% gpu:99.60% todo_num:0 finish_num:7404 total_num:18832"
     },
     {
-        "timestamp": 264,
-        "cluster_state": "cpu:0.31% mem:0.23% todo_num:0 finish_num:7857"
+        "timestamp": 52.80000000000021,
+        "cluster_state": "cpu:93.61% mem:80.91% gpu:100.00% todo_num:0 finish_num:7424 total_num:18908"
     },
     {
-        "timestamp": 265,
-        "cluster_state": "cpu:0.31% mem:0.22% todo_num:0 finish_num:7859"
+        "timestamp": 53.00000000000021,
+        "cluster_state": "cpu:93.82% mem:81.52% gpu:98.79% todo_num:1 finish_num:7454 total_num:18979"
     },
     {
-        "timestamp": 266,
-        "cluster_state": "cpu:0.27% mem:0.19% todo_num:0 finish_num:7865"
+        "timestamp": 53.200000000000216,
+        "cluster_state": "cpu:92.33% mem:80.88% gpu:98.39% todo_num:0 finish_num:7487 total_num:19057"
     },
     {
-        "timestamp": 267,
-        "cluster_state": "cpu:0.23% mem:0.17% todo_num:0 finish_num:7870"
+        "timestamp": 53.40000000000022,
+        "cluster_state": "cpu:93.58% mem:81.89% gpu:99.60% todo_num:0 finish_num:7514 total_num:19137"
     },
     {
-        "timestamp": 268,
-        "cluster_state": "cpu:0.21% mem:0.15% todo_num:0 finish_num:7874"
+        "timestamp": 53.60000000000022,
+        "cluster_state": "cpu:91.41% mem:80.10% gpu:99.60% todo_num:0 finish_num:7540 total_num:19200"
     },
     {
-        "timestamp": 269,
-        "cluster_state": "cpu:0.19% mem:0.14% todo_num:0 finish_num:7876"
+        "timestamp": 53.800000000000225,
+        "cluster_state": "cpu:90.42% mem:78.27% gpu:99.60% todo_num:0 finish_num:7574 total_num:19264"
     },
     {
-        "timestamp": 270,
-        "cluster_state": "cpu:0.18% mem:0.13% todo_num:0 finish_num:7877"
+        "timestamp": 54.00000000000023,
+        "cluster_state": "cpu:89.91% mem:78.11% gpu:100.00% todo_num:0 finish_num:7611 total_num:19343"
     },
     {
-        "timestamp": 271,
-        "cluster_state": "cpu:0.17% mem:0.12% todo_num:0 finish_num:7879"
+        "timestamp": 54.20000000000023,
+        "cluster_state": "cpu:89.96% mem:77.41% gpu:98.79% todo_num:0 finish_num:7642 total_num:19409"
     },
     {
-        "timestamp": 272,
-        "cluster_state": "cpu:0.13% mem:0.10% todo_num:0 finish_num:7882"
+        "timestamp": 54.40000000000023,
+        "cluster_state": "cpu:90.56% mem:77.25% gpu:99.19% todo_num:0 finish_num:7671 total_num:19472"
     },
     {
-        "timestamp": 273,
-        "cluster_state": "cpu:0.12% mem:0.09% todo_num:0 finish_num:7883"
+        "timestamp": 54.600000000000236,
+        "cluster_state": "cpu:91.00% mem:77.88% gpu:97.98% todo_num:1 finish_num:7699 total_num:19557"
     },
     {
-        "timestamp": 274,
-        "cluster_state": "cpu:0.10% mem:0.08% todo_num:0 finish_num:7884"
+        "timestamp": 54.80000000000024,
+        "cluster_state": "cpu:92.45% mem:78.72% gpu:99.19% todo_num:0 finish_num:7725 total_num:19630"
     },
     {
-        "timestamp": 275,
-        "cluster_state": "cpu:0.10% mem:0.07% todo_num:0 finish_num:7885"
+        "timestamp": 55.00000000000024,
+        "cluster_state": "cpu:92.16% mem:78.07% gpu:98.79% todo_num:0 finish_num:7758 total_num:19703"
     },
     {
-        "timestamp": 276,
-        "cluster_state": "cpu:0.10% mem:0.07% todo_num:0 finish_num:7885"
+        "timestamp": 55.200000000000244,
+        "cluster_state": "cpu:92.76% mem:78.31% gpu:98.79% todo_num:0 finish_num:7784 total_num:19766"
     },
     {
-        "timestamp": 277,
-        "cluster_state": "cpu:0.09% mem:0.07% todo_num:0 finish_num:7887"
+        "timestamp": 55.40000000000025,
+        "cluster_state": "cpu:91.75% mem:78.52% gpu:99.19% todo_num:0 finish_num:7821 total_num:19852"
     },
     {
-        "timestamp": 278,
-        "cluster_state": "cpu:0.07% mem:0.05% todo_num:0 finish_num:7890"
+        "timestamp": 55.60000000000025,
+        "cluster_state": "cpu:94.59% mem:81.01% gpu:98.79% todo_num:0 finish_num:7855 total_num:19922"
     },
     {
-        "timestamp": 279,
-        "cluster_state": "cpu:0.07% mem:0.05% todo_num:0 finish_num:7890"
+        "timestamp": 55.80000000000025,
+        "cluster_state": "cpu:95.51% mem:81.67% gpu:99.19% todo_num:0 finish_num:7883 total_num:20000"
     },
     {
-        "timestamp": 280,
-        "cluster_state": "cpu:0.05% mem:0.04% todo_num:0 finish_num:7892"
+        "timestamp": 56.000000000000256,
+        "cluster_state": "cpu:94.59% mem:80.86% gpu:99.19% todo_num:0 finish_num:7915 total_num:20069"
     },
     {
-        "timestamp": 281,
-        "cluster_state": "cpu:0.05% mem:0.04% todo_num:0 finish_num:7892"
+        "timestamp": 56.20000000000026,
+        "cluster_state": "cpu:94.62% mem:80.53% gpu:99.19% todo_num:0 finish_num:7946 total_num:20126"
     },
     {
-        "timestamp": 282,
-        "cluster_state": "cpu:0.04% mem:0.03% todo_num:0 finish_num:7893"
+        "timestamp": 56.40000000000026,
+        "cluster_state": "cpu:93.19% mem:79.03% gpu:99.19% todo_num:0 finish_num:7977 total_num:20196"
     },
     {
-        "timestamp": 283,
-        "cluster_state": "cpu:0.03% mem:0.03% todo_num:0 finish_num:7894"
+        "timestamp": 56.600000000000264,
+        "cluster_state": "cpu:92.81% mem:78.43% gpu:98.39% todo_num:0 finish_num:8001 total_num:20260"
     },
     {
-        "timestamp": 284,
-        "cluster_state": "cpu:0.03% mem:0.03% todo_num:0 finish_num:7894"
+        "timestamp": 56.80000000000027,
+        "cluster_state": "cpu:93.97% mem:79.60% gpu:98.39% todo_num:0 finish_num:8034 total_num:20327"
     },
     {
-        "timestamp": 285,
-        "cluster_state": "cpu:0.03% mem:0.03% todo_num:0 finish_num:7894"
+        "timestamp": 57.00000000000027,
+        "cluster_state": "cpu:92.13% mem:77.38% gpu:99.19% todo_num:0 finish_num:8061 total_num:20387"
     },
     {
-        "timestamp": 286,
-        "cluster_state": "cpu:0.03% mem:0.03% todo_num:0 finish_num:7894"
+        "timestamp": 57.20000000000027,
+        "cluster_state": "cpu:90.06% mem:76.45% gpu:100.00% todo_num:0 finish_num:8088 total_num:20470"
     },
     {
-        "timestamp": 287,
-        "cluster_state": "cpu:0.02% mem:0.02% todo_num:0 finish_num:7895"
+        "timestamp": 57.400000000000276,
+        "cluster_state": "cpu:89.33% mem:74.81% gpu:99.19% todo_num:1 finish_num:8121 total_num:20545"
     },
     {
-        "timestamp": 288,
-        "cluster_state": "cpu:0.02% mem:0.02% todo_num:0 finish_num:7895"
+        "timestamp": 57.60000000000028,
+        "cluster_state": "cpu:89.94% mem:74.99% gpu:100.00% todo_num:0 finish_num:8141 total_num:20620"
     },
     {
-        "timestamp": 289,
-        "cluster_state": "cpu:0.02% mem:0.02% todo_num:0 finish_num:7895"
+        "timestamp": 57.80000000000028,
+        "cluster_state": "cpu:91.89% mem:76.24% gpu:100.00% todo_num:0 finish_num:8165 total_num:20699"
     },
     {
-        "timestamp": 290,
-        "cluster_state": "cpu:0.02% mem:0.02% todo_num:0 finish_num:7895"
+        "timestamp": 58.000000000000284,
+        "cluster_state": "cpu:90.64% mem:76.07% gpu:98.79% todo_num:0 finish_num:8198 total_num:20768"
     },
     {
-        "timestamp": 291,
-        "cluster_state": "cpu:0.02% mem:0.02% todo_num:0 finish_num:7895"
+        "timestamp": 58.20000000000029,
+        "cluster_state": "cpu:89.67% mem:75.64% gpu:99.60% todo_num:0 finish_num:8225 total_num:20844"
     },
     {
-        "timestamp": 292,
-        "cluster_state": "cpu:0.01% mem:0.01% todo_num:0 finish_num:7896"
+        "timestamp": 58.40000000000029,
+        "cluster_state": "cpu:91.24% mem:77.57% gpu:99.19% todo_num:0 finish_num:8254 total_num:20921"
     },
     {
-        "timestamp": 293,
-        "cluster_state": "cpu:0.00% mem:0.00% todo_num:0 finish_num:7897"
+        "timestamp": 58.60000000000029,
+        "cluster_state": "cpu:90.81% mem:77.20% gpu:99.19% todo_num:0 finish_num:8286 total_num:20990"
     },
     {
-        "avg_cpu_utilization": 17.232879773917023,
-        "avg_mem_utilization": 13.246523941095182
+        "timestamp": 58.800000000000296,
+        "cluster_state": "cpu:92.30% mem:78.37% gpu:100.00% todo_num:0 finish_num:8321 total_num:21077"
+    },
+    {
+        "timestamp": 59.0000000000003,
+        "cluster_state": "cpu:91.58% mem:78.16% gpu:99.19% todo_num:0 finish_num:8350 total_num:21154"
+    },
+    {
+        "timestamp": 59.2000000000003,
+        "cluster_state": "cpu:90.56% mem:77.73% gpu:99.60% todo_num:0 finish_num:8383 total_num:21231"
+    },
+    {
+        "timestamp": 59.400000000000304,
+        "cluster_state": "cpu:92.47% mem:79.58% gpu:99.19% todo_num:0 finish_num:8412 total_num:21296"
+    },
+    {
+        "timestamp": 59.60000000000031,
+        "cluster_state": "cpu:92.40% mem:79.37% gpu:99.60% todo_num:0 finish_num:8446 total_num:21383"
+    },
+    {
+        "timestamp": 59.80000000000031,
+        "cluster_state": "cpu:93.41% mem:80.67% gpu:99.60% todo_num:0 finish_num:8471 total_num:21457"
+    },
+    {
+        "timestamp": 60.00000000000031,
+        "cluster_state": "cpu:92.21% mem:80.41% gpu:98.79% todo_num:0 finish_num:8507 total_num:21528"
+    },
+    {
+        "timestamp": 60.200000000000315,
+        "cluster_state": "cpu:94.26% mem:82.59% gpu:99.19% todo_num:0 finish_num:8533 total_num:21607"
+    },
+    {
+        "timestamp": 60.40000000000032,
+        "cluster_state": "cpu:94.11% mem:82.29% gpu:99.19% todo_num:0 finish_num:8562 total_num:21665"
+    },
+    {
+        "timestamp": 60.60000000000032,
+        "cluster_state": "cpu:94.59% mem:82.88% gpu:99.19% todo_num:0 finish_num:8588 total_num:21726"
+    },
+    {
+        "timestamp": 60.800000000000324,
+        "cluster_state": "cpu:94.14% mem:82.84% gpu:98.39% todo_num:0 finish_num:8617 total_num:21799"
+    },
+    {
+        "timestamp": 61.00000000000033,
+        "cluster_state": "cpu:94.23% mem:82.00% gpu:99.60% todo_num:0 finish_num:8649 total_num:21875"
+    },
+    {
+        "timestamp": 61.20000000000033,
+        "cluster_state": "cpu:93.00% mem:81.01% gpu:99.60% todo_num:0 finish_num:8672 total_num:21953"
+    },
+    {
+        "timestamp": 61.40000000000033,
+        "cluster_state": "cpu:91.07% mem:79.33% gpu:99.60% todo_num:0 finish_num:8703 total_num:22020"
+    },
+    {
+        "timestamp": 61.600000000000335,
+        "cluster_state": "cpu:91.60% mem:79.42% gpu:99.60% todo_num:0 finish_num:8735 total_num:22093"
+    },
+    {
+        "timestamp": 61.80000000000034,
+        "cluster_state": "cpu:90.85% mem:78.70% gpu:99.19% todo_num:1 finish_num:8761 total_num:22153"
+    },
+    {
+        "timestamp": 62.00000000000034,
+        "cluster_state": "cpu:90.66% mem:77.86% gpu:99.60% todo_num:0 finish_num:8784 total_num:22234"
+    },
+    {
+        "timestamp": 62.200000000000344,
+        "cluster_state": "cpu:90.35% mem:77.19% gpu:97.98% todo_num:0 finish_num:8811 total_num:22304"
+    },
+    {
+        "timestamp": 62.40000000000035,
+        "cluster_state": "cpu:89.45% mem:75.96% gpu:99.60% todo_num:0 finish_num:8848 total_num:22380"
+    },
+    {
+        "timestamp": 62.60000000000035,
+        "cluster_state": "cpu:91.87% mem:78.19% gpu:98.79% todo_num:0 finish_num:8880 total_num:22445"
+    },
+    {
+        "timestamp": 62.80000000000035,
+        "cluster_state": "cpu:91.10% mem:76.97% gpu:99.19% todo_num:0 finish_num:8919 total_num:22521"
+    },
+    {
+        "timestamp": 63.000000000000355,
+        "cluster_state": "cpu:91.26% mem:77.03% gpu:99.60% todo_num:0 finish_num:8944 total_num:22599"
+    },
+    {
+        "timestamp": 63.20000000000036,
+        "cluster_state": "cpu:91.75% mem:76.95% gpu:100.00% todo_num:0 finish_num:8965 total_num:22669"
+    },
+    {
+        "timestamp": 63.40000000000036,
+        "cluster_state": "cpu:92.06% mem:76.98% gpu:100.00% todo_num:0 finish_num:8991 total_num:22743"
+    },
+    {
+        "timestamp": 63.600000000000364,
+        "cluster_state": "cpu:92.98% mem:78.01% gpu:100.00% todo_num:0 finish_num:9018 total_num:22822"
+    },
+    {
+        "timestamp": 63.80000000000037,
+        "cluster_state": "cpu:93.48% mem:78.73% gpu:99.60% todo_num:0 finish_num:9049 total_num:22889"
+    },
+    {
+        "timestamp": 64.00000000000037,
+        "cluster_state": "cpu:93.75% mem:78.63% gpu:99.19% todo_num:0 finish_num:9080 total_num:22951"
+    },
+    {
+        "timestamp": 64.20000000000037,
+        "cluster_state": "cpu:92.01% mem:77.29% gpu:99.19% todo_num:0 finish_num:9111 total_num:23041"
+    },
+    {
+        "timestamp": 64.40000000000038,
+        "cluster_state": "cpu:92.08% mem:77.54% gpu:99.60% todo_num:0 finish_num:9139 total_num:23119"
+    },
+    {
+        "timestamp": 64.60000000000038,
+        "cluster_state": "cpu:89.21% mem:75.10% gpu:98.79% todo_num:0 finish_num:9175 total_num:23188"
+    },
+    {
+        "timestamp": 64.80000000000038,
+        "cluster_state": "cpu:89.43% mem:76.67% gpu:99.19% todo_num:0 finish_num:9205 total_num:23268"
+    },
+    {
+        "timestamp": 65.00000000000038,
+        "cluster_state": "cpu:90.35% mem:76.93% gpu:98.79% todo_num:0 finish_num:9234 total_num:23335"
+    },
+    {
+        "timestamp": 65.20000000000039,
+        "cluster_state": "cpu:90.78% mem:76.98% gpu:97.58% todo_num:0 finish_num:9266 total_num:23403"
+    },
+    {
+        "timestamp": 65.40000000000039,
+        "cluster_state": "cpu:93.10% mem:78.18% gpu:98.39% todo_num:1 finish_num:9297 total_num:23482"
+    },
+    {
+        "timestamp": 65.60000000000039,
+        "cluster_state": "cpu:94.57% mem:80.18% gpu:97.98% todo_num:0 finish_num:9319 total_num:23564"
+    },
+    {
+        "timestamp": 65.8000000000004,
+        "cluster_state": "cpu:94.16% mem:79.41% gpu:97.98% todo_num:0 finish_num:9352 total_num:23630"
+    },
+    {
+        "timestamp": 66.0000000000004,
+        "cluster_state": "cpu:90.81% mem:76.76% gpu:98.39% todo_num:0 finish_num:9382 total_num:23699"
+    },
+    {
+        "timestamp": 66.2000000000004,
+        "cluster_state": "cpu:91.51% mem:78.09% gpu:97.18% todo_num:0 finish_num:9415 total_num:23763"
+    },
+    {
+        "timestamp": 66.4000000000004,
+        "cluster_state": "cpu:93.19% mem:79.73% gpu:98.79% todo_num:0 finish_num:9445 total_num:23830"
+    },
+    {
+        "timestamp": 66.6000000000004,
+        "cluster_state": "cpu:93.61% mem:80.28% gpu:97.18% todo_num:0 finish_num:9477 total_num:23897"
+    },
+    {
+        "timestamp": 66.80000000000041,
+        "cluster_state": "cpu:93.87% mem:80.91% gpu:98.79% todo_num:2 finish_num:9518 total_num:23986"
+    },
+    {
+        "timestamp": 67.00000000000041,
+        "cluster_state": "cpu:94.43% mem:81.25% gpu:99.60% todo_num:1 finish_num:9544 total_num:24075"
+    },
+    {
+        "timestamp": 67.20000000000041,
+        "cluster_state": "cpu:94.96% mem:81.17% gpu:99.19% todo_num:0 finish_num:9569 total_num:24146"
+    },
+    {
+        "timestamp": 67.40000000000042,
+        "cluster_state": "cpu:94.50% mem:80.51% gpu:98.79% todo_num:0 finish_num:9599 total_num:24209"
+    },
+    {
+        "timestamp": 67.60000000000042,
+        "cluster_state": "cpu:94.72% mem:80.49% gpu:98.79% todo_num:0 finish_num:9629 total_num:24292"
+    },
+    {
+        "timestamp": 67.80000000000042,
+        "cluster_state": "cpu:93.58% mem:79.91% gpu:99.19% todo_num:0 finish_num:9652 total_num:24362"
+    },
+    {
+        "timestamp": 68.00000000000043,
+        "cluster_state": "cpu:94.91% mem:81.11% gpu:98.79% todo_num:0 finish_num:9685 total_num:24438"
+    },
+    {
+        "timestamp": 68.20000000000043,
+        "cluster_state": "cpu:95.49% mem:81.99% gpu:98.79% todo_num:0 finish_num:9712 total_num:24516"
+    },
+    {
+        "timestamp": 68.40000000000043,
+        "cluster_state": "cpu:93.94% mem:80.77% gpu:98.79% todo_num:0 finish_num:9737 total_num:24592"
+    },
+    {
+        "timestamp": 68.60000000000043,
+        "cluster_state": "cpu:94.38% mem:81.77% gpu:100.00% todo_num:0 finish_num:9768 total_num:24680"
+    },
+    {
+        "timestamp": 68.80000000000044,
+        "cluster_state": "cpu:92.50% mem:80.23% gpu:99.19% todo_num:0 finish_num:9799 total_num:24768"
+    },
+    {
+        "timestamp": 69.00000000000044,
+        "cluster_state": "cpu:92.69% mem:80.18% gpu:99.19% todo_num:0 finish_num:9832 total_num:24853"
+    },
+    {
+        "timestamp": 69.20000000000044,
+        "cluster_state": "cpu:93.44% mem:80.61% gpu:99.19% todo_num:0 finish_num:9867 total_num:24930"
+    },
+    {
+        "timestamp": 69.40000000000045,
+        "cluster_state": "cpu:94.62% mem:81.44% gpu:99.19% todo_num:0 finish_num:9900 total_num:25018"
+    },
+    {
+        "timestamp": 69.60000000000045,
+        "cluster_state": "cpu:94.35% mem:80.59% gpu:99.19% todo_num:0 finish_num:9925 total_num:25089"
+    },
+    {
+        "timestamp": 69.80000000000045,
+        "cluster_state": "cpu:92.59% mem:78.74% gpu:100.00% todo_num:0 finish_num:9960 total_num:25154"
+    },
+    {
+        "timestamp": 70.00000000000045,
+        "cluster_state": "cpu:92.86% mem:79.43% gpu:99.60% todo_num:0 finish_num:9985 total_num:25230"
+    },
+    {
+        "timestamp": 70.20000000000046,
+        "cluster_state": "cpu:91.77% mem:78.76% gpu:99.60% todo_num:1 finish_num:10017 total_num:25309"
+    },
+    {
+        "timestamp": 70.40000000000046,
+        "cluster_state": "cpu:90.93% mem:77.75% gpu:100.00% todo_num:0 finish_num:10050 total_num:25381"
+    },
+    {
+        "timestamp": 70.60000000000046,
+        "cluster_state": "cpu:90.71% mem:78.16% gpu:99.19% todo_num:0 finish_num:10080 total_num:25466"
+    },
+    {
+        "timestamp": 70.80000000000047,
+        "cluster_state": "cpu:91.96% mem:79.15% gpu:98.39% todo_num:0 finish_num:10103 total_num:25543"
+    },
+    {
+        "timestamp": 71.00000000000047,
+        "cluster_state": "cpu:91.43% mem:78.70% gpu:96.37% todo_num:0 finish_num:10140 total_num:25629"
+    },
+    {
+        "timestamp": 71.20000000000047,
+        "cluster_state": "cpu:90.15% mem:79.07% gpu:97.98% todo_num:2 finish_num:10171 total_num:25695"
+    },
+    {
+        "timestamp": 71.40000000000047,
+        "cluster_state": "cpu:91.75% mem:80.13% gpu:97.58% todo_num:0 finish_num:10206 total_num:25765"
+    },
+    {
+        "timestamp": 71.60000000000048,
+        "cluster_state": "cpu:92.45% mem:80.79% gpu:98.79% todo_num:0 finish_num:10234 total_num:25832"
+    },
+    {
+        "timestamp": 71.80000000000048,
+        "cluster_state": "cpu:92.93% mem:80.93% gpu:98.39% todo_num:0 finish_num:10262 total_num:25920"
+    },
+    {
+        "timestamp": 72.00000000000048,
+        "cluster_state": "cpu:93.46% mem:81.19% gpu:98.39% todo_num:0 finish_num:10292 total_num:25994"
+    },
+    {
+        "timestamp": 72.20000000000049,
+        "cluster_state": "cpu:91.17% mem:79.56% gpu:99.19% todo_num:0 finish_num:10325 total_num:26061"
+    },
+    {
+        "timestamp": 72.40000000000049,
+        "cluster_state": "cpu:91.26% mem:80.26% gpu:98.39% todo_num:0 finish_num:10356 total_num:26141"
+    },
+    {
+        "timestamp": 72.60000000000049,
+        "cluster_state": "cpu:91.94% mem:79.97% gpu:99.60% todo_num:0 finish_num:10384 total_num:26234"
+    },
+    {
+        "timestamp": 72.8000000000005,
+        "cluster_state": "cpu:94.28% mem:82.08% gpu:99.19% todo_num:0 finish_num:10414 total_num:26306"
+    },
+    {
+        "timestamp": 73.0000000000005,
+        "cluster_state": "cpu:94.76% mem:82.16% gpu:99.60% todo_num:0 finish_num:10444 total_num:26386"
+    },
+    {
+        "timestamp": 73.2000000000005,
+        "cluster_state": "cpu:93.75% mem:81.97% gpu:99.60% todo_num:0 finish_num:10467 total_num:26443"
+    },
+    {
+        "timestamp": 73.4000000000005,
+        "cluster_state": "cpu:93.92% mem:81.52% gpu:98.79% todo_num:0 finish_num:10505 total_num:26506"
+    },
+    {
+        "timestamp": 73.6000000000005,
+        "cluster_state": "cpu:93.56% mem:81.14% gpu:98.79% todo_num:0 finish_num:10539 total_num:26588"
+    },
+    {
+        "timestamp": 73.80000000000051,
+        "cluster_state": "cpu:90.81% mem:77.15% gpu:98.79% todo_num:0 finish_num:10577 total_num:26654"
+    },
+    {
+        "timestamp": 74.00000000000051,
+        "cluster_state": "cpu:90.56% mem:76.79% gpu:99.19% todo_num:0 finish_num:10608 total_num:26725"
+    },
+    {
+        "timestamp": 74.20000000000051,
+        "cluster_state": "cpu:91.89% mem:77.90% gpu:99.19% todo_num:0 finish_num:10626 total_num:26792"
+    },
+    {
+        "timestamp": 74.40000000000052,
+        "cluster_state": "cpu:93.27% mem:79.37% gpu:100.00% todo_num:1 finish_num:10653 total_num:26867"
+    },
+    {
+        "timestamp": 74.60000000000052,
+        "cluster_state": "cpu:95.08% mem:80.79% gpu:100.00% todo_num:0 finish_num:10684 total_num:26943"
+    },
+    {
+        "timestamp": 74.80000000000052,
+        "cluster_state": "cpu:91.99% mem:78.63% gpu:98.79% todo_num:2 finish_num:10719 total_num:27011"
+    },
+    {
+        "timestamp": 75.00000000000053,
+        "cluster_state": "cpu:92.25% mem:78.68% gpu:98.39% todo_num:0 finish_num:10746 total_num:27077"
+    },
+    {
+        "timestamp": 75.20000000000053,
+        "cluster_state": "cpu:95.32% mem:81.59% gpu:99.19% todo_num:0 finish_num:10774 total_num:27159"
+    },
+    {
+        "timestamp": 75.40000000000053,
+        "cluster_state": "cpu:93.44% mem:80.18% gpu:97.98% todo_num:0 finish_num:10805 total_num:27231"
+    },
+    {
+        "timestamp": 75.60000000000053,
+        "cluster_state": "cpu:95.10% mem:81.30% gpu:98.39% todo_num:0 finish_num:10823 total_num:27322"
+    },
+    {
+        "timestamp": 75.80000000000054,
+        "cluster_state": "cpu:94.67% mem:81.63% gpu:98.79% todo_num:0 finish_num:10857 total_num:27407"
+    },
+    {
+        "timestamp": 76.00000000000054,
+        "cluster_state": "cpu:94.98% mem:81.29% gpu:98.39% todo_num:2 finish_num:10882 total_num:27490"
+    },
+    {
+        "timestamp": 76.20000000000054,
+        "cluster_state": "cpu:93.22% mem:79.74% gpu:98.39% todo_num:0 finish_num:10911 total_num:27563"
+    },
+    {
+        "timestamp": 76.40000000000055,
+        "cluster_state": "cpu:93.00% mem:80.50% gpu:98.79% todo_num:0 finish_num:10944 total_num:27648"
+    },
+    {
+        "timestamp": 76.60000000000055,
+        "cluster_state": "cpu:92.35% mem:80.52% gpu:98.39% todo_num:0 finish_num:10981 total_num:27732"
+    },
+    {
+        "timestamp": 76.80000000000055,
+        "cluster_state": "cpu:92.64% mem:80.87% gpu:99.19% todo_num:2 finish_num:11002 total_num:27808"
+    },
+    {
+        "timestamp": 77.00000000000055,
+        "cluster_state": "cpu:92.86% mem:80.69% gpu:98.39% todo_num:0 finish_num:11024 total_num:27869"
+    },
+    {
+        "timestamp": 77.20000000000056,
+        "cluster_state": "cpu:94.02% mem:80.92% gpu:98.39% todo_num:1 finish_num:11048 total_num:27933"
+    },
+    {
+        "timestamp": 77.40000000000056,
+        "cluster_state": "cpu:92.98% mem:80.07% gpu:97.18% todo_num:0 finish_num:11084 total_num:28005"
+    },
+    {
+        "timestamp": 77.60000000000056,
+        "cluster_state": "cpu:92.74% mem:80.40% gpu:99.19% todo_num:0 finish_num:11115 total_num:28068"
+    },
+    {
+        "timestamp": 77.80000000000057,
+        "cluster_state": "cpu:94.09% mem:80.57% gpu:99.19% todo_num:0 finish_num:11147 total_num:28137"
+    },
+    {
+        "timestamp": 78.00000000000057,
+        "cluster_state": "cpu:93.53% mem:80.51% gpu:99.19% todo_num:2 finish_num:11178 total_num:28209"
+    },
+    {
+        "timestamp": 78.20000000000057,
+        "cluster_state": "cpu:93.87% mem:80.83% gpu:100.00% todo_num:0 finish_num:11208 total_num:28291"
+    },
+    {
+        "timestamp": 78.40000000000057,
+        "cluster_state": "cpu:92.59% mem:80.58% gpu:99.60% todo_num:0 finish_num:11235 total_num:28364"
+    },
+    {
+        "timestamp": 78.60000000000058,
+        "cluster_state": "cpu:93.07% mem:80.36% gpu:98.39% todo_num:0 finish_num:11263 total_num:28439"
+    },
+    {
+        "timestamp": 78.80000000000058,
+        "cluster_state": "cpu:93.48% mem:80.45% gpu:99.19% todo_num:1 finish_num:11288 total_num:28511"
+    },
+    {
+        "timestamp": 79.00000000000058,
+        "cluster_state": "cpu:93.61% mem:79.23% gpu:98.79% todo_num:0 finish_num:11319 total_num:28595"
+    },
+    {
+        "timestamp": 79.20000000000059,
+        "cluster_state": "cpu:94.47% mem:80.06% gpu:98.79% todo_num:0 finish_num:11354 total_num:28676"
+    },
+    {
+        "timestamp": 79.40000000000059,
+        "cluster_state": "cpu:93.99% mem:79.70% gpu:98.39% todo_num:0 finish_num:11379 total_num:28740"
+    },
+    {
+        "timestamp": 79.60000000000059,
+        "cluster_state": "cpu:93.39% mem:80.08% gpu:98.39% todo_num:1 finish_num:11415 total_num:28827"
+    },
+    {
+        "timestamp": 79.8000000000006,
+        "cluster_state": "cpu:92.57% mem:79.23% gpu:98.79% todo_num:0 finish_num:11437 total_num:28886"
+    },
+    {
+        "timestamp": 80.0000000000006,
+        "cluster_state": "cpu:92.01% mem:78.32% gpu:97.98% todo_num:1 finish_num:11471 total_num:28980"
+    },
+    {
+        "timestamp": 80.2000000000006,
+        "cluster_state": "cpu:89.29% mem:76.11% gpu:99.60% todo_num:1 finish_num:11510 total_num:29053"
+    },
+    {
+        "timestamp": 80.4000000000006,
+        "cluster_state": "cpu:91.41% mem:77.79% gpu:99.60% todo_num:1 finish_num:11533 total_num:29122"
+    },
+    {
+        "timestamp": 80.6000000000006,
+        "cluster_state": "cpu:91.89% mem:77.38% gpu:98.79% todo_num:1 finish_num:11563 total_num:29187"
+    },
+    {
+        "timestamp": 80.80000000000061,
+        "cluster_state": "cpu:94.18% mem:79.36% gpu:98.79% todo_num:1 finish_num:11585 total_num:29276"
+    },
+    {
+        "timestamp": 81.00000000000061,
+        "cluster_state": "cpu:91.19% mem:77.89% gpu:97.98% todo_num:0 finish_num:11615 total_num:29350"
+    },
+    {
+        "timestamp": 81.20000000000061,
+        "cluster_state": "cpu:93.29% mem:80.03% gpu:99.19% todo_num:0 finish_num:11640 total_num:29424"
+    },
+    {
+        "timestamp": 81.40000000000062,
+        "cluster_state": "cpu:92.54% mem:79.94% gpu:99.19% todo_num:0 finish_num:11674 total_num:29497"
+    },
+    {
+        "timestamp": 81.60000000000062,
+        "cluster_state": "cpu:92.62% mem:79.38% gpu:97.98% todo_num:0 finish_num:11718 total_num:29570"
+    },
+    {
+        "timestamp": 81.80000000000062,
+        "cluster_state": "cpu:92.98% mem:80.20% gpu:97.98% todo_num:0 finish_num:11749 total_num:29653"
+    },
+    {
+        "timestamp": 82.00000000000063,
+        "cluster_state": "cpu:93.48% mem:80.79% gpu:98.39% todo_num:0 finish_num:11780 total_num:29723"
+    },
+    {
+        "timestamp": 82.20000000000063,
+        "cluster_state": "cpu:92.18% mem:80.05% gpu:99.60% todo_num:0 finish_num:11812 total_num:29787"
+    },
+    {
+        "timestamp": 82.40000000000063,
+        "cluster_state": "cpu:90.73% mem:78.85% gpu:99.60% todo_num:0 finish_num:11840 total_num:29864"
+    },
+    {
+        "timestamp": 82.60000000000063,
+        "cluster_state": "cpu:90.93% mem:79.39% gpu:99.19% todo_num:2 finish_num:11866 total_num:29931"
+    },
+    {
+        "timestamp": 82.80000000000064,
+        "cluster_state": "cpu:91.82% mem:79.70% gpu:99.19% todo_num:1 finish_num:11892 total_num:30006"
+    },
+    {
+        "timestamp": 83.00000000000064,
+        "cluster_state": "cpu:90.13% mem:78.58% gpu:97.58% todo_num:1 finish_num:11933 total_num:30080"
+    },
+    {
+        "timestamp": 83.20000000000064,
+        "cluster_state": "cpu:92.06% mem:79.31% gpu:98.39% todo_num:0 finish_num:11956 total_num:30152"
+    },
+    {
+        "timestamp": 83.40000000000065,
+        "cluster_state": "cpu:90.78% mem:78.53% gpu:98.39% todo_num:2 finish_num:11986 total_num:30236"
+    },
+    {
+        "timestamp": 83.60000000000065,
+        "cluster_state": "cpu:90.93% mem:79.23% gpu:98.79% todo_num:0 finish_num:12016 total_num:30312"
+    },
+    {
+        "timestamp": 83.80000000000065,
+        "cluster_state": "cpu:90.32% mem:79.11% gpu:99.60% todo_num:1 finish_num:12049 total_num:30378"
+    },
+    {
+        "timestamp": 84.00000000000065,
+        "cluster_state": "cpu:90.95% mem:79.69% gpu:99.19% todo_num:2 finish_num:12076 total_num:30461"
+    },
+    {
+        "timestamp": 84.20000000000066,
+        "cluster_state": "cpu:92.35% mem:80.83% gpu:99.19% todo_num:1 finish_num:12107 total_num:30540"
+    },
+    {
+        "timestamp": 84.40000000000066,
+        "cluster_state": "cpu:92.59% mem:80.58% gpu:98.79% todo_num:1 finish_num:12133 total_num:30609"
+    },
+    {
+        "timestamp": 84.60000000000066,
+        "cluster_state": "cpu:94.18% mem:81.74% gpu:98.79% todo_num:1 finish_num:12162 total_num:30679"
+    },
+    {
+        "timestamp": 84.80000000000067,
+        "cluster_state": "cpu:92.88% mem:80.65% gpu:98.79% todo_num:3 finish_num:12193 total_num:30754"
+    },
+    {
+        "timestamp": 85.00000000000067,
+        "cluster_state": "cpu:90.54% mem:79.46% gpu:97.98% todo_num:0 finish_num:12230 total_num:30806"
+    },
+    {
+        "timestamp": 85.20000000000067,
+        "cluster_state": "cpu:93.12% mem:80.04% gpu:99.19% todo_num:0 finish_num:12261 total_num:30875"
+    },
+    {
+        "timestamp": 85.40000000000067,
+        "cluster_state": "cpu:93.70% mem:80.36% gpu:99.60% todo_num:0 finish_num:12282 total_num:30948"
+    },
+    {
+        "timestamp": 85.60000000000068,
+        "cluster_state": "cpu:93.85% mem:80.21% gpu:99.19% todo_num:0 finish_num:12311 total_num:31020"
+    },
+    {
+        "timestamp": 85.80000000000068,
+        "cluster_state": "cpu:93.39% mem:79.57% gpu:98.79% todo_num:1 finish_num:12340 total_num:31084"
+    },
+    {
+        "timestamp": 86.00000000000068,
+        "cluster_state": "cpu:93.58% mem:79.91% gpu:100.00% todo_num:0 finish_num:12372 total_num:31159"
+    },
+    {
+        "timestamp": 86.20000000000068,
+        "cluster_state": "cpu:93.05% mem:79.61% gpu:99.60% todo_num:1 finish_num:12409 total_num:31242"
+    },
+    {
+        "timestamp": 86.40000000000069,
+        "cluster_state": "cpu:93.41% mem:79.41% gpu:100.00% todo_num:0 finish_num:12438 total_num:31305"
+    },
+    {
+        "timestamp": 86.60000000000069,
+        "cluster_state": "cpu:91.53% mem:78.08% gpu:99.19% todo_num:0 finish_num:12468 total_num:31374"
+    },
+    {
+        "timestamp": 86.8000000000007,
+        "cluster_state": "cpu:93.80% mem:80.16% gpu:98.79% todo_num:0 finish_num:12500 total_num:31446"
+    },
+    {
+        "timestamp": 87.0000000000007,
+        "cluster_state": "cpu:93.99% mem:80.12% gpu:99.60% todo_num:0 finish_num:12526 total_num:31512"
+    },
+    {
+        "timestamp": 87.2000000000007,
+        "cluster_state": "cpu:93.07% mem:79.33% gpu:98.39% todo_num:0 finish_num:12558 total_num:31580"
+    },
+    {
+        "timestamp": 87.4000000000007,
+        "cluster_state": "cpu:94.64% mem:80.70% gpu:99.60% todo_num:1 finish_num:12582 total_num:31655"
+    },
+    {
+        "timestamp": 87.6000000000007,
+        "cluster_state": "cpu:93.07% mem:79.06% gpu:98.79% todo_num:0 finish_num:12613 total_num:31719"
+    },
+    {
+        "timestamp": 87.80000000000071,
+        "cluster_state": "cpu:93.51% mem:79.13% gpu:99.60% todo_num:0 finish_num:12637 total_num:31788"
+    },
+    {
+        "timestamp": 88.00000000000071,
+        "cluster_state": "cpu:93.29% mem:79.36% gpu:100.00% todo_num:2 finish_num:12669 total_num:31868"
+    },
+    {
+        "timestamp": 88.20000000000071,
+        "cluster_state": "cpu:93.12% mem:79.27% gpu:99.60% todo_num:0 finish_num:12700 total_num:31946"
+    },
+    {
+        "timestamp": 88.40000000000072,
+        "cluster_state": "cpu:93.39% mem:79.46% gpu:99.19% todo_num:0 finish_num:12726 total_num:32020"
+    },
+    {
+        "timestamp": 88.60000000000072,
+        "cluster_state": "cpu:91.63% mem:78.62% gpu:99.60% todo_num:0 finish_num:12764 total_num:32096"
+    },
+    {
+        "timestamp": 88.80000000000072,
+        "cluster_state": "cpu:91.41% mem:79.06% gpu:95.97% todo_num:0 finish_num:12797 total_num:32147"
+    },
+    {
+        "timestamp": 89.00000000000072,
+        "cluster_state": "cpu:92.98% mem:80.44% gpu:100.00% todo_num:0 finish_num:12821 total_num:32214"
+    },
+    {
+        "timestamp": 89.20000000000073,
+        "cluster_state": "cpu:91.48% mem:79.11% gpu:98.79% todo_num:1 finish_num:12847 total_num:32278"
+    },
+    {
+        "timestamp": 89.40000000000073,
+        "cluster_state": "cpu:93.39% mem:81.64% gpu:99.60% todo_num:1 finish_num:12871 total_num:32359"
+    },
+    {
+        "timestamp": 89.60000000000073,
+        "cluster_state": "cpu:92.47% mem:81.16% gpu:99.19% todo_num:1 finish_num:12898 total_num:32431"
+    },
+    {
+        "timestamp": 89.80000000000074,
+        "cluster_state": "cpu:91.34% mem:80.17% gpu:99.60% todo_num:1 finish_num:12927 total_num:32510"
+    },
+    {
+        "timestamp": 90.00000000000074,
+        "cluster_state": "cpu:94.11% mem:82.35% gpu:98.39% todo_num:1 finish_num:12952 total_num:32603"
+    },
+    {
+        "timestamp": 90.20000000000074,
+        "cluster_state": "cpu:93.87% mem:82.02% gpu:99.19% todo_num:1 finish_num:12983 total_num:32681"
+    },
+    {
+        "timestamp": 90.40000000000074,
+        "cluster_state": "cpu:93.34% mem:80.52% gpu:99.19% todo_num:0 finish_num:13015 total_num:32769"
+    },
+    {
+        "timestamp": 90.60000000000075,
+        "cluster_state": "cpu:92.57% mem:80.00% gpu:99.60% todo_num:0 finish_num:13039 total_num:32833"
+    },
+    {
+        "timestamp": 90.80000000000075,
+        "cluster_state": "cpu:92.93% mem:79.84% gpu:99.60% todo_num:2 finish_num:13069 total_num:32908"
+    },
+    {
+        "timestamp": 91.00000000000075,
+        "cluster_state": "cpu:94.09% mem:80.26% gpu:98.79% todo_num:1 finish_num:13098 total_num:32967"
+    },
+    {
+        "timestamp": 91.20000000000076,
+        "cluster_state": "cpu:94.45% mem:79.54% gpu:100.00% todo_num:0 finish_num:13129 total_num:33056"
+    },
+    {
+        "timestamp": 91.40000000000076,
+        "cluster_state": "cpu:94.86% mem:80.33% gpu:99.19% todo_num:1 finish_num:13163 total_num:33139"
+    },
+    {
+        "timestamp": 91.60000000000076,
+        "cluster_state": "cpu:94.14% mem:79.61% gpu:98.79% todo_num:0 finish_num:13194 total_num:33211"
+    },
+    {
+        "timestamp": 91.80000000000076,
+        "cluster_state": "cpu:93.56% mem:78.66% gpu:98.79% todo_num:0 finish_num:13224 total_num:33271"
+    },
+    {
+        "timestamp": 92.00000000000077,
+        "cluster_state": "cpu:90.73% mem:75.96% gpu:97.98% todo_num:0 finish_num:13268 total_num:33341"
+    },
+    {
+        "timestamp": 92.20000000000077,
+        "cluster_state": "cpu:92.69% mem:77.12% gpu:99.60% todo_num:0 finish_num:13296 total_num:33415"
+    },
+    {
+        "timestamp": 92.40000000000077,
+        "cluster_state": "cpu:94.21% mem:78.60% gpu:99.19% todo_num:0 finish_num:13327 total_num:33501"
+    },
+    {
+        "timestamp": 92.60000000000078,
+        "cluster_state": "cpu:94.88% mem:79.03% gpu:99.60% todo_num:0 finish_num:13347 total_num:33561"
+    },
+    {
+        "timestamp": 92.80000000000078,
+        "cluster_state": "cpu:92.78% mem:78.51% gpu:97.58% todo_num:0 finish_num:13387 total_num:33623"
+    },
+    {
+        "timestamp": 93.00000000000078,
+        "cluster_state": "cpu:95.20% mem:80.68% gpu:98.79% todo_num:1 finish_num:13410 total_num:33705"
+    },
+    {
+        "timestamp": 93.20000000000078,
+        "cluster_state": "cpu:93.03% mem:79.37% gpu:98.79% todo_num:0 finish_num:13449 total_num:33781"
+    },
+    {
+        "timestamp": 93.40000000000079,
+        "cluster_state": "cpu:92.78% mem:79.19% gpu:99.19% todo_num:0 finish_num:13489 total_num:33859"
+    },
+    {
+        "timestamp": 93.60000000000079,
+        "cluster_state": "cpu:93.68% mem:80.58% gpu:99.19% todo_num:0 finish_num:13517 total_num:33945"
+    },
+    {
+        "timestamp": 93.8000000000008,
+        "cluster_state": "cpu:92.11% mem:80.23% gpu:97.98% todo_num:1 finish_num:13546 total_num:34005"
+    },
+    {
+        "timestamp": 94.0000000000008,
+        "cluster_state": "cpu:92.35% mem:79.98% gpu:99.19% todo_num:0 finish_num:13572 total_num:34065"
+    },
+    {
+        "timestamp": 94.2000000000008,
+        "cluster_state": "cpu:93.63% mem:80.50% gpu:100.00% todo_num:1 finish_num:13599 total_num:34140"
+    },
+    {
+        "timestamp": 94.4000000000008,
+        "cluster_state": "cpu:94.81% mem:80.93% gpu:99.19% todo_num:1 finish_num:13626 total_num:34230"
+    },
+    {
+        "timestamp": 94.6000000000008,
+        "cluster_state": "cpu:94.79% mem:80.65% gpu:99.60% todo_num:0 finish_num:13654 total_num:34312"
+    },
+    {
+        "timestamp": 94.80000000000081,
+        "cluster_state": "cpu:93.44% mem:79.77% gpu:95.56% todo_num:0 finish_num:13692 total_num:34375"
+    },
+    {
+        "timestamp": 95.00000000000081,
+        "cluster_state": "cpu:91.92% mem:78.69% gpu:97.98% todo_num:0 finish_num:13733 total_num:34453"
+    },
+    {
+        "timestamp": 95.20000000000081,
+        "cluster_state": "cpu:90.83% mem:77.58% gpu:97.98% todo_num:0 finish_num:13773 total_num:34530"
+    },
+    {
+        "timestamp": 95.40000000000082,
+        "cluster_state": "cpu:90.93% mem:76.95% gpu:98.79% todo_num:0 finish_num:13798 total_num:34603"
+    },
+    {
+        "timestamp": 95.60000000000082,
+        "cluster_state": "cpu:90.88% mem:76.82% gpu:98.79% todo_num:1 finish_num:13834 total_num:34688"
+    },
+    {
+        "timestamp": 95.80000000000082,
+        "cluster_state": "cpu:94.06% mem:78.35% gpu:99.19% todo_num:1 finish_num:13862 total_num:34769"
+    },
+    {
+        "timestamp": 96.00000000000082,
+        "cluster_state": "cpu:93.58% mem:78.11% gpu:98.39% todo_num:0 finish_num:13884 total_num:34846"
+    },
+    {
+        "timestamp": 96.20000000000083,
+        "cluster_state": "cpu:93.41% mem:78.91% gpu:99.60% todo_num:0 finish_num:13915 total_num:34934"
+    },
+    {
+        "timestamp": 96.40000000000083,
+        "cluster_state": "cpu:93.44% mem:78.62% gpu:98.79% todo_num:2 finish_num:13932 total_num:34995"
+    },
+    {
+        "timestamp": 96.60000000000083,
+        "cluster_state": "cpu:91.14% mem:78.06% gpu:97.98% todo_num:0 finish_num:13969 total_num:35062"
+    },
+    {
+        "timestamp": 96.80000000000084,
+        "cluster_state": "cpu:94.02% mem:80.02% gpu:98.39% todo_num:0 finish_num:13992 total_num:35129"
+    },
+    {
+        "timestamp": 97.00000000000084,
+        "cluster_state": "cpu:94.62% mem:80.41% gpu:98.79% todo_num:1 finish_num:14024 total_num:35194"
+    },
+    {
+        "timestamp": 97.20000000000084,
+        "cluster_state": "cpu:94.72% mem:80.57% gpu:99.60% todo_num:0 finish_num:14051 total_num:35260"
+    },
+    {
+        "timestamp": 97.40000000000084,
+        "cluster_state": "cpu:92.23% mem:77.88% gpu:98.79% todo_num:4 finish_num:14089 total_num:35336"
+    },
+    {
+        "timestamp": 97.60000000000085,
+        "cluster_state": "cpu:94.14% mem:78.82% gpu:99.60% todo_num:0 finish_num:14113 total_num:35403"
+    },
+    {
+        "timestamp": 97.80000000000085,
+        "cluster_state": "cpu:93.39% mem:78.37% gpu:97.98% todo_num:1 finish_num:14147 total_num:35460"
+    },
+    {
+        "timestamp": 98.00000000000085,
+        "cluster_state": "cpu:89.43% mem:74.83% gpu:99.19% todo_num:1 finish_num:14183 total_num:35537"
+    },
+    {
+        "timestamp": 98.20000000000086,
+        "cluster_state": "cpu:90.28% mem:76.17% gpu:98.79% todo_num:0 finish_num:14207 total_num:35606"
+    },
+    {
+        "timestamp": 98.40000000000086,
+        "cluster_state": "cpu:91.92% mem:77.04% gpu:98.39% todo_num:0 finish_num:14237 total_num:35689"
+    },
+    {
+        "timestamp": 98.60000000000086,
+        "cluster_state": "cpu:89.74% mem:76.27% gpu:99.19% todo_num:0 finish_num:14271 total_num:35754"
+    },
+    {
+        "timestamp": 98.80000000000086,
+        "cluster_state": "cpu:91.26% mem:76.90% gpu:97.18% todo_num:1 finish_num:14304 total_num:35820"
+    },
+    {
+        "timestamp": 99.00000000000087,
+        "cluster_state": "cpu:94.79% mem:80.07% gpu:99.60% todo_num:0 finish_num:14336 total_num:35907"
+    },
+    {
+        "timestamp": 99.20000000000087,
+        "cluster_state": "cpu:93.22% mem:78.17% gpu:99.60% todo_num:0 finish_num:14369 total_num:35980"
+    },
+    {
+        "timestamp": 99.40000000000087,
+        "cluster_state": "cpu:92.69% mem:77.70% gpu:98.79% todo_num:1 finish_num:14398 total_num:36046"
+    },
+    {
+        "timestamp": 99.60000000000088,
+        "cluster_state": "cpu:93.17% mem:78.47% gpu:99.60% todo_num:1 finish_num:14424 total_num:36128"
+    },
+    {
+        "timestamp": 99.80000000000088,
+        "cluster_state": "cpu:91.34% mem:76.86% gpu:98.79% todo_num:0 finish_num:14456 total_num:36199"
+    },
+    {
+        "timestamp": 100.00000000000088,
+        "cluster_state": "cpu:91.63% mem:77.19% gpu:97.58% todo_num:1 finish_num:14497 total_num:36275"
+    },
+    {
+        "timestamp": 100.20000000000088,
+        "cluster_state": "cpu:87.09% mem:74.41% gpu:89.92% todo_num:0 finish_num:14521 total_num:36275"
+    },
+    {
+        "timestamp": 100.40000000000089,
+        "cluster_state": "cpu:83.28% mem:71.00% gpu:83.87% todo_num:0 finish_num:14541 total_num:36275"
+    },
+    {
+        "timestamp": 100.60000000000089,
+        "cluster_state": "cpu:78.69% mem:67.25% gpu:75.00% todo_num:0 finish_num:14567 total_num:36275"
+    },
+    {
+        "timestamp": 100.80000000000089,
+        "cluster_state": "cpu:72.06% mem:62.36% gpu:67.34% todo_num:0 finish_num:14597 total_num:36275"
+    },
+    {
+        "timestamp": 101.0000000000009,
+        "cluster_state": "cpu:67.59% mem:58.68% gpu:59.27% todo_num:0 finish_num:14620 total_num:36275"
+    },
+    {
+        "timestamp": 101.2000000000009,
+        "cluster_state": "cpu:60.88% mem:53.28% gpu:50.40% todo_num:0 finish_num:14653 total_num:36275"
+    },
+    {
+        "timestamp": 101.4000000000009,
+        "cluster_state": "cpu:56.11% mem:49.44% gpu:41.53% todo_num:0 finish_num:14677 total_num:36275"
+    },
+    {
+        "timestamp": 101.6000000000009,
+        "cluster_state": "cpu:52.44% mem:46.60% gpu:35.08% todo_num:0 finish_num:14697 total_num:36275"
+    },
+    {
+        "timestamp": 101.8000000000009,
+        "cluster_state": "cpu:47.47% mem:42.65% gpu:28.63% todo_num:0 finish_num:14723 total_num:36275"
+    },
+    {
+        "timestamp": 102.00000000000091,
+        "cluster_state": "cpu:43.36% mem:40.01% gpu:22.98% todo_num:0 finish_num:14742 total_num:36275"
+    },
+    {
+        "timestamp": 102.20000000000091,
+        "cluster_state": "cpu:39.00% mem:36.51% gpu:18.95% todo_num:0 finish_num:14761 total_num:36275"
+    },
+    {
+        "timestamp": 102.40000000000092,
+        "cluster_state": "cpu:36.51% mem:34.56% gpu:15.32% todo_num:0 finish_num:14773 total_num:36275"
+    },
+    {
+        "timestamp": 102.60000000000092,
+        "cluster_state": "cpu:34.44% mem:32.69% gpu:12.90% todo_num:0 finish_num:14783 total_num:36275"
+    },
+    {
+        "timestamp": 102.80000000000092,
+        "cluster_state": "cpu:31.97% mem:30.65% gpu:9.68% todo_num:0 finish_num:14795 total_num:36275"
+    },
+    {
+        "timestamp": 103.00000000000092,
+        "cluster_state": "cpu:31.20% mem:30.00% gpu:8.06% todo_num:0 finish_num:14800 total_num:36275"
+    },
+    {
+        "timestamp": 103.20000000000093,
+        "cluster_state": "cpu:28.69% mem:28.26% gpu:5.65% todo_num:0 finish_num:14809 total_num:36275"
+    },
+    {
+        "timestamp": 103.40000000000093,
+        "cluster_state": "cpu:28.09% mem:27.79% gpu:4.44% todo_num:0 finish_num:14812 total_num:36275"
+    },
+    {
+        "timestamp": 103.60000000000093,
+        "cluster_state": "cpu:27.27% mem:27.25% gpu:3.23% todo_num:0 finish_num:14816 total_num:36275"
+    },
+    {
+        "timestamp": 103.80000000000094,
+        "cluster_state": "cpu:26.45% mem:26.44% gpu:2.02% todo_num:0 finish_num:14819 total_num:36275"
+    },
+    {
+        "timestamp": 104.00000000000094,
+        "cluster_state": "cpu:25.82% mem:25.76% gpu:1.21% todo_num:0 finish_num:14821 total_num:36275"
+    },
+    {
+        "timestamp": 104.20000000000094,
+        "cluster_state": "cpu:25.34% mem:25.29% gpu:0.81% todo_num:0 finish_num:14823 total_num:36275"
+    },
+    {
+        "timestamp": 104.40000000000094,
+        "cluster_state": "cpu:25.00% mem:25.00% gpu:0.00% todo_num:0 finish_num:14825 total_num:36275"
+    },
+    {
+        "avg_cpu_utilization:": "89.95%",
+        "avg_mem_utilization:": "77.35%",
+        "avg_gpu_utilization:": "94.57%"
     }
 ]

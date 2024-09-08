@@ -32,7 +32,7 @@ class LeastRequestedPriority(Scheduler):
                 + ((node.mem / node.mem_capacity) * 10)
             ) / 2
         ids.sort(key=lambda i: -scores[i])
-        for idx in ids[:1]:
+        for idx in ids:
             ok, err = self.cluster.node_list[idx].can_run_task(task)
             if ok:
                 return idx + 1

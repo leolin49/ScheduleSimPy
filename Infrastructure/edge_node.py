@@ -10,6 +10,7 @@ from collections import Counter
 
 import util
 
+NEED_FULL_GPU = True
 
 class EdgeNodeConfig:
     def __init__(
@@ -144,8 +145,9 @@ class EdgeNode:
             return False, util.ERROR_CODE_INSUFFICIENT_CPU
         if self.mem < task.mem_consume:
             return False, util.ERROR_CODE_INSUFFICIENT_MEM
-        if self.gpu < task.ai_accelerator_num:
-            return False, util.ERROR_CODE_INSUFFICIENT_GPU
+        if NEED_FULL_GPU:
+            if self.gpu < task.ai_accelerator_num:
+                return False, util.ERROR_CODE_INSUFFICIENT_GPU
         return True, util.ERROR_CODE_OK
 
     def run_task(self, task):
@@ -159,7 +161,9 @@ class EdgeNode:
         self.disk -= task.disk_consume
         self.container_num += 1
         if self.gpu_match(task):
-            self.gpu -= task.ai_accelerator_num
+            gpu_consume = min(self.gpu, task.ai_accelerator_num)
+            task.ai_accelerator_consume = gpu_consume 
+            self.gpu -= gpu_consume 
 
     def stop_task(self, task):
         """
@@ -173,4 +177,6 @@ class EdgeNode:
         self.container_num -= 1
         self.cluster.finished_task_list.append(task)
         if self.gpu_match(task):
-            self.gpu += task.ai_accelerator_num
+            # self.gpu += task.ai_accelerator_num
+            self.gpu += task.ai_accelerator_consume
+

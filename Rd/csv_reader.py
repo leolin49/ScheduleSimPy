@@ -8,9 +8,9 @@
 import ast
 import random
 import pandas as pd
+import util
 from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
 from Task.task import TaskConfig
-
 
 def read_node_list_csv():
     node_list = []
@@ -60,7 +60,6 @@ def read_task_list_csv():
 
 def read_alibaba_task_list_csv():
     task_list = []
-    mul = 3
     for chunk in pd.read_csv(
         "Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv", chunksize=1
     ):
@@ -70,13 +69,16 @@ def read_alibaba_task_list_csv():
             gpu_spec_str = str(row["gpu_spec"])
             if gpu_spec_str != "nan":
                 ais = gpu_spec_str.split("|")
-            for i in range((task_id - 1) * mul, task_id * mul):
+            if str(row["scheduled_time"]) == "nan":
+                continue
+            for i in range((task_id - 1) * util.TASK_MUL, task_id * util.TASK_MUL):
                 tid = i + 1
                 task = TaskConfig(
                     task_index=tid,
                     submit_time=random.uniform(1, 100),
-                    duration=random.uniform(0.0001, 1.1432)
-                    * random.uniform(1, 1.7520 / 0.4883),
+                    duration=random.uniform(0.0001, 1.1432) * random.uniform(1, 1.7520 / 0.4883), 
+                    # submit_time=int(row["creation_time"]),
+                    # duration=int(row["deletion_time"]) - int(row["scheduled_time"]),
                     transmit_time=random.uniform(0.2985, 1.5926),
                     cpu=int(row["cpu_milli"]) // 1000,
                     memory=int(row["memory_mib"]),
@@ -116,6 +118,6 @@ def read_alibaba_node_list_csv():
                 ),
             )
             node_list.append(node)
-        if len(node_list) == 100:
+        if len(node_list) == util.NODE_NUM:
             break
     return node_list

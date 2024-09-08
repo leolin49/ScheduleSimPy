@@ -30,7 +30,6 @@ from Infrastructure.edge_node import EdgeNode
 
 np.set_printoptions(precision=2, suppress=True)
 
-
 class GroupBaseContainerScheduling(Scheduler):
     def __init__(self, name: str, env):
         super(GroupBaseContainerScheduling, self).__init__(name, env)
@@ -63,7 +62,7 @@ class GroupBaseContainerScheduling(Scheduler):
         scaler = preprocessing.MinMaxScaler()
         df[features] = scaler.fit_transform(df[features])
 
-        k_optimal = 3
+        k_optimal = util.GROUP_COUNT 
         # Custom K-means initial centroids.
         # custom_centroids = df_original.loc[[59, 89, 99], features].values
         # kmeans = KMeans(n_clusters=k_optimal, init=custom_centroids, n_init=1, random_state=42)
@@ -250,14 +249,16 @@ class GroupBaseContainerScheduling(Scheduler):
 
     @staticmethod
     def __fuzzy_best_worst_method_get_weights():
+        return # FIXED ME
         lv = []
-        lv.append((0, 0, 0))
-        lv.append((1, 1, 1))  # Equally importance
-        lv.append((2 / 3, 1, 3 / 2))  # Weakly important
-        lv.append((3 / 2, 2, 5 / 2))  # Fairly Important
-        lv.append((5 / 2, 3, 7 / 2))  # Very important
-        lv.append((7 / 2, 4, 9 / 2))  # Absolutely important
+        lv.append([0, 0, 0, 0])
+        lv.append([0, 1, 1, 1])  # Equally importance
+        lv.append([0, 2 / 3, 1, 3 / 2])  # Weakly important
+        lv.append([0, 3 / 2, 2, 5 / 2])  # Fairly Important
+        lv.append([0, 5 / 2, 3, 7 / 2])  # Very important
+        lv.append([0, 7 / 2, 4, 9 / 2])  # Absolutely important
         # GPU > Delay > MEM > CPU
+        # best_idx = 1(GPU) | worst_idx = 3(CPU) 
         a = [
             [0, 0, 0, 0, 0],
             [0, 0, 0, 3, 0],
@@ -269,41 +270,59 @@ class GroupBaseContainerScheduling(Scheduler):
         def GMIR(tp) -> float:
             return (tp[0] + tp[1] * 4 + tp[2]) / 6
 
-        for i, row in enumerate(a):
-            for j, x in enumerate(row):
-                if x != 0:
-                    a[i][j] = GMIR(a[i][j])
-        problem = LpProblem("BWM Objective", LpMinimize)
+        problem = LpProblem("Fuzzy_BWM_Objective", LpMinimize)
         ks = LpVariable("ks", lowBound=0)
-        w1 = LpVariable("w1", lowBound=0)
-        w2 = LpVariable("w2", lowBound=0)
-        w3 = LpVariable("w3", lowBound=0)
-        w4 = LpVariable("w4", lowBound=0)
         problem += ks, "Objective"
-        for j, (wA, wB, aVal) in enumerate(
-            [
-                (w2, w1, a[2][1]),
-                (w2, w4, a[2][4]),
-                (w2, w3, a[2][3]),
-                (w1, w3, a[1][3]),
-                (w4, w3, a[4][3]),
-            ],
-            1,
-        ):
-            u = LpVariable(f"u{j}", lowBound=0)
-            problem += wA - aVal * wB <= ks, f"Constraint {2*j-1}"
-            problem += -wA + aVal * wB <= ks, f"Constraint {2*j}"
-        problem += w1 + w2 + w3 + w4 == 1, "Constraint sum 1"
+        # w1 = (l1,m1,u1)
+        w = LpVariable.dicts("w", ((i,j) for i in range(1, 5) for j in range(1, 4)), lowBound=0)
+
+        bi = 1
+        wi = 3
+        low, mid, hig = 1, 2, 3
+        for i in range(1, len(a)):
+            if i == bi: continue
+            problem += w[(bi,low)] - lv[a[bi][i]][low] * w[(i,hig)] <=  ks * w[(i,hig)]
+            problem += w[(bi,low)] - lv[a[bi][i]][low] * w[(i,hig)] >= -ks * w[(i,hig)]
+            problem += w[(bi,mid)] - lv[a[bi][i]][mid] * w[(i,mid)] <=  ks * w[(i,mid)]
+            problem += w[(bi,mid)] - lv[a[bi][i]][mid] * w[(i,mid)] >= -ks * w[(i,mid)]
+            problem += w[(bi,hig)] - lv[a[bi][i]][hig] * w[(i,low)] <=  ks * w[(i,low)]
+            problem += w[(bi,hig)] - lv[a[bi][i]][hig] * w[(i,low)] >= -ks * w[(i,low)]
+        for i in range(1, len(a)):
+            if i == bi or i == wi: continue
+            problem += w[(i,low)] - lv[a[i][wi]][low] * w[(wi,hig)] <=  ks * w[(wi,hig)] 
+            problem += w[(i,low)] - lv[a[i][wi]][low] * w[(wi,hig)] >= -ks * w[(wi,hig)] 
+            problem += w[(i,mid)] - lv[a[i][wi]][mid] * w[(wi,mid)] <=  ks * w[(wi,mid)]
+            problem += w[(i,mid)] - lv[a[i][wi]][mid] * w[(wi,mid)] >= -ks * w[(wi,mid)]
+            problem += w[(i,hig)] - lv[a[i][wi]][hig] * w[(wi,low)] <=  ks * w[(wi,low)]
+            problem += w[(i,hig)] - lv[a[i][wi]][hig] * w[(wi,low)] >= -ks * w[(wi,low)]
+        for i in range(1, len(a)):
+            problem += w[(i,1)] <= w[(i,2)] <= w[(i,3)]
+        m1, m2, m3 = 1 / 6, 4 / 6, 1 / 6
+        problem += w[(1,1)]*m1 + w[(1,2)]*m2 + w[(1,3)]*m3 + w[(2,1)]*m1 + w[(2,2)]*m2 + w[(2,3)]*m3 + w[(3,1)]*m1 + w[(3,2)]*m2 + w[(3,3)]*m3 + w[(4,1)]*m1 + w[(4,2)]*m2 + w[(4,3)]*m3 == 1
+
         problem.solve()
-        return np.array([w1.value(), w2.value(), w3.value(), w4.value()])
+        ans = []
+        for i in range(1, len(a)):
+           ans.append(GMIR([w[(i,1)],w[(i,2)],w[(i,3)]]))
+        return np.array(ans)
 
     @staticmethod
     def __best_worst_method_get_weights():
+        """
         a = [
             [0, 0, 0, 0, 0],
             [0, 1, 2, 4, 5],
             [0, 0, 1, 0, 3],
             [0, 0, 0, 1, 2],
+            [0, 0, 0, 0, 1],
+        ]
+        """
+        # 1. Delay 2.GPU 3.CPU 4.MEM
+        a = [
+            [0, 0, 0, 0, 0],
+            [0, 1, 2, 3, 3],
+            [0, 0, 1, 0, 2],
+            [0, 0, 0, 1, 1],
             [0, 0, 0, 0, 1],
         ]
 
@@ -334,7 +353,7 @@ class GroupBaseContainerScheduling(Scheduler):
             1,
         ):
             u = LpVariable(f"u{j}", lowBound=0)
-            problem += wA - aVal * wB <= ks, f"Constraint {2*j-1}"
+            problem += wA  - aVal * wB <= ks, f"Constraint {2*j-1}"
             problem += -wA + aVal * wB <= ks, f"Constraint {2*j}"
         # w1 + ... + wj == 1
         problem += w1 + w2 + w3 + w4 == 1, "Constraint sum1"
@@ -358,7 +377,7 @@ class GroupBaseContainerScheduling(Scheduler):
         matrix = np.array(info)
         norm_matrix = self.normalize_matrix(matrix)
         weights = self.BWM_WEIGHT
-        weights_matrix = matrix * weights
+        weights_matrix = norm_matrix * weights
         row_sums = np.sum(weights_matrix, axis=1)
         ids = np.array(ids)
         sorted_indices = np.argsort(row_sums)[::-1]
@@ -371,12 +390,13 @@ class GroupBaseContainerScheduling(Scheduler):
         return -1
 
     def make_decision(self, task: Task, clock) -> int:
-        gid = self.__find_in_first_group(task)
+        group_id = self.__find_in_first_group(task)
+        gid = group_id
         if gid == -1:
             # print("first-level, can not find any node can run the task:", task)
             return -1
         node_id = -1
-        while gid <= 3:
+        while gid <= util.GROUP_COUNT:
             node_ids = self.__find_in_second_group(
                 gid, task, task.ai_accelerators is not None
             )
@@ -391,4 +411,19 @@ class GroupBaseContainerScheduling(Scheduler):
                 gid += 1
             else:
                 break
+        """
+        if gid > util.GROUP_COUNT: # cannot found any node has resrouce to process the task.
+            gid = group_id
+            while gid <= util.GROUP_COUNT:
+                node_ids = self.__find_in_second_group(gid, task, False)
+                if len(node_ids) == 0:
+                    gid += 1
+                    continue
+                node_id = self.__best_worst_method(node_ids, task)
+                if node_id == -1:
+                    gid += 1
+                else:
+                    break
+        """
         return node_id
+

@@ -4,10 +4,21 @@
 #
 # Time    : 2024/3/28 20:35
 # Author  : linyf49@qq.com
-# File    : util.py.py
+# File    : util.py
 
 import logging
 import numpy as np
+
+# -------------- Config ----------------
+# k-means的K值
+GROUP_COUNT = 3     
+# 任务生成的时间范围
+TIME_RANGE = 100    
+# 任务数量的倍数
+TASK_MUL = 5 
+# 节点数量
+NODE_NUM = 100
+# --------------------------------------
 
 
 GB = 1024
@@ -44,6 +55,7 @@ CPU_NUMBER_SIZE = len(CPU_NUMBER)
 # AI Accelerators Labels
 AI_LABEL = [
     "GPU",
+
     "G2",
     "G3",
     "T4",
@@ -51,6 +63,7 @@ AI_LABEL = [
     "P100",
     "V100M16",
     "V100M32",
+
     "TPU",
     "NPU",
 ]

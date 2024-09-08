@@ -89,6 +89,7 @@ class Task:
 
         self.ai_accelerators = config.ai_accelerators
         self.ai_accelerator_num = config.ai_accelerator_num
+        self.ai_accelerator_consume = 0
         self.rely_datas = []
 
     def __str__(self):
@@ -109,12 +110,19 @@ class Task:
         )
 
     def run(self, node, decision_time):
-        # MakeSpan = Task duration time + Schedule decision time
-        addition_time = 1
+        # Total time = User request time + Data transmission time + Task duration time 
+        #               + (Schedule decision time)
+        mul = 3.6
+        addition_time = 1 if node.gpu_match(self) else mul 
         if not node.gpu_match(self):
-            addition_time = 3
+            addition_time = mul 
+        elif self.ai_accelerator_consume == self.ai_accelerator_num:
+            addition_time = 1
+        else:
+            addition_time = 1 + (mul - 1) * (1 - self.ai_accelerator_consume / self.ai_accelerator_num);
+
         yield self.env.timeout(
-            self.duration * addition_time + decision_time + self.transmit_time
+            addition_time * self.duration + decision_time + self.transmit_time
         )
         node.stop_task(self)
         self._finished = True
