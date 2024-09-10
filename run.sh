@@ -1,7 +1,6 @@
-#!/bin/bash
 timestamp=$(date +"%Y%m%d_%H%M%S")
 log_file="Log/${timestamp}.log"
-python3 main.py >> "${log_file}"
+python3 main.py > "${log_file}"
 
 tail -n 10 bra_event.txt >> "${log_file}"
 tail -n 10 lrr_event.txt >> "${log_file}"

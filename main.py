@@ -21,6 +21,7 @@ logging.basicConfig(
     filemode="w",  # rewrite the Log file
 )
 
+
 def baseline_dics(task_configs, node_list):
     env = Environment()
     task_broker = Broker(env, task_configs)

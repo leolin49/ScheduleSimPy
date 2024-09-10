@@ -6,6 +6,7 @@
 # Author  : linyf49@qq.com
 # File    : scheduler.py.py
 import time
+import os
 from Task.task import Task
 import util
 
@@ -19,6 +20,8 @@ class Scheduler(object):
         self.cluster = None
         self.scheduled_task_num = 0
         log_path = "./Log/{}.Log".format(name)
+        if os.path.exists(log_path):
+            os.remove(log_path)
         self.log = util.new_logger(log_path, name)
 
     def attach(self, simulator):

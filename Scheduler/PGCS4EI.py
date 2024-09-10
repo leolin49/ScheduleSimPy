@@ -30,6 +30,7 @@ from Infrastructure.edge_node import EdgeNode
 
 np.set_printoptions(precision=2, suppress=True)
 
+
 class GroupBaseContainerScheduling(Scheduler):
     def __init__(self, name: str, env):
         super(GroupBaseContainerScheduling, self).__init__(name, env)

@@ -13,9 +13,9 @@ import numpy as np
 # k-means的K值
 GROUP_COUNT = 3     
 # 任务生成的时间范围
-TIME_RANGE = 100    
+TIME_RANGE = 100
 # 任务数量的倍数
-TASK_MUL = 5 
+TASK_MUL = 5
 # 节点数量
 NODE_NUM = 100
 # --------------------------------------

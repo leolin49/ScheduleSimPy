@@ -6,21 +6,24 @@
 # Author  : linyf49@qq.com
 # File    : monitor.py
 import json
-import numpy as np
-import matplotlib.pyplot as plt
+import util
 
 
 class Monitor(object):
     def __init__(self, env, scheduler_name: str):
+        self.name = scheduler_name
         self.env = env
         self.simulator = None
         self.cluster = None
-        self.event_file = scheduler_name + "_event.txt"
+        self.avg_file = None
+        self.event_file = "Log/" + scheduler_name + "_event.json"
         self.events = []
+        self.avgs = []
 
     def attach(self, simulator):
         self.simulator = simulator
         self.cluster = simulator.cluster
+        self.avg_file = "Log/{}_{}_{}_avg_event.json".format(self.name, util.NODE_NUM, util.TASK_MUL * 8000)
 
     def run(self):
         cpus = []
@@ -29,42 +32,33 @@ class Monitor(object):
         while not self.simulator.finished:
             state = {
                 "timestamp": self.env.now,
-                "cluster_state": self.cluster.state,
+                # "cluster_state": self.cluster.state,
+                "cpu_utilization": "{:.2f}%".format(self.cluster.cpu_utilization),
+                "mem_utilization": "{:.2f}%".format(self.cluster.mem_utilization),
+                "gpu_utilization": "{:.2f}%".format(self.cluster.gpu_utilization),
             }
             cpus.append(self.cluster.cpu_utilization)
             mems.append(self.cluster.mem_utilization)
             gpus.append(self.cluster.gpu_utilization)
             self.events.append(state)
-            yield self.env.timeout(0.2)
+            yield self.env.timeout(1)
+        # self.events.append({"states": states})
         # final state
         state = {
-            "timestamp": self.env.now,
-            "cluster_state": self.cluster.state,
+            "avg_task_make_span": "{:.2f}".format(self.cluster.average_completion()),
+            "avg_cpu_utilization": "{:.2f}%".format(sum(cpus) / len(cpus)),
+            "avg_mem_utilization": "{:.2f}%".format(sum(mems) / len(mems)),
+            "avg_gpu_utilization": "{:.2f}%".format(sum(gpus) / len(gpus)),
         }
-        self.events.append(state)
-        avg_utilization = {
-            "avg_cpu_utilization:": "{:.2f}%".format(sum(cpus) / len(cpus)),
-            "avg_mem_utilization:": "{:.2f}%".format(sum(mems) / len(mems)),
-            "avg_gpu_utilization:": "{:.2f}%".format(sum(gpus) / len(gpus)),
-        }
-        self.events.append(avg_utilization)
+        self.avgs.append(state)
+        # self.events.append({"avg": state})
         self.write_to_file()
-        # self.draw(cpus, mems)
+        self.write_to_file_avg()
 
     def write_to_file(self):
         with open(self.event_file, "w") as f:
             json.dump(self.events, f, indent=4)
 
-    @staticmethod
-    def draw(cpus, mems):
-        final_time = len(cpus) - 1
-        tm = [i for i in range(final_time + 1)]
-        x = np.arange(20, 350)
-        l = plt.plot(tm, cpus, "g--", label="cpu")
-        plt.plot(tm, cpus, "g-")
-        plt.title("CPU Utilization")
-        plt.xlabel("timestamp")
-        plt.ylabel("cluster_cpu_utilization")
-        plt.ylim((0, 100))
-        plt.legend()
-        plt.show()
+    def write_to_file_avg(self):
+        with open(self.avg_file, "w") as f:
+            json.dump(self.avgs, f, indent=4)
