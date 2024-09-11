@@ -65,10 +65,10 @@ metrics_keys = [
     "avg_mem_utilization",
     "avg_gpu_utilization",
 ]
-metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (0, 100)]
+metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (20, 100)]
 
 # 设置柱宽和间隙
-bar_width = 0.2  # 每个 baseline 的柱宽
+bar_width = 0.3  # 每个 baseline 的柱宽
 gap_between_groups = 0.5  # 参数组合之间的间隙
 
 # 分别为每个指标绘制图表，将不同参数组合放在一起比较

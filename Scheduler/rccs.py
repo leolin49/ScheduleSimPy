@@ -147,6 +147,10 @@ class GroupBaseContainerScheduling(Scheduler):
         return node_ids
 
     def __vikor(self, node_ids, task) -> int:
+        """
+        Deprecated: This function will be removed in future versions.
+        Use __best_worst_method_get_weights() instead.
+        """
         # 3. find the optimal_weights
         info = []
         for node_id in node_ids:

@@ -118,22 +118,22 @@ def main():
     node_list = rd.read_alibaba_node_list_csv()
     print("node data read finish.")
 
-    print("baseline LRR is running...")
+    print("Baseline LRR is running...")
     baseline_lrr(task_configs, node_list)
 
-    print("baseline DICS is running...")
+    print("Baseline DICS is running...")
     baseline_dics(task_configs, node_list)
 
-    print("baseline BRA is running...")
+    print("Baseline BRA is running...")
     baseline_bra(task_configs, node_list)
 
-    print("baseline KCSS is running...")
+    print("Baseline KCSS is running...")
     baseline_kcss(task_configs, node_list)
 
-    print("baseline ODCS is running...")
+    print("Baseline ODCS is running...")
     baseline_odcs(task_configs, node_list)
 
-    print("baseline RCCS is running...")
+    print("Baseline RCCS is running...")
     baseline_rccs(task_configs, node_list)
 
 

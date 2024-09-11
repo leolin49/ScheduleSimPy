@@ -119,6 +119,8 @@ class Cluster:
         state = [[0] * (util.TIME_RANGE + 1) for _ in range(n + 1)]
         for task in self.finished_task_list:
             second = math.ceil(task.started_timestamp)
+            if second == util.TIME_RANGE + 1:
+                second -= 1
             node_id = task.work_node_id
             state[node_id][second] += 1
         res = [0] * (util.TIME_RANGE + 1)
