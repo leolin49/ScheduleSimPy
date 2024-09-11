@@ -74,7 +74,7 @@ class OnlineContainerScheduling(Scheduler):
             addition_time = 1
             if not node.gpu_match(task):
                 addition_time = 3.6
-            delay = task.transmit_time + addition_time * task.duration
+            delay = addition_time * task.duration
             scores[i] = delay + random.randint(0, 1) * random.randint(0, 0)
         ids.sort(key=lambda i: scores[i])
         for idx in ids:

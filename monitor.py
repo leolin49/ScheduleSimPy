@@ -51,6 +51,8 @@ class Monitor(object):
             "avg_cpu_utilization": "{:.2f}%".format(sum(cpus) / len(cpus)),
             "avg_mem_utilization": "{:.2f}%".format(sum(mems) / len(mems)),
             "avg_gpu_utilization": "{:.2f}%".format(sum(gpus) / len(gpus)),
+            "total_finish_task_num": len(self.cluster.finished_task_list),
+            "load_balance_state": self.cluster.load_balance_state(),
         }
         self.avgs.append(state)
         # self.events.append({"avg": state})

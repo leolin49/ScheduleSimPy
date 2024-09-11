@@ -95,7 +95,7 @@ def baseline_bra(task_configs, node_list):
     print("average completion time of bra:", cluster.average_completion())
 
 
-def pgcs4ei(task_configs, node_list):
+def baseline_rccs(task_configs, node_list):
     env = Environment()
     task_broker = Broker(env, task_configs)
     cluster = Cluster()
@@ -133,8 +133,8 @@ def main():
     print("baseline ODCS is running...")
     baseline_odcs(task_configs, node_list)
 
-    print("rccs is running...")
-    pgcs4ei(task_configs, node_list)
+    print("baseline RCCS is running...")
+    baseline_rccs(task_configs, node_list)
 
 
 if __name__ == "__main__":

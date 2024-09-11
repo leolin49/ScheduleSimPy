@@ -65,7 +65,7 @@ metrics_keys = [
     "avg_mem_utilization",
     "avg_gpu_utilization",
 ]
-metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (10, 100)]
+metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (0, 100)]
 
 # 设置柱宽和间隙
 bar_width = 0.2  # 每个 baseline 的柱宽
@@ -86,7 +86,7 @@ for metric_name, metric_key, metrics_ylim in zip(
     )
 
     # 为每个 baseline 绘制柱状图
-    colors = ["brown", "green", "red", "blue", "orange", "purple"]
+    colors = ["saddlebrown", "green", "purple", "orange", "blue", "red"]
     for idx, (baseline, data) in enumerate(data_by_baseline.items()):
         plt.bar(
             index + idx * bar_width,

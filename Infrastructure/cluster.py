@@ -5,10 +5,12 @@
 # Time    : 2024/3/28 15:21
 # Author  : linyf49@qq.com
 # File    : cluster.py
+import math
 from typing import List
 from collections import deque
 from Infrastructure.topology import Topology
 from Infrastructure.edge_node import EdgeNode
+import util
 
 
 class Cluster:
@@ -111,3 +113,23 @@ class Cluster:
             len(self.finished_task_list),
             self.total_task_num,
         )
+
+    def load_balance_state(self) -> List[float]:
+        n = len(self.node_list)
+        state = [[0] * (util.TIME_RANGE + 1) for _ in range(n + 1)]
+        for task in self.finished_task_list:
+            second = math.ceil(task.started_timestamp)
+            node_id = task.work_node_id
+            state[node_id][second] += 1
+        res = [0] * (util.TIME_RANGE + 1)
+        for second in range(1, util.TIME_RANGE + 1):
+            total = 0
+            for node_id in range(1, n + 1):
+                total += state[node_id][second]
+            avg = total / n
+            total = 0
+            for node_id in range(1, n + 1):
+                total += (state[node_id][second] - avg) ** 2
+            poor_mark = total / n
+            res[second] = poor_mark
+        return res
