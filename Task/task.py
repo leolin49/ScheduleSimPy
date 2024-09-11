@@ -113,13 +113,12 @@ class Task:
         # Total time = User request time + Data transmission time + Task duration time 
         #               + (Schedule decision time)
         mul = 3.6
-        addition_time = 1 if node.gpu_match(self) else mul 
         if not node.gpu_match(self):
             addition_time = mul 
         elif self.ai_accelerator_consume == self.ai_accelerator_num:
             addition_time = 1
         else:
-            addition_time = 1 + (mul - 1) * (1 - self.ai_accelerator_consume / self.ai_accelerator_num);
+            addition_time = 1 + (mul - 1) * (1 - self.ai_accelerator_consume / self.ai_accelerator_num)
 
         yield self.env.timeout(
             addition_time * self.duration + decision_time + self.transmit_time

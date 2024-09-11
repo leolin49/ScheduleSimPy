@@ -5,18 +5,21 @@
 # Time    : 2024/3/28 15:28
 # Author  : linyf49@qq.com
 # File    : dics.py
+import random
 from math import sqrt
 
 from Scheduler.scheduler import Scheduler
 from Task.task import Task
 
-import util
 
 class DataIntensiveContainerScheduling(Scheduler):
     def __init__(self, name: str, env):
         super(DataIntensiveContainerScheduling, self).__init__(name, env)
         self.F1 = [1, 1, 1, -1, 1]
-        self.W = [0.2, 0.2, 0.2, 0.2, 0.2]
+        self.randoms = [random.uniform(0, 0.25) for _ in range(4)]
+        self.randoms.append(1 - sum(self.randoms))
+        # self.W = [0.2, 0.2, 0.2, 0.2, 0.2]
+        self.W = self.randoms
         self.criteria_num = len(self.F1)
 
     @staticmethod

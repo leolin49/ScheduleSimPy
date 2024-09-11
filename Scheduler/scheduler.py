@@ -53,10 +53,10 @@ class Scheduler(object):
         )
         self.cluster.running_task_num += 1
         self.scheduled_task_num += 1
-        if self.scheduled_task_num % 1000 == 0:
-            print(
-                f"now:{self.env.now} {self.scheduled_task_num} task is scheduled successfully."
-            )
+        # if self.scheduled_task_num % 1000 == 0:
+        #     print(
+        #         f"now:{self.env.now} {self.scheduled_task_num} task is scheduled successfully."
+        #     )
 
     def make_decision(self, task: Task, clock) -> int:
         pass

@@ -55,95 +55,30 @@ end for
     4.3. 如果节点 n 为边缘节点，且已经部署无服务器应用，则 δ(i,n) = a'(i,n)
 5. 根据增量大小排序，选择出增量最小且资源满足要求的节点作为调度节点，并更新相应状态
 """
-# from typing import List
-# from math import inf
-#
-# from Scheduler.scheduler import Scheduler
-# from Infrastructure.cluster import Cluster, EdgeNode
-# from Task.task import Task
-#
-#
-# class OnlineContainerScheduling(Scheduler):
-#     def __init__(self, name: str, env):
-#         super(OnlineContainerScheduling, self).__init__(name, env)
-#         self.cloud_cost_p = 1  # 容器在云节点执行成本的固定系数
-#         self.n = self.env.cluster.node_num
-#         self.serverless_z = [] * (self.n + 1)  # 边缘节点是否启动无服务器
-#         self.serverless_cost = [] * (self.n + 1)  # 边缘节点运营无服务器的成本
-#         self.mem_capacity = [] * (self.n + 1)  # 集群中每个节点的内存容量
-#         self.mem_used = [] * (self.n + 1)
-#
-#     def make_decision(self, task: Task, clock) -> EdgeNode:
-#         # prepare
-#         n = self.n  # 节点数量
-#         g = [[inf] * n for _ in range(n)]  # 邻接矩阵建图
-#         for i in range(n):
-#             g[i][i] = 0
-#         for node in self.cluster.node_list:
-#             for edge in node.edges:
-#                 g[node.id][edge[0]] = edge[1]
-#
-#         def dijkstra(v: int) -> List[int]:
-#             done = set()  # 已找到最短路的节点集合
-#             dist = [inf] * n
-#             dist[v] = 0
-#             while len(done) < n:
-#                 # 找到当前dist中的最小值
-#                 x = -1
-#                 for i in range(n):
-#                     if i in done:
-#                         continue
-#                     if x == -1 or dist[i] < dist[x]:
-#                         x = i
-#                 done.add(x)
-#                 # 更新dist数组
-#                 for i in range(n):
-#                     if i not in done:
-#                         continue
-#                     if g[x][i] != inf and dist[x] + g[x][i] < dist[i]:
-#                         dist[i] = dist[x] + g[x][i]
-#             return dist
-#
-#         l = dict()  # l[nk]维护节点nk的最短路数组
-#         for nk in n_data:
-#             # 对于所有拥有容器数据的节点执行一次最短路算法
-#             dist = dijkstra(nk)
-#             l[nk] = dist
-#
-#         h = [(inf, -1)] * n  # h[i]维护nk到节点i的最小值，以及对应nk的编号
-#         for i in range(n):
-#             for nk in n_data:
-#                 if l[nk][i] < h[i][0]:
-#                     h[i] = (l[nk][i], nk)
-#         # 将执行延迟和数据传输延迟合并成总延迟
-#         ap = [a[i] + h[i][0] for i in range(n)]
-#
-#         # 计算将容器调度到节点 i 执行所产生的对目标函数P2的增量
-#         inc = [0.0] * n
-#         for i in range(n):
-#             if i == 0:  # 云节点
-#                 inc[0] = ap[0] + c * p
-#             elif z[i] == 0:
-#                 inc[i] = ap[i] + serverless_cost[i]
-#             else:
-#                 inc[i] = ap[i]
-#         # 所有节点按照增量从小到大排序
-#         n_sort = sorted(zip(inc, range(n)))
-#         n_sort.sort(key=lambda xx: xx[0])
-#
-#         x = [0] * n
-#         y = [0] * n
-#         f = [[0] * n for _ in range(n)]
-#         for t in n_sort:
-#             idx = t[1]
-#             if cur[idx] + c <= capacity[idx]:  # 满足执行要求
-#                 # 选择第一个满足要求的idx作为调度节点
-#                 x[idx] = 1
-#                 cur[idx] += c
-#                 # 标记容器数据从哪个点提取
-#                 y[h[idx][1]] = 1
-#                 # 节点idx没有启动serverless服务
-#                 if z[idx] == 0:
-#                     z[idx] = 1
-#                 # TODO Assign f[n1][n2] to 1 along the shortest path from nk to n in G.
-#                 return idx
+import random
+
+from Scheduler.scheduler import Scheduler
+from Task.task import Task
+
+
+class OnlineContainerScheduling(Scheduler):
+    def __init__(self, name: str, env):
+        super(OnlineContainerScheduling, self).__init__(name, env)
+
+    def make_decision(self, task: Task, clock) -> int:
+        # prepare
+        n = self.cluster.node_num
+        scores = [0] * n
+        ids = [i for i in range(n)]
+        for i, node in enumerate(self.cluster.node_list):
+            addition_time = 1
+            if not node.gpu_match(task):
+                addition_time = 3.6
+            delay = task.transmit_time + addition_time * task.duration
+            scores[i] = delay + random.randint(0, 1) * random.randint(0, 0)
+        ids.sort(key=lambda i: scores[i])
+        for idx in ids:
+            ok, err = self.cluster.node_list[idx].can_run_task(task)
+            if ok:
+                return idx + 1
+        return -1

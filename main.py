@@ -6,7 +6,7 @@
 # Author  : linyf49@qq.com
 # File    : main.py
 from simpy import Environment
-from Scheduler import PGCS4EI, lrr, bra, dics
+from Scheduler import rccs, lrr, bra, dics, kcss, odcs
 from Infrastructure.cluster import Cluster
 from simulator import Simulator
 from Task.broker import Broker
@@ -20,6 +20,36 @@ logging.basicConfig(
     # filemode="a",  # append at the end of Log file
     filemode="w",  # rewrite the Log file
 )
+
+
+def baseline_odcs(task_configs, node_list):
+    env = Environment()
+    task_broker = Broker(env, task_configs)
+    cluster = Cluster()
+    for node in node_list:
+        cluster.add_node(node)
+
+    scheduler = odcs.OnlineContainerScheduling("odcs", env)
+    monitor = Monitor(env, "odcs")
+    sim = Simulator(env, cluster, scheduler, task_broker, monitor)
+    sim.run()
+    env.run()
+    print("average completion time of odcs:", cluster.average_completion())
+
+
+def baseline_kcss(task_configs, node_list):
+    env = Environment()
+    task_broker = Broker(env, task_configs)
+    cluster = Cluster()
+    for node in node_list:
+        cluster.add_node(node)
+
+    scheduler = kcss.KubernetesContainerScheduling("kcss", env)
+    monitor = Monitor(env, "kcss")
+    sim = Simulator(env, cluster, scheduler, task_broker, monitor)
+    sim.run()
+    env.run()
+    print("average completion time of kcss:", cluster.average_completion())
 
 
 def baseline_dics(task_configs, node_list):
@@ -72,8 +102,8 @@ def pgcs4ei(task_configs, node_list):
     for node in node_list:
         cluster.add_node(node)
 
-    scheduler = PGCS4EI.GroupBaseContainerScheduling("pgcs4ei", env)
-    monitor = Monitor(env, "pgcs4ei")
+    scheduler = rccs.GroupBaseContainerScheduling("rccs", env)
+    monitor = Monitor(env, "rccs")
     sim = Simulator(env, cluster, scheduler, task_broker, monitor)
     scheduler.make_first_level_group()
     scheduler.make_second_level_group()
@@ -90,11 +120,20 @@ def main():
 
     print("baseline LRR is running...")
     baseline_lrr(task_configs, node_list)
+
     print("baseline DICS is running...")
     baseline_dics(task_configs, node_list)
+
     print("baseline BRA is running...")
     baseline_bra(task_configs, node_list)
-    print("PGCS is running...")
+
+    print("baseline KCSS is running...")
+    baseline_kcss(task_configs, node_list)
+
+    print("baseline ODCS is running...")
+    baseline_odcs(task_configs, node_list)
+
+    print("rccs is running...")
     pgcs4ei(task_configs, node_list)
 
 

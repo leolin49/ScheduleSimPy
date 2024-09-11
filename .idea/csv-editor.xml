@@ -87,6 +87,41 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpushare100.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpushare20.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpushare40.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpushare60.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpushare80.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpuspec05.csv">
           <value>
             <Attribute>
@@ -116,6 +151,34 @@
           </value>
         </entry>
         <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_gpuspec33.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_multigpu20.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_multigpu30.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_multigpu40.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dataset\cluster-trace-gpu-v2023\csv\openb_pod_list_multigpu50.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
