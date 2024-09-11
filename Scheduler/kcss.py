@@ -12,11 +12,12 @@ from Scheduler.scheduler import Scheduler
 from Task.task import Task
 import util
 
+
 class KubernetesContainerScheduling(Scheduler):
     def __init__(self, name: str, env):
         super(KubernetesContainerScheduling, self).__init__(name, env)
         self.F1 = [1 for _ in range(6)]
-        self.W = [1/6 for _ in range(6)]
+        self.W = [1 / 6 for _ in range(6)]
         self.criteria_num = len(self.F1)
 
     @staticmethod
@@ -42,7 +43,7 @@ class KubernetesContainerScheduling(Scheduler):
                     node.disk_utilization,
                     node.container_num,
                     random.randint(1, 10),
-                    random.randint(100, 200)
+                    random.randint(100, 200),
                 ]
             )
 

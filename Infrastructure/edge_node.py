@@ -12,6 +12,7 @@ import util
 
 NEED_FULL_GPU = True
 
+
 class EdgeNodeConfig:
     def __init__(
         self,
@@ -162,8 +163,8 @@ class EdgeNode:
         self.container_num += 1
         if self.gpu_match(task):
             gpu_consume = min(self.gpu, task.ai_accelerator_num)
-            task.ai_accelerator_consume = gpu_consume 
-            self.gpu -= gpu_consume 
+            task.ai_accelerator_consume = gpu_consume
+            self.gpu -= gpu_consume
 
     def stop_task(self, task):
         """
@@ -179,4 +180,3 @@ class EdgeNode:
         if self.gpu_match(task):
             # self.gpu += task.ai_accelerator_num
             self.gpu += task.ai_accelerator_consume
-

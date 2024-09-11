@@ -11,7 +11,7 @@ import numpy as np
 
 # -------------- Config ----------------
 # k-means的K值
-GROUP_COUNT = 3     
+GROUP_COUNT = 3
 # 任务生成的时间范围
 TIME_RANGE = 100
 # 任务数量的倍数
@@ -55,7 +55,6 @@ CPU_NUMBER_SIZE = len(CPU_NUMBER)
 # AI Accelerators Labels
 AI_LABEL = [
     "GPU",
-
     "G2",
     "G3",
     "T4",
@@ -63,7 +62,6 @@ AI_LABEL = [
     "P100",
     "V100M16",
     "V100M32",
-
     "TPU",
     "NPU",
 ]
@@ -111,4 +109,3 @@ def new_logger(log_file_path: str, name="Unknown Log name"):
     handler = logging.FileHandler(log_file_path)
     logger.addHandler(handler)
     return logger
-

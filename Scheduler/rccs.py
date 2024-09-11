@@ -63,7 +63,7 @@ class GroupBaseContainerScheduling(Scheduler):
         scaler = preprocessing.MinMaxScaler()
         df[features] = scaler.fit_transform(df[features])
 
-        k_optimal = util.GROUP_COUNT 
+        k_optimal = util.GROUP_COUNT
         # Custom K-means initial centroids.
         # custom_centroids = df_original.loc[[59, 89, 99], features].values
         # kmeans = KMeans(n_clusters=k_optimal, init=custom_centroids, n_init=1, random_state=42)
@@ -250,7 +250,7 @@ class GroupBaseContainerScheduling(Scheduler):
 
     @staticmethod
     def __fuzzy_best_worst_method_get_weights():
-        return # FIXED ME
+        return  # FIXED ME
         lv = []
         lv.append([0, 0, 0, 0])
         lv.append([0, 1, 1, 1])  # Equally importance
@@ -259,7 +259,7 @@ class GroupBaseContainerScheduling(Scheduler):
         lv.append([0, 5 / 2, 3, 7 / 2])  # Very important
         lv.append([0, 7 / 2, 4, 9 / 2])  # Absolutely important
         # GPU > Delay > MEM > CPU
-        # best_idx = 1(GPU) | worst_idx = 3(CPU) 
+        # best_idx = 1(GPU) | worst_idx = 3(CPU)
         a = [
             [0, 0, 0, 0, 0],
             [0, 0, 0, 3, 0],
@@ -275,36 +275,78 @@ class GroupBaseContainerScheduling(Scheduler):
         ks = LpVariable("ks", lowBound=0)
         problem += ks, "Objective"
         # w1 = (l1,m1,u1)
-        w = LpVariable.dicts("w", ((i,j) for i in range(1, 5) for j in range(1, 4)), lowBound=0)
+        w = LpVariable.dicts(
+            "w", ((i, j) for i in range(1, 5) for j in range(1, 4)), lowBound=0
+        )
 
         bi = 1
         wi = 3
         low, mid, hig = 1, 2, 3
         for i in range(1, len(a)):
-            if i == bi: continue
-            problem += w[(bi,low)] - lv[a[bi][i]][low] * w[(i,hig)] <=  ks * w[(i,hig)]
-            problem += w[(bi,low)] - lv[a[bi][i]][low] * w[(i,hig)] >= -ks * w[(i,hig)]
-            problem += w[(bi,mid)] - lv[a[bi][i]][mid] * w[(i,mid)] <=  ks * w[(i,mid)]
-            problem += w[(bi,mid)] - lv[a[bi][i]][mid] * w[(i,mid)] >= -ks * w[(i,mid)]
-            problem += w[(bi,hig)] - lv[a[bi][i]][hig] * w[(i,low)] <=  ks * w[(i,low)]
-            problem += w[(bi,hig)] - lv[a[bi][i]][hig] * w[(i,low)] >= -ks * w[(i,low)]
+            if i == bi:
+                continue
+            problem += (
+                w[(bi, low)] - lv[a[bi][i]][low] * w[(i, hig)] <= ks * w[(i, hig)]
+            )
+            problem += (
+                w[(bi, low)] - lv[a[bi][i]][low] * w[(i, hig)] >= -ks * w[(i, hig)]
+            )
+            problem += (
+                w[(bi, mid)] - lv[a[bi][i]][mid] * w[(i, mid)] <= ks * w[(i, mid)]
+            )
+            problem += (
+                w[(bi, mid)] - lv[a[bi][i]][mid] * w[(i, mid)] >= -ks * w[(i, mid)]
+            )
+            problem += (
+                w[(bi, hig)] - lv[a[bi][i]][hig] * w[(i, low)] <= ks * w[(i, low)]
+            )
+            problem += (
+                w[(bi, hig)] - lv[a[bi][i]][hig] * w[(i, low)] >= -ks * w[(i, low)]
+            )
         for i in range(1, len(a)):
-            if i == bi or i == wi: continue
-            problem += w[(i,low)] - lv[a[i][wi]][low] * w[(wi,hig)] <=  ks * w[(wi,hig)] 
-            problem += w[(i,low)] - lv[a[i][wi]][low] * w[(wi,hig)] >= -ks * w[(wi,hig)] 
-            problem += w[(i,mid)] - lv[a[i][wi]][mid] * w[(wi,mid)] <=  ks * w[(wi,mid)]
-            problem += w[(i,mid)] - lv[a[i][wi]][mid] * w[(wi,mid)] >= -ks * w[(wi,mid)]
-            problem += w[(i,hig)] - lv[a[i][wi]][hig] * w[(wi,low)] <=  ks * w[(wi,low)]
-            problem += w[(i,hig)] - lv[a[i][wi]][hig] * w[(wi,low)] >= -ks * w[(wi,low)]
+            if i == bi or i == wi:
+                continue
+            problem += (
+                w[(i, low)] - lv[a[i][wi]][low] * w[(wi, hig)] <= ks * w[(wi, hig)]
+            )
+            problem += (
+                w[(i, low)] - lv[a[i][wi]][low] * w[(wi, hig)] >= -ks * w[(wi, hig)]
+            )
+            problem += (
+                w[(i, mid)] - lv[a[i][wi]][mid] * w[(wi, mid)] <= ks * w[(wi, mid)]
+            )
+            problem += (
+                w[(i, mid)] - lv[a[i][wi]][mid] * w[(wi, mid)] >= -ks * w[(wi, mid)]
+            )
+            problem += (
+                w[(i, hig)] - lv[a[i][wi]][hig] * w[(wi, low)] <= ks * w[(wi, low)]
+            )
+            problem += (
+                w[(i, hig)] - lv[a[i][wi]][hig] * w[(wi, low)] >= -ks * w[(wi, low)]
+            )
         for i in range(1, len(a)):
-            problem += w[(i,1)] <= w[(i,2)] <= w[(i,3)]
+            problem += w[(i, 1)] <= w[(i, 2)] <= w[(i, 3)]
         m1, m2, m3 = 1 / 6, 4 / 6, 1 / 6
-        problem += w[(1,1)]*m1 + w[(1,2)]*m2 + w[(1,3)]*m3 + w[(2,1)]*m1 + w[(2,2)]*m2 + w[(2,3)]*m3 + w[(3,1)]*m1 + w[(3,2)]*m2 + w[(3,3)]*m3 + w[(4,1)]*m1 + w[(4,2)]*m2 + w[(4,3)]*m3 == 1
+        problem += (
+            w[(1, 1)] * m1
+            + w[(1, 2)] * m2
+            + w[(1, 3)] * m3
+            + w[(2, 1)] * m1
+            + w[(2, 2)] * m2
+            + w[(2, 3)] * m3
+            + w[(3, 1)] * m1
+            + w[(3, 2)] * m2
+            + w[(3, 3)] * m3
+            + w[(4, 1)] * m1
+            + w[(4, 2)] * m2
+            + w[(4, 3)] * m3
+            == 1
+        )
 
         problem.solve()
         ans = []
         for i in range(1, len(a)):
-           ans.append(GMIR([w[(i,1)],w[(i,2)],w[(i,3)]]))
+            ans.append(GMIR([w[(i, 1)], w[(i, 2)], w[(i, 3)]]))
         return np.array(ans)
 
     @staticmethod
@@ -354,7 +396,7 @@ class GroupBaseContainerScheduling(Scheduler):
             1,
         ):
             u = LpVariable(f"u{j}", lowBound=0)
-            problem += wA  - aVal * wB <= ks, f"Constraint {2*j-1}"
+            problem += wA - aVal * wB <= ks, f"Constraint {2*j-1}"
             problem += -wA + aVal * wB <= ks, f"Constraint {2*j}"
         # w1 + ... + wj == 1
         problem += w1 + w2 + w3 + w4 == 1, "Constraint sum1"
@@ -427,4 +469,3 @@ class GroupBaseContainerScheduling(Scheduler):
                     break
         """
         return node_id
-

@@ -12,6 +12,7 @@ import util
 from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
 from Task.task import TaskConfig
 
+
 def read_node_list_csv():
     node_list = []
     for chunk in pd.read_csv("Rd/node_list.csv", chunksize=1):
@@ -76,7 +77,8 @@ def read_alibaba_task_list_csv():
                 task = TaskConfig(
                     task_index=tid,
                     submit_time=random.uniform(1, 100),
-                    duration=random.uniform(0.0001, 1.1432) * random.uniform(1, 1.7520 / 0.4883), 
+                    duration=random.uniform(0.0001, 1.1432)
+                    * random.uniform(1, 1.7520 / 0.4883),
                     # submit_time=int(row["creation_time"]),
                     # duration=int(row["deletion_time"]) - int(row["scheduled_time"]),
                     transmit_time=random.uniform(0.2985, 1.5926),
