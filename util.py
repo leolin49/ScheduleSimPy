@@ -14,9 +14,11 @@ import numpy as np
 GROUP_COUNT = 3
 # 任务生成的时间范围
 TIME_RANGE = 100
+# 任务样本数量
+TASK_NUM = 2000
 # 任务数量的倍数
-TASK_MUL = 5
-# 节点数量
+TASK_MUL = 16
+# 节点样本数量
 NODE_NUM = 100
 # --------------------------------------
 

@@ -59,7 +59,7 @@ def read_task_list_csv():
     return task_list
 
 
-def read_alibaba_task_list_csv():
+def read_alibaba_task_list_csv_bak():
     task_list = []
     for chunk in pd.read_csv(
         "Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv", chunksize=1
@@ -89,8 +89,43 @@ def read_alibaba_task_list_csv():
                     ai_accelerator_num=int(row["num_gpu"]),
                 )
                 task_list.append(task)
+    task_list = random.sample(task_list, util.TASK_NUM * util.TASK_MUL)
     task_list.sort(key=lambda x: x.submit_time)
     return task_list
+
+
+def read_alibaba_task_list_csv():
+    task_list = []
+    for chunk in pd.read_csv(
+            "Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv", chunksize=1
+    ):
+        for index, row in chunk.iterrows():
+            task_id = int(row["name"][-4:]) + 1
+            ais = None
+            gpu_spec_str = str(row["gpu_spec"])
+            if gpu_spec_str != "nan":
+                ais = gpu_spec_str.split("|")
+            if str(row["scheduled_time"]) == "nan":
+                continue
+            task = TaskConfig(
+                task_index=task_id,
+                submit_time=random.uniform(1, 100),
+                duration=random.uniform(0.0001, 1.1432) * random.uniform(1, 1.7520 / 0.4883),
+                # submit_time=int(row["creation_time"]),
+                # duration=int(row["deletion_time"]) - int(row["scheduled_time"]),
+                transmit_time=random.uniform(0.2985, 1.5926),
+                cpu=int(row["cpu_milli"]) // 1000,
+                memory=int(row["memory_mib"]),
+                disk=0,
+                ai_accelerators=ais,
+                ai_accelerator_num=int(row["num_gpu"]),
+            )
+            task_list.append(task)
+    res = []
+    for _ in range(util.TASK_MUL):
+        res.extend(random.sample(task_list, util.TASK_NUM))
+    res.sort(key=lambda x: x.submit_time)
+    return res
 
 
 def read_alibaba_node_list_csv():
@@ -120,6 +155,10 @@ def read_alibaba_node_list_csv():
                 ),
             )
             node_list.append(node)
+    # node_list = random.sample(node_list, util.NODE_NUM)
         if len(node_list) == util.NODE_NUM:
             break
+    # node_list = node_list[:util.NODE_NUM]
+    # for i, node in enumerate(node_list):
+    #     node.id = i + 1
     return node_list

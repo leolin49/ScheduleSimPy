@@ -5,6 +5,7 @@
 # Time    : 2024/3/28 16:15
 # Author  : linyf49@qq.com
 # File    : task.py
+import random
 from typing import List
 from simpy import Environment
 from Data.data import Data
@@ -134,7 +135,6 @@ class Task:
     def schedule(self, node, decision_time):
         self.started = True
         self.started_timestamp = self.env.now
-
         self.work_node_id = node.id
         node.run_task(self)
         self.env.process(self.run(node, decision_time))

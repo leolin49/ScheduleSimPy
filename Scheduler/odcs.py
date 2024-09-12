@@ -80,5 +80,6 @@ class OnlineContainerScheduling(Scheduler):
         for idx in ids:
             ok, err = self.cluster.node_list[idx].can_run_task(task)
             if ok:
+            # if ok and self.cluster.node_list[idx].gpu_match(task):
                 return idx + 1
         return -1

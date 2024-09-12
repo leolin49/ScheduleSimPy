@@ -37,7 +37,8 @@ for file in files:
             }
 
         # 保存不同参数组合的 `i, j` 和对应的指标值
-        data_by_baseline[baseline]["params"].append(f"|N|={i}, |C|={j}")
+        # data_by_baseline[baseline]["params"].append(f"|N|={i}, |C|={j}")
+        data_by_baseline[baseline]["params"].append(f"{j}")
         data_by_baseline[baseline]["avg_task_make_span"].append(
             float(data["avg_task_make_span"])
         )
@@ -65,11 +66,11 @@ metrics_keys = [
     "avg_mem_utilization",
     "avg_gpu_utilization",
 ]
-metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (20, 100)]
+metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (0, 100)]
 
 # 设置柱宽和间隙
-bar_width = 0.3  # 每个 baseline 的柱宽
-gap_between_groups = 0.5  # 参数组合之间的间隙
+bar_width = 0.05  # 每个 baseline 的柱宽
+gap_between_groups = 0.2  # 参数组合之间的间隙
 
 # 分别为每个指标绘制图表，将不同参数组合放在一起比较
 for metric_name, metric_key, metrics_ylim in zip(
@@ -96,31 +97,33 @@ for metric_name, metric_key, metrics_ylim in zip(
             label=baseline.upper(),
             hatch="",
             alpha=1,
+            zorder=2,
         )
 
     # 设置标签和标题
-    plt.xlabel("Parameter Combination (|N|, |C|)", fontsize=15)
-    plt.ylabel(f"{metric_name} (%)", fontsize=15)
-    plt.title(
-        f"Comparison of {metric_name} Across Baselines for Different Parameters",
-        fontsize=15,
-    )
+    # plt.xlabel("Parameter Combination (|N|, |C|)", fontsize=15)
+    plt.xlabel("Container Number", fontsize=16)
+    plt.ylabel(f"{metric_name} (%)", fontsize=16)
+    # plt.title(
+    #     f"Comparison of {metric_name} Across Baselines for Different Parameters",
+    #     fontsize=15,
+    # )
 
     # 设置 x 轴的刻度
     plt.xticks(
         index + (len(data_by_baseline) * bar_width) / 2,
         next(iter(data_by_baseline.values()))["params"],
-        rotation=45,
+        rotation=0,
         ha="right",
-        fontsize=12,
+        fontsize=16,
     )
-    plt.yticks(fontsize=12)
+    plt.yticks(fontsize=16)
 
     # 显示图例
-    plt.legend(loc="upper left", fontsize="16", ncol=6)
+    plt.legend(loc="upper left", fontsize="20", ncol=3)
     plt.ylim(metrics_ylim)
     # 调整布局，避免标签重叠
     plt.tight_layout()
-    # plt.grid(True)
+    plt.grid(True, linestyle='-', linewidth=0.5, zorder=1)
     # 显示图形
     plt.show()

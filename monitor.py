@@ -24,7 +24,7 @@ class Monitor(object):
         self.simulator = simulator
         self.cluster = simulator.cluster
         self.avg_file = "Log/{}_{}_{:5d}_avg_event.json".format(
-            self.name, util.NODE_NUM, util.TASK_MUL * 8000
+            self.name, util.NODE_NUM, util.TASK_MUL * util.TASK_NUM
         )
 
     def run(self):

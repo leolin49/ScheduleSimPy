@@ -21,7 +21,7 @@ from scipy.optimize import minimize
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
 from collections import defaultdict
-from pulp import LpMaximize, LpMinimize, LpProblem, LpVariable
+from pulp import LpMinimize, LpProblem, LpVariable
 
 import util
 from Task.task import Task
@@ -367,9 +367,9 @@ class GroupBaseContainerScheduling(Scheduler):
         # 1. Delay 2.GPU 3.CPU 4.MEM
         a = [
             [0, 0, 0, 0, 0],
-            [0, 1, 2, 3, 3],
-            [0, 0, 1, 0, 2],
-            [0, 0, 0, 1, 1],
+            [0, 1, 2, 4, 5],
+            [0, 0, 1, 0, 3],
+            [0, 0, 0, 1, 2],
             [0, 0, 0, 0, 1],
         ]
 
