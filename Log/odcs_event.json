@@ -13,668 +13,656 @@
     },
     {
         "timestamp": 2,
-        "cpu_utilization": "67.62%",
-        "mem_utilization": "60.13%",
-        "gpu_utilization": "45.04%"
+        "cpu_utilization": "73.48%",
+        "mem_utilization": "57.99%",
+        "gpu_utilization": "63.39%"
     },
     {
         "timestamp": 3,
-        "cpu_utilization": "91.67%",
-        "mem_utilization": "78.89%",
-        "gpu_utilization": "72.24%"
+        "cpu_utilization": "95.62%",
+        "mem_utilization": "74.25%",
+        "gpu_utilization": "78.03%"
     },
     {
         "timestamp": 4,
-        "cpu_utilization": "93.45%",
-        "mem_utilization": "79.74%",
-        "gpu_utilization": "74.08%"
+        "cpu_utilization": "91.69%",
+        "mem_utilization": "73.80%",
+        "gpu_utilization": "77.46%"
     },
     {
         "timestamp": 5,
-        "cpu_utilization": "92.57%",
-        "mem_utilization": "79.83%",
-        "gpu_utilization": "69.49%"
+        "cpu_utilization": "92.44%",
+        "mem_utilization": "77.85%",
+        "gpu_utilization": "83.62%"
     },
     {
         "timestamp": 6,
-        "cpu_utilization": "93.66%",
-        "mem_utilization": "79.51%",
-        "gpu_utilization": "62.32%"
+        "cpu_utilization": "90.20%",
+        "mem_utilization": "75.30%",
+        "gpu_utilization": "79.38%"
     },
     {
         "timestamp": 7,
-        "cpu_utilization": "90.69%",
-        "mem_utilization": "75.44%",
-        "gpu_utilization": "66.18%"
+        "cpu_utilization": "93.43%",
+        "mem_utilization": "79.78%",
+        "gpu_utilization": "76.30%"
     },
     {
         "timestamp": 8,
-        "cpu_utilization": "94.71%",
-        "mem_utilization": "80.49%",
-        "gpu_utilization": "63.42%"
+        "cpu_utilization": "93.73%",
+        "mem_utilization": "77.35%",
+        "gpu_utilization": "71.10%"
     },
     {
         "timestamp": 9,
-        "cpu_utilization": "92.01%",
-        "mem_utilization": "78.44%",
-        "gpu_utilization": "70.40%"
+        "cpu_utilization": "91.67%",
+        "mem_utilization": "77.31%",
+        "gpu_utilization": "73.60%"
     },
     {
         "timestamp": 10,
-        "cpu_utilization": "96.06%",
-        "mem_utilization": "81.52%",
-        "gpu_utilization": "68.57%"
+        "cpu_utilization": "95.31%",
+        "mem_utilization": "78.65%",
+        "gpu_utilization": "68.98%"
     },
     {
         "timestamp": 11,
-        "cpu_utilization": "96.06%",
-        "mem_utilization": "84.30%",
-        "gpu_utilization": "69.85%"
+        "cpu_utilization": "95.97%",
+        "mem_utilization": "79.56%",
+        "gpu_utilization": "72.25%"
     },
     {
         "timestamp": 12,
-        "cpu_utilization": "93.65%",
-        "mem_utilization": "84.55%",
-        "gpu_utilization": "67.10%"
+        "cpu_utilization": "93.21%",
+        "mem_utilization": "78.93%",
+        "gpu_utilization": "71.68%"
     },
     {
         "timestamp": 13,
-        "cpu_utilization": "92.22%",
-        "mem_utilization": "81.31%",
-        "gpu_utilization": "57.90%"
+        "cpu_utilization": "94.91%",
+        "mem_utilization": "77.42%",
+        "gpu_utilization": "67.05%"
     },
     {
         "timestamp": 14,
-        "cpu_utilization": "94.21%",
-        "mem_utilization": "82.16%",
-        "gpu_utilization": "61.58%"
+        "cpu_utilization": "95.54%",
+        "mem_utilization": "78.70%",
+        "gpu_utilization": "71.48%"
     },
     {
         "timestamp": 15,
-        "cpu_utilization": "93.36%",
-        "mem_utilization": "81.94%",
-        "gpu_utilization": "68.01%"
+        "cpu_utilization": "90.74%",
+        "mem_utilization": "74.48%",
+        "gpu_utilization": "68.98%"
     },
     {
         "timestamp": 16,
-        "cpu_utilization": "95.39%",
-        "mem_utilization": "81.80%",
-        "gpu_utilization": "73.16%"
+        "cpu_utilization": "91.15%",
+        "mem_utilization": "74.15%",
+        "gpu_utilization": "73.80%"
     },
     {
         "timestamp": 17,
-        "cpu_utilization": "95.62%",
-        "mem_utilization": "82.71%",
-        "gpu_utilization": "72.24%"
+        "cpu_utilization": "94.33%",
+        "mem_utilization": "77.16%",
+        "gpu_utilization": "75.53%"
     },
     {
         "timestamp": 18,
-        "cpu_utilization": "95.17%",
-        "mem_utilization": "81.07%",
-        "gpu_utilization": "69.12%"
+        "cpu_utilization": "94.67%",
+        "mem_utilization": "78.41%",
+        "gpu_utilization": "73.60%"
     },
     {
         "timestamp": 19,
-        "cpu_utilization": "93.69%",
-        "mem_utilization": "78.80%",
-        "gpu_utilization": "67.46%"
+        "cpu_utilization": "92.34%",
+        "mem_utilization": "76.05%",
+        "gpu_utilization": "72.83%"
     },
     {
         "timestamp": 20,
-        "cpu_utilization": "93.65%",
-        "mem_utilization": "80.19%",
-        "gpu_utilization": "70.04%"
+        "cpu_utilization": "94.78%",
+        "mem_utilization": "77.47%",
+        "gpu_utilization": "75.14%"
     },
     {
         "timestamp": 21,
-        "cpu_utilization": "96.59%",
-        "mem_utilization": "83.59%",
-        "gpu_utilization": "72.43%"
+        "cpu_utilization": "95.51%",
+        "mem_utilization": "77.80%",
+        "gpu_utilization": "73.22%"
     },
     {
         "timestamp": 22,
-        "cpu_utilization": "97.09%",
-        "mem_utilization": "83.01%",
-        "gpu_utilization": "71.32%"
+        "cpu_utilization": "96.93%",
+        "mem_utilization": "78.95%",
+        "gpu_utilization": "75.53%"
     },
     {
         "timestamp": 23,
-        "cpu_utilization": "94.86%",
-        "mem_utilization": "80.89%",
-        "gpu_utilization": "64.52%"
+        "cpu_utilization": "93.93%",
+        "mem_utilization": "75.13%",
+        "gpu_utilization": "72.25%"
     },
     {
         "timestamp": 24,
-        "cpu_utilization": "92.09%",
-        "mem_utilization": "80.16%",
-        "gpu_utilization": "64.89%"
+        "cpu_utilization": "95.65%",
+        "mem_utilization": "76.45%",
+        "gpu_utilization": "67.24%"
     },
     {
         "timestamp": 25,
-        "cpu_utilization": "94.26%",
-        "mem_utilization": "80.05%",
-        "gpu_utilization": "64.34%"
+        "cpu_utilization": "95.10%",
+        "mem_utilization": "75.67%",
+        "gpu_utilization": "71.68%"
     },
     {
         "timestamp": 26,
-        "cpu_utilization": "92.81%",
-        "mem_utilization": "78.52%",
-        "gpu_utilization": "63.97%"
+        "cpu_utilization": "94.08%",
+        "mem_utilization": "75.51%",
+        "gpu_utilization": "74.37%"
     },
     {
         "timestamp": 27,
-        "cpu_utilization": "95.43%",
-        "mem_utilization": "81.57%",
-        "gpu_utilization": "66.36%"
+        "cpu_utilization": "91.56%",
+        "mem_utilization": "74.77%",
+        "gpu_utilization": "75.14%"
     },
     {
         "timestamp": 28,
-        "cpu_utilization": "95.09%",
-        "mem_utilization": "81.76%",
-        "gpu_utilization": "63.24%"
+        "cpu_utilization": "89.31%",
+        "mem_utilization": "72.81%",
+        "gpu_utilization": "67.82%"
     },
     {
         "timestamp": 29,
-        "cpu_utilization": "93.82%",
-        "mem_utilization": "80.62%",
-        "gpu_utilization": "65.26%"
+        "cpu_utilization": "94.04%",
+        "mem_utilization": "79.40%",
+        "gpu_utilization": "63.20%"
     },
     {
         "timestamp": 30,
-        "cpu_utilization": "96.31%",
-        "mem_utilization": "81.27%",
-        "gpu_utilization": "64.34%"
+        "cpu_utilization": "91.73%",
+        "mem_utilization": "75.64%",
+        "gpu_utilization": "66.86%"
     },
     {
         "timestamp": 31,
-        "cpu_utilization": "93.39%",
-        "mem_utilization": "79.11%",
-        "gpu_utilization": "68.75%"
+        "cpu_utilization": "93.00%",
+        "mem_utilization": "76.40%",
+        "gpu_utilization": "70.13%"
     },
     {
         "timestamp": 32,
-        "cpu_utilization": "93.37%",
-        "mem_utilization": "79.23%",
-        "gpu_utilization": "73.16%"
+        "cpu_utilization": "95.80%",
+        "mem_utilization": "78.36%",
+        "gpu_utilization": "78.61%"
     },
     {
         "timestamp": 33,
-        "cpu_utilization": "92.54%",
-        "mem_utilization": "78.69%",
-        "gpu_utilization": "65.62%"
+        "cpu_utilization": "92.45%",
+        "mem_utilization": "75.62%",
+        "gpu_utilization": "79.58%"
     },
     {
         "timestamp": 34,
-        "cpu_utilization": "94.80%",
-        "mem_utilization": "81.10%",
-        "gpu_utilization": "63.97%"
+        "cpu_utilization": "96.51%",
+        "mem_utilization": "78.60%",
+        "gpu_utilization": "73.60%"
     },
     {
         "timestamp": 35,
-        "cpu_utilization": "93.22%",
-        "mem_utilization": "80.63%",
-        "gpu_utilization": "70.04%"
+        "cpu_utilization": "95.04%",
+        "mem_utilization": "76.56%",
+        "gpu_utilization": "68.79%"
     },
     {
         "timestamp": 36,
-        "cpu_utilization": "94.02%",
-        "mem_utilization": "80.48%",
-        "gpu_utilization": "71.14%"
+        "cpu_utilization": "88.60%",
+        "mem_utilization": "72.66%",
+        "gpu_utilization": "65.70%"
     },
     {
         "timestamp": 37,
-        "cpu_utilization": "92.78%",
-        "mem_utilization": "80.07%",
-        "gpu_utilization": "65.26%"
+        "cpu_utilization": "94.41%",
+        "mem_utilization": "76.56%",
+        "gpu_utilization": "67.63%"
     },
     {
         "timestamp": 38,
-        "cpu_utilization": "94.53%",
-        "mem_utilization": "81.96%",
-        "gpu_utilization": "68.93%"
+        "cpu_utilization": "97.04%",
+        "mem_utilization": "79.60%",
+        "gpu_utilization": "73.60%"
     },
     {
         "timestamp": 39,
-        "cpu_utilization": "95.22%",
-        "mem_utilization": "82.97%",
-        "gpu_utilization": "73.53%"
+        "cpu_utilization": "93.56%",
+        "mem_utilization": "77.19%",
+        "gpu_utilization": "76.30%"
     },
     {
         "timestamp": 40,
-        "cpu_utilization": "94.05%",
-        "mem_utilization": "82.45%",
-        "gpu_utilization": "72.98%"
+        "cpu_utilization": "93.91%",
+        "mem_utilization": "76.02%",
+        "gpu_utilization": "72.45%"
     },
     {
         "timestamp": 41,
-        "cpu_utilization": "94.16%",
-        "mem_utilization": "81.81%",
-        "gpu_utilization": "63.05%"
+        "cpu_utilization": "93.55%",
+        "mem_utilization": "77.85%",
+        "gpu_utilization": "61.85%"
     },
     {
         "timestamp": 42,
-        "cpu_utilization": "94.32%",
-        "mem_utilization": "79.55%",
-        "gpu_utilization": "70.59%"
+        "cpu_utilization": "91.34%",
+        "mem_utilization": "74.12%",
+        "gpu_utilization": "65.32%"
     },
     {
         "timestamp": 43,
-        "cpu_utilization": "93.40%",
-        "mem_utilization": "79.15%",
-        "gpu_utilization": "73.90%"
+        "cpu_utilization": "94.37%",
+        "mem_utilization": "75.33%",
+        "gpu_utilization": "67.44%"
     },
     {
         "timestamp": 44,
-        "cpu_utilization": "95.18%",
-        "mem_utilization": "82.91%",
-        "gpu_utilization": "66.91%"
+        "cpu_utilization": "92.33%",
+        "mem_utilization": "76.28%",
+        "gpu_utilization": "65.70%"
     },
     {
         "timestamp": 45,
-        "cpu_utilization": "94.54%",
-        "mem_utilization": "81.89%",
-        "gpu_utilization": "63.79%"
+        "cpu_utilization": "92.92%",
+        "mem_utilization": "77.09%",
+        "gpu_utilization": "70.71%"
     },
     {
         "timestamp": 46,
-        "cpu_utilization": "87.20%",
-        "mem_utilization": "76.15%",
-        "gpu_utilization": "57.35%"
+        "cpu_utilization": "95.56%",
+        "mem_utilization": "78.61%",
+        "gpu_utilization": "74.37%"
     },
     {
         "timestamp": 47,
-        "cpu_utilization": "93.20%",
-        "mem_utilization": "79.95%",
-        "gpu_utilization": "62.68%"
+        "cpu_utilization": "96.18%",
+        "mem_utilization": "77.15%",
+        "gpu_utilization": "73.99%"
     },
     {
         "timestamp": 48,
-        "cpu_utilization": "94.00%",
-        "mem_utilization": "82.13%",
-        "gpu_utilization": "68.20%"
+        "cpu_utilization": "97.65%",
+        "mem_utilization": "78.80%",
+        "gpu_utilization": "73.22%"
     },
     {
         "timestamp": 49,
-        "cpu_utilization": "95.18%",
-        "mem_utilization": "81.08%",
-        "gpu_utilization": "76.65%"
+        "cpu_utilization": "95.82%",
+        "mem_utilization": "77.67%",
+        "gpu_utilization": "77.46%"
     },
     {
         "timestamp": 50,
-        "cpu_utilization": "93.48%",
-        "mem_utilization": "80.40%",
-        "gpu_utilization": "71.88%"
+        "cpu_utilization": "94.92%",
+        "mem_utilization": "74.81%",
+        "gpu_utilization": "82.27%"
     },
     {
         "timestamp": 51,
-        "cpu_utilization": "95.19%",
-        "mem_utilization": "83.23%",
-        "gpu_utilization": "73.16%"
+        "cpu_utilization": "89.48%",
+        "mem_utilization": "72.33%",
+        "gpu_utilization": "73.22%"
     },
     {
         "timestamp": 52,
-        "cpu_utilization": "93.24%",
-        "mem_utilization": "82.60%",
-        "gpu_utilization": "62.68%"
+        "cpu_utilization": "95.49%",
+        "mem_utilization": "76.46%",
+        "gpu_utilization": "74.57%"
     },
     {
         "timestamp": 53,
-        "cpu_utilization": "92.30%",
-        "mem_utilization": "80.49%",
-        "gpu_utilization": "68.20%"
+        "cpu_utilization": "93.01%",
+        "mem_utilization": "75.56%",
+        "gpu_utilization": "73.60%"
     },
     {
         "timestamp": 54,
-        "cpu_utilization": "95.06%",
-        "mem_utilization": "82.14%",
-        "gpu_utilization": "70.96%"
+        "cpu_utilization": "86.17%",
+        "mem_utilization": "70.64%",
+        "gpu_utilization": "79.58%"
     },
     {
         "timestamp": 55,
-        "cpu_utilization": "93.13%",
-        "mem_utilization": "79.85%",
-        "gpu_utilization": "68.75%"
+        "cpu_utilization": "90.49%",
+        "mem_utilization": "71.63%",
+        "gpu_utilization": "80.35%"
     },
     {
         "timestamp": 56,
-        "cpu_utilization": "94.00%",
-        "mem_utilization": "81.44%",
-        "gpu_utilization": "60.11%"
+        "cpu_utilization": "95.75%",
+        "mem_utilization": "76.76%",
+        "gpu_utilization": "82.27%"
     },
     {
         "timestamp": 57,
-        "cpu_utilization": "94.46%",
-        "mem_utilization": "82.96%",
-        "gpu_utilization": "61.76%"
+        "cpu_utilization": "93.73%",
+        "mem_utilization": "75.51%",
+        "gpu_utilization": "81.50%"
     },
     {
         "timestamp": 58,
-        "cpu_utilization": "94.17%",
-        "mem_utilization": "81.69%",
-        "gpu_utilization": "64.71%"
+        "cpu_utilization": "88.88%",
+        "mem_utilization": "73.45%",
+        "gpu_utilization": "76.11%"
     },
     {
         "timestamp": 59,
-        "cpu_utilization": "91.74%",
-        "mem_utilization": "80.22%",
-        "gpu_utilization": "70.59%"
+        "cpu_utilization": "89.69%",
+        "mem_utilization": "74.25%",
+        "gpu_utilization": "74.18%"
     },
     {
         "timestamp": 60,
-        "cpu_utilization": "91.14%",
-        "mem_utilization": "77.59%",
-        "gpu_utilization": "75.55%"
+        "cpu_utilization": "90.31%",
+        "mem_utilization": "73.21%",
+        "gpu_utilization": "77.46%"
     },
     {
         "timestamp": 61,
-        "cpu_utilization": "91.49%",
-        "mem_utilization": "77.38%",
-        "gpu_utilization": "77.76%"
+        "cpu_utilization": "93.60%",
+        "mem_utilization": "74.63%",
+        "gpu_utilization": "80.54%"
     },
     {
         "timestamp": 62,
-        "cpu_utilization": "91.96%",
-        "mem_utilization": "79.73%",
-        "gpu_utilization": "71.88%"
+        "cpu_utilization": "94.60%",
+        "mem_utilization": "76.19%",
+        "gpu_utilization": "79.38%"
     },
     {
         "timestamp": 63,
-        "cpu_utilization": "93.34%",
-        "mem_utilization": "81.69%",
-        "gpu_utilization": "63.24%"
+        "cpu_utilization": "91.64%",
+        "mem_utilization": "75.56%",
+        "gpu_utilization": "76.11%"
     },
     {
         "timestamp": 64,
-        "cpu_utilization": "96.12%",
-        "mem_utilization": "83.50%",
-        "gpu_utilization": "70.96%"
+        "cpu_utilization": "91.50%",
+        "mem_utilization": "74.84%",
+        "gpu_utilization": "66.09%"
     },
     {
         "timestamp": 65,
-        "cpu_utilization": "94.23%",
-        "mem_utilization": "81.57%",
-        "gpu_utilization": "70.59%"
+        "cpu_utilization": "92.25%",
+        "mem_utilization": "74.67%",
+        "gpu_utilization": "65.90%"
     },
     {
         "timestamp": 66,
-        "cpu_utilization": "91.62%",
-        "mem_utilization": "80.04%",
-        "gpu_utilization": "69.30%"
+        "cpu_utilization": "93.56%",
+        "mem_utilization": "76.58%",
+        "gpu_utilization": "68.98%"
     },
     {
         "timestamp": 67,
-        "cpu_utilization": "91.61%",
-        "mem_utilization": "79.43%",
-        "gpu_utilization": "71.32%"
+        "cpu_utilization": "93.48%",
+        "mem_utilization": "77.50%",
+        "gpu_utilization": "64.93%"
     },
     {
         "timestamp": 68,
-        "cpu_utilization": "92.68%",
-        "mem_utilization": "77.11%",
-        "gpu_utilization": "71.32%"
+        "cpu_utilization": "94.07%",
+        "mem_utilization": "78.76%",
+        "gpu_utilization": "64.55%"
     },
     {
         "timestamp": 69,
-        "cpu_utilization": "93.31%",
-        "mem_utilization": "77.88%",
-        "gpu_utilization": "69.85%"
+        "cpu_utilization": "95.47%",
+        "mem_utilization": "79.25%",
+        "gpu_utilization": "59.34%"
     },
     {
         "timestamp": 70,
-        "cpu_utilization": "94.74%",
-        "mem_utilization": "77.40%",
-        "gpu_utilization": "66.73%"
+        "cpu_utilization": "90.92%",
+        "mem_utilization": "76.76%",
+        "gpu_utilization": "66.47%"
     },
     {
         "timestamp": 71,
-        "cpu_utilization": "95.08%",
-        "mem_utilization": "79.13%",
-        "gpu_utilization": "66.91%"
+        "cpu_utilization": "94.07%",
+        "mem_utilization": "79.47%",
+        "gpu_utilization": "62.81%"
     },
     {
         "timestamp": 72,
-        "cpu_utilization": "84.87%",
-        "mem_utilization": "74.68%",
-        "gpu_utilization": "59.56%"
+        "cpu_utilization": "94.81%",
+        "mem_utilization": "79.82%",
+        "gpu_utilization": "63.01%"
     },
     {
         "timestamp": 73,
-        "cpu_utilization": "91.99%",
-        "mem_utilization": "80.90%",
-        "gpu_utilization": "63.05%"
+        "cpu_utilization": "95.10%",
+        "mem_utilization": "78.85%",
+        "gpu_utilization": "65.32%"
     },
     {
         "timestamp": 74,
-        "cpu_utilization": "96.03%",
-        "mem_utilization": "83.92%",
-        "gpu_utilization": "65.62%"
+        "cpu_utilization": "93.94%",
+        "mem_utilization": "80.21%",
+        "gpu_utilization": "71.29%"
     },
     {
         "timestamp": 75,
-        "cpu_utilization": "93.55%",
-        "mem_utilization": "80.78%",
-        "gpu_utilization": "62.50%"
+        "cpu_utilization": "93.60%",
+        "mem_utilization": "80.04%",
+        "gpu_utilization": "70.91%"
     },
     {
         "timestamp": 76,
-        "cpu_utilization": "90.32%",
-        "mem_utilization": "78.09%",
-        "gpu_utilization": "66.54%"
+        "cpu_utilization": "93.59%",
+        "mem_utilization": "78.45%",
+        "gpu_utilization": "68.02%"
     },
     {
         "timestamp": 77,
-        "cpu_utilization": "90.06%",
-        "mem_utilization": "77.63%",
-        "gpu_utilization": "71.32%"
+        "cpu_utilization": "94.83%",
+        "mem_utilization": "78.73%",
+        "gpu_utilization": "63.39%"
     },
     {
         "timestamp": 78,
-        "cpu_utilization": "93.75%",
-        "mem_utilization": "80.07%",
-        "gpu_utilization": "65.26%"
+        "cpu_utilization": "92.23%",
+        "mem_utilization": "75.52%",
+        "gpu_utilization": "65.90%"
     },
     {
         "timestamp": 79,
-        "cpu_utilization": "94.29%",
-        "mem_utilization": "80.05%",
-        "gpu_utilization": "60.29%"
+        "cpu_utilization": "94.62%",
+        "mem_utilization": "77.28%",
+        "gpu_utilization": "59.54%"
     },
     {
         "timestamp": 80,
-        "cpu_utilization": "93.64%",
-        "mem_utilization": "81.54%",
-        "gpu_utilization": "59.74%"
+        "cpu_utilization": "90.85%",
+        "mem_utilization": "76.25%",
+        "gpu_utilization": "62.04%"
     },
     {
         "timestamp": 81,
-        "cpu_utilization": "94.27%",
-        "mem_utilization": "81.73%",
-        "gpu_utilization": "63.60%"
+        "cpu_utilization": "94.26%",
+        "mem_utilization": "76.80%",
+        "gpu_utilization": "69.56%"
     },
     {
         "timestamp": 82,
-        "cpu_utilization": "92.95%",
-        "mem_utilization": "80.68%",
-        "gpu_utilization": "59.93%"
+        "cpu_utilization": "94.51%",
+        "mem_utilization": "78.76%",
+        "gpu_utilization": "74.76%"
     },
     {
         "timestamp": 83,
-        "cpu_utilization": "95.02%",
-        "mem_utilization": "80.56%",
-        "gpu_utilization": "58.64%"
+        "cpu_utilization": "93.59%",
+        "mem_utilization": "77.69%",
+        "gpu_utilization": "67.82%"
     },
     {
         "timestamp": 84,
-        "cpu_utilization": "94.64%",
-        "mem_utilization": "81.41%",
-        "gpu_utilization": "63.05%"
+        "cpu_utilization": "92.81%",
+        "mem_utilization": "74.74%",
+        "gpu_utilization": "74.76%"
     },
     {
         "timestamp": 85,
-        "cpu_utilization": "94.42%",
-        "mem_utilization": "82.05%",
-        "gpu_utilization": "61.58%"
+        "cpu_utilization": "92.73%",
+        "mem_utilization": "76.23%",
+        "gpu_utilization": "78.42%"
     },
     {
         "timestamp": 86,
-        "cpu_utilization": "90.01%",
-        "mem_utilization": "78.17%",
-        "gpu_utilization": "61.95%"
+        "cpu_utilization": "91.29%",
+        "mem_utilization": "76.40%",
+        "gpu_utilization": "79.77%"
     },
     {
         "timestamp": 87,
-        "cpu_utilization": "91.80%",
-        "mem_utilization": "78.85%",
-        "gpu_utilization": "59.01%"
+        "cpu_utilization": "94.46%",
+        "mem_utilization": "78.62%",
+        "gpu_utilization": "77.46%"
     },
     {
         "timestamp": 88,
-        "cpu_utilization": "92.97%",
-        "mem_utilization": "78.86%",
-        "gpu_utilization": "60.29%"
+        "cpu_utilization": "94.23%",
+        "mem_utilization": "79.06%",
+        "gpu_utilization": "70.91%"
     },
     {
         "timestamp": 89,
-        "cpu_utilization": "94.54%",
-        "mem_utilization": "82.95%",
-        "gpu_utilization": "61.76%"
+        "cpu_utilization": "94.46%",
+        "mem_utilization": "79.31%",
+        "gpu_utilization": "63.78%"
     },
     {
         "timestamp": 90,
-        "cpu_utilization": "89.67%",
-        "mem_utilization": "80.40%",
-        "gpu_utilization": "54.41%"
+        "cpu_utilization": "96.41%",
+        "mem_utilization": "78.59%",
+        "gpu_utilization": "76.11%"
     },
     {
         "timestamp": 91,
-        "cpu_utilization": "93.16%",
-        "mem_utilization": "84.89%",
-        "gpu_utilization": "63.05%"
+        "cpu_utilization": "92.31%",
+        "mem_utilization": "76.10%",
+        "gpu_utilization": "69.36%"
     },
     {
         "timestamp": 92,
-        "cpu_utilization": "92.90%",
-        "mem_utilization": "83.63%",
-        "gpu_utilization": "58.46%"
+        "cpu_utilization": "95.11%",
+        "mem_utilization": "78.39%",
+        "gpu_utilization": "73.99%"
     },
     {
         "timestamp": 93,
-        "cpu_utilization": "93.12%",
-        "mem_utilization": "83.05%",
-        "gpu_utilization": "57.72%"
+        "cpu_utilization": "92.24%",
+        "mem_utilization": "76.25%",
+        "gpu_utilization": "74.37%"
     },
     {
         "timestamp": 94,
-        "cpu_utilization": "95.45%",
-        "mem_utilization": "84.74%",
-        "gpu_utilization": "56.62%"
+        "cpu_utilization": "95.27%",
+        "mem_utilization": "78.15%",
+        "gpu_utilization": "76.11%"
     },
     {
         "timestamp": 95,
-        "cpu_utilization": "93.12%",
-        "mem_utilization": "82.08%",
-        "gpu_utilization": "62.13%"
+        "cpu_utilization": "93.90%",
+        "mem_utilization": "76.68%",
+        "gpu_utilization": "71.48%"
     },
     {
         "timestamp": 96,
-        "cpu_utilization": "91.03%",
-        "mem_utilization": "79.87%",
-        "gpu_utilization": "65.99%"
+        "cpu_utilization": "92.25%",
+        "mem_utilization": "72.51%",
+        "gpu_utilization": "85.16%"
     },
     {
         "timestamp": 97,
-        "cpu_utilization": "95.34%",
-        "mem_utilization": "80.41%",
-        "gpu_utilization": "66.18%"
+        "cpu_utilization": "91.88%",
+        "mem_utilization": "73.67%",
+        "gpu_utilization": "83.62%"
     },
     {
         "timestamp": 98,
-        "cpu_utilization": "94.95%",
-        "mem_utilization": "80.13%",
-        "gpu_utilization": "66.73%"
+        "cpu_utilization": "94.92%",
+        "mem_utilization": "76.14%",
+        "gpu_utilization": "77.46%"
     },
     {
         "timestamp": 99,
-        "cpu_utilization": "90.36%",
-        "mem_utilization": "75.53%",
-        "gpu_utilization": "64.89%"
+        "cpu_utilization": "94.36%",
+        "mem_utilization": "73.25%",
+        "gpu_utilization": "82.85%"
     },
     {
         "timestamp": 100,
-        "cpu_utilization": "90.91%",
-        "mem_utilization": "78.99%",
-        "gpu_utilization": "66.54%"
+        "cpu_utilization": "93.48%",
+        "mem_utilization": "74.98%",
+        "gpu_utilization": "79.96%"
     },
     {
         "timestamp": 101,
-        "cpu_utilization": "73.55%",
-        "mem_utilization": "66.08%",
-        "gpu_utilization": "40.44%"
+        "cpu_utilization": "62.62%",
+        "mem_utilization": "52.45%",
+        "gpu_utilization": "39.88%"
     },
     {
         "timestamp": 102,
-        "cpu_utilization": "56.36%",
-        "mem_utilization": "51.15%",
-        "gpu_utilization": "16.73%"
+        "cpu_utilization": "47.70%",
+        "mem_utilization": "41.38%",
+        "gpu_utilization": "16.38%"
     },
     {
         "timestamp": 103,
-        "cpu_utilization": "45.88%",
-        "mem_utilization": "42.13%",
-        "gpu_utilization": "7.72%"
+        "cpu_utilization": "36.43%",
+        "mem_utilization": "33.88%",
+        "gpu_utilization": "5.39%"
     },
     {
         "timestamp": 104,
-        "cpu_utilization": "37.40%",
-        "mem_utilization": "34.54%",
-        "gpu_utilization": "0.00%"
+        "cpu_utilization": "31.68%",
+        "mem_utilization": "29.85%",
+        "gpu_utilization": "0.58%"
     },
     {
         "timestamp": 105,
-        "cpu_utilization": "32.59%",
-        "mem_utilization": "30.17%",
+        "cpu_utilization": "29.72%",
+        "mem_utilization": "28.42%",
         "gpu_utilization": "0.00%"
     },
     {
         "timestamp": 106,
-        "cpu_utilization": "30.65%",
-        "mem_utilization": "29.05%",
+        "cpu_utilization": "27.47%",
+        "mem_utilization": "26.63%",
         "gpu_utilization": "0.00%"
     },
     {
         "timestamp": 107,
-        "cpu_utilization": "28.18%",
-        "mem_utilization": "27.02%",
+        "cpu_utilization": "26.47%",
+        "mem_utilization": "26.05%",
         "gpu_utilization": "0.00%"
     },
     {
         "timestamp": 108,
-        "cpu_utilization": "26.29%",
-        "mem_utilization": "25.54%",
+        "cpu_utilization": "25.95%",
+        "mem_utilization": "25.57%",
         "gpu_utilization": "0.00%"
     },
     {
         "timestamp": 109,
-        "cpu_utilization": "26.15%",
-        "mem_utilization": "25.48%",
+        "cpu_utilization": "25.30%",
+        "mem_utilization": "25.19%",
         "gpu_utilization": "0.00%"
     },
     {
         "timestamp": 110,
-        "cpu_utilization": "26.15%",
-        "mem_utilization": "25.48%",
-        "gpu_utilization": "0.00%"
-    },
-    {
-        "timestamp": 111,
         "cpu_utilization": "25.30%",
-        "mem_utilization": "25.20%",
-        "gpu_utilization": "0.00%"
-    },
-    {
-        "timestamp": 112,
-        "cpu_utilization": "25.30%",
-        "mem_utilization": "25.20%",
+        "mem_utilization": "25.19%",
         "gpu_utilization": "0.00%"
     }
 ]
