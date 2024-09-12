@@ -1,0 +1,8 @@
+[
+    {
+        "avg_task_make_span": "2.55",
+        "avg_cpu_utilization": "64.06%",
+        "avg_mem_utilization": "56.22%",
+        "avg_gpu_utilization": "41.43%"
+    }
+]
