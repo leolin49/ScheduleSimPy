@@ -46,6 +46,6 @@ plt.boxplot(
 
 plt.xlabel("Baseline", fontsize=16)
 plt.xticks(fontsize=16)
-plt.ylabel("Delay (s)", fontsize=16)
+plt.ylabel("Makespan (s)", fontsize=16)
 plt.yticks(fontsize=16)
 plt.show()

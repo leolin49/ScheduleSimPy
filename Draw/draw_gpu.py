@@ -4,7 +4,7 @@
 #
 # Time    : 2024/9/13 9:51
 # Author  : linyf49@qq.com
-# File    : draw_gpu.py.py
+# File    : draw_gpu.py
 
 import json
 import matplotlib.pyplot as plt
@@ -32,7 +32,7 @@ for i, (timestamps, gpu_utilization, baseline) in enumerate(
 ):
     alpha = 1 if baseline == "rccs" else 0.7
 
-    gpu_utilization_smooth = savgol_filter(gpu_utilization, window_length=4, polyorder=3)
+    gpu_utilization_smooth = savgol_filter(gpu_utilization, window_length=11, polyorder=6)
 
     plt.plot(
         timestamps[::interval],
