@@ -94,7 +94,7 @@ def read_alibaba_task_list_csv_bak():
     return task_list
 
 
-def read_alibaba_task_list_csv():
+def read_alibaba_task_list_csv(task_num: int = -1, task_mul: int = 1):
     task_list = []
     for chunk in pd.read_csv(
             "Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv", chunksize=1
@@ -121,14 +121,16 @@ def read_alibaba_task_list_csv():
                 ai_accelerator_num=int(row["num_gpu"]),
             )
             task_list.append(task)
+    if task_num == -1:
+        return task_list
     res = []
-    for _ in range(util.TASK_MUL):
-        res.extend(random.sample(task_list, util.TASK_NUM))
+    for _ in range(task_mul):
+        res.extend(random.sample(task_list, task_num))
     res.sort(key=lambda x: x.submit_time)
     return res
 
 
-def read_alibaba_node_list_csv():
+def read_alibaba_node_list_csv(node_num: int = -1):
     node_list = []
     for chunk in pd.read_csv(
         "Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_gpu_node.csv", chunksize=1
@@ -155,8 +157,10 @@ def read_alibaba_node_list_csv():
                 ),
             )
             node_list.append(node)
-    # node_list = random.sample(node_list, util.NODE_NUM)
-    node_list = node_list[:util.NODE_NUM]
+    if node_num == -1:
+        return node_list
+    # node_list = random.sample(node_list, node_num)
+    node_list = node_list[:node_num]
     for i, node in enumerate(node_list):
         node.id = i + 1
     return node_list

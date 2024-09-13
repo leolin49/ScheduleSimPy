@@ -6,6 +6,8 @@
 # Author  : linyf49@qq.com
 # File    : main.py
 from simpy import Environment
+
+import util
 from Scheduler import rccs, lrr, bra, dics, kcss, odcs
 from Infrastructure.cluster import Cluster
 from simulator import Simulator
@@ -112,10 +114,10 @@ def baseline_rccs(task_configs, node_list):
     print("average completion time:", cluster.average_completion())
 
 
-def main():
-    task_configs = rd.read_alibaba_task_list_csv()
+def run_with_config(node_num: int, task_num: int, task_mul: int):
+    task_configs = rd.read_alibaba_task_list_csv(task_num, task_mul)
     print("task data read finish.")
-    node_list = rd.read_alibaba_node_list_csv()
+    node_list = rd.read_alibaba_node_list_csv(node_num)
     print("node data read finish.")
 
     print("Baseline LRR is running...")
@@ -135,6 +137,11 @@ def main():
 
     print("Baseline RCCS is running...")
     baseline_rccs(task_configs, node_list)
+
+
+def main():
+    for task_mul in util.TASK_MUL:
+        run_with_config(util.NODE_NUM, util.TASK_NUM, task_mul)
 
 
 if __name__ == "__main__":

@@ -8,15 +8,17 @@
 
 import json
 import matplotlib.pyplot as plt
+from scipy.signal import savgol_filter
 
 file_paths = ["bra", "lrr", "dics", "kcss", "odcs", "rccs"]
 colors = ["saddlebrown", "green", "purple", "orange", "blue", "red"]
 
 all_timestamps = []
 all_lb = []
+interval = 1
 
 for file_path in file_paths:
-    with open("Log/" + file_path + "_100_40000_avg_event.json", "r") as file:
+    with open("Log/" + file_path + "_100_24000_avg_event.json", "r") as file:
         data = json.load(file)[0]
         timestamps = [i for i in range(0, 101)]
         lb = data["load_balance_state"]
@@ -26,13 +28,14 @@ for file_path in file_paths:
 plt.figure(figsize=(12, 8))
 
 for i, (timestamps, lb, baseline) in enumerate(zip(all_timestamps, all_lb, file_paths)):
-    alpha = 1
-    if baseline != "rccs":
-        alpha = 0.66
+    alpha = 1 if baseline != "rccs" else 0.66
+
+    lb_smooth = savgol_filter(lb, window_length=10, polyorder=6)
+
     plt.plot(
-        timestamps[::5],
-        lb[::5],
-        marker="s",
+        timestamps[::interval],
+        lb_smooth[::interval],
+        # marker="s",
         markersize="2",
         linestyle="-",
         label=baseline.upper(),

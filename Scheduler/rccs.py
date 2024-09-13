@@ -130,7 +130,7 @@ class GroupBaseContainerScheduling(Scheduler):
     def __find_in_first_group(self, task: Task) -> int:
         # 1. find the first-level groups
         for gid, node_id in self.groups_min.items():
-            if self.can_run(task, self.cluster.node_list[node_id]):
+            if self.can_run(task, self.cluster.node_list[node_id - 1]):
                 return gid
         return -1
 

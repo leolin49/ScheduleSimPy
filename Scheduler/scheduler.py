@@ -19,10 +19,10 @@ class Scheduler(object):
         self.simulator = None
         self.cluster = None
         self.scheduled_task_num = 0
-        log_path = "./Log/{}.Log".format(name)
-        if os.path.exists(log_path):
-            os.remove(log_path)
-        self.log = util.new_logger(log_path, name)
+        # log_path = "./Log/{}.Log".format(name)
+        # if os.path.exists(log_path):
+        #     os.remove(log_path)
+        # self.log = util.new_logger(log_path, name)
 
     def attach(self, simulator):
         self.simulator = simulator
@@ -39,24 +39,20 @@ class Scheduler(object):
         s = time.time()
         node_id = self.make_decision(task, clock)
         if node_id == -1:
-            self.log.warning(
-                "now:{:.2f} task-{} schedule failed!!!".format(self.env.now, task)
-            )
+            # self.log.warning(
+            #     "now:{:.2f} task-{} schedule failed!!!".format(self.env.now, task)
+            # )
             return
         e = time.time()
         node = self.cluster.node_list[node_id - 1]
         task.schedule(node, (e - s) * 100)
-        self.log.info(
-            "now:{} task-{} is scheduled to Node-{}".format(
-                self.env.now, task.id, node.id
-            )
-        )
+        # self.log.info(
+        #     "now:{} task-{} is scheduled to Node-{}".format(
+        #         self.env.now, task.id, node.id
+        #     )
+        # )
         self.cluster.running_task_num += 1
         self.scheduled_task_num += 1
-        # if self.scheduled_task_num % 1000 == 0:
-        #     print(
-        #         f"now:{self.env.now} {self.scheduled_task_num} task is scheduled successfully."
-        #     )
 
     def make_decision(self, task: Task, clock) -> int:
         pass
