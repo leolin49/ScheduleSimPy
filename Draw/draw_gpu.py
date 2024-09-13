@@ -32,7 +32,7 @@ for i, (timestamps, gpu_utilization, baseline) in enumerate(
 ):
     alpha = 1 if baseline == "rccs" else 0.7
 
-    gpu_utilization_smooth = savgol_filter(gpu_utilization, window_length=11, polyorder=6)
+    gpu_utilization_smooth = savgol_filter(gpu_utilization, window_length=11, polyorder=8)
 
     plt.plot(
         timestamps[::interval],
@@ -50,6 +50,6 @@ plt.ylabel("GPU Utilization (%)", fontsize=16)
 plt.yticks(fontsize=16)
 plt.xlim((0, 100))
 plt.ylim((0, 100))  # 可以适当调整为 (0, 50) 视数据情况
-plt.legend(loc="best", fontsize=20, ncol=3)
+plt.legend(loc="lower right", fontsize=20, ncol=1)
 plt.grid(True)
 plt.show()
