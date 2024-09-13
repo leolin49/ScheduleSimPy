@@ -28,10 +28,10 @@ plt.figure(figsize=(12, 8))
 for i, (timestamps, lb, baseline) in enumerate(zip(all_timestamps, all_lb, file_paths)):
     alpha = 1
     if baseline != "rccs":
-        alpha = 0.7
+        alpha = 0.66
     plt.plot(
-        timestamps[::2],
-        lb[::2],
+        timestamps[::5],
+        lb[::5],
         marker="s",
         markersize="2",
         linestyle="-",
@@ -40,9 +40,12 @@ for i, (timestamps, lb, baseline) in enumerate(zip(all_timestamps, all_lb, file_
         alpha=alpha,
     )
 
-plt.title("Load Balance Comparison Over Time")
-plt.xlabel("Timestamp (s)")
-plt.ylabel("CV")
-plt.legend(loc="best", fontsize=16, ncol=3)
+# plt.title("Load Balance Comparison Over Time")
+plt.xlabel("Timestamp (s)", fontsize=16)
+plt.xticks(fontsize=16)
+plt.ylabel("CV", fontsize=16)
+plt.yticks(fontsize=16)
+plt.ylim((0, 10))
+plt.legend(loc="best", fontsize=20, ncol=3)
 plt.grid(True)
 plt.show()
