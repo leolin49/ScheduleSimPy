@@ -8,7 +8,7 @@
 from simpy import Environment
 
 import util
-from Scheduler import rccs, lrr, bra, dics, kcss, odcs
+from Scheduler import rccs, lrp, bra, dics, kcss, odcs
 from Infrastructure.cluster import Cluster
 from simulator import Simulator
 from Task.broker import Broker
@@ -69,18 +69,18 @@ def baseline_dics(task_configs, node_list):
     print("average completion time of dics:", cluster.average_completion())
 
 
-def baseline_lrr(task_configs, node_list):
+def baseline_lrp(task_configs, node_list):
     env = Environment()
     task_broker = Broker(env, task_configs)
     cluster = Cluster()
     for node in node_list:
         cluster.add_node(node)
-    scheduler = lrr.LeastRequestedPriority("lrr", env)
-    monitor = Monitor(env, "lrr")
+    scheduler = lrp.LeastRequestedPriority("lrp", env)
+    monitor = Monitor(env, "lrp")
     sim = Simulator(env, cluster, scheduler, task_broker, monitor)
     sim.run()
     env.run()
-    print("average completion time of lrr:", cluster.average_completion())
+    print("average completion time of lrp:", cluster.average_completion())
 
 
 def baseline_bra(task_configs, node_list):
@@ -120,8 +120,8 @@ def run_with_config(node_num: int, task_num: int, task_mul: int):
     node_list = rd.read_alibaba_node_list_csv(node_num)
     print("node data read finish.")
 
-    print("Baseline LRR is running...")
-    baseline_lrr(task_configs, node_list)
+    print("Baseline LRP is running...")
+    baseline_lrp(task_configs, node_list)
 
     print("Baseline DICS is running...")
     baseline_dics(task_configs, node_list)

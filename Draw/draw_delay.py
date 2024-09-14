@@ -1,4 +1,4 @@
-# Copyright 2024 The FCAV Authors. All rights reserved.
+# Copyright 2024 The ScheduleSimPy Authors. All rights reserved.
 # Use of this source code is governed by a Apache2.0-style
 # license that can be found in the LICENSE file.
 #
@@ -13,7 +13,7 @@ from collections import defaultdict
 
 directory = "./Log/"
 files = [f for f in os.listdir(directory) if f.endswith("_avg_event.json")]
-baselines = ["bra", "lrr", "dics", "kcss", "odcs", "rccs"]
+baselines = ["bra", "lrp", "dics", "kcss", "odcs", "rccs"]
 colors = ["saddlebrown", "green", "purple", "orange", "blue", "red"]
 
 all_timestamps = []

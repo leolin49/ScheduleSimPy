@@ -81,7 +81,7 @@ class DataIntensiveContainerScheduling(Scheduler):
         """
         A1 = [
             (
-                max(S[i][j] for i in range(k))
+                max(S[i][j] for i in range(k))  # Fixme: ValueError: max() arg is an empty sequence
                 if self.F1[j] == 1
                 else min(S[i][j] for i in range(k))
             )

@@ -4,7 +4,7 @@
 #
 # Time    : 2024/6/17 20:21
 # Author  : linyf49@qq.com
-# File    : lrr.py
+# File    : lrp.py
 """
 It is a scoring function provided by Kubernetes,
 which determines the score by the ratio of idle resources to the total amount of resources.
