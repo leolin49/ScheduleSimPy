@@ -1,10 +1,10 @@
-# Copyright 2024 The FCAV Authors. All rights reserved.
+# Copyright 2024 The ScheduleSimPy Authors. All rights reserved.
 # Use of this source code is governed by a Apache2.0-style
 # license that can be found in the LICENSE file.
 #
 # Time    : 2024/6/21 19:43
 # Author  : linyf49@qq.com
-# File    : csv_reader.py.py
+# File    : csv_reader.py
 import ast
 import random
 import pandas as pd

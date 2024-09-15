@@ -459,7 +459,7 @@ class GroupBaseContainerScheduling(Scheduler):
             else:
                 break
         """
-        if gid > util.GROUP_COUNT: # cannot found any node has resrouce to process the task.
+        if gid > util.GROUP_COUNT:  # cannot found any node has resrouce to process the task.
             gid = group_id
             while gid <= util.GROUP_COUNT:
                 node_ids = self.__find_in_second_group(gid, task, False)
