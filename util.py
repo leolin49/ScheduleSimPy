@@ -18,11 +18,14 @@ TIME_RANGE = 100
 TASK_NUM = 4000
 # 任务数量的倍数
 # TASK_MUL = [2, 3, 4, 5, 6]     # NODE_NUM = 50
-# TASK_MUL = [3, 4, 5, 6, 8]     # NODE_NUM = 100
-TASK_MUL = [7, 9, 11, 13, 15]    # NODE_NUM = 200
+TASK_MUL = [3, 4, 5, 6, 8]     # NODE_NUM = 100
+# TASK_MUL = [7, 9, 11, 13, 15]    # NODE_NUM = 200
 # TASK_MUL = [7, 11, 15, 19, 23]    # NODE_NUM = 300
 # 节点样本数量
-NODE_NUM = 200
+NODE_NUM = 100
+
+BASELINE_COLORS = ['#1f78b4', '#e31a1c', '#ff7f00', '#6a3d9a', '#b15928', '#33a02c']
+# BASELINE_COLORS= ["brown", "green", "purple", "orange", "blue", "red"]
 # --------------------------------------
 
 

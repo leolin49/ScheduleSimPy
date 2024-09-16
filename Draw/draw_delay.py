@@ -10,12 +10,11 @@ import os
 import json
 import matplotlib.pyplot as plt
 from collections import defaultdict
-from util import NODE_NUM
+from util import NODE_NUM, BASELINE_COLORS
 
 directory = "./Log/log_node{}/".format(NODE_NUM)
 files = [f for f in os.listdir(directory) if f.endswith("_avg_event.json")]
 baselines = ["bra", "lrp", "dics", "kcss", "odcs", "rccs"]
-colors = ["saddlebrown", "green", "purple", "orange", "blue", "red"]
 
 all_timestamps = []
 all_delay = []

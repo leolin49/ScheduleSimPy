@@ -159,8 +159,8 @@ def read_alibaba_node_list_csv(node_num: int = -1):
             node_list.append(node)
     if node_num == -1:
         return node_list
-    # node_list = random.sample(node_list, node_num)
-    node_list = node_list[:node_num]
+    node_list = random.sample(node_list, node_num)
+    # node_list = node_list[:node_num]
     for i, node in enumerate(node_list):
         node.id = i + 1
     return node_list

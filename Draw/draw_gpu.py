@@ -9,11 +9,10 @@
 import json
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
-from util import NODE_NUM
+from util import NODE_NUM, BASELINE_COLORS
 
 interval = 1
 baselines = ["bra", "lrp", "dics", "kcss", "odcs", "rccs"]
-colors = ["saddlebrown", "green", "purple", "orange", "blue", "red"]
 
 all_timestamps = []
 all_gpu_utilizations = []
@@ -41,7 +40,7 @@ for i, (timestamps, gpu_utilization, baseline) in enumerate(
         gpu_utilization_smooth[::interval],
         linestyle="-",
         label=baseline.upper(),
-        color=colors[i],
+        color=BASELINE_COLORS[i],
         alpha=alpha,
     )
 

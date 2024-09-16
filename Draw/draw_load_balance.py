@@ -9,46 +9,48 @@
 import json
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
+from util import NODE_NUM, TASK_MUL, TASK_NUM, BASELINE_COLORS
 
 baselines = ["bra", "lrp", "dics", "kcss", "odcs", "rccs"]
-colors = ["saddlebrown", "green", "purple", "orange", "blue", "red"]
 
-all_timestamps = []
-all_lb = []
 interval = 1
 
-for baseline in baselines:
-    with open("Log/" + baseline + "_200_52000_avg_event.json", "r") as file:
-        data = json.load(file)[0]
-        timestamps = [i for i in range(0, 101)]
-        lb = data["load_balance_state"]
-        all_timestamps.append(timestamps)
-        all_lb.append(lb)
+for task_mul in TASK_MUL:
+    all_timestamps = []
+    all_lb = []
+    for baseline in baselines:
+        file_name = "Log/log_node{}/{}_{}_{}_avg_event.json".format(NODE_NUM, baseline, NODE_NUM, TASK_NUM * task_mul)
+        with open(file_name, "r") as file:
+            data = json.load(file)[0]
+            timestamps = [i for i in range(0, 101)]
+            lb = data["load_balance_state"]
+            all_timestamps.append(timestamps)
+            all_lb.append(lb)
 
-plt.figure(figsize=(12, 8))
+    plt.figure(figsize=(12, 8))
 
-for i, (timestamps, lb, baseline) in enumerate(zip(all_timestamps, all_lb, baselines)):
-    alpha = 1 if baseline != "rccs" else 0.66
+    for i, (timestamps, lb, baseline) in enumerate(zip(all_timestamps, all_lb, baselines)):
+        alpha = 1 if baseline != "rccs" else 0.66
 
-    lb_smooth = savgol_filter(lb, window_length=16, polyorder=6)
+        lb_smooth = savgol_filter(lb, window_length=16, polyorder=3)
 
-    plt.plot(
-        timestamps[::interval],
-        lb_smooth[::interval],
-        # marker="s",
-        markersize="2",
-        linestyle="-",
-        label=baseline.upper(),
-        color=colors[i],
-        alpha=alpha,
-    )
+        plt.plot(
+            timestamps[::interval],
+            lb_smooth[::interval],
+            # marker="s",
+            markersize="2",
+            linestyle="-",
+            label=baseline.upper(),
+            color=BASELINE_COLORS[i],
+            alpha=alpha,
+        )
 
-# plt.title("Load Balance Comparison Over Time")
-plt.xlabel("Timestamp (s)", fontsize=16)
-plt.xticks(fontsize=16)
-plt.ylabel("Coefficient of Variation", fontsize=16)
-plt.yticks(fontsize=16)
-plt.ylim((0, 8))
-plt.legend(loc="best", fontsize=20, ncol=3)
-plt.grid(True)
-plt.show()
+    # plt.title("Load Balance Comparison Over Time")
+    plt.xlabel("Timestamp (s)", fontsize=16)
+    plt.xticks(fontsize=16)
+    plt.ylabel("Coefficient of Variation", fontsize=16)
+    plt.yticks(fontsize=16)
+    plt.ylim((0, 8))
+    plt.legend(loc="best", fontsize=20, ncol=3)
+    plt.grid(True)
+    plt.show()

@@ -2,7 +2,7 @@ import json
 import matplotlib.pyplot as plt
 import os
 import numpy as np
-from util import NODE_NUM
+from util import NODE_NUM, BASELINE_COLORS
 
 directory = "./Log/log_node{}".format(NODE_NUM)
 files = [f for f in os.listdir(directory) if f.endswith("_avg_event.json")]
@@ -87,13 +87,12 @@ for metric_name, metric_key, metrics_ylim in zip(
     )
 
     # 为每个 baseline 绘制柱状图
-    colors = ["saddlebrown", "green", "purple", "orange", "blue", "red"]
     for idx, (baseline, data) in enumerate(data_by_baseline.items()):
         plt.bar(
             index + idx * bar_width,
             data[metric_key],
             bar_width,
-            color=colors[idx],
+            color=BASELINE_COLORS[idx],
             label=baseline.upper(),
             hatch="",
             alpha=1,
