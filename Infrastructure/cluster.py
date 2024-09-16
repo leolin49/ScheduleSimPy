@@ -135,3 +135,12 @@ class Cluster:
             poor_mark = total / n
             res[second] = poor_mark
         return res
+
+    def cdf(self) -> List[float]:
+        m = len(self.finished_task_list)
+        cnt = [0] * 100
+        for task in self.finished_task_list:
+            makespan = (task.finished_timestamp - task.started_timestamp) * 1000
+            tm = int(makespan // 500) * 500
+            cnt[tm // 500] += 1
+        return [c / m for c in cnt]

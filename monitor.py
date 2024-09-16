@@ -6,7 +6,6 @@
 # Author  : linyf49@qq.com
 # File    : monitor.py
 import json
-import util
 
 
 class Monitor(object):
@@ -16,6 +15,7 @@ class Monitor(object):
         self.simulator = None
         self.cluster = None
         self.avg_file = None
+        self.fold_name = None
         self.event_file = "Log/" + scheduler_name + "_event.json"
         self.events = []
         self.avgs = []
@@ -23,9 +23,13 @@ class Monitor(object):
     def attach(self, simulator):
         self.simulator = simulator
         self.cluster = simulator.cluster
-        self.avg_file = "Log/{}_{}_{:5d}_avg_event.json".format(
-            self.name, len(self.cluster.node_list), len(simulator.task_broker.job_configs)
+        task_num = len(simulator.task_broker.job_configs)
+        node_num = len(self.cluster.node_list)
+        fold = "log_node{}".format(node_num)
+        self.avg_file = "Log/{}/{}_{}_{:5d}_avg_event.json".format(
+            fold, self.name, node_num, task_num
         )
+        self.event_file = "Log/{}/{}_event.json".format(fold, self.name)
 
     def run(self):
         cpus = []
@@ -53,6 +57,7 @@ class Monitor(object):
             "avg_gpu_utilization": "{:.2f}%".format(sum(gpus) / len(gpus)),
             "total_finish_task_num": len(self.cluster.finished_task_list),
             "load_balance_state": self.cluster.load_balance_state(),
+            "CDF": self.cluster.cdf(),
         }
         self.avgs.append(state)
         # self.events.append({"avg": state})

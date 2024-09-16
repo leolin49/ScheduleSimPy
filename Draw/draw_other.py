@@ -2,9 +2,9 @@ import json
 import matplotlib.pyplot as plt
 import os
 import numpy as np
+from util import NODE_NUM
 
-# 读取所有 baseline 文件，文件名形如 'baseline_i_j.json'
-directory = "./Log/"  # 修改为存储 JSON 文件的目录
+directory = "./Log/log_node{}".format(NODE_NUM)
 files = [f for f in os.listdir(directory) if f.endswith("_avg_event.json")]
 
 # 用于存储每个 baseline 的平均值和其对应的文件名 (baseline, i, j)

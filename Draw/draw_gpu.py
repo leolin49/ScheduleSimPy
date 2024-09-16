@@ -9,6 +9,7 @@
 import json
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
+from util import NODE_NUM
 
 interval = 1
 baselines = ["bra", "lrp", "dics", "kcss", "odcs", "rccs"]
@@ -18,7 +19,8 @@ all_timestamps = []
 all_gpu_utilizations = []
 
 for baseline in baselines:
-    with open("Log/" + baseline + "_event.json", "r") as file:
+    file_path = "Log/log_node{}/{}_event.json".format(NODE_NUM, baseline)
+    with open(file_path) as file:
         data = json.load(file)
         timestamps = [entry["timestamp"] for entry in data]
         gpu_utilization = [float(entry["gpu_utilization"].strip("%")) for entry in data]

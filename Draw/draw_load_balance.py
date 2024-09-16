@@ -18,7 +18,7 @@ all_lb = []
 interval = 1
 
 for baseline in baselines:
-    with open("Log/" + baseline + "_500_72000_avg_event.json", "r") as file:
+    with open("Log/" + baseline + "_200_52000_avg_event.json", "r") as file:
         data = json.load(file)[0]
         timestamps = [i for i in range(0, 101)]
         lb = data["load_balance_state"]
