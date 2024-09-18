@@ -50,7 +50,7 @@ for task_mul in TASK_MUL:
     plt.xticks(fontsize=16)
     plt.ylabel("Coefficient of Variation", fontsize=16)
     plt.yticks(fontsize=16)
-    plt.ylim((0, 8))
+    plt.ylim((0, 5))
     plt.legend(loc="best", fontsize=20, ncol=3)
     plt.grid(True)
     plt.show()

@@ -33,7 +33,7 @@ for i, (timestamps, gpu_utilization, baseline) in enumerate(
 ):
     alpha = 1 if baseline == "rccs" else 0.7
 
-    gpu_utilization_smooth = savgol_filter(gpu_utilization, window_length=16, polyorder=6)
+    gpu_utilization_smooth = savgol_filter(gpu_utilization, window_length=16, polyorder=4)
 
     plt.plot(
         timestamps[::interval],

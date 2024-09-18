@@ -113,7 +113,7 @@ class Task:
     def run(self, node, decision_time):
         # Total time = User request time + Data transmission time + Task duration time
         #               + (Schedule decision time)
-        mul = 3.6
+        mul = util.DELAY_FACTOR
         if not node.gpu_match(self):
             addition_time = mul
         elif self.ai_accelerator_consume == self.ai_accelerator_num:

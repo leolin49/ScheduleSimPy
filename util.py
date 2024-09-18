@@ -10,20 +10,28 @@ import logging
 import numpy as np
 
 # -------------- Config ----------------
+
 # k-means的K值
 GROUP_COUNT = 3
+
+# 执行延迟系数
+DELAY_FACTOR = 3.6
+
 # 任务生成的时间范围
 TIME_RANGE = 100
+
 # 任务样本数量
 TASK_NUM = 4000
-# 任务数量的倍数
-# TASK_MUL = [2, 3, 4, 5, 6]     # NODE_NUM = 50
-TASK_MUL = [3, 4, 5, 6, 8]     # NODE_NUM = 100
-# TASK_MUL = [7, 9, 11, 13, 15]    # NODE_NUM = 200
-# TASK_MUL = [7, 11, 15, 19, 23]    # NODE_NUM = 300
-# 节点样本数量
-NODE_NUM = 100
 
+RANDOM_NODE_SAMPLE = False
+
+# 任节点样本数 & 量务数量的倍数
+# NODE_NUM, TASK_MUL = 50, [2, 3, 4, 5, 6]     # NODE_NUM = 50
+NODE_NUM, TASK_MUL = 100, [3, 4, 5, 6, 8]     # NODE_NUM = 100
+# NODE_NUM, TASK_MUL = 200, [7, 9, 11, 13, 15]    # NODE_NUM = 200
+# NODE_NUM, TASK_MUL = 300, [7, 11, 15, 19, 23]    # NODE_NUM = 300
+
+# Baseline 图例颜色
 BASELINE_COLORS = ['#1f78b4', '#e31a1c', '#ff7f00', '#6a3d9a', '#b15928', '#33a02c']
 # BASELINE_COLORS= ["brown", "green", "purple", "orange", "blue", "red"]
 # --------------------------------------
