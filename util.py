@@ -23,7 +23,7 @@ TIME_RANGE = 100
 # 任务样本数量
 TASK_NUM = 4000
 
-RANDOM_NODE_SAMPLE = False
+RANDOM_NODE_SAMPLE = True
 
 # 任节点样本数 & 量务数量的倍数
 # NODE_NUM, TASK_MUL = 50, [2, 3, 4, 5, 6]     # NODE_NUM = 50
