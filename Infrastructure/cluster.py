@@ -54,15 +54,6 @@ class Cluster:
     def node_num(self) -> int:
         return len(self.node_list)
 
-    def average_completion(self) -> float:
-        total_time = 0
-        task_num = len(self.finished_task_list)
-        if task_num == 0:
-            return 0
-        for task in self.finished_task_list:
-            total_time += task.finished_timestamp - task.started_timestamp
-        return total_time / task_num
-
     @property
     def all_tasks_finished(self) -> bool:
         return len(self.unfinished_task_queue) == 0 and self.running_task_num == 0
@@ -114,26 +105,42 @@ class Cluster:
             self.total_task_num,
         )
 
+    def average_completion(self) -> float:
+        total_time = 0
+        task_num = len(self.finished_task_list)
+        if task_num == 0:
+            return 0
+        for task in self.finished_task_list:
+            total_time += task.finished_timestamp - task.started_timestamp
+        return total_time / task_num
+
+    def average_decision(self) -> float:
+        total_time = 0
+        task_num = len(self.finished_task_list)
+        if task_num == 0:
+            return 0
+        for task in self.finished_task_list:
+            total_time += task.decision_time
+        return total_time / task_num
+
     def load_balance_state(self) -> List[float]:
         n = len(self.node_list)
         state = [[0] * (util.TIME_RANGE + 1) for _ in range(n + 1)]
         for task in self.finished_task_list:
-            second = math.ceil(task.started_timestamp)
-            if second == util.TIME_RANGE + 1:
-                second -= 1
+            second = min(math.ceil(task.started_timestamp), util.TIME_RANGE)
             node_id = task.work_node_id
-            state[node_id][second] += 1
+            state[node_id-1][second] += 1
         res = [0] * (util.TIME_RANGE + 1)
-        for second in range(1, util.TIME_RANGE + 1):
+        for se in range(1, util.TIME_RANGE + 1):
             total = 0
             for node_id in range(1, n + 1):
-                total += state[node_id][second]
+                total += state[node_id][se]
             avg = total / n
             total = 0
             for node_id in range(1, n + 1):
-                total += (state[node_id][second] - avg) ** 2
+                total += (state[node_id][se] - avg) ** 2
             poor_mark = total / n
-            res[second] = poor_mark
+            res[se] = poor_mark
         return res
 
     def cdf(self) -> List[float]:
@@ -142,5 +149,4 @@ class Cluster:
         for task in self.finished_task_list:
             makespan = (task.finished_timestamp - task.started_timestamp) * 1000
             cnt[int(makespan) // util.CDF_INTERVAL] += 1
-        print(sum(cnt))
         return [c / m for c in cnt]

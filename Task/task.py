@@ -91,6 +91,7 @@ class Task:
         self.ai_accelerators = config.ai_accelerators
         self.ai_accelerator_num = config.ai_accelerator_num
         self.ai_accelerator_consume = 0
+        self.decision_time = 0
         self.rely_datas = []
 
     def __str__(self):
@@ -136,6 +137,7 @@ class Task:
         self.started = True
         self.started_timestamp = self.env.now
         self.work_node_id = node.id
+        self.decision_time = decision_time
         node.run_task(self)
         self.env.process(self.run(node, decision_time))
 

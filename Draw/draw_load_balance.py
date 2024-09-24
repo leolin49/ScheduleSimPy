@@ -19,7 +19,7 @@ for task_mul in TASK_MUL:
     all_timestamps = []
     all_lb = []
     for baseline in baselines:
-        file_name = "Log/log_node{}/{}_{}_{}_avg_event.json".format(NODE_NUM, baseline, NODE_NUM, TASK_NUM * task_mul)
+        file_name = "Log/log_node{}/{}_{}_{:02d}_avg_event.json".format(NODE_NUM, baseline, NODE_NUM, task_mul)
         with open(file_name, "r") as file:
             data = json.load(file)[0]
             timestamps = [i for i in range(0, 101)]

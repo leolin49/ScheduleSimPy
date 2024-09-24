@@ -29,16 +29,19 @@ for baseline in baselines:
 plt.figure(figsize=(12, 8))
 
 for i, (timestamps, gpu_utilization, baseline) in enumerate(
-        zip(all_timestamps, all_gpu_utilizations, baselines)
+    zip(all_timestamps, all_gpu_utilizations, baselines)
 ):
-    alpha = 1 if baseline == "rccs" else 0.7
+    alpha = 1
 
-    gpu_utilization_smooth = savgol_filter(gpu_utilization, window_length=16, polyorder=4)
+    gpu_utilization_smooth = savgol_filter(gpu_utilization, window_length=16, polyorder=5)
 
     plt.plot(
         timestamps[::interval],
         gpu_utilization_smooth[::interval],
+        # marker='*',
+        markersize=2,
         linestyle="-",
+        linewidth=2.0,
         label=baseline.upper(),
         color=BASELINE_COLORS[i],
         alpha=alpha,
@@ -50,7 +53,10 @@ plt.xticks(fontsize=16)
 plt.ylabel("GPU Utilization (%)", fontsize=16)
 plt.yticks(fontsize=16)
 plt.xlim((0, 100))
-plt.ylim((0, 100))
+plt.ylim((20, 100))
 plt.legend(loc="lower right", fontsize=20, ncol=1)
 plt.grid(True)
+
+plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
+
 plt.show()

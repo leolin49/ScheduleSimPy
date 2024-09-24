@@ -2,6 +2,8 @@ import json
 import matplotlib.pyplot as plt
 import os
 import numpy as np
+
+import util
 from util import NODE_NUM, BASELINE_COLORS
 
 directory = "./Log/log_node{}".format(NODE_NUM)
@@ -21,7 +23,6 @@ data_by_baseline = {}
 for file in files:
     with open(os.path.join(directory, file), "r") as f:
         data = json.load(f)[0]  # 假设文件结构一致，包含一个列表并且其中有一组指标数据
-
         # 从文件名中提取 baseline, i, j 信息
         file_basename = file.split(".")[0]  # 去掉 .json 后缀
         baseline, i, j = file_basename.split("_")[:3]
@@ -38,7 +39,7 @@ for file in files:
 
         # 保存不同参数组合的 `i, j` 和对应的指标值
         # data_by_baseline[baseline]["params"].append(f"|N|={i}, |C|={j}")
-        data_by_baseline[baseline]["params"].append(f"{j}")
+        data_by_baseline[baseline]["params"].append(f"{int(j) * util.TASK_NUM}")
         data_by_baseline[baseline]["avg_task_make_span"].append(
             float(data["avg_task_make_span"])
         )
@@ -121,7 +122,7 @@ for metric_name, metric_key, metrics_ylim in zip(
     plt.yticks(fontsize=16)
 
     # 显示图例
-    plt.legend(loc="upper left", fontsize=20, ncol=3)
+    plt.legend(loc="upper left", fontsize=20, ncol=1)
     plt.ylim(metrics_ylim)
     # 调整布局，避免标签重叠
     plt.tight_layout()

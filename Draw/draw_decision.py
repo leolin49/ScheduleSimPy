@@ -1,10 +1,10 @@
-# Copyright 2024 The ScheduleSimPy Authors. All rights reserved.
+# Copyright 2024 The FCAV Authors. All rights reserved.
 # Use of this source code is governed by a Apache2.0-style
 # license that can be found in the LICENSE file.
 #
-# Time    : 2024/9/12 21:12
+# Time    : 2024/9/24 20:40
 # Author  : linyf49@qq.com
-# File    : draw_delay.py
+# File    : draw_decision.py
 
 import os
 import json
@@ -26,7 +26,7 @@ for file in files:
         data = json.load(f)[0]
         file_basename = file.split(".")[0]
         baseline, i, j = file_basename.split("_")[:3]
-        data_by_baseline[baseline].append(float(data["avg_task_make_span"]))
+        data_by_baseline[baseline].append(float(data["avg_task_decision"]))
 
 data_for_boxplot = [data_by_baseline[baseline] for baseline in baselines]
 plt.figure(figsize=(10, 6))

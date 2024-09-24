@@ -40,7 +40,8 @@ class GroupBaseContainerScheduling(Scheduler):
             dict()
         )  # min(CPU,MEM) in one group {'group_id': 'min_node_id'}
 
-        self.BWM_WEIGHT = self.__best_worst_method_get_weights()
+        # self.BWM_WEIGHT = self.__best_worst_method_get_weights()
+        self.BWM_WEIGHT = [0.5, 0.27, 0.14, 0.09]
         print("Best-Worst Method Weights = ", self.BWM_WEIGHT)
 
     def make_first_level_group(self):

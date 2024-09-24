@@ -24,7 +24,7 @@ for task_mul in TASK_MUL:
     all_timestamps = []
     all_cdf = []
     for baseline in baselines:
-        file_name = "Log/log_node{}/{}_{}_{}_avg_event.json".format(NODE_NUM, baseline, NODE_NUM, TASK_NUM * task_mul)
+        file_name = "Log/log_node{}/{}_{}_{:02d}_avg_event.json".format(NODE_NUM, baseline, NODE_NUM, task_mul)
         with open(file_name, "r") as file:
             data = json.load(file)[0]
             timestamps = [i * (util.CDF_INTERVAL / 1000) for i in range(0, 1000)]
@@ -36,8 +36,8 @@ for task_mul in TASK_MUL:
     plt.figure(figsize=(12, 8))
 
     for i, (timestamps, cdf, baseline) in enumerate(zip(all_timestamps, all_cdf, baselines)):
-        alpha = 1 if baseline != "rccs" else 0.66
-
+        # alpha = 1 if baseline != "rccs" else 0.66
+        alpha = 1
         bp = 1000
         for idx, x in enumerate(cdf):
             if x == 1:

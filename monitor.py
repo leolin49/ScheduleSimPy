@@ -7,6 +7,8 @@
 # File    : monitor.py
 import json
 
+import util
+
 
 class Monitor(object):
     def __init__(self, env, scheduler_name: str):
@@ -26,8 +28,8 @@ class Monitor(object):
         task_num = len(simulator.task_broker.job_configs)
         node_num = len(self.cluster.node_list)
         fold = "log_node{}".format(node_num)
-        self.avg_file = "Log/{}/{}_{}_{:5d}_avg_event.json".format(
-            fold, self.name, node_num, task_num
+        self.avg_file = "Log/{}/{}_{}_{:02d}_avg_event.json".format(
+            fold, self.name, node_num, task_num // util.TASK_NUM
         )
         self.event_file = "Log/{}/{}_event.json".format(fold, self.name)
 
@@ -38,7 +40,6 @@ class Monitor(object):
         while not self.simulator.finished:
             state = {
                 "timestamp": self.env.now,
-                # "cluster_state": self.cluster.state,
                 "cpu_utilization": "{:.2f}%".format(self.cluster.cpu_utilization),
                 "mem_utilization": "{:.2f}%".format(self.cluster.mem_utilization),
                 "gpu_utilization": "{:.2f}%".format(self.cluster.gpu_utilization),
@@ -48,10 +49,10 @@ class Monitor(object):
             gpus.append(self.cluster.gpu_utilization)
             self.events.append(state)
             yield self.env.timeout(1)
-        # self.events.append({"states": states})
-        # final state
+        # avg state
         state = {
             "avg_task_make_span": "{:.2f}".format(self.cluster.average_completion()),
+            "avg_task_decision": "{:.10f}".format(self.cluster.average_decision()),
             "avg_cpu_utilization": "{:.2f}%".format(sum(cpus) / len(cpus)),
             "avg_mem_utilization": "{:.2f}%".format(sum(mems) / len(mems)),
             "avg_gpu_utilization": "{:.2f}%".format(sum(gpus) / len(gpus)),
@@ -60,7 +61,6 @@ class Monitor(object):
             "CDF": self.cluster.cdf(),
         }
         self.avgs.append(state)
-        # self.events.append({"avg": state})
         self.write_to_file()
         self.write_to_file_avg()
 
