@@ -138,9 +138,9 @@ class Cluster:
 
     def cdf(self) -> List[float]:
         m = len(self.finished_task_list)
-        cnt = [0] * 100
+        cnt = [0] * 1000
         for task in self.finished_task_list:
             makespan = (task.finished_timestamp - task.started_timestamp) * 1000
-            tm = int(makespan // 500) * 500
-            cnt[tm // 500] += 1
+            cnt[int(makespan) // util.CDF_INTERVAL] += 1
+        print(sum(cnt))
         return [c / m for c in cnt]

@@ -32,7 +32,7 @@ for task_mul in TASK_MUL:
     for i, (timestamps, lb, baseline) in enumerate(zip(all_timestamps, all_lb, baselines)):
         alpha = 1 if baseline != "rccs" else 0.66
 
-        lb_smooth = savgol_filter(lb, window_length=16, polyorder=3)
+        lb_smooth = savgol_filter(lb, window_length=16, polyorder=5)
 
         plt.plot(
             timestamps[::interval],
@@ -40,6 +40,7 @@ for task_mul in TASK_MUL:
             # marker="s",
             markersize="2",
             linestyle="-",
+            linewidth=2.0,
             label=baseline.upper(),
             color=BASELINE_COLORS[i],
             alpha=alpha,
@@ -50,7 +51,10 @@ for task_mul in TASK_MUL:
     plt.xticks(fontsize=16)
     plt.ylabel("Coefficient of Variation", fontsize=16)
     plt.yticks(fontsize=16)
-    plt.ylim((0, 5))
-    plt.legend(loc="best", fontsize=20, ncol=3)
+    plt.ylim((0, 7))
+    plt.legend(loc="best", fontsize=18, ncol=1)
     plt.grid(True)
+
+    plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
+
     plt.show()

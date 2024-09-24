@@ -70,7 +70,7 @@ metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (0, 100)]
 
 # 设置柱宽和间隙
 bar_width = 0.05  # 每个 baseline 的柱宽
-gap_between_groups = 0.2  # 参数组合之间的间隙
+gap_between_groups = 0.10  # 参数组合之间的间隙
 
 # 分别为每个指标绘制图表，将不同参数组合放在一起比较
 for metric_name, metric_key, metrics_ylim in zip(
@@ -97,6 +97,8 @@ for metric_name, metric_key, metrics_ylim in zip(
             hatch="",
             alpha=1,
             zorder=2,
+            edgecolor='black',
+            linewidth=1.0,
         )
 
     # 设置标签和标题

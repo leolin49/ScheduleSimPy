@@ -124,7 +124,7 @@ class Task:
             )
 
         yield self.env.timeout(
-            addition_time * self.duration + decision_time + self.transmit_time
+            addition_time * self.duration + decision_time + self.transmit_time # * random.uniform(0.5, 1.5)
         )
         node.stop_task(self)
         self._finished = True

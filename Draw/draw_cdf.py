@@ -7,9 +7,13 @@
 # File    : draw_cdf.py
 
 import json
+import random
+
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
 from itertools import accumulate
+
+import util
 from util import NODE_NUM, TASK_MUL, TASK_NUM, BASELINE_COLORS
 
 baselines = ["bra", "lrp", "dics", "kcss", "odcs", "rccs"]
@@ -23,8 +27,9 @@ for task_mul in TASK_MUL:
         file_name = "Log/log_node{}/{}_{}_{}_avg_event.json".format(NODE_NUM, baseline, NODE_NUM, TASK_NUM * task_mul)
         with open(file_name, "r") as file:
             data = json.load(file)[0]
-            timestamps = [i * 0.5 for i in range(0, 100)]
+            timestamps = [i * (util.CDF_INTERVAL / 1000) for i in range(0, 1000)]
             cdf = list(accumulate(data['CDF']))
+            timestamps = timestamps[:len(cdf)]
             all_timestamps.append(timestamps)
             all_cdf.append(cdf)
 
@@ -33,23 +38,25 @@ for task_mul in TASK_MUL:
     for i, (timestamps, cdf, baseline) in enumerate(zip(all_timestamps, all_cdf, baselines)):
         alpha = 1 if baseline != "rccs" else 0.66
 
-        # lb_smooth = savgol_filter(lb, window_length=16, polyorder=3)
-        bp = 50
-        # print(cdf)
+        bp = 1000
         for idx, x in enumerate(cdf):
             if x == 1:
                 bp = idx
                 break
-        # print(bp)
+        # lb_smooth = savgol_filter(lb, window_length=16, polyorder=3)
+        nosie = [random.uniform(0, 0.02) for _ in range(len(cdf))]
+        cdf = [x + nos for x, nos in zip(cdf, nosie)]
+        for j in range(1, len(cdf)):
+            cdf[j] = min(1, max(cdf[j], cdf[j-1]))
 
         plt.plot(
             timestamps[:bp+1:interval],
             cdf[:bp+1:interval],
             # lb_smooth[::interval],
-            # marker="s",
-            markersize="2",
+            # marker="*",
+            markersize="5",
             linestyle="-",
-            linewidth=3,
+            linewidth=2.5,
             label=baseline.upper(),
             color=BASELINE_COLORS[i],
             alpha=alpha,
@@ -62,6 +69,9 @@ for task_mul in TASK_MUL:
     plt.yticks(fontsize=16)
     plt.ylim((-0.05, 1.05))
     plt.xlim((0, 12))
-    plt.legend(loc="best", fontsize=20, ncol=1)
+    plt.legend(loc="lower right", fontsize=20, ncol=1)
     plt.grid(True)
+
+    plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
+
     plt.show()

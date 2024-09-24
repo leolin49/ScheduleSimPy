@@ -75,7 +75,7 @@ class OnlineContainerScheduling(Scheduler):
             if not node.gpu_match(task):
                 addition_time = 3.6
             delay = addition_time * task.duration
-            scores[i] = delay + random.randint(0, 1) * random.uniform(0, 0)
+            scores[i] = delay + random.randint(0, 1) * random.uniform(0, 5)
         ids.sort(key=lambda i: scores[i])
         for idx in ids:
             ok, err = self.cluster.node_list[idx].can_run_task(task)
