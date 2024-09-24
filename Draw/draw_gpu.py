@@ -33,7 +33,9 @@ for i, (timestamps, gpu_utilization, baseline) in enumerate(
 ):
     alpha = 1
 
-    gpu_utilization_smooth = savgol_filter(gpu_utilization, window_length=16, polyorder=5)
+    gpu_utilization_smooth = savgol_filter(
+        gpu_utilization, window_length=16, polyorder=5
+    )
 
     plt.plot(
         timestamps[::interval],

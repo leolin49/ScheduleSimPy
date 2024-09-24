@@ -129,7 +129,7 @@ class Cluster:
         for task in self.finished_task_list:
             second = min(math.ceil(task.started_timestamp), util.TIME_RANGE)
             node_id = task.work_node_id
-            state[node_id-1][second] += 1
+            state[node_id - 1][second] += 1
         res = [0] * (util.TIME_RANGE + 1)
         for se in range(1, util.TIME_RANGE + 1):
             total = 0

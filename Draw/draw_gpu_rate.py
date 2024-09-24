@@ -98,7 +98,7 @@ for metric_name, metric_key, metrics_ylim in zip(
             hatch="",
             alpha=1,
             zorder=2,
-            edgecolor='black',
+            edgecolor="black",
             linewidth=1.0,
         )
 
@@ -126,6 +126,6 @@ for metric_name, metric_key, metrics_ylim in zip(
     plt.ylim(metrics_ylim)
     # 调整布局，避免标签重叠
     plt.tight_layout()
-    plt.grid(True, linestyle='-', linewidth=0.5, zorder=1)
+    plt.grid(True, linestyle="-", linewidth=0.5, zorder=1)
     # 显示图形
     plt.show()

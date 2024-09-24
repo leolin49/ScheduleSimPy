@@ -41,7 +41,9 @@ plt.boxplot(
     capprops=dict(color="black"),
     flierprops=dict(marker="o", color="black", markerfacecolor="black", markersize=5),
     showmeans=True,
-    meanprops=dict(marker="D", markeredgecolor="black", markerfacecolor="firebrick", markersize=5),
+    meanprops=dict(
+        marker="D", markeredgecolor="black", markerfacecolor="firebrick", markersize=5
+    ),
 )
 
 plt.xlabel("Baseline", fontsize=16)

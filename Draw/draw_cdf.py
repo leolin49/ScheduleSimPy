@@ -24,18 +24,22 @@ for task_mul in TASK_MUL:
     all_timestamps = []
     all_cdf = []
     for baseline in baselines:
-        file_name = "Log/log_node{}/{}_{}_{:02d}_avg_event.json".format(NODE_NUM, baseline, NODE_NUM, task_mul)
+        file_name = "Log/log_node{}/{}_{}_{:02d}_avg_event.json".format(
+            NODE_NUM, baseline, NODE_NUM, task_mul
+        )
         with open(file_name, "r") as file:
             data = json.load(file)[0]
             timestamps = [i * (util.CDF_INTERVAL / 1000) for i in range(0, 1000)]
-            cdf = list(accumulate(data['CDF']))
-            timestamps = timestamps[:len(cdf)]
+            cdf = list(accumulate(data["CDF"]))
+            timestamps = timestamps[: len(cdf)]
             all_timestamps.append(timestamps)
             all_cdf.append(cdf)
 
     plt.figure(figsize=(12, 8))
 
-    for i, (timestamps, cdf, baseline) in enumerate(zip(all_timestamps, all_cdf, baselines)):
+    for i, (timestamps, cdf, baseline) in enumerate(
+        zip(all_timestamps, all_cdf, baselines)
+    ):
         # alpha = 1 if baseline != "rccs" else 0.66
         alpha = 1
         bp = 1000
@@ -47,11 +51,11 @@ for task_mul in TASK_MUL:
         nosie = [random.uniform(0, 0.02) for _ in range(len(cdf))]
         cdf = [x + nos for x, nos in zip(cdf, nosie)]
         for j in range(1, len(cdf)):
-            cdf[j] = min(1, max(cdf[j], cdf[j-1]))
+            cdf[j] = min(1, max(cdf[j], cdf[j - 1]))
 
         plt.plot(
-            timestamps[:bp+1:interval],
-            cdf[:bp+1:interval],
+            timestamps[: bp + 1 : interval],
+            cdf[: bp + 1 : interval],
             # lb_smooth[::interval],
             # marker="*",
             markersize="5",

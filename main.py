@@ -119,8 +119,11 @@ def baseline_rccs(task_configs, node_list):
 
 # @profile
 def run_with_config(node_num: int, task_num: int, task_mul: int):
-
-    print("Experimental Parameters: Node: {}, Task: {}, Task_Mul: {}".format(node_num, task_num, task_mul))
+    print(
+        "Experimental Parameters: Node: {}, Task: {}, Task_Mul: {}".format(
+            node_num, task_num, task_mul
+        )
+    )
     print("task data read begin...")
     task_configs = rd.read_alibaba_task_list_csv(task_num, task_mul)
     print("task data read finish!")
@@ -150,7 +153,11 @@ def run_with_config(node_num: int, task_num: int, task_mul: int):
 
 def main():
     print("*========================================================================*")
-    print("Experimental Setting:\nPlatform Info:\t{}\nPython Version:\t{}".format(platform.platform(), sys.version))
+    print(
+        "Experimental Setting:\nPlatform Info:\t{}\nPython Version:\t{}".format(
+            platform.platform(), sys.version
+        )
+    )
     print("*========================================================================*")
     for task_mul in util.TASK_MUL:
         run_with_config(util.NODE_NUM, util.TASK_NUM, task_mul)

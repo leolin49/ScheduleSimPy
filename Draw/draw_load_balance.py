@@ -19,7 +19,9 @@ for task_mul in TASK_MUL:
     all_timestamps = []
     all_lb = []
     for baseline in baselines:
-        file_name = "Log/log_node{}/{}_{}_{:02d}_avg_event.json".format(NODE_NUM, baseline, NODE_NUM, task_mul)
+        file_name = "Log/log_node{}/{}_{}_{:02d}_avg_event.json".format(
+            NODE_NUM, baseline, NODE_NUM, task_mul
+        )
         with open(file_name, "r") as file:
             data = json.load(file)[0]
             timestamps = [i for i in range(0, 101)]
@@ -29,7 +31,9 @@ for task_mul in TASK_MUL:
 
     plt.figure(figsize=(12, 8))
 
-    for i, (timestamps, lb, baseline) in enumerate(zip(all_timestamps, all_lb, baselines)):
+    for i, (timestamps, lb, baseline) in enumerate(
+        zip(all_timestamps, all_lb, baselines)
+    ):
         alpha = 1 if baseline != "rccs" else 0.66
 
         lb_smooth = savgol_filter(lb, window_length=16, polyorder=5)

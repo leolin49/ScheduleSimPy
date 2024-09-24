@@ -28,7 +28,7 @@ RANDOM_NODE_SAMPLE = False
 
 # 节点样本数 & 任务数量的倍数
 # NODE_NUM, TASK_MUL = 50, [2, 3, 4, 5, 6]     # NODE_NUM = 50
-NODE_NUM, TASK_MUL = 100, [4, 5, 6, 7, 8]     # NODE_NUM = 100
+NODE_NUM, TASK_MUL = 100, [4, 5, 6, 7, 8]  # NODE_NUM = 100
 # NODE_NUM, TASK_MUL = 200, [9, 11, 13, 15, 17]    # NODE_NUM = 200
 # NODE_NUM, TASK_MUL = 300, [11, 15, 19, 23, 27]    # NODE_NUM = 300
 # NODE_NUM, TASK_MUL = 1000, [4, 5, 6, 7, 8]     # NODE_NUM = 100
@@ -60,7 +60,10 @@ COLORS = [
     # ------
 ]
 
-BASELINE_COLORS = [(int(c[0])/255, int(c[1])/255, int(c[2])/255) for c in [(x, y, z) for x, y, z in COLORS]]
+BASELINE_COLORS = [
+    (int(c[0]) / 255, int(c[1]) / 255, int(c[2]) / 255)
+    for c in [(x, y, z) for x, y, z in COLORS]
+]
 
 # CDF采集时间间隔 (ms)
 CDF_INTERVAL = 100
