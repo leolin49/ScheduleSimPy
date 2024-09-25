@@ -7,6 +7,9 @@
 # File    : util.py
 
 import logging
+import cProfile
+import pstats
+
 import numpy as np
 
 # -------------- Config ----------------
@@ -28,10 +31,10 @@ RANDOM_NODE_SAMPLE = False
 
 # 节点样本数 & 任务数量的倍数
 # NODE_NUM, TASK_MUL = 50, [2, 3, 4, 5, 6]     # NODE_NUM = 50
-NODE_NUM, TASK_MUL = 100, [4, 5, 6, 7, 8]  # NODE_NUM = 100
+# NODE_NUM, TASK_MUL = 100, [4, 5, 6, 7, 8]  # NODE_NUM = 100
 # NODE_NUM, TASK_MUL = 200, [9, 11, 13, 15, 17]    # NODE_NUM = 200
 # NODE_NUM, TASK_MUL = 300, [11, 15, 19, 23, 27]    # NODE_NUM = 300
-# NODE_NUM, TASK_MUL = 1000, [4, 5, 6, 7, 8]     # NODE_NUM = 100
+NODE_NUM, TASK_MUL = 1000, [4, 5, 6, 7, 8]     # NODE_NUM = 100
 
 # Baseline 图例颜色
 # BASELINE_COLORS = ['#1f78b4', '#e31a1c', '#ff7f00', '#6a3d9a', '#b15928', '#33a02c']
@@ -158,3 +161,16 @@ def new_logger(log_file_path: str, name="Unknown Log name"):
     handler = logging.FileHandler(log_file_path)
     logger.addHandler(handler)
     return logger
+
+
+# 性能测试修饰器
+def profile_function(func):
+    def wrapper(*args, **kwargs):
+        pr = cProfile.Profile()
+        pr.enable()
+        result = func(*args, **kwargs)
+        pr.disable()
+        stats = pstats.Stats(pr).sort_stats('cumulative')
+        stats.print_stats()
+        return result
+    return wrapper

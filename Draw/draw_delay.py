@@ -50,7 +50,7 @@ plt.xlabel("Baseline", fontsize=16)
 plt.xticks(fontsize=16)
 plt.ylabel("Makespan (s)", fontsize=16)
 plt.yticks(fontsize=16)
-# plt.ylim((2.0, 3.2))
+plt.ylim((2.0, 3.3))
 
 plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
 

@@ -55,7 +55,7 @@ plt.xticks(fontsize=16)
 plt.ylabel("GPU Utilization (%)", fontsize=16)
 plt.yticks(fontsize=16)
 plt.xlim((0, 100))
-plt.ylim((20, 100))
+plt.ylim((0, 100))
 plt.legend(loc="lower right", fontsize=20, ncol=1)
 plt.grid(True)
 

@@ -5,10 +5,11 @@
 # Time    : 2024/3/28 16:11
 # Author  : linyf49@qq.com
 # File    : main.py
-from memory_profiler import profile
 import platform
 import sys
+import time
 from simpy import Environment
+from memory_profiler import profile
 
 import util
 from Scheduler import rccs, lrp, bra, dics, kcss, odcs
@@ -117,6 +118,7 @@ def baseline_rccs(task_configs, node_list):
     print("average completion time:", cluster.average_completion())
 
 
+# @util.profile_function
 # @profile
 def run_with_config(node_num: int, task_num: int, task_mul: int):
     print(
@@ -154,13 +156,16 @@ def run_with_config(node_num: int, task_num: int, task_mul: int):
 def main():
     print("*========================================================================*")
     print(
-        "Experimental Setting:\nPlatform Info:\t{}\nPython Version:\t{}".format(
-            platform.platform(), sys.version
+        "Experimental Time:\t{}\nPlatform Info:\t{}\nPython Version:\t{}\n".format(
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
+            platform.platform(),
+            sys.version
         )
     )
     print("*========================================================================*")
     for task_mul in util.TASK_MUL:
         run_with_config(util.NODE_NUM, util.TASK_NUM, task_mul)
+        break
 
 
 if __name__ == "__main__":
