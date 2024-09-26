@@ -9,10 +9,14 @@
 import logging
 import cProfile
 import pstats
+from guppy import hpy
 
 import numpy as np
 
+
 # -------------- Config ----------------
+
+BASELINE_NAME = ["bra", "dics", "kcss", "lrp", "odcs", "rccs"]
 
 # k-means的K值
 GROUP_COUNT = 3
@@ -30,11 +34,15 @@ TASK_NUM = 4000
 RANDOM_NODE_SAMPLE = False
 
 # 节点样本数 & 任务数量的倍数
-# NODE_NUM, TASK_MUL = 50, [2, 3, 4, 5, 6]     # NODE_NUM = 50
-# NODE_NUM, TASK_MUL = 100, [4, 5, 6, 7, 8]  # NODE_NUM = 100
-# NODE_NUM, TASK_MUL = 200, [9, 11, 13, 15, 17]    # NODE_NUM = 200
-# NODE_NUM, TASK_MUL = 300, [11, 15, 19, 23, 27]    # NODE_NUM = 300
-NODE_NUM, TASK_MUL = 1000, [4, 5, 6, 7, 8]     # NODE_NUM = 100
+# NODE_NUM, TASK_MUL = 50, [2, 3, 4, 5, 6]
+# NODE_NUM, TASK_MUL = 100, [4, 5, 6, 7, 8]
+# NODE_NUM, TASK_MUL = 200, [9, 11, 13, 15, 17]
+# NODE_NUM, TASK_MUL = 300, [11, 15, 19, 23, 27]
+
+# 仅用于测量调度时间
+# NODE_NUM, TASK_MUL = 500, [4, 5, 6, 7, 8]
+# NODE_NUM, TASK_MUL = 1000, [4, 5, 6, 7, 8]
+NODE_NUM, TASK_MUL = 1500, [4, 5, 6, 7, 8]
 
 # Baseline 图例颜色
 # BASELINE_COLORS = ['#1f78b4', '#e31a1c', '#ff7f00', '#6a3d9a', '#b15928', '#33a02c']
@@ -163,14 +171,31 @@ def new_logger(log_file_path: str, name="Unknown Log name"):
     return logger
 
 
-# 性能测试修饰器
-def profile_function(func):
+ENABLE_MEMORY_PROFILE = False
+baseline_tested = {baseline_name: 0 for baseline_name in BASELINE_NAME}
+
+
+def memory_profile(func):
+    executed = 0
+
     def wrapper(*args, **kwargs):
-        pr = cProfile.Profile()
-        pr.enable()
-        result = func(*args, **kwargs)
-        pr.disable()
-        stats = pstats.Stats(pr).sort_stats('cumulative')
-        stats.print_stats()
-        return result
+        nonlocal executed
+        if executed < 3:
+            h = hpy()
+            before = h.heap()
+            res = func(*args, **kwargs)
+            after = h.heap()
+            diff = after - before
+            print("{}-{} Memory diff: {}KB".format(func.__module__, func.__name__, diff.size))
+            executed += 1
+            return res
+        return func(*args, **kwargs)
     return wrapper
+
+
+def toggle_memory_profile(func):
+    # baseline_name = func.__module__.split('.')[1]
+    if not ENABLE_MEMORY_PROFILE:
+        return func
+    # baseline_tested[baseline_name] = True
+    return memory_profile(func)

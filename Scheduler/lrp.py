@@ -14,6 +14,7 @@ It is the most widely used scoring function.
 
 Score = [(C_cpu-U_cpu)/C_cpu*10 + (C_mem-U_mem)/C_mem*10] / 2
 """
+import util
 from Scheduler.scheduler import Scheduler
 from Task.task import Task
 
@@ -22,6 +23,7 @@ class LeastRequestedPriority(Scheduler):
     def __init__(self, name: str, env):
         super(LeastRequestedPriority, self).__init__(name, env)
 
+    @util.toggle_memory_profile
     def make_decision(self, task: Task, clock) -> int:
         scores = [0] * self.cluster.node_num
         ids = [i for i in range(self.cluster.node_num)]

@@ -94,10 +94,10 @@ def read_alibaba_task_list_csv_bak():
     return task_list
 
 
-def read_alibaba_task_list_csv(task_num: int = -1, task_mul: int = 1):
+def read_alibaba_task_list_csv(file: str, task_num: int = -1, task_mul: int = 1):
     task_list = []
     for chunk in pd.read_csv(
-        "Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv", chunksize=1
+        file, chunksize=1
     ):
         for index, row in chunk.iterrows():
             task_id = int(row["name"][-4:]) + 1
@@ -131,17 +131,20 @@ def read_alibaba_task_list_csv(task_num: int = -1, task_mul: int = 1):
     return res
 
 
-def read_alibaba_node_list_csv(node_num: int = -1):
+def read_alibaba_node_list_csv(file: str, node_num: int = -1):
     node_list = []
     for chunk in pd.read_csv(
-        "Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_gpu_node.csv", chunksize=1
+        file, chunksize=1
     ):
         for index, row in chunk.iterrows():
             node_id = int(row["sn"][-4:]) + 1
             cpu_capacity = int(row["cpu_milli"]) // 1000
             mem_capacity = int(row["memory_mib"])
-            lbs = row["model"].split(",")
-            cnt = [int(c) for c in str(row["gpu"]).split(",")]
+            lbs = None
+            cnt = None
+            if str(row["model"]) != "nan":
+                lbs = row["model"].split(",")
+                cnt = [int(c) for c in str(row["gpu"]).split(",")]
             node = EdgeNode(
                 node_id,
                 EdgeNodeConfig(

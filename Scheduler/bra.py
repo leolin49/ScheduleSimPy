@@ -28,6 +28,7 @@ class BalancedResourceAllocation(Scheduler):
     def __init__(self, name: str, env):
         super(BalancedResourceAllocation, self).__init__(name, env)
 
+    @util.toggle_memory_profile
     def make_decision(self, task: Task, clock) -> int:
         scores = [0] * self.cluster.node_num
         ids = [i for i in range(self.cluster.node_num)]

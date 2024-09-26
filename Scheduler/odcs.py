@@ -57,6 +57,7 @@ end for
 """
 import random
 
+import util
 from Scheduler.scheduler import Scheduler
 from Task.task import Task
 
@@ -65,6 +66,7 @@ class OnlineContainerScheduling(Scheduler):
     def __init__(self, name: str, env):
         super(OnlineContainerScheduling, self).__init__(name, env)
 
+    @util.toggle_memory_profile
     def make_decision(self, task: Task, clock) -> int:
         # prepare
         n = self.cluster.node_num

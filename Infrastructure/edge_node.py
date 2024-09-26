@@ -41,7 +41,7 @@ class EdgeNodeConfig:
         :param disk: Available disk size
         :param gpu: Available gpu cores number
         """
-        assert len(labels) == len(counts)
+        # assert labels is not None and counts is not None and len(labels) == len(counts)
         self.cpu_capacity = cpu_capacity
         self.mem_capacity = mem_capacity
         self.disk_capacity = disk_capacity

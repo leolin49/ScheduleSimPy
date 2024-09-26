@@ -6,5 +6,5 @@ python main.py
 # 性能分析
 python -m cProfile -o profile_file.prof main.py
 
-snakeviz .\profile_file.prof
+#snakeviz .\profile_file.prof
 

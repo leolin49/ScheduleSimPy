@@ -8,6 +8,7 @@
 import random
 from math import sqrt
 
+import util
 from Scheduler.scheduler import Scheduler
 from Task.task import Task
 
@@ -29,6 +30,7 @@ class DataIntensiveContainerScheduling(Scheduler):
             and task.mem_consume <= node.mem_capacity
         )
 
+    @util.toggle_memory_profile
     def make_decision(self, task: Task, clock) -> int:
         # prepare
         esp = 1e-6

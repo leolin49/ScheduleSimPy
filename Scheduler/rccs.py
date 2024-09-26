@@ -110,8 +110,8 @@ class GroupBaseContainerScheduling(Scheduler):
                 ),
             )
             self.groups_min[group_id] = min_id
-            print(group_id, self.cluster.node_list[min_id - 1])
-        print("First level group finish...")
+            # print(group_id, self.cluster.node_list[min_id - 1])
+        print("RCCS first level group finish...")
 
     def make_second_level_group(self):
         for group_id, node_ids in self.groups.items():
@@ -121,12 +121,12 @@ class GroupBaseContainerScheduling(Scheduler):
                 for label in node.labels:
                     if label in util.AI_LABEL:
                         self.groups2[group_id][label].append(node_id)
-            print(
-                "group_id: {}, second group keys: {}".format(
-                    group_id, self.groups2[group_id].keys()
-                )
-            )
-        print("Second level group finish...")
+            # print(
+            #     "group_id: {}, second group keys: {}".format(
+            #         group_id, self.groups2[group_id].keys()
+            #     )
+            # )
+        print("RCCS second level group finish...")
 
     def __find_in_first_group(self, task: Task) -> int:
         # 1. find the first-level groups
@@ -437,6 +437,7 @@ class GroupBaseContainerScheduling(Scheduler):
                 return node_id
         return -1
 
+    @util.toggle_memory_profile
     def make_decision(self, task: Task, clock) -> int:
         group_id = self.__find_in_first_group(task)
         gid = group_id

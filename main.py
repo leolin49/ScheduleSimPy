@@ -9,7 +9,6 @@ import platform
 import sys
 import time
 from simpy import Environment
-from memory_profiler import profile
 
 import util
 from Scheduler import rccs, lrp, bra, dics, kcss, odcs
@@ -118,8 +117,6 @@ def baseline_rccs(task_configs, node_list):
     print("average completion time:", cluster.average_completion())
 
 
-# @util.profile_function
-# @profile
 def run_with_config(node_num: int, task_num: int, task_mul: int):
     print(
         "Experimental Parameters: Node: {}, Task: {}, Task_Mul: {}".format(
@@ -127,11 +124,11 @@ def run_with_config(node_num: int, task_num: int, task_mul: int):
         )
     )
     print("task data read begin...")
-    task_configs = rd.read_alibaba_task_list_csv(task_num, task_mul)
+    task_configs = rd.read_alibaba_task_list_csv("Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv", task_num, task_mul)
     print("task data read finish!")
 
     print("node data read begin...")
-    node_list = rd.read_alibaba_node_list_csv(node_num)
+    node_list = rd.read_alibaba_node_list_csv("Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_all_node.csv", node_num)
     print("node data read finish!")
 
     print("Baseline LRP is running...")
