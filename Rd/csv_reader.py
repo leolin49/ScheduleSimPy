@@ -96,9 +96,7 @@ def read_alibaba_task_list_csv_bak():
 
 def read_alibaba_task_list_csv(file: str, task_num: int = -1, task_mul: int = 1):
     task_list = []
-    for chunk in pd.read_csv(
-        file, chunksize=1
-    ):
+    for chunk in pd.read_csv(file, chunksize=1):
         for index, row in chunk.iterrows():
             task_id = int(row["name"][-4:]) + 1
             ais = None
@@ -133,9 +131,7 @@ def read_alibaba_task_list_csv(file: str, task_num: int = -1, task_mul: int = 1)
 
 def read_alibaba_node_list_csv(file: str, node_num: int = -1):
     node_list = []
-    for chunk in pd.read_csv(
-        file, chunksize=1
-    ):
+    for chunk in pd.read_csv(file, chunksize=1):
         for index, row in chunk.iterrows():
             node_id = int(row["sn"][-4:]) + 1
             cpu_capacity = int(row["cpu_milli"]) // 1000

@@ -124,11 +124,17 @@ def run_with_config(node_num: int, task_num: int, task_mul: int):
         )
     )
     print("task data read begin...")
-    task_configs = rd.read_alibaba_task_list_csv("Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv", task_num, task_mul)
+    task_configs = rd.read_alibaba_task_list_csv(
+        "Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv",
+        task_num,
+        task_mul,
+    )
     print("task data read finish!")
 
     print("node data read begin...")
-    node_list = rd.read_alibaba_node_list_csv("Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_all_node.csv", node_num)
+    node_list = rd.read_alibaba_node_list_csv(
+        "Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_all_node.csv", node_num
+    )
     print("node data read finish!")
 
     print("Baseline LRP is running...")
@@ -156,7 +162,7 @@ def main():
         "Experimental Time:\t{}\nPlatform Info:\t{}\nPython Version:\t{}\n".format(
             time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
             platform.platform(),
-            sys.version
+            sys.version,
         )
     )
     print("*========================================================================*")

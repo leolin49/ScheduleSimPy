@@ -186,10 +186,15 @@ def memory_profile(func):
             res = func(*args, **kwargs)
             after = h.heap()
             diff = after - before
-            print("{}-{} Memory diff: {}KB".format(func.__module__, func.__name__, diff.size))
+            print(
+                "{}-{} Memory diff: {}KB".format(
+                    func.__module__, func.__name__, diff.size
+                )
+            )
             executed += 1
             return res
         return func(*args, **kwargs)
+
     return wrapper
 
 
