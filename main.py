@@ -117,10 +117,10 @@ def baseline_rccs(task_configs, node_list):
     print("average completion time:", cluster.average_completion())
 
 
-def run_with_config(node_num: int, task_num: int, task_mul: int):
+def run_with_config(node_num: int, node_mul: int, task_num: int, task_mul: int):
     print(
-        "Experimental Parameters: Node: {}, Task: {}, Task_Mul: {}".format(
-            node_num, task_num, task_mul
+        "Experimental Parameters: Node: {}, Node_Mul: {}, Task: {}, Task_Mul: {}".format(
+            node_num, node_mul, task_num, task_mul
         )
     )
     print("task data read begin...")
@@ -133,7 +133,9 @@ def run_with_config(node_num: int, task_num: int, task_mul: int):
 
     print("node data read begin...")
     node_list = rd.read_alibaba_node_list_csv(
-        "Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_all_node.csv", node_num
+        "Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_gpu_node.csv",
+        node_num,
+        node_mul,
     )
     print("node data read finish!")
 
@@ -167,8 +169,9 @@ def main():
     )
     print("*========================================================================*")
     for task_mul in util.TASK_MUL:
-        run_with_config(util.NODE_NUM, util.TASK_NUM, task_mul)
-        break
+        run_with_config(util.NODE_NUM, util.NODE_MUL, util.TASK_NUM, task_mul)
+        if util.TIME_TEST_ON:
+            break
 
 
 if __name__ == "__main__":

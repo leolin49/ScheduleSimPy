@@ -7,6 +7,8 @@
 # File    : simulator.py.py
 from simpy import Environment
 
+import util
+
 
 class Simulator(object):
     def __init__(self, env: Environment, cluster, scheduler, task_broker, monitor):
@@ -25,7 +27,9 @@ class Simulator(object):
     def run(self):
         self.env.process(self.task_broker.run())
         self.env.process(self.scheduler.run())
-        self.env.process(self.monitor.run())
+        if not util.TIME_TEST_ON:
+            # Shutdown the monitor when running the time test.
+            self.env.process(self.monitor.run())
 
     @property
     def finished(self):

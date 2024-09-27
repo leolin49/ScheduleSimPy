@@ -106,6 +106,10 @@ class Cluster:
         )
 
     def average_completion(self) -> float:
+        """
+        Calculate the average makespan of all tasks.
+        :return: Average makespan.
+        """
         total_time = 0
         task_num = len(self.finished_task_list)
         if task_num == 0:
@@ -115,6 +119,10 @@ class Cluster:
         return total_time / task_num
 
     def average_decision(self) -> float:
+        """
+        Deprecated. Statistics for this metric by cProfile.
+        :return: Average scheduling decision time.
+        """
         total_time = 0
         task_num = len(self.finished_task_list)
         if task_num == 0:
@@ -124,6 +132,10 @@ class Cluster:
         return total_time / task_num
 
     def load_balance_state(self) -> List[float]:
+        """
+        Calculate the coefficient of variation (CV) for timestamp.
+        :return: CV list.
+        """
         n = len(self.node_list)
         state = [[0] * (util.TIME_RANGE + 1) for _ in range(n + 1)]
         for task in self.finished_task_list:
@@ -144,6 +156,10 @@ class Cluster:
         return res
 
     def cdf(self) -> List[float]:
+        """
+        Calculate the cumulative distribution function for timestamp.
+        :return: CDF values list.
+        """
         m = len(self.finished_task_list)
         cnt = [0] * 1000
         for task in self.finished_task_list:

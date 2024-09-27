@@ -27,11 +27,11 @@ class Monitor(object):
         self.cluster = simulator.cluster
         task_num = len(simulator.task_broker.job_configs)
         node_num = len(self.cluster.node_list)
-        fold = "log_node{}".format(node_num)
-        self.avg_file = "Log/{}/{}_{}_{:02d}_avg_event.json".format(
-            fold, self.name, node_num, task_num // util.TASK_NUM
+        path = "Log/log_node{}".format(node_num * util.NODE_MUL)
+        self.avg_file = "{}/{}_{}_{:02d}_avg_event.json".format(
+            path, self.name, node_num, task_num // util.TASK_NUM
         )
-        self.event_file = "Log/{}/{}_event.json".format(fold, self.name)
+        self.event_file = "{}/{}_event.json".format(path, self.name)
 
     def run(self):
         cpus = []

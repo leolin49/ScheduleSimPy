@@ -46,7 +46,7 @@ class Scheduler(object):
             return
         e = time.time()
         node = self.cluster.node_list[node_id - 1]
-        task.schedule(node, (e - s) * 100)
+        task.schedule(node, e - s)
         # self.log.info(
         #     "now:{} task-{} is scheduled to Node-{}".format(
         #         self.env.now, task.id, node.id
