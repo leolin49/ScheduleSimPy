@@ -91,7 +91,7 @@ def read_alibaba_task_list_csv(file: str):
 
 
 def read_alibaba_node_list_csv(file: str):
-    initial_state = {"gpu": 1, "cpu": 0.75, "mem": 0.75}    # 控制初始的资源数量
+    initial_state = {"gpu": 1, "cpu": 0.75, "mem": 0.75}  # 控制初始的资源数量
     for chunk in pd.read_csv(file, chunksize=1):
         for index, row in chunk.iterrows():
             node_id = int(row["sn"][-4:]) + 1

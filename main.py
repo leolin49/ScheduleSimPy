@@ -122,7 +122,11 @@ def baseline_rccs(task_configs, node_list):
 def get_node_list(node_num: int, node_mul: int):
     res = []
     if len(ALIBABA_NODE_LIST) <= node_num:
-        print("No enough sample node: total: {}, require: {}", len(ALIBABA_NODE_LIST), node_num)
+        print(
+            "No enough sample node: total: {}, require: {}",
+            len(ALIBABA_NODE_LIST),
+            node_num,
+        )
         exit(0)
     for _ in range(node_mul):
         if util.RANDOM_NODE_SAMPLE:
@@ -137,7 +141,11 @@ def get_node_list(node_num: int, node_mul: int):
 def get_task_configs(task_num: int, task_mul: int):
     res = []
     if len(ALIBABA_TASK_LIST) <= task_num:
-        print("No enough sample task: total: {}, require: {}", len(ALIBABA_TASK_LIST), task_num)
+        print(
+            "No enough sample task: total: {}, require: {}",
+            len(ALIBABA_TASK_LIST),
+            task_num,
+        )
         exit(0)
     for _ in range(task_mul):
         res.extend(random.sample(ALIBABA_TASK_LIST, task_num))
