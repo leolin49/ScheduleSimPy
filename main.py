@@ -8,14 +8,16 @@
 import platform
 import sys
 import time
+import random
 from simpy import Environment
 
+import Rd.csv_reader
 import util
 from Scheduler import rccs, lrp, bra, dics, kcss, odcs
 from Infrastructure.cluster import Cluster
 from simulator import Simulator
 from Task.broker import Broker
-from Rd import csv_reader as rd
+from Rd.csv_reader import ALIBABA_TASK_LIST, ALIBABA_NODE_LIST
 from monitor import Monitor
 import logging
 
@@ -117,27 +119,38 @@ def baseline_rccs(task_configs, node_list):
     print("average completion time:", cluster.average_completion())
 
 
-def run_with_config(node_num: int, node_mul: int, task_num: int, task_mul: int):
+def get_node_list(node_num: int, node_mul: int):
+    res = []
+    if len(ALIBABA_NODE_LIST) <= node_num:
+        print("No enough sample node: total: {}, require: {}", len(ALIBABA_NODE_LIST), node_num)
+        exit(0)
+    for _ in range(node_mul):
+        if util.RANDOM_NODE_SAMPLE:
+            res.extend(random.sample(ALIBABA_NODE_LIST, node_num))
+        else:
+            res.extend(ALIBABA_NODE_LIST[:node_num])
+    for i, node in enumerate(res):
+        node.id = i + 1
+    return res
+
+
+def get_task_configs(task_num: int, task_mul: int):
+    res = []
+    if len(ALIBABA_TASK_LIST) <= task_num:
+        print("No enough sample task: total: {}, require: {}", len(ALIBABA_TASK_LIST), task_num)
+        exit(0)
+    for _ in range(task_mul):
+        res.extend(random.sample(ALIBABA_TASK_LIST, task_num))
+    res.sort(key=lambda x: x.submit_time)
+    return res
+
+
+def run_with_config(node_list, task_configs):
     print(
-        "Experimental Parameters: Node: {}, Node_Mul: {}, Task: {}, Task_Mul: {}".format(
-            node_num, node_mul, task_num, task_mul
+        "Experimental Parameters: Node: {}, Task: {}".format(
+            len(node_list), len(task_configs)
         )
     )
-    print("task data read begin...")
-    task_configs = rd.read_alibaba_task_list_csv(
-        "Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv",
-        task_num,
-        task_mul,
-    )
-    print("task data read finish!")
-
-    print("node data read begin...")
-    node_list = rd.read_alibaba_node_list_csv(
-        "Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_gpu_node.csv",
-        node_num,
-        node_mul,
-    )
-    print("node data read finish!")
 
     print("Baseline LRP is running...")
     baseline_lrp(task_configs, node_list)
@@ -158,6 +171,19 @@ def run_with_config(node_num: int, node_mul: int, task_num: int, task_mul: int):
     baseline_rccs(task_configs, node_list)
 
 
+def read_dataset_alibaba():
+    print("node data read begin...")
+    Rd.csv_reader.read_alibaba_node_list_csv(
+        "Dataset/cluster-trace-gpu-v2023/csv/openb_node_list_gpu_node.csv",
+    )
+    print("node data read finish...")
+    print("task data read begin...")
+    Rd.csv_reader.read_alibaba_task_list_csv(
+        "Dataset/cluster-trace-gpu-v2023/csv/openb_pod_list_gpuspec33.csv",
+    )
+    print("task data read finish...")
+
+
 def main():
     print("*========================================================================*")
     print(
@@ -168,8 +194,12 @@ def main():
         )
     )
     print("*========================================================================*")
+    read_dataset_alibaba()
+
+    node_list = get_node_list(util.NODE_NUM, util.NODE_MUL)
     for task_mul in util.TASK_MUL:
-        run_with_config(util.NODE_NUM, util.NODE_MUL, util.TASK_NUM, task_mul)
+        task_configs = get_task_configs(util.TASK_NUM, task_mul)
+        run_with_config(node_list, task_configs)
         if util.TIME_TEST_ON:
             break
 

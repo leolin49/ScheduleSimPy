@@ -8,9 +8,11 @@
 import ast
 import random
 import pandas as pd
-import util
 from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
 from Task.task import TaskConfig
+
+ALIBABA_TASK_LIST = []
+ALIBABA_NODE_LIST = []
 
 
 def read_node_list_csv():
@@ -59,8 +61,7 @@ def read_task_list_csv():
     return task_list
 
 
-def read_alibaba_task_list_csv(file: str, task_num: int = -1, task_mul: int = 1):
-    task_list = []
+def read_alibaba_task_list_csv(file: str):
     for chunk in pd.read_csv(file, chunksize=1):
         for index, row in chunk.iterrows():
             task_id = int(row["name"][-4:]) + 1
@@ -68,6 +69,8 @@ def read_alibaba_task_list_csv(file: str, task_num: int = -1, task_mul: int = 1)
             gpu_spec_str = str(row["gpu_spec"])
             if gpu_spec_str != "nan":
                 ais = gpu_spec_str.split("|")
+            # if ais is None:
+            #     continue
             if str(row["scheduled_time"]) == "nan":
                 continue
             task = TaskConfig(
@@ -84,18 +87,10 @@ def read_alibaba_task_list_csv(file: str, task_num: int = -1, task_mul: int = 1)
                 ai_accelerators=ais,
                 ai_accelerator_num=int(row["num_gpu"]),
             )
-            task_list.append(task)
-    if task_num == -1:
-        return task_list
-    res = []
-    for _ in range(task_mul):
-        res.extend(random.sample(task_list, task_num))
-    res.sort(key=lambda x: x.submit_time)
-    return res
+            ALIBABA_TASK_LIST.append(task)
 
 
-def read_alibaba_node_list_csv(file: str, node_num: int = -1, node_mul: int = 1):
-    node_list = []
+def read_alibaba_node_list_csv(file: str):
     initial_state = {"gpu": 1, "cpu": 0.75, "mem": 0.75}    # 控制初始的资源数量
     for chunk in pd.read_csv(file, chunksize=1):
         for index, row in chunk.iterrows():
@@ -123,15 +118,4 @@ def read_alibaba_node_list_csv(file: str, node_num: int = -1, node_mul: int = 1)
                     # initial_gpu
                 ),
             )
-            node_list.append(node)
-    if node_num == -1:
-        return node_list
-    res = []
-    for _ in range(node_mul):
-        if util.RANDOM_NODE_SAMPLE:
-            res.extend(random.sample(node_list, node_num))
-        else:
-            res.extend(node_list[:node_num])
-    for i, node in enumerate(res):
-        node.id = i + 1
-    return res
+            ALIBABA_NODE_LIST.append(node)

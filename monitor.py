@@ -48,7 +48,7 @@ class Monitor(object):
             mems.append(self.cluster.mem_utilization)
             gpus.append(self.cluster.gpu_utilization)
             self.events.append(state)
-            yield self.env.timeout(1)
+            yield self.env.timeout(0.5)
         # avg state
         state = {
             "avg_task_make_span": "{:.2f}".format(self.cluster.average_completion()),
@@ -59,9 +59,10 @@ class Monitor(object):
             "total_finish_task_num": len(self.cluster.finished_task_list),
             "load_balance_state": self.cluster.load_balance_state(),
             "CDF": self.cluster.cdf(),
+            "gpus": gpus,
         }
         self.avgs.append(state)
-        self.write_to_file()
+        # self.write_to_file()
         self.write_to_file_avg()
 
     def write_to_file(self):
