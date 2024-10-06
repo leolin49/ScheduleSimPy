@@ -1,4 +1,4 @@
-# Copyright 2024 The FCAV Authors. All rights reserved.
+# Copyright 2024 The ScheduleSimPy Authors. All rights reserved.
 # Use of this source code is governed by a Apache2.0-style
 # license that can be found in the LICENSE file.
 #
@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import ScalarFormatter
 
 import util
+
+# TODO 优化代码结构
 
 nodes = [100, 300, 500, 1000, 1500, 2000, 3000]
 

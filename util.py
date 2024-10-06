@@ -35,9 +35,9 @@ RANDOM_NODE_SAMPLE = False
 
 # 节点样本数 & 任务数量的倍数
 # NODE_NUM, TASK_MUL = 50, [2, 3, 4, 5, 6]
-NODE_NUM, TASK_MUL = 100, [4, 5, 6, 7, 8]
+# NODE_NUM, TASK_MUL = 100, [4, 5, 6, 7, 8]
 # NODE_NUM, TASK_MUL = 200, [9, 11, 13, 15, 17]
-# NODE_NUM, TASK_MUL = 300, [11, 15, 19, 23, 27]
+NODE_NUM, TASK_MUL = 300, [11, 15, 19, 23, 27]
 
 # 仅用于测量调度时间
 NODE_MUL = 1

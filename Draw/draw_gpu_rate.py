@@ -122,7 +122,7 @@ for metric_name, metric_key, metrics_ylim in zip(
     plt.yticks(fontsize=16)
 
     # 显示图例
-    plt.legend(loc="upper left", fontsize=20, ncol=1)
+    plt.legend(loc="upper left", fontsize=20, ncol=3)
     plt.ylim(metrics_ylim)
     # 调整布局，避免标签重叠
     plt.tight_layout()
