@@ -9,6 +9,8 @@
 import logging
 import cProfile
 import pstats
+import secrets
+
 from guppy import hpy
 
 import numpy as np
@@ -204,3 +206,12 @@ def toggle_memory_profile(func):
         return func
     # baseline_tested[baseline_name] = True
     return memory_profile(func)
+
+
+def rand_float(low: int, high: int):
+    rd = secrets.randbelow(100_000) / 100_000
+    return low + (high - low) * rd
+
+
+def rand_int(low: int, high: int):
+    return secrets.randbelow(high-low+1) + low

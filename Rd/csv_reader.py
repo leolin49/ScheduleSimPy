@@ -8,6 +8,8 @@
 import ast
 import random
 import pandas as pd
+
+import util
 from Infrastructure.edge_node import EdgeNode, EdgeNodeConfig
 from Task.task import TaskConfig
 
@@ -75,7 +77,8 @@ def read_alibaba_task_list_csv(file: str):
                 continue
             task = TaskConfig(
                 task_index=task_id,
-                submit_time=random.uniform(1, 100),
+                # submit_time=random.uniform(1, util.TIME_RANGE),
+                submit_time=util.rand_float(1, util.TIME_RANGE),
                 duration=random.uniform(0.0001, 1.1432)
                 * random.uniform(1, 1.7520 / 0.4883),
                 # submit_time=int(row["creation_time"]),

@@ -67,7 +67,7 @@ metrics_keys = [
     "avg_mem_utilization",
     "avg_gpu_utilization",
 ]
-metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (0, 100)]
+metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (30, 100)]
 
 # 设置柱宽和间隙
 bar_width = 0.05  # 每个 baseline 的柱宽

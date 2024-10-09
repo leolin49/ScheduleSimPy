@@ -11,6 +11,7 @@ import json
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
 
+import util
 from util import NODE_NUM, TASK_MUL, TASK_NUM, BASELINE_COLORS, BASELINE_NAME
 
 interval = 1
@@ -24,7 +25,7 @@ for task_mul in TASK_MUL:
         )
         with open(file_name, "r") as file:
             data = json.load(file)[0]
-            timestamps = [i for i in range(len(data["gpus"]))]
+            timestamps = [i*0.5 for i in range(len(data["gpus"]))]
             all_timestamps.append(timestamps)
             all_gpus.append(data["gpus"])
 
@@ -38,12 +39,12 @@ for task_mul in TASK_MUL:
         gpus_smooth = savgol_filter(gpus, window_length=16, polyorder=10)
         plt.plot(
             timestamps[::interval],
-            # gpus[::interval],
-            gpus_smooth[::interval],
+            gpus[::interval],
+            # gpus_smooth[::interval],
             # marker="*",
             markersize="5",
             linestyle="-",
-            linewidth=2,
+            linewidth=1.5,
             label=baseline.upper(),
             color=BASELINE_COLORS[i],
             alpha=alpha,
@@ -55,7 +56,7 @@ for task_mul in TASK_MUL:
     plt.ylabel("GPU Utilization (%)", fontsize=20)
     plt.yticks(fontsize=20)
     plt.ylim((0, 100))
-    plt.xlim((0, 100))
+    plt.xlim((0, util.TIME_RANGE))
     plt.legend(loc="lower right", fontsize=20, ncol=1)
     plt.grid(True)
 
