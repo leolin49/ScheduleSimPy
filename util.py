@@ -214,4 +214,4 @@ def rand_float(low: int, high: int):
 
 
 def rand_int(low: int, high: int):
-    return secrets.randbelow(high-low+1) + low
+    return secrets.randbelow(high - low + 1) + low

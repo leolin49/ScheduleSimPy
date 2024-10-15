@@ -25,7 +25,7 @@ for task_mul in TASK_MUL:
         )
         with open(file_name, "r") as file:
             data = json.load(file)[0]
-            timestamps = [i*0.5 for i in range(len(data["gpus"]))]
+            timestamps = [i * 0.5 for i in range(len(data["gpus"]))]
             all_timestamps.append(timestamps)
             all_gpus.append(data["gpus"])
 

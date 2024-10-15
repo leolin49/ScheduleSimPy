@@ -26,7 +26,7 @@ for task_mul in TASK_MUL:
         )
         with open(file_name, "r") as file:
             data = json.load(file)[0]
-            timestamps = [i for i in range(0, util.TIME_RANGE+1)]
+            timestamps = [i for i in range(0, util.TIME_RANGE + 1)]
             lb = data["load_balance_state"]
             all_timestamps.append(timestamps)
             all_lb.append(lb)
