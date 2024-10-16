@@ -67,7 +67,7 @@ metrics_keys = [
     "avg_mem_utilization",
     "avg_gpu_utilization",
 ]
-metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (30, 100)]
+metrics_ylims = [(1, 3.5), (0, 100), (0, 100), (30, 90)]
 
 # 设置柱宽和间隙
 bar_width = 0.05  # 每个 baseline 的柱宽
@@ -102,10 +102,12 @@ for metric_name, metric_key, metrics_ylim in zip(
             linewidth=1.0,
         )
 
+    LABAL_FONT_SIZE = 22
+
     # 设置标签和标题
     # plt.xlabel("Parameter Combination (|N|, |C|)", fontsize=15)
-    plt.xlabel("Container Number", fontsize=16)
-    plt.ylabel(f"{metric_name} (%)", fontsize=16)
+    plt.xlabel("Container Number", fontsize=LABAL_FONT_SIZE)
+    plt.ylabel(f"{metric_name} (%)", fontsize=LABAL_FONT_SIZE)
     # plt.title(
     #     f"Comparison of {metric_name} Across Baselines for Different Parameters",
     #     fontsize=15,
@@ -117,12 +119,12 @@ for metric_name, metric_key, metrics_ylim in zip(
         next(iter(data_by_baseline.values()))["params"],
         rotation=0,
         ha="right",
-        fontsize=16,
+        fontsize=20,
     )
-    plt.yticks(fontsize=16)
+    plt.yticks(fontsize=20)
 
     # 显示图例
-    plt.legend(loc="upper left", fontsize=20, ncol=3)
+    plt.legend(loc="upper left", fontsize=24, ncol=3)
     plt.ylim(metrics_ylim)
     # 调整布局，避免标签重叠
     plt.tight_layout()

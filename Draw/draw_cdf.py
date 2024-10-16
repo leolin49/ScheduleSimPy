@@ -66,14 +66,15 @@ for task_mul in TASK_MUL:
             alpha=alpha,
         )
 
+    FONT_SIZE = 26
     # plt.title("Load Balance Comparison Over Time")
-    plt.xlabel("Makespan (s)", fontsize=16)
-    plt.xticks(fontsize=16)
-    plt.ylabel("CDF", fontsize=16)
-    plt.yticks(fontsize=16)
+    plt.xlabel("Makespan (s)", fontsize=FONT_SIZE)
+    plt.xticks(fontsize=FONT_SIZE)
+    plt.ylabel("CDF", fontsize=FONT_SIZE)
+    plt.yticks(fontsize=FONT_SIZE)
     plt.ylim((-0.05, 1.05))
     plt.xlim((0, 12))
-    plt.legend(loc="lower right", fontsize=20, ncol=1)
+    plt.legend(loc="lower right", fontsize=FONT_SIZE, ncol=1)
     plt.grid(True)
 
     plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
