@@ -52,7 +52,7 @@ for task_mul in TASK_MUL:
             alpha=alpha,
         )
 
-    FONT_SIZE = 26
+    FONT_SIZE = 24
 
     # plt.title("Load Balance Comparison Over Time")
     plt.xlabel("Timestamp (s)", fontsize=FONT_SIZE)

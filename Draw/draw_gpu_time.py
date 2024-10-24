@@ -14,7 +14,7 @@ from scipy.signal import savgol_filter
 import util
 from util import NODE_NUM, TASK_MUL, TASK_NUM, BASELINE_COLORS, BASELINE_NAME
 
-interval = 1
+interval = 2
 
 for task_mul in TASK_MUL:
     all_timestamps = []
@@ -50,14 +50,15 @@ for task_mul in TASK_MUL:
             alpha=alpha,
         )
 
+    FONT_SIZE = 24
     # plt.title("Load Balance Comparison Over Time")
-    plt.xlabel("Timestamp (s)", fontsize=20)
-    plt.xticks(fontsize=20)
-    plt.ylabel("GPU Utilization (%)", fontsize=20)
-    plt.yticks(fontsize=20)
-    plt.ylim((0, 100))
+    plt.xlabel("Timestamp (s)", fontsize=FONT_SIZE)
+    plt.xticks(fontsize=FONT_SIZE)
+    plt.ylabel("GPU Utilization (%)", fontsize=FONT_SIZE)
+    plt.yticks(fontsize=FONT_SIZE)
+    plt.ylim((40, 100))
     plt.xlim((0, util.TIME_RANGE))
-    plt.legend(loc="lower right", fontsize=20, ncol=1)
+    plt.legend(loc="lower right", fontsize=FONT_SIZE, ncol=3)
     plt.grid(True)
 
     plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)

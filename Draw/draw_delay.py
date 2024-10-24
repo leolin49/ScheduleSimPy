@@ -30,11 +30,13 @@ for file in files:
 
 data_for_boxplot = [data_by_baseline[baseline] for baseline in baselines]
 plt.figure(figsize=(10, 6))
+pos = [0.2 * i for i in range(6)]
 plt.boxplot(
     data_for_boxplot,
-    widths=0.3,
+    widths=0.1,
     patch_artist=True,
     labels=[baseline.upper() for baseline in baselines],
+    positions=pos,
     boxprops=dict(facecolor="lightblue"),
     medianprops=dict(color="red"),
     whiskerprops=dict(color="black"),
@@ -46,12 +48,15 @@ plt.boxplot(
     ),
 )
 
-plt.xlabel("Baseline", fontsize=16)
-plt.xticks(fontsize=16)
-plt.ylabel("Makespan (s)", fontsize=16)
-plt.yticks(fontsize=16)
-plt.ylim((2.0, 3.3))
+FONT_SIZE = 22
 
-plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
+plt.xlabel("Baseline", fontsize=FONT_SIZE)
+plt.xticks(fontsize=FONT_SIZE)
+plt.ylabel("Makespan (s)", fontsize=FONT_SIZE)
+plt.yticks(fontsize=FONT_SIZE)
+plt.ylim((2.2, 3.3))
+plt.xlim(-0.15, 1.2)
+
+plt.subplots_adjust(left=0.1, right=0.95, bottom=0.15, top=0.95)
 
 plt.show()
