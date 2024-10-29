@@ -57,13 +57,21 @@ for task_mul in TASK_MUL:
             timestamps[: bp + 1 : interval],
             cdf[: bp + 1 : interval],
             # lb_smooth[::interval],
-            # marker="*",
+            # marker=".",
             markersize="5",
             linestyle="-",
-            linewidth=2.5,
+            linewidth=2,
             label=baseline.upper(),
             color=BASELINE_COLORS[i],
             alpha=alpha,
+            zorder=0,
+        )
+        plt.fill_between(
+            timestamps[: bp+1: interval],
+            cdf[: bp+1: interval],
+            color=BASELINE_COLORS[i],
+            alpha=0.1,
+            zorder=1,
         )
 
     FONT_SIZE = 26
@@ -73,7 +81,7 @@ for task_mul in TASK_MUL:
     plt.ylabel("CDF", fontsize=FONT_SIZE)
     plt.yticks(fontsize=FONT_SIZE)
     plt.ylim((-0.05, 1.05))
-    plt.xlim((0, 12))
+    plt.xlim((0, 10))
     plt.legend(loc="lower right", fontsize=FONT_SIZE, ncol=1)
     plt.grid(True)
 
