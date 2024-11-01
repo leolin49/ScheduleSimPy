@@ -147,8 +147,10 @@ def get_task_configs(task_num: int, task_mul: int):
             task_num,
         )
         exit(0)
+    tmp = random.sample(ALIBABA_TASK_LIST, task_num)
     for _ in range(task_mul):
-        res.extend(random.sample(ALIBABA_TASK_LIST, task_num))
+        # res.extend(random.sample(ALIBABA_TASK_LIST, task_num))
+        res.extend(tmp)
     res.sort(key=lambda x: x.submit_time)
     return res
 

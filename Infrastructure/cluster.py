@@ -118,6 +118,15 @@ class Cluster:
             total_time += task.finished_timestamp - task.started_timestamp
         return total_time / task_num
 
+    def get_all_makespan(self) -> List[float]:
+        res = []
+        for task in self.finished_task_list:
+            makespan = task.finished_timestamp - task.started_timestamp
+            if makespan > 3.2:
+                continue
+            res.append(makespan)
+        return res
+
     def average_decision(self) -> float:
         """
         Deprecated. Statistics for this metric by cProfile.

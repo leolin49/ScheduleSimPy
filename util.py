@@ -32,8 +32,10 @@ TIME_RANGE = 100
 # 任务样本数量
 TASK_NUM = 4000
 
+DECISION_MUL = 100
+
 # 节点采样是否随机
-RANDOM_NODE_SAMPLE = True
+RANDOM_NODE_SAMPLE = False
 
 # 节点样本数 & 任务数量的倍数
 # NODE_NUM, TASK_MUL = 50, [2, 3, 4, 5, 6]
@@ -44,7 +46,7 @@ NODE_NUM, TASK_MUL = 100, [4, 5, 6, 7, 8]
 # 仅用于测量调度时间
 NODE_MUL = 1
 TIME_TEST_ON = False
-# NODE_NUM, TASK_MUL = 500, [4, 5, 6, 7, 8]
+# NODE_NUM, TASK_MUL = 1000, [4, 5, 6, 7, 8]
 
 # Baseline 图例颜色
 # BASELINE_COLORS = ['#1f78b4', '#e31a1c', '#ff7f00', '#6a3d9a', '#b15928', '#33a02c']

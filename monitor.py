@@ -18,7 +18,7 @@ class Monitor(object):
         self.cluster = None
         self.avg_file = None
         self.fold_name = None
-        self.event_file = "Log/" + scheduler_name + "_event.json"
+        self.event_file = None
         self.events = []
         self.avgs = []
 
@@ -60,6 +60,7 @@ class Monitor(object):
             "load_balance_state": self.cluster.load_balance_state(),
             "CDF": self.cluster.cdf(),
             "gpus": gpus,
+            # "all_make_span": self.cluster.get_all_makespan(),
         }
         self.avgs.append(state)
         # self.write_to_file()
