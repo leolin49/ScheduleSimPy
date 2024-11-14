@@ -35,7 +35,7 @@ TASK_NUM = 4000
 DECISION_MUL = 100
 
 # 节点采样是否随机
-RANDOM_NODE_SAMPLE = False
+RANDOM_NODE_SAMPLE = True
 
 # 节点样本数 & 任务数量的倍数
 # NODE_NUM, TASK_MUL = 50, [2, 3, 4, 5, 6]

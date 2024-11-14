@@ -48,13 +48,14 @@ def plot_memory_distribution(memory_counts):
 
     for bar in bars:
         height = bar.get_height()
-        plt.text(bar.get_x() + bar.get_width() / 2., height, '%d' % int(height), ha='center', va='bottom')
+        plt.text(bar.get_x() + bar.get_width() / 2., height, '%d' % int(height), ha='center', va='bottom', fontsize=20)
 
-    plt.xlabel('内存容量区间 (GB)')
-    plt.ylabel('数量')
-    plt.title('节点内存容量分布')
-    plt.xticks(rotation=45)
-    plt.subplots_adjust(left=0.05, right=0.95, bottom=0.15, top=0.95)
+    plt.xlabel('内存容量区间 (GB)', fontsize=20)
+    plt.ylabel('数量', fontsize=20)
+    plt.yticks(fontsize=16)
+    plt.title('节点内存容量分布', fontsize=20)
+    plt.xticks(rotation=90, fontsize=16)
+    plt.subplots_adjust(left=0.10, right=0.95, bottom=0.2, top=0.95)
     plt.show()
 
 # 主函数
